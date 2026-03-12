@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro Header | Psicoanálisis</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <style>
+        body {
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: hidden;
+        }
+
+        /* Estilo específico para adaptar la consultation-card al ancho total del foro */
+        .forum-header-card {
+            margin: 0 !important;
+            width: 100% !important;
+            border-radius: 24px !important; /* Slightly smaller for interior feel */
+            text-align: left !important;
+            padding: 3.5rem 2.5rem !important;
+            background: #f8fafc !important;
+            border: 2px solid var(--accent-color) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .forum-header-card::after {
+            content: '?';
+            position: absolute;
+            right: -20px;
+            bottom: -60px;
+            font-size: 20rem;
+            opacity: 0.04;
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            pointer-events: none;
+            font-weight: 800;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            color: var(--accent-color);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.7rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .header-title {
+            font-size: 3rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: -2px;
+            line-height: 1;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .header-desc {
+            max-width: 700px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-premium);
+            border-color: var(--accent-color);
+        }
+
+        .icon-circle {
+            background: #f1f5f9;
+            color: var(--accent-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover .icon-circle {
+            background: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-family: var(--font-heading);
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .footer-note {
+            margin-top: 3.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="forum-header-card fade-in">
+        <span class="tag-pill">Construcción Colectiva</span>
+        <h1 class="header-title">Espacio de Intercambio</h1>
+        <p class="header-desc">
+            Un entorno de interrogación permanente donde tus inquietudes son el motor del aprendizaje compartido y la ayuda mutua entre pares.
+        </p>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="icon-circle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div class="feature-title">Ayuda entre Pares</div>
+                <div class="feature-text">Si conoces la respuesta o tienes una perspectiva distinta sobre un concepto, compártela. El conocimiento crece cuando circula.</div>
+            </div>
+
+            <div class="feature-item">
+                <div class="icon-circle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+                <div class="feature-title">Búsqueda Crítica</div>
+                <div class="feature-text">Antes de iniciar un tema, verifica si ya existe un debate abierto. Sumar al aporte de otros evita la fragmentación de la información.</div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span>💡</span>
+            <span><strong>Dinámica Docente:</strong> Monitoreamos los hilos para sintetizar los debates y profundizar los conceptos clave en las clases presenciales.</span>
+        </div>
+    </div>
+
+    <script>
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
+        window.addEventListener('load', sendHeight);
+        window.addEventListener('resize', sendHeight);
+        setInterval(sendHeight, 1000);
+    </script>
+</body>
+</html>

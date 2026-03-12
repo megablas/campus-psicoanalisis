@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro Presentación | Psicoanálisis</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    <style>
+        body {
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: hidden;
+        }
+
+        .presentation-card {
+            margin: 0 !important;
+            width: 100% !important;
+            border-radius: 35px !important;
+            text-align: left !important;
+            padding: 4rem 3rem !important;
+            background: #ffffff !important;
+            border: 1px solid var(--glass-border) !important;
+            box-shadow: var(--shadow-premium) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efecto visual de fondo: Círculos suaves */
+        .presentation-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .tag {
+            color: var(--accent-color);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .description {
+            max-width: 600px;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            border-color: var(--accent-color);
+            transform: translateX(5px);
+            background: #ffffff;
+        }
+
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-text {
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--accent-color);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-card fade-in">
+        <span class="tag">Comunidad Psicoanalítica</span>
+        <h1 class="title">Foro de Presentación</h1>
+        <p class="description">
+            Antes de comenzar nuestro recorrido teórico, queremos conocer quiénes formarán parte de este espacio de trabajo. 
+        </p>
+
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-text">Cuéntanos tu nombre y qué te motivó a elegir esta comisión.</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-text">Comparte una frase, imagen o pregunta que asocies con el Psicoanálisis.</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-text">¡No olvides saludar y leer las presentaciones de tus colegas!</div>
+            </div>
+        </div>
+
+        <div class="welcome-badge">
+            <span>✨</span> ¡Bienvenidos a la cursada 2026!
+        </div>
+    </div>
+
+    <script>
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
+        window.addEventListener('load', sendHeight);
+        window.addEventListener('resize', sendHeight);
+        setInterval(sendHeight, 1000);
+    </script>
+</body>
+</html>
