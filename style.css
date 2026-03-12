@@ -1,0 +1,231 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #0f2027, #203a43, #2b535e); /* Deep depths */
+    --accent-color: #00f2fe; /* Glowing cyan */
+    --bg-color: #0d1117; /* Slate Dark */
+    --card-bg: rgba(22, 27, 34, 0.8);
+    --text-color: #f0f6fc;
+    --text-secondary: #8b949e;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --shadow-premium: 0 10px 50px rgba(0, 0, 0, 0.5);
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-body);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Glassmorphism Classes */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-premium);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transition: 0.5s;
+}
+
+.glass-card:hover::before {
+    left: 100%;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 60px rgba(0, 242, 254, 0.1);
+}
+
+/* Banner Design */
+.banner {
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(13,17,23,1)), url('assets/banner.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 0 50px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.banner h1 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Grid Layout for Units */
+.unit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.unit-card {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.unit-number {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Buttons and Links */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Announcements Board */
+.notice-board {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.notice-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 16px 16px 0;
+    transition: all 0.3s ease;
+}
+
+.notice-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(10px);
+}
+
+.notice-date {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.notice-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+/* Consultation Section */
+.consultation-card {
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.consultation-card::after {
+    content: '?';
+    position: absolute;
+    right: -20px;
+    bottom: -50px;
+    font-size: 20rem;
+    opacity: 0.05;
+    font-family: var(--font-heading);
+    color: white;
+    pointer-events: none;
+}
+
+.pulse-button {
+    background: var(--accent-color);
+    color: #0d1117;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.4);
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.pulse-button:hover {
+    box-shadow: 0 0 50px rgba(0, 242, 254, 0.8);
+    transform: scale(1.05) translateY(-2px);
+    background: white;
+}

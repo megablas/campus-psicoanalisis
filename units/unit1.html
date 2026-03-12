@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 1 | Psicoanálisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+        }
+        .tab {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .tab.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        .tab:hover:not(.active) {
+            background: var(--glass-bg);
+        }
+        .class-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        .badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .biblio-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        .biblio-item {
+            padding: 1rem;
+            border-left: 3px solid var(--primary-color);
+            background: rgba(0, 43, 92, 0.05);
+            margin-bottom: 1rem;
+            border-radius: 0 10px 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <header style="margin-bottom: 3rem;">
+            <a href="../index.html" style="text-decoration: none; color: var(--accent-color); font-weight: bold; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                ← Volver al Inicio
+            </a>
+            <span class="unit-number">Unidad 1</span>
+            <h1>Primeros planteos freudianos</h1>
+        </header>
+
+        <nav class="tabs fade-in">
+            <a href="unit1.html" class="tab active">Clase 1</a>
+            <a href="#" class="tab">Clase 2</a>
+            <a href="#" class="tab">Clase 3</a>
+            <a href="#" class="tab">Clase 4</a>
+        </nav>
+
+        <section class="glass-card fade-in" style="animation-delay: 0.2s;">
+            <div class="class-header">
+                <div>
+                    <span class="badge">Teórica</span>
+                    <h2 style="margin-top: 0.5rem;">Introducción al Psicoanálisis</h2>
+                </div>
+                <p style="font-weight: bold; color: var(--text-secondary);">20 de Marzo</p>
+            </div>
+
+            <div class="content" style="margin-bottom: 2rem;">
+                <h3>Objetivos de la clase</h3>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-secondary);">
+                    <li>Presentación de la materia y objetivos generales.</li>
+                    <li>Lluvia de ideas sobre conceptos previos del psicoanálisis.</li>
+                    <li>Introducción al contexto histórico.</li>
+                </ul>
+            </div>
+
+            <div class="roadmap" style="background: var(--primary-color); color: white; padding: 1.5rem; border-radius: 15px;">
+                <h3 style="color: white; margin-bottom: 0.5rem;">📍 Hoja de Ruta</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9;">
+                    En esta primera sesión exploraremos sus expectativas. No hay bibliografía obligatoria para hoy, pero los invitamos a reflexionar sobre qué es para ustedes el "inconsciente".
+                </p>
+            </div>
+
+            <div class="bibliography">
+                <h3 style="margin-top: 2rem;">Material y Recursos</h3>
+                <ul class="biblio-list">
+                    <li class="biblio-item">
+                        <strong>Presentación de la Materia</strong><br>
+                        <span style="font-size: 0.9rem; color: var(--text-secondary);">Archivo PDF con los lineamientos básicos.</span>
+                    </li>
+                    <li class="biblio-item">
+                        <strong>Foro de Presentación</strong><br>
+                        <span style="font-size: 0.9rem; color: var(--text-secondary);">Accedé al campus para completar tu perfil.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
