@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 2: Charcot y Breuer | Psicoanálisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .tabs { display: flex; gap: 1rem; margin-bottom: 3rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; overflow-x: auto; }
+        .tab { padding: 0.8rem 1.5rem; text-decoration: none; color: var(--text-secondary); font-weight: 600; border-radius: 12px; transition: 0.3s; white-space: nowrap; }
+        .tab.active { background: var(--accent-color); color: #0d1117; box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); }
+        .badge { background: rgba(0, 242, 254, 0.1); color: var(--accent-color); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border: 1px solid rgba(0, 242, 254, 0.3); }
+        .biblio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .biblio-card { background: rgba(255, 255, 255, 0.02); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: 0.3s; }
+        .biblio-card:hover { border-color: var(--accent-color); background: rgba(255, 255, 255, 0.05); }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <header style="margin-top: 2rem; margin-bottom: 4rem;">
+            <a href="unit1.html" style="text-decoration: none; color: var(--accent-color); font-weight: 800; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Volver a la Unidad
+            </a>
+            <h1>Charcot y el Enigma de la Histeria</h1>
+        </header>
+
+        <nav class="tabs fade-in">
+            <a href="unit1.html" class="tab">Clase 1: Introducción</a>
+            <a href="unit1_clase2.html" class="tab active">Clase 2: Charcot y Breuer</a>
+            <a href="#" class="tab">Clase 3: Neuropsicosis</a>
+            <a href="#" class="tab">Clase 4: Primera Tópica</a>
+        </nav>
+
+        <section class="fade-in">
+            <div class="glass-card" style="margin-bottom: 3rem;">
+                <span class="badge">Lectura y Análisis</span>
+                <h3 style="margin-top: 1rem;">El modelo médico y el método catártico</h3>
+                <p style="margin-top: 1rem; color: var(--text-secondary);">
+                    En esta clase profundizamos en el encuentro de Freud con Charcot en la Salpêtrière y el posterior trabajo con Breuer que daría origen al "Caso Ana O.".
+                </p>
+                
+                <div style="margin-top: 2rem; border-left: 2px solid var(--accent-color); padding-left: 1.5rem;">
+                    <h4 style="color: white; margin-bottom: 0.5rem;">Conceptos Eje:</h4>
+                    <ul style="color: var(--text-secondary); font-size: 0.95rem;">
+                        <li>Histeria traumática vs. hereditaria.</li>
+                        <li>Abreacción y afecto.</li>
+                        <li>La hipnosis como herramienta de investigación.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.8rem; margin-top: 4rem;">Bibliografía Obligatoria</h3>
+            <div class="biblio-grid">
+                <div class="biblio-card">
+                    <h4>Freud, S.: "Sobre el mecanismo psíquico..."</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">(1893), AE, III, 29-40. El texto fundacional sobre la histeria.</p>
+                    <a href="#" class="btn" style="margin-top: 1.5rem; width: 100%; text-align: center; background: rgba(0, 242, 254, 0.1); color: var(--accent-color);">Ver Texto</a>
+                </div>
+                <div class="biblio-card">
+                    <h4>Freud, S.: "Charcot"</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">(1893), AE, III, 13-24. El obituario que resume la influencia del maestro.</p>
+                    <a href="#" class="btn" style="margin-top: 1.5rem; width: 100%; text-align: center; background: rgba(0, 242, 254, 0.1); color: var(--accent-color);">Ver Texto</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

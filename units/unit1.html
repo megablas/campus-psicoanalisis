@@ -4,114 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unidad 1 | Psicoanálisis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <style>
         .tabs {
             display: flex;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             border-bottom: 1px solid var(--glass-border);
             padding-bottom: 0.5rem;
+            overflow-x: auto;
         }
         .tab {
-            padding: 0.5rem 1rem;
+            padding: 0.8rem 1.5rem;
             text-decoration: none;
             color: var(--text-secondary);
             font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
         }
         .tab.active {
-            background: var(--primary-color);
-            color: white;
+            background: var(--accent-color);
+            color: #0d1117;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
         }
         .tab:hover:not(.active) {
-            background: var(--glass-bg);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
         }
-        .class-header {
+        .class-heading {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 2rem;
+            align-items: flex-end;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1rem;
         }
         .badge {
-            background: var(--accent-color);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--accent-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(0, 242, 254, 0.3);
         }
-        .biblio-list {
-            list-style: none;
-            margin-top: 1.5rem;
+        .biblio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
-        .biblio-item {
-            padding: 1rem;
-            border-left: 3px solid var(--primary-color);
-            background: rgba(0, 43, 92, 0.05);
-            margin-bottom: 1rem;
-            border-radius: 0 10px 10px 0;
+        .biblio-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            transition: 0.3s;
+        }
+        .biblio-card:hover {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
 <body>
     <main class="container">
-        <header style="margin-bottom: 3rem;">
-            <a href="../index.html" style="text-decoration: none; color: var(--accent-color); font-weight: bold; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                ← Volver al Inicio
+        <header style="margin-top: 2rem; margin-bottom: 4rem;">
+            <a href="../index.html" style="text-decoration: none; color: var(--accent-color); font-weight: 800; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Volver al Panel
             </a>
             <span class="unit-number">Unidad 1</span>
-            <h1>Primeros planteos freudianos</h1>
+            <h1 style="font-size: 3.5rem;">Primeros planteos freudianos</h1>
+            <p style="color: var(--text-secondary); max-width: 600px; margin-top: 1rem;">Explorando los orígenes del método analítico y el enigma de la histeria.</p>
         </header>
 
         <nav class="tabs fade-in">
-            <a href="unit1.html" class="tab active">Clase 1</a>
-            <a href="#" class="tab">Clase 2</a>
-            <a href="#" class="tab">Clase 3</a>
-            <a href="#" class="tab">Clase 4</a>
+            <a href="unit1.html" class="tab active">Clase 1: Introducción</a>
+            <a href="#" class="tab">Clase 2: Charcot y Breuer</a>
+            <a href="#" class="tab">Clase 3: Neuropsicosis</a>
+            <a href="#" class="tab">Clase 4: Primera Tópica</a>
         </nav>
 
-        <section class="glass-card fade-in" style="animation-delay: 0.2s;">
-            <div class="class-header">
+        <section class="fade-in" style="animation-delay: 0.2s;">
+            <div class="class-heading">
                 <div>
-                    <span class="badge">Teórica</span>
-                    <h2 style="margin-top: 0.5rem;">Introducción al Psicoanálisis</h2>
+                    <span class="badge">Teórica / Apertura</span>
+                    <h2 style="margin-top: 1rem; font-size: 2.2rem;">Presentación de la Materia</h2>
                 </div>
-                <p style="font-weight: bold; color: var(--text-secondary);">20 de Marzo</p>
+                <div style="text-align: right;">
+                    <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 800;">INICIO DE CICLO</p>
+                    <p style="font-size: 1.1rem; font-weight: 600;">20 de Marzo</p>
+                </div>
             </div>
 
-            <div class="content" style="margin-bottom: 2rem;">
-                <h3>Objetivos de la clase</h3>
-                <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-secondary);">
-                    <li>Presentación de la materia y objetivos generales.</li>
-                    <li>Lluvia de ideas sobre conceptos previos del psicoanálisis.</li>
-                    <li>Introducción al contexto histórico.</li>
+            <div class="glass-card" style="margin-bottom: 3rem;">
+                <h3>Objetivos de Aprendizaje</h3>
+                <ul style="margin: 1.5rem 0 0 1.5rem; color: var(--text-secondary); display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <li>Comprender la hoja de ruta de la cursada.</li>
+                    <li>Identificar conceptos clave del psicoanálisis.</li>
+                    <li>Establecer el contrato pedagógico y expectativas.</li>
+                    <li>Introducción al modelo médico de la época.</li>
                 </ul>
             </div>
 
-            <div class="roadmap" style="background: var(--primary-color); color: white; padding: 1.5rem; border-radius: 15px;">
-                <h3 style="color: white; margin-bottom: 0.5rem;">📍 Hoja de Ruta</h3>
-                <p style="font-size: 0.9rem; opacity: 0.9;">
-                    En esta primera sesión exploraremos sus expectativas. No hay bibliografía obligatoria para hoy, pero los invitamos a reflexionar sobre qué es para ustedes el "inconsciente".
+            <div class="consultation-card" style="border-radius: 24px; padding: 2.5rem; margin-bottom: 3rem;">
+                <h3 style="color: white; margin-bottom: 1rem;">📍 El Mapa de hoy</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.6;">
+                    Hoy nos enfocamos en conocernos. No hay lecturas previas obligatorias, pero empezaremos a desarmar prejuicios sobre qué es y qué no es el psicoanálisis en el siglo XXI.
                 </p>
             </div>
 
-            <div class="bibliography">
-                <h3 style="margin-top: 2rem;">Material y Recursos</h3>
-                <ul class="biblio-list">
-                    <li class="biblio-item">
-                        <strong>Presentación de la Materia</strong><br>
-                        <span style="font-size: 0.9rem; color: var(--text-secondary);">Archivo PDF con los lineamientos básicos.</span>
-                    </li>
-                    <li class="biblio-item">
-                        <strong>Foro de Presentación</strong><br>
-                        <span style="font-size: 0.9rem; color: var(--text-secondary);">Accedé al campus para completar tu perfil.</span>
-                    </li>
-                </ul>
+            <h3 style="font-size: 1.8rem; margin-top: 4rem;">Recursos de la Clase</h3>
+            <div class="biblio-grid">
+                <div class="biblio-card">
+                    <div style="color: var(--accent-color); margin-bottom: 1rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <h4>Programa de la Materia</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">Descarga el PDF con el cronograma y bibliografía completa.</p>
+                    <a href="#" class="btn" style="margin-top: 1.5rem; width: 100%; text-align: center; background: rgba(0, 242, 254, 0.1); border: 1px solid var(--accent-color); color: var(--accent-color);">Descargar PDF</a>
+                </div>
+
+                <div class="biblio-card">
+                    <div style="color: var(--accent-color); margin-bottom: 1rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <h4>Foro de Presentación</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">Participa en el campus contando quién eres y qué esperas de la materia.</p>
+                    <a href="#" class="btn" style="margin-top: 1.5rem; width: 100%; text-align: center; background: var(--accent-color); color: #0d1117;">Ir al Foro</a>
+                </div>
             </div>
         </section>
+        
+        <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
+            <p>© 2026 Psicoanálisis | UFLO Universidad</p>
+        </footer>
     </main>
 </body>
 </html>
