@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header General | Psicoanálisis</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=4">
+    <style>
+        body {
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: hidden;
+        }
+
+        .header-system {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* Barra de navegación minimalista */
+        .nav-bar {
+            background: rgba(30, 41, 59, 0.03);
+            border-radius: 100px;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.05);
+            max-width: fit-content;
+            margin: 0 auto;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(255,255,255,0.8);
+        }
+
+        .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow-premium);
+        }
+
+        /* Hero Banner Compacto para Secciones */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #334155 100%);
+            padding: 3rem 2rem;
+            border-radius: 30px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-premium);
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.1;
+        }
+
+        .hero-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-color);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-system fade-in">
+        <!-- Barra de Navegación "Web App Style" -->
+        <nav class="nav-bar">
+            <a href="https://megablas.github.io/campus-psicoanalisis/index.html" target="_parent" class="nav-link">Inicio</a>
+            <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_parent" class="nav-link">Consultas</a>
+            <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_parent" class="nav-link">Presentación</a>
+            <a href="#unidades" target="_parent" class="nav-link">Unidades</a>
+        </nav>
+
+        <!-- Banner Dinámico (Se puede personalizar con parámetros URL) -->
+        <header class="hero-banner">
+            <span class="hero-tag" id="dynamic-tag">UFLO | Psicoanálisis</span>
+            <h1 class="hero-title" id="dynamic-title">Aula Virtual</h1>
+            <p class="hero-subtitle" id="dynamic-subtitle">Construcción colectiva del saber</p>
+        </header>
+    </div>
+
+    <script>
+        // Función para personalizar el header según la página
+        function customizeHeader() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const title = urlParams.get('title');
+            const tag = urlParams.get('tag');
+            const subtitle = urlParams.get('subtitle');
+            
+            if (title) document.getElementById('dynamic-title').textContent = title;
+            if (tag) document.getElementById('dynamic-tag').textContent = tag;
+            if (subtitle) document.getElementById('dynamic-subtitle').textContent = subtitle;
+
+            // Marcar link activo
+            const currentRef = urlParams.get('active');
+            if (currentRef) {
+                const links = document.querySelectorAll('.nav-link');
+                links.forEach(l => {
+                    if (l.textContent.toLowerCase().includes(currentRef.toLowerCase())) {
+                        l.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        customizeHeader();
+
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
+        window.addEventListener('load', sendHeight);
+        window.addEventListener('resize', sendHeight);
+        setInterval(sendHeight, 1000);
+    </script>
+</body>
+</html>
