@@ -3,133 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foro Header | Psicoanálisis</title>
+    <title>Foro Intercambio | Psicoanálisis</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=5">
     <style>
         body {
             background: transparent !important;
             padding: 0 !important;
             margin: 0 !important;
             overflow: hidden;
+            font-family: 'Inter', sans-serif;
         }
 
-        /* Estilo específico para adaptar la consultation-card al ancho total del foro */
-        .forum-header-card {
-            margin: 0 !important;
-            width: 100% !important;
-            border-radius: 24px !important; /* Slightly smaller for interior feel */
-            text-align: left !important;
-            padding: 3.5rem 2.5rem !important;
-            background: #f8fafc !important;
-            border: 2px solid var(--accent-color) !important;
+        /* Navbar Polished */
+        .nav-container {
+            padding: 1rem 0 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 100px;
+            padding: 0.4rem;
+            display: flex;
+            gap: 0.3rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .nav-link {
+            padding: 0.6rem 1.4rem;
+            border-radius: 100px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(0,0,0,0.03);
+        }
+
+        .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 41, 59, 0.2);
+        }
+
+        /* Contenedor Principal (Basado en consultation-card) */
+        .forum-wrapper {
+            font-family: 'Inter', sans-serif;
+            color: #334155;
+            background: #f8fafc;
+            border: 2px solid #0d9488;
+            border-radius: 35px;
+            padding: 4rem 3rem;
             position: relative;
             overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: left;
         }
 
-        .forum-header-card::after {
+        .forum-wrapper::after {
             content: '?';
             position: absolute;
-            right: -20px;
-            bottom: -60px;
-            font-size: 20rem;
-            opacity: 0.04;
-            font-family: var(--font-heading);
-            color: var(--primary-color);
+            right: -30px;
+            bottom: -70px;
+            font-size: 22rem;
+            opacity: 0.03;
+            font-family: 'Outfit', sans-serif;
+            color: #1e293b;
             pointer-events: none;
             font-weight: 800;
         }
 
-        .tag-pill {
-            display: inline-block;
-            color: var(--accent-color);
+        .forum-tag {
+            color: #0d9488;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.7rem;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
             margin-bottom: 0.8rem;
+            display: block;
             opacity: 0.8;
         }
 
-        .header-title {
+        .forum-title {
+            font-family: 'Outfit', sans-serif;
+            color: #1e293b;
             font-size: 3rem;
-            margin-bottom: 1.2rem;
+            margin: 0 0 1.2rem 0;
             letter-spacing: -2px;
             line-height: 1;
             font-weight: 800;
-            color: var(--primary-color);
         }
 
-        .header-desc {
-            max-width: 700px;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
+        .forum-intro {
+            max-width: 650px;
+            font-size: 1.15rem;
+            color: #64748b;
             line-height: 1.5;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             position: relative;
             z-index: 2;
         }
 
-        .feature-item {
+        .feature-card {
             background: #ffffff;
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 2rem;
-            border-radius: 20px;
+            border-radius: 24px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .feature-item:hover {
+        .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-premium);
-            border-color: var(--accent-color);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.03);
+            border-color: #0d9488;
         }
 
-        .icon-circle {
+        .icon-box {
             background: #f1f5f9;
-            color: var(--accent-color);
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
+            color: #0d9488;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.2rem;
             transition: all 0.3s ease;
         }
 
-        .feature-item:hover .icon-circle {
-            background: var(--accent-color);
+        .feature-card:hover .icon-box {
+            background: #0d9488;
             color: #ffffff;
         }
 
-        .feature-title {
+        .feature-label {
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-            font-family: var(--font-heading);
+            color: #1e293b;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
         }
 
         .feature-text {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+            font-size: 0.95rem;
+            color: #64748b;
             line-height: 1.6;
         }
 
-        .footer-note {
-            margin-top: 3.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+        .moderation-badge {
+            margin-top: 4rem;
+            padding: 1.5rem 2rem;
+            background: rgba(13, 148, 136, 0.03);
+            border-left: 4px solid #0d9488;
+            border-radius: 0 16px 16px 0;
+            max-width: fit-content;
+        }
+
+        .moderation-badge p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #475569;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -138,34 +190,46 @@
 </head>
 <body>
 
-    <div class="forum-header-card fade-in">
-        <span class="tag-pill">Construcción Colectiva</span>
-        <h1 class="header-title">Espacio de Intercambio</h1>
-        <p class="header-desc">
-            Un entorno de interrogación permanente donde tus inquietudes son el motor del aprendizaje compartido y la ayuda mutua entre pares.
-        </p>
+    <!-- Navbar Integrada -->
+    <div class="nav-container fade-in">
+        <nav class="nav-bar">
+            <a href="https://megablas.github.io/campus-psicoanalisis/index.html" target="_parent" class="nav-link">Inicio</a>
+            <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_parent" class="nav-link active">Consultas</a>
+            <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_parent" class="nav-link">Presentación</a>
+            <a href="https://megablas.github.io/campus-psicoanalisis/index.html#unidades" target="_parent" class="nav-link">Unidades</a>
+        </nav>
+    </div>
+
+    <div class="forum-wrapper fade-in">
+        <span class="forum-tag">Comunidad Psicoanalítica</span>
+        <h2 class="forum-title">Construcción Colectiva</h2>
+        
+        <div class="forum-intro">
+            Un espacio de interrogación permanente donde tus inquietudes son el motor del aprendizaje compartido.
+        </div>
 
         <div class="feature-grid">
-            <div class="feature-item">
-                <div class="icon-circle">
+            <div class="feature-card">
+                <div class="icon-box">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 </div>
-                <div class="feature-title">Ayuda entre Pares</div>
-                <div class="feature-text">Si conoces la respuesta o tienes una perspectiva distinta sobre un concepto, compártela. El conocimiento crece cuando circula.</div>
+                <div class="feature-label">Ayuda entre Pares</div>
+                <div class="feature-text">Si tenés la respuesta o una perspectiva distinta sobre un concepto, compartila. El conocimiento crece cuando circula.</div>
             </div>
 
-            <div class="feature-item">
-                <div class="icon-circle">
+            <div class="feature-card">
+                <div class="icon-box">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </div>
-                <div class="feature-title">Búsqueda Crítica</div>
-                <div class="feature-text">Antes de iniciar un tema, verifica si ya existe un debate abierto. Sumar al aporte de otros evita la fragmentación de la información.</div>
+                <div class="feature-label">Búsqueda Crítica</div>
+                <div class="feature-text">Antes de iniciar un tema, explorá si ya existe un debate abierto. Sumar al aporte de otros evita la fragmentación de la información.</div>
             </div>
         </div>
 
-        <div class="footer-note">
-            <span>💡</span>
-            <span><strong>Dinámica Docente:</strong> Monitoreamos los hilos para sintetizar los debates y profundizar los conceptos clave en las clases presenciales.</span>
+        <div class="moderation-badge">
+            <p>
+                <strong>💡 Orientación Docente:</strong> Monitoreamos los hilos para sintetizar los debates y profundizar los conceptos clave en las clases presenciales.
+            </p>
         </div>
     </div>
 
