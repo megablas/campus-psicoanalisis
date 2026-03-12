@@ -162,7 +162,7 @@ h1, h2, h3 {
 }
 
 .notice-item {
-    background: rgba(255, 255, 255, 0.03);
+    background: #f8fafc;
     border-left: 4px solid var(--accent-color);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
@@ -171,7 +171,7 @@ h1, h2, h3 {
 }
 
 .notice-item:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: #f1f5f9;
     transform: translateX(10px);
 }
 
@@ -188,18 +188,20 @@ h1, h2, h3 {
 .notice-title {
     font-size: 1.2rem;
     font-weight: 600;
-    color: white;
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
 /* Consultation Section */
 .consultation-card {
-    background: linear-gradient(135deg, #16213e, #0f3460);
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
     padding: 4rem 2rem;
     text-align: center;
     position: relative;
     overflow: hidden;
     margin-bottom: 4rem;
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
 }
 
 .consultation-card::after {
@@ -208,9 +210,9 @@ h1, h2, h3 {
     right: -20px;
     bottom: -50px;
     font-size: 20rem;
-    opacity: 0.05;
+    opacity: 0.03;
     font-family: var(--font-heading);
-    color: white;
+    color: var(--primary-color);
     pointer-events: none;
 }
 
