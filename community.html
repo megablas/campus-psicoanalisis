@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad y Foros | Psicoanálisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2">
+    <style>
+        .forum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .forum-card {
+            padding: 3rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            background: #ffffff;
+            border-radius: 35px;
+        }
+        .forum-icon {
+            width: 80px;
+            height: 80px;
+            background: #f8fafc;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            border: 1px solid var(--glass-border);
+        }
+    </style>
+</head>
+<body>
+    <header class="banner fade-in">
+        <div class="container" style="z-index: 2;">
+            <a href="index.html" style="text-decoration: none; color: var(--accent-color); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; display: inline-block;">← Volver al Aula</a>
+            <h1 style="font-size: 3rem; margin-bottom: 0.5rem; letter-spacing: -2px;">Comunidad</h1>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">Espacios de diálogo, consultas y construcción colectiva del conocimiento.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="forum-grid">
+            <!-- Foro de Presentación -->
+            <div class="glass-card forum-card fade-in" style="animation-delay: 0.2s;">
+                <div class="forum-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <h2 style="font-size: 1.8rem; color: var(--primary-color);">Foro de Presentación</h2>
+                <p style="color: var(--text-secondary); line-height: 1.6;">
+                    Un espacio para romper el hielo. Queremos saber quién eres, tus expectativas y qué te acerca al psicoanálisis.
+                </p>
+                <!-- Aquí pegarás el link al foro de Moodle -->
+                <a href="#" class="pulse-button" style="width: 100%;">Entrar a Presentarme</a>
+            </div>
+
+            <!-- Foro de Consultas -->
+            <div class="glass-card forum-card fade-in" style="animation-delay: 0.4s;">
+                <div class="forum-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </div>
+                <h2 style="font-size: 1.8rem; color: var(--primary-color);">Consultas Académicas</h2>
+                <p style="color: var(--text-secondary); line-height: 1.6;">
+                    ¿Dudas sobre Charcot, Breuer o el concepto de Inconsciente? Plantea tus inquietudes aquí para que todos aprendamos.
+                </p>
+                <!-- Aquí pegarás el link al foro de Moodle -->
+                <a href="#" class="pulse-button" style="width: 100%;">Realizar una Consulta</a>
+            </div>
+        </div>
+
+        <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
+            <p>© 2026 Psicoanálisis | UFLO Universidad</p>
+        </footer>
+    </main>
+
+    <script>
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
+        window.addEventListener('load', sendHeight);
+        window.addEventListener('resize', sendHeight);
+        setInterval(sendHeight, 1000);
+    </script>
+</body>
+</html>
