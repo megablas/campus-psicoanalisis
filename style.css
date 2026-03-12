@@ -5,10 +5,12 @@
     --card-bg: rgba(22, 27, 34, 0.85); /* Slightly more opaque */
     --text-color: #f0f6fc;
     --text-secondary: #8b949e;
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08); /* Sophisticated border */
     --shadow-premium: 0 10px 40px rgba(0, 0, 0, 0.4);
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
+    --section-gap: 2.5rem; /* Reduced gap */
 }
 
 * {
@@ -77,20 +79,20 @@ h1, h2, h3 {
 /* Banner Design */
 .banner {
     width: 100%;
-    height: 320px; /* Much more compact */
+    height: 250px; /* Even more compact */
     background: linear-gradient(rgba(13,17,23,0.7), rgba(13,17,23,1)), url('assets/banner_v2.png');
     background-size: cover;
     background-position: center;
-    border-radius: 0; /* Flat top for IFrame continuity */
+    border-radius: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
     text-align: center;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid var(--accent-color);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--accent-color);
 }
 
 .banner h1 {
