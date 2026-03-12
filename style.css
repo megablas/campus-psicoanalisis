@@ -70,19 +70,19 @@ h1, h2, h3 {
 }
 
 .glass-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-4px); /* Very subtle elevation */
     border-color: var(--accent-color);
-    box-shadow: 0 20px 60px rgba(0, 242, 254, 0.1);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* Banner Design */
 .banner {
     width: 100%;
-    height: 250px;
+    height: 280px; /* Slightly taller for elegance */
     background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.8)), url('assets/banner_light.png');
     background-size: cover;
     background-position: center;
-    border-radius: 0;
+    border-radius: 0 0 40px 40px; /* Subtle curvature */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,8 +90,10 @@ h1, h2, h3 {
     color: var(--primary-color);
     text-align: center;
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
     border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: relative;
 }
 
 .banner h1 {
@@ -146,13 +148,13 @@ h1, h2, h3 {
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); } 
+    from { opacity: 0; transform: translateY(10px); } 
     to { opacity: 1; transform: translateY(0); }
 }
 
 .fade-in {
     opacity: 0;
-    animation: fadeIn 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; 
+    animation: fadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
 }
 
 /* Announcements Board */
@@ -255,7 +257,8 @@ h1, h2, h3 {
 }
 
 .pulse-button:hover {
-    box-shadow: 0 0 50px rgba(0, 242, 254, 0.8);
-    transform: scale(1.05) translateY(-2px);
-    background: white;
+    box-shadow: 0 8px 25px rgba(13, 148, 136, 0.2);
+    transform: translateY(-2px);
+    background: var(--accent-color); /* Stay colored but brighter/different contrast */
+    color: white;
 }
