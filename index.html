@@ -6,7 +6,7 @@
     <title>Psicoanálisis | Aula Virtual UFLO</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=10">
     <style>
         /* Card Header Navigation - INTEGRATED */
         .card-nav {
@@ -101,22 +101,31 @@
                 function scrollToTop() {
                     window.scrollTo(0, 0);
                     // Standard Moodle/iframe scroll to top messages
-                    window.parent.postMessage({ type: 'scrollToTop' }, '*');
-                    window.parent.postMessage('scrollToTop', '*');
+                    if (window.parent) {
+                        window.parent.postMessage({ type: 'scrollToTop' }, '*');
+                        window.parent.postMessage('scrollToTop', '*');
+                        window.parent.postMessage('scroll_to_top', '*');
+                        window.parent.postMessage(JSON.stringify({subject: 'lti.scrollToTop'}), '*');
+                    }
                     
                     // Specific for some Moodle themes
                     try {
-                        if (window.parent && window.parent.M && window.parent.M.core_scroll_manager) {
-                            window.parent.M.core_scroll_manager.scroll_to_node(window.parent.document.body);
+                        if (window.parent && window.parent.M) {
+                            if (window.parent.M.core_scroll_manager) {
+                                window.parent.M.core_scroll_manager.scroll_to_node(window.parent.document.body);
+                            }
+                            window.parent.scrollTo(0, 0);
                         }
-                        window.parent.scrollTo(0, 0);
-                    } catch (e) {
-                        console.log("Parent scroll failed (cross-origin)");
-                    }
+                    } catch (e) {}
+                }
+
+                // Prevent browser from restoring scroll position
+                if ('scrollRestoration' in history) {
+                    history.scrollRestoration = 'manual';
                 }
 
                 window.addEventListener('load', () => {
-                    setTimeout(scrollToTop, 200);
+                    setTimeout(scrollToTop, 300); // Increased delay for stability
                 });
             </script>
 
