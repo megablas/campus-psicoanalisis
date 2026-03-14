@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clase 3: De la Hipnosis a la Asociación Libre | Psicoanálisis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css?v=10">
+    <link rel="stylesheet" href="../style.css?v=11">
     <style>
         .card-nav { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-link { padding: 0.6rem 1.4rem; border-radius: 100px; text-decoration: none; color: var(--secondary-color); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; background: rgba(0,0,0,0.02); transition: 0.3s; }
@@ -24,6 +24,9 @@
     </style>
 </head>
 <body>
+    <!-- Helper for scroll -->
+    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+
     <main class="container">
         <!-- Integrated Navigation Dashboard -->
         <section class="class-header fade-in">
@@ -83,12 +86,29 @@
         }
 
         function scrollToTop() {
+            // 1. Internal Scroll
             window.scrollTo(0, 0);
+
+            // 2. Focus Trick (Browser-native scroll to top)
+            const helper = document.getElementById('top-focus');
+            if (helper) helper.focus({preventScroll:false});
+
+            // 3. Multi-Messaging to Parent (Aggressive list for all Moodle flavors)
             if (window.parent) {
-                window.parent.postMessage({ type: 'scrollToTop' }, '*');
-                window.parent.postMessage('scrollToTop', '*');
-                window.parent.postMessage('scroll_to_top', '*');
-                window.parent.postMessage(JSON.stringify({subject: 'lti.scrollToTop'}), '*');
+                const messages = [
+                    { type: 'scrollToTop' },
+                    'scrollToTop',
+                    'scroll_to_top',
+                    'forceScrollTop',
+                    'scrollto:0',
+                    { mceAction: 'customScroll', scroll: 0 },
+                    JSON.stringify({subject: 'lti.scrollToTop'}),
+                    JSON.stringify({subject: 'lti.navigation', location: 'top'})
+                ];
+                
+                messages.forEach(msg => {
+                    try { window.parent.postMessage(msg, '*'); } catch(e) {}
+                });
             }
             try {
                 if (window.parent && window.parent.M) {
@@ -103,10 +123,14 @@
         }
 
         window.addEventListener('load', () => {
+            // Execute immediately and then with retries
+            scrollToTop();
             setTimeout(() => {
                 scrollToTop();
                 sendHeight();
-            }, 300);
+            }, 100);
+            setTimeout(scrollToTop, 500);
+            setTimeout(scrollToTop, 1000);
         });
 
         window.addEventListener('resize', sendHeight);

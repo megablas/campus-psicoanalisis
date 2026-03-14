@@ -6,7 +6,7 @@
     <title>Psicoanálisis | Aula Virtual UFLO</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=11">
     <style>
         /* Card Header Navigation - INTEGRATED */
         .card-nav {
@@ -44,7 +44,8 @@
     </style>
 </head>
 <body>
-    <!-- Navegación interna habilitada -->
+    <!-- Helper for scroll -->
+    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
 
     <header class="banner fade-in">
         <div class="container" style="z-index: 2; padding: 0;">
@@ -99,16 +100,32 @@
                 }
 
                 function scrollToTop() {
+                    // 1. Internal Scroll
                     window.scrollTo(0, 0);
-                    // Standard Moodle/iframe scroll to top messages
+                    
+                    // 2. Focus Trick (Browser-native scroll to top)
+                    const helper = document.getElementById('top-focus');
+                    if (helper) helper.focus({preventScroll:false});
+
+                    // 3. Multi-Messaging to Parent (Aggressive list for all Moodle flavors)
                     if (window.parent) {
-                        window.parent.postMessage({ type: 'scrollToTop' }, '*');
-                        window.parent.postMessage('scrollToTop', '*');
-                        window.parent.postMessage('scroll_to_top', '*');
-                        window.parent.postMessage(JSON.stringify({subject: 'lti.scrollToTop'}), '*');
+                        const messages = [
+                            { type: 'scrollToTop' },
+                            'scrollToTop',
+                            'scroll_to_top',
+                            'forceScrollTop',
+                            'scrollto:0',
+                            { mceAction: 'customScroll', scroll: 0 },
+                            JSON.stringify({subject: 'lti.scrollToTop'}),
+                            JSON.stringify({subject: 'lti.navigation', location: 'top'})
+                        ];
+                        
+                        messages.forEach(msg => {
+                            try { window.parent.postMessage(msg, '*'); } catch(e) {}
+                        });
                     }
                     
-                    // Specific for some Moodle themes
+                    // 4. Moodle Direct Hack (if same-origin)
                     try {
                         if (window.parent && window.parent.M) {
                             if (window.parent.M.core_scroll_manager) {
@@ -125,7 +142,11 @@
                 }
 
                 window.addEventListener('load', () => {
-                    setTimeout(scrollToTop, 300); // Increased delay for stability
+                    // Execute immediately and then with retries
+                    scrollToTop();
+                    setTimeout(scrollToTop, 100);
+                    setTimeout(scrollToTop, 500);
+                    setTimeout(scrollToTop, 1000);
                 });
             </script>
 
