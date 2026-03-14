@@ -16,44 +16,6 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Navbar Polished */
-        .nav-container {
-            padding: 1rem 0 2rem 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .nav-bar {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            padding: 0.4rem;
-            display: flex;
-            gap: 0.3rem;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        .nav-link {
-            padding: 0.6rem 1.4rem;
-            border-radius: 100px;
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-link:hover {
-            color: var(--primary-color);
-            background: rgba(0,0,0,0.03);
-        }
-
-        .nav-link.active {
-            background: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 12px rgba(30, 41, 59, 0.2);
-        }
 
         .presentation-card {
             margin: 0 !important;
@@ -169,16 +131,6 @@
 </head>
 <body>
 
-    <!-- Navbar Integrada -->
-    <div class="nav-container fade-in">
-        <nav class="nav-bar">
-            <!-- Usamos la URL base del curso en Moodle para evitar salir del entorno -->
-            <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link">Inicio</a>
-            <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
-            <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link active">Presentación</a>
-            <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link">Unidades</a>
-        </nav>
-    </div>
 
     <div class="presentation-card fade-in">
         <span class="tag">Comunidad Psicoanalítica</span>
