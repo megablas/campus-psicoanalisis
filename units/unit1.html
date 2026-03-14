@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unidad 1: Los Orígenes | Psicoanálisis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css?v=5">
+    <link rel="stylesheet" href="../style.css?v=6">
     <style>
         /* Card Header Navigation - INTEGRATED */
         .card-nav {
@@ -128,22 +128,25 @@
     <main class="container">
         <!-- Integrated Navigation Dashboard -->
         <section class="unit-hero fade-in">
-            <nav class="card-nav">
-                <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link">Inicio</a>
-                <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
-                <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
-                <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link active">Unidades</a>
-            </nav>
+            <div class="card-nav-container show-units">
+                <nav class="card-nav">
+                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link">Inicio</a>
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
+                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link active">Unidades</a>
+                </nav>
 
-            <!-- Sub Nav for Units -->
-            <div class="sub-nav">
-                <a href="unit1.html" class="sub-link active">1</a>
-                <a href="#" class="sub-link">2</a>
-                <a href="#" class="sub-link">3</a>
-                <a href="#" class="sub-link">4</a>
+                <!-- Sub Nav for Units -->
+                <div class="sub-nav">
+                    <a href="unit1.html" class="sub-link active">1</a>
+                    <a href="#" class="sub-link">2</a>
+                    <a href="#" class="sub-link">3</a>
+                    <a href="#" class="sub-link">4</a>
+                </div>
             </div>
 
-            <span class="unit-number" style="font-size: 1rem; color: var(--accent-color); font-weight: 800; letter-spacing: 5px;">UNIDAD 1</span>
+            <span class="unit-number" style="font-size: 1rem; color: var(--accent-color); font-weight: 800; letter-spacing: 5px; margin-top: 2rem; display: block;">UNIDAD 1</span>
+
             <h1 style="font-size: 3.5rem; margin: 1.5rem 0; line-height: 1; letter-spacing: -2px;">Los Orígenes y el Salto al Psicoanálisis</h1>
             
             <p style="font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-top: 1rem;">👋 ¡Bienvenidos al inicio de nuestro recorrido!</p>
@@ -281,14 +284,16 @@
 
         <!-- Download CTA -->
         <section class="download-cta fade-in">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: white;">Biblioteca Completa</h2>
-            <p style="opacity: 0.9; font-size: 1.1rem; margin-bottom: 3rem;">Descarga todos los PDF de la Unidad 1 en un solo archivo.</p>
+            <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary-color);">Biblioteca de la Unidad 1</h2>
+            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 2rem;">Accede a todos los textos obligatorios en un solo archivo comprimido.</p>
             
-            <a href="https://drive.google.com/file/d/11-lmY0_URLK_fdclpW8AQyGaDDZqwFcl/view?usp=sharing" target="_blank" class="pulse-button" style="background: white; color: var(--accent-color); border: none; padding: 1.2rem 3rem; font-size: 1.1rem;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 10px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                Descargar Textos Unidad 1
+            <a href="https://drive.google.com/file/d/11-lmY0_URLK_fdclpW8AQyGaDDZqwFcl/view?usp=sharing" target="_blank" class="pulse-button" style="background: var(--accent-color); color: white; border: none; padding: 1rem 2.5rem; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Descargar Bibliografía Completa
             </a>
-            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">Charcot, Freud (Las neuropsicosis de defensa), Tallaferro Cap. 1 y más.</p>
+            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-secondary); font-style: italic; opacity: 0.8;">
+                Incluye: Charcot, Freud (Neuropsicosis de defensa), Tallaferro Cap. 1 y 2.
+            </p>
         </section>
 
         <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">

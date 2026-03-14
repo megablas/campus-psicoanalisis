@@ -263,6 +263,30 @@ h1, h2, h3 {
     color: white;
 }
 
+/* Download Button Premium - Redesigned */
+.download-cta {
+    background: white;
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin: 4rem 0;
+    box-shadow: var(--shadow-premium);
+    position: relative;
+    overflow: hidden;
+}
+
+.download-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-color);
+}
+
 /* Unit Landing Decorators */
 .module-tag {
     background: rgba(13, 148, 136, 0.1);
@@ -318,11 +342,22 @@ h1, h2, h3 {
 
 /* Sub-navigation for Units */
 .sub-nav {
-    display: flex;
+    display: none; /* Hidden by default */
     justify-content: center;
     gap: 0.5rem;
     margin-top: -1.5rem;
     margin-bottom: 2rem;
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Show sub-nav only when units is active or being hovered/clicked */
+.card-nav-container.show-units .sub-nav {
+    display: flex;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .sub-link {

@@ -6,7 +6,7 @@
     <title>Psicoanálisis | Aula Virtual UFLO</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
     <style>
         /* Card Header Navigation - INTEGRATED */
         .card-nav {
@@ -64,20 +64,40 @@
         <!-- Dashboard Section -->
         <section id="inicio" class="glass-card fade-in" style="margin-bottom: var(--section-gap); border-radius: 30px; padding-top: 2rem;">
             <!-- Navegación Integrada -->
-            <nav class="card-nav">
-                <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link active">Inicio</a>
-                <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
-                <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
-                <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link">Unidades</a>
-            </nav>
+            <!-- Navegación Integrada -->
+            <div class="card-nav-container" id="navContainer">
+                <nav class="card-nav">
+                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link active" onclick="toggleUnits(false)">Inicio</a>
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link" onclick="toggleUnits(false)">Consultas</a>
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link" onclick="toggleUnits(false)">Presentación</a>
+                    <a href="#unidades" class="nav-link" onclick="toggleUnits(true); return false;">Unidades</a>
+                </nav>
 
-            <!-- Sub Nav for Units -->
-            <div class="sub-nav">
-                <a href="units/unit1.html" class="sub-link">1</a>
-                <a href="#" class="sub-link">2</a>
-                <a href="#" class="sub-link">3</a>
-                <a href="#" class="sub-link">4</a>
+                <!-- Sub Nav for Units -->
+                <div class="sub-nav">
+                    <a href="units/unit1.html" class="sub-link">1</a>
+                    <a href="#" class="sub-link">2</a>
+                    <a href="#" class="sub-link">3</a>
+                    <a href="#" class="sub-link">4</a>
+                </div>
             </div>
+
+            <script>
+                function toggleUnits(show) {
+                    const container = document.getElementById('navContainer');
+                    const links = container.querySelectorAll('.nav-link');
+                    
+                    if (show) {
+                        container.classList.add('show-units');
+                        links.forEach(l => l.classList.remove('active'));
+                        container.querySelector('a[href="#unidades"]').classList.add('active');
+                        // Scroll to units section
+                        document.getElementById('unidades').scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        container.classList.remove('show-units');
+                    }
+                }
+            </script>
 
             <div style="display: flex; flex-direction: column; gap: 2rem;">
                 <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
