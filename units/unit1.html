@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad 1: Los Orígenes | Psicoanálisis</title>
+    <title>Unidad 1: El Enigma de la Histeria | Psicoanálisis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css?v=3">
     <style>
@@ -41,57 +41,39 @@
             box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
         }
 
-        /* Timeline Styles */
-        .timeline {
-            position: relative;
-            max-width: 1000px;
-            margin: 4rem auto;
-            padding: 2rem 0;
+        /* Narrative Sections */
+        .narrative-section {
+            padding: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--text-color);
         }
 
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background: rgba(13, 148, 136, 0.1);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            border-radius: 10px;
+        .highlight-text {
+            color: var(--primary-color);
+            font-weight: 700;
         }
 
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
+        /* Historical Steps */
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
 
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: #ffffff;
-            border: 4px solid var(--accent-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .left { left: 0; text-align: right; }
-        .right { left: 50%; text-align: left; }
-        .right::after { left: -10px; }
-
-        .timeline-content {
-            padding: 1.5rem;
-            background: white;
-            position: relative;
+        .history-card {
+            background: #f8fafc;
             border-radius: 20px;
+            padding: 2rem;
+            border-left: 5px solid var(--accent-color);
+            transition: 0.3s;
+        }
+
+        .history-card:hover {
+            transform: scale(1.02);
+            background: white;
             box-shadow: var(--shadow-premium);
-            border: 1px solid var(--glass-border);
         }
 
         /* Author Cards */
@@ -110,56 +92,56 @@
             box-shadow: var(--shadow-premium);
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
 
         .author-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: var(--accent-color);
         }
 
-        .author-title {
+        .author-tag {
+            background: rgba(13, 148, 136, 0.1);
             color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
             font-size: 0.7rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .author-name {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
+            letter-spacing: 1px;
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            display: inline-block;
         }
 
-        .quote {
-            font-style: italic;
-            color: var(--text-secondary);
-            border-left: 3px solid var(--accent-color);
-            padding-left: 1rem;
-            margin: 1.5rem 0;
-            font-size: 0.95rem;
+        /* Callout Box */
+        .callout {
+            background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+            border-radius: 25px;
+            padding: 2.5rem;
+            border: 1px dashed var(--accent-color);
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .callout::before {
+            content: '💡';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 2.5rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .download-box {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #334155 100%);
+            background: var(--primary-color);
             border-radius: 30px;
-            padding: 3rem;
+            padding: 3.5rem;
             color: white;
             text-align: center;
             margin: 5rem 0;
-            box-shadow: 0 20px 40px rgba(13, 148, 136, 0.15);
-        }
-
-        @media screen and (max-width: 768px) {
-            .timeline::after { left: 31px; }
-            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
-            .timeline-item.left { text-align: left; }
-            .timeline-item::after { left: 21px; }
-            .left::after { left: 21px; }
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -174,117 +156,123 @@
                 <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link active">Unidades</a>
             </nav>
 
-            <header style="padding: 0 1rem 2rem 1rem; text-align: center;">
-                <span class="unit-number" style="color: var(--accent-color); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem;">Unidad 1</span>
-                <h1 style="font-size: 3rem; line-height: 1.1; margin: 1rem 0; letter-spacing: -2px;">Los Orígenes: De la Neurología al Descubrimiento del Inconsciente</h1>
-                <p style="color: var(--text-secondary); max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">
-                    "¡Bienvenidos a la Unidad 1! En esta primera etapa haremos un viaje en el tiempo. Descubriremos cómo la humanidad intentó explicar el enigma de la histeria durante siglos y cómo, a finales del siglo XIX, tres figuras clave cambiaron para siempre nuestra forma de entender la mente humana. Pasaremos del modelo médico tradicional al nacimiento del psicoanálisis."
-                </p>
+            <header style="padding: 0 2rem 3rem 2rem; text-align: center;">
+                <span class="unit-number">Módulo 1</span>
+                <h1 style="font-size: 3.2rem; line-height: 1.1; margin: 1.2rem 0; letter-spacing: -2px;">El Enigma de la Histeria y la Crisis del Modelo Médico</h1>
+                
+                <div style="max-width: 850px; margin: 2rem auto; text-align: left; background: rgba(0,0,0,0.02); padding: 2rem; border-radius: 24px; border-left: 4px solid var(--accent-color);">
+                    <p style="font-size: 1.15rem; color: var(--primary-color); font-weight: 600; margin-bottom: 1rem;">
+                        ¿Por qué empezamos estudiando historia en una materia de Psicoanálisis?
+                    </p>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Para comprender la magnitud del descubrimiento freudiano, primero debemos entender contra qué muro chocaba la ciencia de su época. Durante esta primera unidad, analizaremos cómo la medicina tradicional fracasó sistemáticamente al intentar curar un malestar que no encajaba en sus manuales: la histeria.
+                    </p>
+                </div>
             </header>
         </section>
 
-        <!-- 🏛️ Módulo 1: La Prehistoria del Psicoanálisis -->
-        <section style="margin-top: 6rem;">
-            <div style="text-align: center; margin-bottom: 4rem;">
-                <span class="author-title">Recorrido Histórico</span>
-                <h2 style="font-size: 2.5rem;">🏛️ Módulo 1: La Prehistoria</h2>
-                <p style="color: var(--text-secondary);">El largo camino para comprender que siempre se trató de un conflicto interno.</p>
-            </div>
+        <!-- Seccion: El problema de un síntoma sin lesión -->
+        <section class="narrative-section fade-in" style="animation-delay: 0.2s;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem;">El problema de un síntoma sin lesión</h2>
+            <p>
+                Hasta fines del siglo XIX, el modelo médico era estrictamente <span class="highlight-text">anatomoclínico</span>: a cada síntoma físico (como una parálisis o una ceguera) debía corresponderle una lesión orgánica medible.
+            </p>
+            <p style="margin-top: 1rem; border-left: 3px solid #e2e8f0; padding-left: 1.5rem; font-style: italic; color: var(--text-secondary);">
+                ¿Pero qué pasaba cuando un paciente presentaba una parálisis severa y, sin embargo, sus nervios y músculos estaban orgánicamente intactos?
+            </p>
+            <p style="margin-top: 1.5rem;">
+                A lo largo de los siglos, como nos muestra <span class="highlight-text">Alberto Tallaferro</span> en su recorrido histórico, la humanidad intentó dar respuestas desesperadas a este enigma:
+            </p>
 
-            <div class="timeline">
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <span class="author-title">Antigüedad</span>
-                        <h4 style="margin: 0.5rem 0;">El Útero Errante</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Desde Hipócrates y Platón, se creía que la histeria era causada por un animal que deseaba engendrar y recorría el cuerpo buscando satisfacerse.</p>
-                    </div>
+            <div class="history-grid">
+                <div class="history-card">
+                    <h4 style="color: var(--accent-color); margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Antigüedad</h4>
+                    <p style="font-size: 0.95rem;">Se culpó a la anatomía femenina, imaginando que el útero era un <span class="highlight-text">"útero errante"</span>, un animal que recorría el cuerpo buscando satisfacerse.</p>
                 </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <span class="author-title">Edad Media</span>
-                        <h4 style="margin: 0.5rem 0;">Posesión Demoníaca</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Un retroceso hacia el pensamiento mágico. Los síntomas histéricos se atribuían a influencias externas oscuras y castigos divinos.</p>
-                    </div>
+                <div class="history-card">
+                    <h4 style="color: var(--accent-color); margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Edad Media</h4>
+                    <p style="font-size: 0.95rem;">El síntoma fue expulsado de la medicina hacia la religión, interpretándose como <span class="highlight-text">posesión demoníaca</span> o castigos divinos.</p>
                 </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <span class="author-title">Renacimiento</span>
-                        <h4 style="margin: 0.5rem 0;">Terapias de Olores</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Para "obligar a la matriz a descender", se aplicaban terapias físicas crueles y pintorescas, como aspirar olores fétidos.</p>
-                    </div>
-                </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <span class="author-title">Siglo XIX</span>
-                        <h4 style="margin: 0.5rem 0;">Medicina Moderna</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">La llegada del rigor científico y el descubrimiento final: el conflicto es de índole sexual e inconsciente.</p>
-                    </div>
+                <div class="history-card">
+                    <h4 style="color: var(--accent-color); margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Era Moderna</h4>
+                    <p style="font-size: 0.95rem;">Al no encontrar causas físicas, la medicina oficial decidió que era una <span class="highlight-text">simulación</span>; las pacientes eran tratadas con desdén y consideradas mentirosas.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 👨‍⚕️ Módulo 2: Los Grandes Protagonistas -->
-        <section style="margin-top: 8rem;">
-            <div style="text-align: center; margin-bottom: 4rem;">
-                <span class="author-title">Pensadores Clave</span>
-                <h2 style="font-size: 2.5rem;">👨‍⚕️ Módulo 2: Los Protagonistas</h2>
-                <p style="color: var(--text-secondary);">Las mentes que sacaron a la histeria del descrédito médico.</p>
-            </div>
+        <!-- Callout: La pieza faltante -->
+        <section class="callout fade-in" style="animation-delay: 0.4s;">
+            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">La pieza faltante: El puente entre el cuerpo y el conflicto psíquico</h3>
+            <p style="color: var(--text-color); font-size: 1.1rem;">
+                La lectura de Tallaferro en esta unidad no busca que memoricen fechas, sino que comprendan una lógica fundamental: a lo largo de la historia, las intuiciones médicas siempre rondaron la idea de que la histeria estaba conectada con un conflicto genital o pasional, pero los <strong>prejuicios morales</strong> de cada época impidieron unir el aspecto fisiológico con el psicológico.
+            </p>
+        </section>
+
+        <!-- Seccion: El escenario está listo -->
+        <section class="narrative-section fade-in" style="animation-delay: 0.6s;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center;">El escenario está listo para el cambio de paradigma</h2>
+            <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 3rem;">
+                Es en este clima de frustración médica donde entran en escena las figuras que estudiaremos en esta unidad:
+            </p>
 
             <div class="author-grid">
-                <!-- Jean-Martin Charcot -->
+                <!-- Charcot -->
                 <div class="author-card">
-                    <span class="author-title">El Vidente de la Salpêtrière</span>
-                    <h3 class="author-name">Jean-Martin Charcot</h3>
+                    <span class="author-tag">Dignidad a la Histeria</span>
+                    <h3 style="font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 1rem;">Jean-Martin Charcot</h3>
                     <p style="font-size: 0.95rem; color: var(--text-secondary);">
-                        Director de la Salpêtrière. Demostró que las parálisis histéricas eran causadas por <strong>representaciones mentales</strong> (ideas) y no por lesiones anatómicas.
+                        Demostró científicamente, vía hipnosis, que las parálisis no son simuladas, sino provocadas por <strong>representaciones (ideas)</strong> instaladas por un trauma. ¡El síntoma pasa a ser psicológico!
                     </p>
-                    <div class="quote">
-                        "La teoría es buena, pero eso no impide que las cosas sean como son."
-                    </div>
                 </div>
 
-                <!-- Josef Breuer -->
+                <!-- Breuer -->
                 <div class="author-card">
-                    <span class="author-title">El Método Catártico</span>
-                    <h3 class="author-name">Josef Breuer</h3>
+                    <span class="author-tag">El Afecto Estrangulado</span>
+                    <h3 style="font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 1rem;">Josef Breuer</h3>
                     <p style="font-size: 0.95rem; color: var(--text-secondary);">
-                        Médico y colaborador de Freud. A través del caso de <strong>Anna O.</strong>, descubrió que al recordar el trauma y expresar la emoción contenida, el síntoma se esfumaba.
+                        Dio el siguiente paso al descubrir que, si el paciente logra recordar el trauma y liberar el afecto (<strong>abreacción</strong>), el síntoma desaparece.
                     </p>
-                    <div style="margin-top: 1rem; font-size: 0.85rem; padding: 0.5rem; background: #f8fafc; border-radius: 10px; color: var(--accent-color); font-weight: 700;">
-                        Descubrió los "Estados Hipnoides"
-                    </div>
                 </div>
 
-                <!-- Sigmund Freud -->
+                <!-- Freud -->
                 <div class="author-card">
-                    <span class="author-title">El Padre del Psicoanálisis</span>
-                    <h3 class="author-name">Sigmund Freud</h3>
+                    <span class="author-tag">Acto de Defensa</span>
+                    <h3 style="font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 1rem;">Sigmund Freud</h3>
                     <p style="font-size: 0.95rem; color: var(--text-secondary);">
-                        Postuló que el olvido del trauma es un <strong>acto voluntario de defensa</strong>. El paciente aleja una idea inconciliable que genera conflicto moral.
+                        Descubrió que el "olvido" es un <strong>acto voluntario de defensa (represión)</strong> frente a ideas sexuales inconciliables para la moral del sujeto.
                     </p>
-                    <div style="margin-top: 1rem; font-size: 0.85rem; padding: 0.5rem; background: rgba(13, 148, 136, 0.1); border-radius: 10px; color: var(--accent-color); font-weight: 700;">
-                        Nacimiento de la Conversión
-                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Guía de lectura -->
+        <section class="glass-card fade-in" style="margin: 4rem 0; border: 2px solid var(--accent-color); background: rgba(13, 148, 136, 0.03);">
+            <h3 style="color: var(--accent-color); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                Guía de lectura para esta unidad
+            </h3>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: var(--primary-color);">
+                Al leer los textos de esta sección (Tallaferro, Charcot y los primeros escritos de Freud), pregúntate constantemente: 
+            </p>
+            <ul style="margin: 1.5rem 0 0 2rem; color: var(--text-color); font-weight: 600;">
+                <li style="margin-bottom: 1rem;">¿Cómo se fue transformando la concepción del síntoma?</li>
+                <li>¿Cómo pasó de ser un daño en los nervios, o una simple simulación, a ser el símbolo de un conflicto psíquico inconsciente?</li>
+            </ul>
         </section>
 
         <!-- 📂 Sección de Descargas -->
         <section class="download-box fade-in">
-            <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Biblioteca de la Unidad 1</h2>
-            <p style="opacity: 0.8; margin-bottom: 2.5rem; font-size: 1.1rem;">Accede a toda la bibliografía obligatoria y complementaria de este módulo.</p>
+            <h2 style="font-size: 2.2rem; margin-bottom: 1rem; font-family: var(--font-heading);">Textos de la Unidad 1</h2>
+            <p style="opacity: 0.8; margin-bottom: 2.5rem; font-size: 1.1rem;">Todo lo que necesitas para tu viaje por los orígenes del psicoanálisis.</p>
             
-            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-                <a href="../Textos/Unidad%201/PROGRAMA%20PSICOANALISIS%202024%20(2).pdf" target="_blank" class="pulse-button" style="background: white; color: var(--primary-color);">
-                    <svg style="vertical-align: middle; margin-right: 8px;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Descargar Textos Unidad 1
-                </a>
-            </div>
+            <a href="../Textos/Unidad%201/PROGRAMA%20PSICOANALISIS%202024%20(2).pdf" target="_blank" class="pulse-button" style="background: white; color: var(--primary-color); border: none;">
+                <svg style="vertical-align: middle; margin-right: 8px;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Descargar Bibliografía Unidad 1
+            </a>
             
-            <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.6;">Incluye: Charcot, Freud (Las neuropsicosis de defensa), Tallaferro Cap. 1 y más.</p>
+            <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.6;">Incluye: Charcot, Freud (Las neuropsicosis de defensa), Tallaferro y más.</p>
         </section>
-        
+
         <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
             <p>© 2026 Psicoanálisis | UFLO Universidad</p>
         </footer>
