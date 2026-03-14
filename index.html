@@ -7,6 +7,41 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=2">
+    <style>
+        /* Card Header Navigation - INTEGRATED */
+        .card-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-link {
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.02);
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+            background: rgba(13, 148, 136, 0.08);
+        }
+
+        .nav-link.active {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+        }
+    </style>
 </head>
 <body>
     <!-- Navegación interna habilitada -->
@@ -26,7 +61,16 @@
 
     <main class="container">
         <!-- Dashboard Section -->
-        <section id="inicio" class="glass-card fade-in" style="margin-bottom: var(--section-gap); border-radius: 30px;">
+        <!-- Dashboard Section -->
+        <section id="inicio" class="glass-card fade-in" style="margin-bottom: var(--section-gap); border-radius: 30px; padding-top: 2rem;">
+            <!-- Navegación Integrada -->
+            <nav class="card-nav">
+                <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link active">Inicio</a>
+                <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
+                <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
+                <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link">Unidades</a>
+            </nav>
+
             <div style="display: flex; flex-direction: column; gap: 2rem;">
                 <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
                     <div style="flex: 2; min-width: 300px;">
@@ -43,13 +87,25 @@
 
                 <!-- Resources Mini-Grid -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem;">
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_parent" class="glass-card" style="padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1.2rem; border-color: var(--glass-border); background: #ffffff; border-radius: 20px;">
-                        <div style="background: #f1f5f9; color: var(--accent-color); width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    <!-- Foro de Presentación (Corregido) -->
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="glass-card" style="padding: 1.2rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; border-color: var(--glass-border); background: #ffffff; border-radius: 20px;">
+                        <div style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color); width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         </div>
                         <div>
-                            <div style="font-weight: 700; color: var(--primary-color); font-size: 1.1rem;">Foro de Consultas</div>
-                            <div style="font-size: 0.85rem; color: var(--text-secondary);">Ayuda mutua y dudas</div>
+                            <div style="font-weight: 700; color: var(--primary-color); font-size: 0.95rem;">Foro de Presentación</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Conozcámonos en la comunidad</div>
+                        </div>
+                    </a>
+
+                    <!-- Foro de Consultas -->
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="glass-card" style="padding: 1.2rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; border-color: var(--glass-border); background: #ffffff; border-radius: 20px;">
+                        <div style="background: rgba(30, 41, 59, 0.05); color: var(--primary-color); width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--primary-color); font-size: 0.95rem;">Foro de Consultas</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary);">Ayuda mutua y dudas</div>
                         </div>
                     </a>
                 </div>
@@ -106,11 +162,6 @@
                 <span class="notice-date">12 Marzo, 2026</span>
                 <div class="notice-title">Bienvenida a la Cursada</div>
                 <p style="color: var(--text-secondary);">Ya se encuentran disponibles los materiales para la Clase 1. Los esperamos en el horario habitual.</p>
-            </div>
-            <div class="notice-item">
-                <span class="notice-date">10 Marzo, 2026</span>
-                <div class="notice-title">Configuración de Grupos</div>
-                <p style="color: var(--text-secondary);">Recuerden completar la encuesta de formación de grupos antes del próximo viernes.</p>
             </div>
         </section>
 
