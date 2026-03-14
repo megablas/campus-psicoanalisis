@@ -16,6 +16,40 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* Card Header Navigation - COMPACT & INTEGRATED */
+        .card-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05); /* Separador sutil */
+        }
+
+        .nav-link {
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.02);
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+            background: rgba(13, 148, 136, 0.08);
+        }
+
+        .nav-link.active {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
+        }
+
 
         /* Contenedor Principal (Basado en consultation-card) */
         .forum-wrapper {
@@ -24,7 +58,7 @@
             background: #ffffff;
             border: 1px solid var(--glass-border);
             border-radius: 35px;
-            padding: 4rem 3rem;
+            padding: 2.5rem 3rem 4rem 3rem;
             box-shadow: var(--shadow-premium);
             position: relative;
             overflow: hidden;
@@ -156,6 +190,14 @@
 
 
     <div class="forum-wrapper fade-in">
+        <!-- Navegación Integrada dentro del recuadro -->
+        <nav class="card-nav">
+            <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link">Inicio</a>
+            <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link active">Consultas</a>
+            <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
+            <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link">Unidades</a>
+        </nav>
+
         <span class="forum-tag">Comunidad Psicoanalítica</span>
         <h2 class="forum-title">Construcción Colectiva</h2>
         
