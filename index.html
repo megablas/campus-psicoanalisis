@@ -6,7 +6,7 @@
     <title>Psicoanálisis | Aula Virtual UFLO</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=9">
     <style>
         /* Card Header Navigation - INTEGRATED */
         .card-nav {
@@ -97,6 +97,27 @@
                         container.classList.remove('show-units');
                     }
                 }
+
+                function scrollToTop() {
+                    window.scrollTo(0, 0);
+                    // Standard Moodle/iframe scroll to top messages
+                    window.parent.postMessage({ type: 'scrollToTop' }, '*');
+                    window.parent.postMessage('scrollToTop', '*');
+                    
+                    // Specific for some Moodle themes
+                    try {
+                        if (window.parent && window.parent.M && window.parent.M.core_scroll_manager) {
+                            window.parent.M.core_scroll_manager.scroll_to_node(window.parent.document.body);
+                        }
+                        window.parent.scrollTo(0, 0);
+                    } catch (e) {
+                        console.log("Parent scroll failed (cross-origin)");
+                    }
+                }
+
+                window.addEventListener('load', () => {
+                    setTimeout(scrollToTop, 200);
+                });
             </script>
 
             <div style="display: flex; flex-direction: column; gap: 2rem;">

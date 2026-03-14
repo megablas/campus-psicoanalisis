@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unidad 1: Los Orígenes | Psicoanálisis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css?v=7">
+    <link rel="stylesheet" href="../style.css?v=9">
     <style>
         /* Card Header Navigation - INTEGRATED */
         .card-nav {
@@ -108,16 +108,7 @@
             text-transform: uppercase;
         }
 
-        /* Download Button Premium */
-        .download-cta {
-            background: linear-gradient(135deg, var(--accent-color) 0%, #0f766e 100%);
-            border-radius: 30px;
-            padding: 4rem 2rem;
-            color: white;
-            text-align: center;
-            margin: 6rem 0;
-            box-shadow: 0 20px 50px rgba(13, 148, 136, 0.2);
-        }
+        .download-cta { background: white !important; }
 
         @media (max-width: 768px) {
             .unit-hero h1 { font-size: 2.2rem; }
@@ -307,11 +298,23 @@
             window.parent.postMessage({ height: height }, '*');
         }
         
-        // Scroll to top on load and tell parent
-        window.addEventListener('load', () => {
+        function scrollToTop() {
             window.scrollTo(0, 0);
-            sendHeight();
             window.parent.postMessage({ type: 'scrollToTop' }, '*');
+            window.parent.postMessage('scrollToTop', '*');
+            
+            try {
+                if (window.parent && window.parent.M) {
+                    window.parent.scrollTo(0, 0);
+                }
+            } catch (e) {}
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                scrollToTop();
+                sendHeight();
+            }, 200);
         });
 
         window.addEventListener('resize', sendHeight);
