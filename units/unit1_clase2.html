@@ -5,66 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clase 2: Charcot y Breuer | Psicoanálisis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css?v=2">
+    <link rel="stylesheet" href="../style.css?v=3">
     <style>
-        .tabs { display: flex; gap: 1rem; margin-bottom: 3rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; overflow-x: auto; }
-        .tab { padding: 0.8rem 1.5rem; text-decoration: none; color: var(--text-secondary); font-weight: 600; border-radius: 12px; transition: 0.3s; white-space: nowrap; }
-        .tab.active { background: var(--accent-color); color: #0d1117; box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); }
-        .badge { background: rgba(0, 242, 254, 0.1); color: var(--accent-color); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border: 1px solid rgba(0, 242, 254, 0.3); }
-        .biblio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .biblio-card { background: rgba(255, 255, 255, 0.02); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: 0.3s; }
-        .biblio-card:hover { border-color: var(--accent-color); background: rgba(255, 255, 255, 0.05); }
+        .card-nav { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-link { padding: 0.6rem 1.4rem; border-radius: 100px; text-decoration: none; color: var(--secondary-color); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; background: rgba(0,0,0,0.02); transition: 0.3s; }
+        .nav-link.active { background: var(--accent-color); color: white; }
+        
+        .class-header { background: white; border-radius: 30px; padding: 3rem; margin-top: 1rem; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); }
+        .back-link { text-decoration: none; color: var(--accent-color); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; transition: 0.3s; }
+        .back-link:hover { transform: translateX(-5px); }
+        
+        .concepts-box { background: #f8fafc; border-radius: 24px; padding: 2.5rem; border: 1px solid #e2e8f0; margin: 3rem 0; }
+        .concept-item { margin-bottom: 1rem; display: flex; gap: 1rem; align-items: flex-start; }
+        .concept-item::before { content: '🎯'; }
+        
+        .biblio-card { background: white; border-radius: 20px; padding: 2rem; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); transition: 0.3s; margin-bottom: 1.5rem; }
+        .biblio-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
     </style>
 </head>
 <body>
     <main class="container">
-        <header style="margin-top: 2rem; margin-bottom: 4rem;">
-            <a href="unit1.html" style="text-decoration: none; color: var(--accent-color); font-weight: 800; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase;">
+        <!-- Integrated Navigation Dashboard -->
+        <section class="class-header fade-in">
+            <nav class="card-nav">
+                <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link">Inicio</a>
+                <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
+                <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
+                <a href="unit1.html" target="_top" class="nav-link active">Unidades</a>
+            </nav>
+
+            <a href="unit1.html" class="back-link">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                Volver a la Unidad
+                Volver a Unidad 1
             </a>
-            <h1>Charcot y el Enigma de la Histeria</h1>
-        </header>
 
-        <nav class="tabs fade-in">
-            <a href="unit1.html" class="tab">Clase 1: Introducción</a>
-            <a href="unit1_clase2.html" class="tab active">Clase 2: Charcot y Breuer</a>
-            <a href="#" class="tab">Clase 3: Neuropsicosis</a>
-            <a href="#" class="tab">Clase 4: Primera Tópica</a>
-        </nav>
+            <span class="unit-number" style="color: var(--accent-color); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem;">Clase 2</span>
+            <h1 style="font-size: 2.8rem; margin: 1rem 0;">Charcot, Breuer y la Teoría del Trauma Psíquico</h1>
+            
+            <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-top: 1.5rem;">
+                En esta etapa de nuestro viaje conoceremos a los grandes maestros de Freud. El primero es Jean-Martin Charcot, quien dirigía la Salpêtrière en París. Charcot le devolvió la dignidad a la histeria: demostró mediante la hipnosis que las parálisis no eran fingidas, sino que eran idénticas a las parálisis causadas por traumas físicos graves, probando que el origen de ambas era una **representación mental**. 
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-top: 1rem;">
+                El segundo es Josef Breuer, quien dio un paso más allá con el **método catártico**. Descubrió que si el paciente recordaba un evento traumático del pasado bajo hipnosis, el síntoma desaparecía. En esta clase aprenderemos que el ser humano necesita "abreaccionar" (descargar) la tensión de un trauma mediante la acción o la palabra. Cuando esa descarga es bloqueada, el afecto queda "estrangulado" en la mente y el recuerdo vivo del trauma se convierte en un síntoma físico. Como postulan Breuer y Freud: *"el histérico padece de unos traumas psíquicos incompletamente abreaccionados"*.
+            </p>
+        </section>
 
-        <section class="fade-in">
-            <div class="glass-card" style="margin-bottom: 3rem;">
-                <span class="badge">Lectura y Análisis</span>
-                <h3 style="margin-top: 1rem;">El modelo médico y el método catártico</h3>
-                <p style="margin-top: 1rem; color: var(--text-secondary);">
-                    En esta clase profundizamos en el encuentro de Freud con Charcot en la Salpêtrière y el posterior trabajo con Breuer que daría origen al "Caso Ana O.".
-                </p>
-                
-                <div style="margin-top: 2rem; border-left: 2px solid var(--accent-color); padding-left: 1.5rem;">
-                    <h4 style="color: white; margin-bottom: 0.5rem;">Conceptos Eje:</h4>
-                    <ul style="color: var(--text-secondary); font-size: 0.95rem;">
-                        <li>Histeria traumática vs. hereditaria.</li>
-                        <li>Abreacción y afecto.</li>
-                        <li>La hipnosis como herramienta de investigación.</li>
-                    </ul>
-                </div>
+        <section class="concepts-box fade-in" style="animation-delay: 0.2s;">
+            <h3 style="margin-bottom: 2rem; color: var(--primary-color);">🎯 Conceptos Clave</h3>
+            <div class="concept-item">Las parálisis histéricas vs. parálisis orgánicas.</div>
+            <div class="concept-item">El trauma psíquico, el afecto y la suma de excitación.</div>
+            <div class="concept-item">El método catártico y el concepto de Abreacción.</div>
+        </section>
+
+        <section class="fade-in" style="animation-delay: 0.3s;">
+            <h3 style="margin-bottom: 2rem;">📚 Lecturas Obligatorias</h3>
+            
+            <div class="biblio-card">
+                <span style="color: var(--accent-color); font-weight: 800; font-size: 0.75rem; text-transform: uppercase;">S. Freud</span>
+                <h4 style="margin: 0.5rem 0;">"Charcot" (1893)</h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">El obituario que resume la influencia del gran maestro vidente.</p>
+                <a href="../Textos/Unidad 1/Charcot.pdf" target="_blank" class="btn" style="margin-top: 1.5rem; background: rgba(13, 148, 136, 0.1); color: var(--accent-color); font-size: 0.8rem;">Leer Texto</a>
             </div>
 
-            <h3 style="font-size: 1.8rem; margin-top: 4rem;">Bibliografía Obligatoria</h3>
-            <div class="biblio-grid">
-                <div class="biblio-card">
-                    <h4>Freud, S.: "Sobre el mecanismo psíquico..."</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">(1893), AE, III, 29-40. El texto fundacional sobre la histeria.</p>
-                    <a href="#" class="btn" style="margin-top: 1.5rem; width: 100%; text-align: center; background: rgba(0, 242, 254, 0.1); color: var(--accent-color);">Ver Texto</a>
-                </div>
-                <div class="biblio-card">
-                    <h4>Freud, S.: "Charcot"</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">(1893), AE, III, 13-24. El obituario que resume la influencia del maestro.</p>
-                    <a href="#" class="btn" style="margin-top: 1.5rem; width: 100%; text-align: center; background: rgba(0, 242, 254, 0.1); color: var(--accent-color);">Ver Texto</a>
-                </div>
+            <div class="biblio-card">
+                <span style="color: var(--accent-color); font-weight: 800; font-size: 0.75rem; text-transform: uppercase;">S. Freud</span>
+                <h4 style="margin: 0.5rem 0;">"Sobre el mecanismo psíquico de los fenómenos histéricos" (1893)</h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Comunicación preliminar sobre el trauma y la abreacción.</p>
+                <a href="../Textos/Unidad 1/Sobre el mecanismo Psiquico de los fenomenos histericos.pdf" target="_blank" class="btn" style="margin-top: 1.5rem; background: var(--accent-color); color: white; font-size: 0.8rem;">Leer Texto</a>
             </div>
         </section>
+
+        <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
+            <p>© 2026 Psicoanálisis | UFLO Universidad</p>
+        </footer>
     </main>
+
+    <script>
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
+        window.addEventListener('load', sendHeight);
+        window.addEventListener('resize', sendHeight);
+        setInterval(sendHeight, 1000);
+    </script>
 </body>
 </html>

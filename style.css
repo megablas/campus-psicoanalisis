@@ -262,3 +262,67 @@ h1, h2, h3 {
     background: var(--accent-color); /* Stay colored but brighter/different contrast */
     color: white;
 }
+
+/* Unit Landing Decorators */
+.module-tag {
+    background: rgba(13, 148, 136, 0.1);
+    color: var(--accent-color);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+
+/* Route & History Grids */
+.route-grid, .history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.route-card, .history-card {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-premium);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.route-card:hover, .history-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.route-card:hover h4 {
+    color: var(--accent-color);
+}
+
+/* Metaphor & Callout Boxes */
+.metaphor-box {
+    background: #f8fafc;
+    border-radius: 30px;
+    padding: 3rem;
+    border: 1px solid #e2e8f0;
+    margin: 4rem 0;
+}
+
+.intro-quote {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 2rem;
+    margin: 2rem 0;
+}
+
