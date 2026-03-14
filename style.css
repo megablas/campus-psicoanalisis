@@ -316,13 +316,58 @@ h1, h2, h3 {
     margin: 4rem 0;
 }
 
-.intro-quote {
-    color: var(--text-secondary);
-    font-style: italic;
-    font-size: 1.15rem;
-    line-height: 1.8;
-    border-left: 4px solid var(--accent-color);
-    padding-left: 2rem;
-    margin: 2rem 0;
+/* Sub-navigation for Units */
+.sub-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: -1.5rem;
+    margin-bottom: 2rem;
+}
+
+.sub-link {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-size: 0.8rem;
+    font-weight: 800;
+    background: rgba(0,0,0,0.03);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.sub-link:hover {
+    background: rgba(13, 148, 136, 0.1);
+    color: var(--accent-color);
+    border-color: rgba(13, 148, 136, 0.2);
+}
+
+.sub-link.active {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(13, 148, 136, 0.2);
+}
+
+.back-link {
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    transition: 0.3s;
+}
+
+.back-link:hover {
+    transform: translateX(-5px);
 }
 
