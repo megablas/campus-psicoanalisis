@@ -3,142 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad 1 | Psicoanálisis</title>
+    <title>Unidad 1: Los Orígenes | Psicoanálisis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css?v=2">
+    <link rel="stylesheet" href="../style.css?v=3">
     <style>
-        .tabs {
+        /* Card Header Navigation - INTEGRATED */
+        .card-nav {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 0.5rem;
-            overflow-x: auto;
-        }
-        .tab {
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 600;
-            border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
-        }
-        .tab.active {
-            background: var(--accent-color);
-            color: #0d1117;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
-        }
-        .tab:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-        }
-        .class-heading {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            justify-content: center;
+            gap: 0.5rem;
             margin-bottom: 2.5rem;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .badge {
-            background: rgba(0, 242, 254, 0.1);
-            color: var(--accent-color);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 800;
+
+        .nav-link {
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border: 1px solid rgba(0, 242, 254, 0.3);
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.02);
         }
-        .biblio-grid {
+
+        .nav-link:hover {
+            color: var(--accent-color);
+            background: rgba(13, 148, 136, 0.08);
+        }
+
+        .nav-link.active {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: rgba(13, 148, 136, 0.1);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: #ffffff;
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; text-align: left; }
+        .right::after { left: -10px; }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background: white;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: var(--shadow-premium);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* Author Cards */
+        .author-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 2rem;
+            margin: 3rem 0;
         }
-        .biblio-card {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 1.5rem;
-            border-radius: 16px;
+
+        .author-card {
+            background: white;
+            border-radius: 25px;
+            padding: 2.5rem;
             border: 1px solid var(--glass-border);
-            transition: 0.3s;
+            box-shadow: var(--shadow-premium);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .biblio-card:hover {
+
+        .author-card:hover {
+            transform: translateY(-10px);
             border-color: var(--accent-color);
-            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .author-title {
+            color: var(--accent-color);
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .author-name {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .download-box {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #334155 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            color: white;
+            text-align: center;
+            margin: 5rem 0;
+            box-shadow: 0 20px 40px rgba(13, 148, 136, 0.15);
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
+            .timeline-item.left { text-align: left; }
+            .timeline-item::after { left: 21px; }
+            .left::after { left: 21px; }
         }
     </style>
 </head>
 <body>
     <main class="container">
-        <header style="margin-top: 2rem; margin-bottom: 4rem;">
-            <a href="../index.html" style="text-decoration: none; color: var(--accent-color); font-weight: 800; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                Volver al Panel
-            </a>
-            <span class="unit-number">Unidad 1</span>
-            <h1 style="font-size: 3.5rem;">Primeros planteos freudianos</h1>
-            <p style="color: var(--text-secondary); max-width: 600px; margin-top: 1rem;">Explorando los orígenes del método analítico y el enigma de la histeria.</p>
-        </header>
+        <!-- Dashboard Card Con Navegación Integrada -->
+        <section class="glass-card fade-in" style="margin-top: 2rem; padding-top: 2rem; border-radius: 35px;">
+            <nav class="card-nav">
+                <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link">Inicio</a>
+                <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
+                <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
+                <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link active">Unidades</a>
+            </nav>
 
-        <nav class="tabs fade-in">
-            <a href="unit1.html" class="tab active">Clase 1: Introducción</a>
-            <a href="#" class="tab">Clase 2: Charcot y Breuer</a>
-            <a href="#" class="tab">Clase 3: Neuropsicosis</a>
-            <a href="#" class="tab">Clase 4: Primera Tópica</a>
-        </nav>
-
-        <section class="fade-in" style="animation-delay: 0.2s;">
-            <div class="class-heading">
-                <div>
-                    <span class="badge">Teórica / Apertura</span>
-                    <h2 style="margin-top: 1rem; font-size: 2.2rem;">Presentación de la Materia</h2>
-                </div>
-                <div style="text-align: right;">
-                    <p style="font-size: 0.8rem; color: var(--accent-color); font-weight: 800;">INICIO DE CICLO</p>
-                    <p style="font-size: 1.1rem; font-weight: 600;">20 de Marzo</p>
-                </div>
-            </div>
-
-            <div class="glass-card" style="margin-bottom: 3rem;">
-                <h3>Objetivos de Aprendizaje</h3>
-                <ul style="margin: 1.5rem 0 0 1.5rem; color: var(--text-secondary); display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <li>Comprender la hoja de ruta de la cursada.</li>
-                    <li>Identificar conceptos clave del psicoanálisis.</li>
-                    <li>Establecer el contrato pedagógico y expectativas.</li>
-                    <li>Introducción al modelo médico de la época.</li>
-                </ul>
-            </div>
-
-            <div class="consultation-card" style="border-radius: 24px; padding: 2.5rem; margin-bottom: 3rem;">
-                <h3 style="color: white; margin-bottom: 1rem;">📍 El Mapa de hoy</h3>
-                <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.6;">
-                    Hoy nos enfocamos en conocernos. No hay lecturas previas obligatorias, pero empezaremos a desarmar prejuicios sobre qué es y qué no es el psicoanálisis en el siglo XXI.
+            <header style="padding: 0 1rem 2rem 1rem; text-align: center;">
+                <span class="unit-number" style="color: var(--accent-color); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem;">Unidad 1</span>
+                <h1 style="font-size: 3rem; line-height: 1.1; margin: 1rem 0; letter-spacing: -2px;">Los Orígenes: De la Neurología al Descubrimiento del Inconsciente</h1>
+                <p style="color: var(--text-secondary); max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">
+                    "¡Bienvenidos a la Unidad 1! En esta primera etapa haremos un viaje en el tiempo. Descubriremos cómo la humanidad intentó explicar el enigma de la histeria durante siglos y cómo, a finales del siglo XIX, tres figuras clave cambiaron para siempre nuestra forma de entender la mente humana. Pasaremos del modelo médico tradicional al nacimiento del psicoanálisis."
                 </p>
+            </header>
+        </section>
+
+        <!-- 🏛️ Módulo 1: La Prehistoria del Psicoanálisis -->
+        <section style="margin-top: 6rem;">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="author-title">Recorrido Histórico</span>
+                <h2 style="font-size: 2.5rem;">🏛️ Módulo 1: La Prehistoria</h2>
+                <p style="color: var(--text-secondary);">El largo camino para comprender que siempre se trató de un conflicto interno.</p>
             </div>
 
-            <h3 style="font-size: 1.8rem; margin-top: 4rem;">Recursos de la Clase</h3>
-            <div class="biblio-grid">
-                <div class="biblio-card">
-                    <div style="color: var(--accent-color); margin-bottom: 1rem;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="author-title">Antigüedad</span>
+                        <h4 style="margin: 0.5rem 0;">El Útero Errante</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Desde Hipócrates y Platón, se creía que la histeria era causada por un animal que deseaba engendrar y recorría el cuerpo buscando satisfacerse.</p>
                     </div>
-                    <h4>Programa de la Materia</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">Descarga el PDF con el cronograma y bibliografía completa.</p>
-                    <a href="#" class="btn" style="margin-top: 1.5rem; width: 100%; text-align: center; background: rgba(0, 242, 254, 0.1); border: 1px solid var(--accent-color); color: var(--accent-color);">Descargar PDF</a>
                 </div>
-
-                <div class="biblio-card">
-                    <div style="color: var(--accent-color); margin-bottom: 1rem;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="author-title">Edad Media</span>
+                        <h4 style="margin: 0.5rem 0;">Posesión Demoníaca</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Un retroceso hacia el pensamiento mágico. Los síntomas histéricos se atribuían a influencias externas oscuras y castigos divinos.</p>
                     </div>
-                    <h4>Foro de Presentación</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">Participa en el campus contando quién eres y qué esperas de la materia.</p>
-                    <a href="#" class="btn" style="margin-top: 1.5rem; width: 100%; text-align: center; background: var(--accent-color); color: #0d1117;">Ir al Foro</a>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="author-title">Renacimiento</span>
+                        <h4 style="margin: 0.5rem 0;">Terapias de Olores</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Para "obligar a la matriz a descender", se aplicaban terapias físicas crueles y pintorescas, como aspirar olores fétidos.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="author-title">Siglo XIX</span>
+                        <h4 style="margin: 0.5rem 0;">Medicina Moderna</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">La llegada del rigor científico y el descubrimiento final: el conflicto es de índole sexual e inconsciente.</p>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- 👨‍⚕️ Módulo 2: Los Grandes Protagonistas -->
+        <section style="margin-top: 8rem;">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="author-title">Pensadores Clave</span>
+                <h2 style="font-size: 2.5rem;">👨‍⚕️ Módulo 2: Los Protagonistas</h2>
+                <p style="color: var(--text-secondary);">Las mentes que sacaron a la histeria del descrédito médico.</p>
+            </div>
+
+            <div class="author-grid">
+                <!-- Jean-Martin Charcot -->
+                <div class="author-card">
+                    <span class="author-title">El Vidente de la Salpêtrière</span>
+                    <h3 class="author-name">Jean-Martin Charcot</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary);">
+                        Director de la Salpêtrière. Demostró que las parálisis histéricas eran causadas por <strong>representaciones mentales</strong> (ideas) y no por lesiones anatómicas.
+                    </p>
+                    <div class="quote">
+                        "La teoría es buena, pero eso no impide que las cosas sean como son."
+                    </div>
+                </div>
+
+                <!-- Josef Breuer -->
+                <div class="author-card">
+                    <span class="author-title">El Método Catártico</span>
+                    <h3 class="author-name">Josef Breuer</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary);">
+                        Médico y colaborador de Freud. A través del caso de <strong>Anna O.</strong>, descubrió que al recordar el trauma y expresar la emoción contenida, el síntoma se esfumaba.
+                    </p>
+                    <div style="margin-top: 1rem; font-size: 0.85rem; padding: 0.5rem; background: #f8fafc; border-radius: 10px; color: var(--accent-color); font-weight: 700;">
+                        Descubrió los "Estados Hipnoides"
+                    </div>
+                </div>
+
+                <!-- Sigmund Freud -->
+                <div class="author-card">
+                    <span class="author-title">El Padre del Psicoanálisis</span>
+                    <h3 class="author-name">Sigmund Freud</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary);">
+                        Postuló que el olvido del trauma es un <strong>acto voluntario de defensa</strong>. El paciente aleja una idea inconciliable que genera conflicto moral.
+                    </p>
+                    <div style="margin-top: 1rem; font-size: 0.85rem; padding: 0.5rem; background: rgba(13, 148, 136, 0.1); border-radius: 10px; color: var(--accent-color); font-weight: 700;">
+                        Nacimiento de la Conversión
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📂 Sección de Descargas -->
+        <section class="download-box fade-in">
+            <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Biblioteca de la Unidad 1</h2>
+            <p style="opacity: 0.8; margin-bottom: 2.5rem; font-size: 1.1rem;">Accede a toda la bibliografía obligatoria y complementaria de este módulo.</p>
+            
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="../Textos/Unidad%201/PROGRAMA%20PSICOANALISIS%202024%20(2).pdf" target="_blank" class="pulse-button" style="background: white; color: var(--primary-color);">
+                    <svg style="vertical-align: middle; margin-right: 8px;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Descargar Textos Unidad 1
+                </a>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.6;">Incluye: Charcot, Freud (Las neuropsicosis de defensa), Tallaferro Cap. 1 y más.</p>
         </section>
         
         <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
