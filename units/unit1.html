@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unidad 1: Los Orígenes | Psicoanálisis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css?v=6">
+    <link rel="stylesheet" href="../style.css?v=7">
     <style>
         /* Card Header Navigation - INTEGRATED */
         .card-nav {
@@ -306,7 +306,14 @@
             const height = document.body.scrollHeight;
             window.parent.postMessage({ height: height }, '*');
         }
-        window.addEventListener('load', sendHeight);
+        
+        // Scroll to top on load and tell parent
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+            sendHeight();
+            window.parent.postMessage({ type: 'scrollToTop' }, '*');
+        });
+
         window.addEventListener('resize', sendHeight);
         setInterval(sendHeight, 1000);
     </script>

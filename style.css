@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --primary-color: #1e293b;
     --secondary-color: #475569;
@@ -395,10 +399,10 @@ h1, h2, h3 {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    display: inline-flex;
+    display: flex; /* Changed to flex to force line break */
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem; /* Increased margin */
     transition: 0.3s;
 }
 
