@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biografía: Sigmund Freud | Psicoanálisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=12">
+    <style>
+        .bio-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            margin-top: 2rem;
+            align-items: start;
+        }
+        .bio-image-wrapper {
+            position: sticky;
+            top: 2rem;
+        }
+        .bio-image {
+            width: 100%;
+            border-radius: 40px;
+            box-shadow: var(--shadow-premium);
+            border: 8px solid white;
+        }
+        .bio-content h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            margin: 2.5rem 0 1rem 0;
+            color: var(--primary-color);
+        }
+        .bio-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .quote-box {
+            background: #f8fafc;
+            border-left: 4px solid var(--accent-color);
+            padding: 2rem;
+            border-radius: 0 20px 20px 0;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        .back-link { 
+            text-decoration: none; 
+            color: var(--accent-color); 
+            font-weight: 800; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            margin-bottom: 2rem; 
+            transition: 0.3s; 
+        }
+        .back-link:hover { transform: translateX(-5px); }
+
+        @media (max-width: 900px) {
+            .bio-container { grid-template-columns: 1fr; gap: 2rem; }
+            .bio-image-wrapper { position: static; }
+        }
+    </style>
+</head>
+<body>
+    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+
+    <main class="container">
+        <a href="unit1.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Volver a Unidad 1
+        </a>
+
+        <div class="bio-container fade-in">
+            <div class="bio-image-wrapper">
+                <img src="../assets/authors/freud.png" alt="Sigmund Freud" class="bio-image">
+                <div style="margin-top: 2rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+                    <strong>Sigmund Freud</strong><br>1856 - 1939
+                </div>
+            </div>
+
+            <div class="bio-content">
+                <span style="color: var(--accent-color); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Personajes Clave</span>
+                <h1 style="font-size: 3.5rem; margin: 0.5rem 0 2rem 0; line-height: 1.1;">Sigmund Freud:<br> El Padre del Psicoanálisis</h1>
+                
+                <p>
+                    Nacido el 6 de mayo de 1856 en Freiberg (Moravia), Sigmund Freud se trasladó con su familia a Viena a los cuatro años. Su brillante carrera académica lo llevó a graduarse como médico en 1881, centrando inicialmente su interés en la neurología y el sistema nervioso.
+                </p>
+
+                <h2>El Camino al Inconsciente</h2>
+                <p>
+                    Tras especializarse en neuropatología, Freud comenzó a interesarse por la psicología clínica al observar que muchos trastornos físicos no tenían una base orgánica identificable. Junto a Joseph Breuer, investigó el caso de Anna O., donde comenzó a vislumbrar el poder de la palabra y el recuerdo traumático.
+                </p>
+
+                <div class="quote-box">
+                    "El primer investigador que desarrolla una teoría exclusivamente psicológica para explicar el malestar humano que la medicina tradicional no lograba descifrar."
+                </div>
+
+                <h2>Un Cambio de Paradigma</h2>
+                <p>
+                    Su legado más importante fue el descubrimiento de procesos mentales de los que no somos conscientes, pero que determinan nuestra conducta. Introdujo el modelo del aparato psíquico dividido en <strong>Ello, Yo y Superyó</strong>, y estableció la <strong>Asociación Libre</strong> como la herramienta fundamental para acceder a los contenidos reprimidos.
+                </p>
+
+                <h2>Su Técnica: La Asociación Libre</h2>
+                <p>
+                    A diferencia de la hipnosis, donde el terapeuta impone su voluntad, la asociación libre permite al paciente hablar sin filtros ni censura. Freud creía que en ese flujo de pensamiento se esconden las raíces de los conflictos internos y los deseos reprimidos que buscan una vía de escape.
+                </p>
+
+                <footer style="margin-top: 4rem; padding-bottom: 4rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
+                    <p>© 2026 Psicoanálisis | Escuela Universitaria de Terapia</p>
+                </footer>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
+
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+            const helper = document.getElementById('top-focus');
+            if (helper) helper.focus({preventScroll:false});
+            if (window.parent) {
+                const messages = [{ type: 'scrollToTop' }, 'scrollToTop', 'scroll_to_top'];
+                messages.forEach(msg => { try { window.parent.postMessage(msg, '*'); } catch(e) {} });
+            }
+        }
+
+        if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+
+        window.addEventListener('load', () => {
+            scrollToTop();
+            setTimeout(() => { scrollToTop(); sendHeight(); }, 100);
+            setTimeout(scrollToTop, 500);
+        });
+        window.addEventListener('resize', sendHeight);
+        setInterval(sendHeight, 1000);
+    </script>
+</body>
+</html>
