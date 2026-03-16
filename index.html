@@ -6,7 +6,7 @@
     <title>Psicoanálisis | Aula Virtual UFLO</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="stylesheet" href="style.css?v=14">
     <style>
         /* Card Header Navigation - INTEGRATED */
         .card-nav {
@@ -194,22 +194,22 @@
 
                 <!-- Resources Mini-Grid -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                    <!-- Meet (New: Promoted) -->
-                    <a href="https://meet.google.com/ppm-khgg-ohk" target="_blank" class="glass-card" style="padding: 1rem; text-decoration: none; display: flex; align-items: center; gap: 0.8rem; border-color: var(--accent-color); background: #ffffff; border-radius: 20px; grid-column: span 1;">
-                        <div style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color); width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                    <!-- Meet (Promoted) -->
+                    <a href="https://meet.google.com/ppm-khgg-ohk" target="_blank" class="glass-card" style="padding: 1.2rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; border-color: var(--accent-color); background: #ffffff; border-radius: 24px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                        <div style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color); width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
                         </div>
                         <div style="flex-grow: 1;">
-                            <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <div style="display: flex; align-items: center; gap: 8px;">
-                                    <div style="font-weight: 700; color: var(--primary-color); font-size: 0.9rem;">Clase en Vivo</div>
-                                    <span id="today-tag" style="display: none; background: #0d9488; color: white; font-size: 0.6rem; padding: 1px 6px; border-radius: 4px; font-weight: 800; letter-spacing: 0.5px;">HOY!</span>
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div style="font-weight: 800; color: var(--primary-color); font-size: 1rem; letter-spacing: -0.3px;">Clase en Vivo</div>
+                                    <span id="today-tag" style="display: none; background: var(--accent-color); color: white; font-size: 0.65rem; padding: 2px 8px; border-radius: 6px; font-weight: 900; box-shadow: 0 4px 10px rgba(13, 148, 136, 0.2);">HOY!</span>
                                 </div>
-                                <div id="live-indicator" style="display: none; align-items: center; color: #ef4444; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">
+                                <div id="live-indicator" style="display: none; align-items: center; color: #ef4444; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">
                                     <span class="live-dot"></span> VIVO
                                 </div>
                             </div>
-                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Lunes 18:30 - Link de Meet</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); opacity: 0.8;">Lunes 18:30 · Link Directo Meet</div>
                         </div>
                     </a>
 
@@ -284,10 +284,13 @@
         <!-- New: Notice Board Section -->
         <section id="avisos" class="notice-board fade-in" style="animation-delay: 0.6s;">
             <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Tablero de Avisos</h2>
-            <div class="notice-item" style="border-left: 4px solid var(--accent-color); background: rgba(13, 148, 136, 0.02);">
-                <span class="notice-date">16 Marzo, 2026</span>
-                <div class="notice-title" style="color: var(--accent-color);">Comienzo de Cursada: ¡Hoy nos vemos!</div>
-                <p style="color: var(--text-secondary);">Hoy Lunes 16 de Marzo tendremos nuestra primera clase en vivo. El acceso estará habilitado en el botón de "Clase en Vivo" a partir de las 18:30. ¡No se la pierdan!</p>
+            <div class="notice-item" style="border-left: 5px solid var(--accent-color); background: #ffffff; padding: 2rem; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-bottom: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                    <span class="notice-date">Lunes 16 Marzo, 2026</span>
+                    <span style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color); font-size: 0.65rem; padding: 3px 10px; border-radius: 100px; font-weight: 800; text-transform: uppercase;">Prioritario</span>
+                </div>
+                <div class="notice-title" style="font-size: 1.4rem; color: var(--primary-color); margin-bottom: 0.8rem; letter-spacing: -0.5px;">¡Comienza el cuatrimestre! Hoy nos vemos en vivo</div>
+                <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6;">Hoy damos inicio formal a la cursada. El acceso a la videollamada de Google Meet se habilitará a las 18:30 desde el botón superior de <strong>Clase en Vivo</strong>. ¡Los esperamos para esta primera gran clase!</p>
             </div>
             <div class="notice-item">
                 <span class="notice-date">12 Marzo, 2026</span>

@@ -6,7 +6,7 @@
     <title>Foro Intercambio | Psicoanálisis</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="stylesheet" href="style.css?v=14">
     <style>
         body {
             background: transparent !important;
@@ -168,20 +168,26 @@
 
         .moderation-badge {
             margin-top: 4rem;
-            padding: 1.5rem 2rem;
+            padding: 1.5rem 2.5rem;
             background: rgba(13, 148, 136, 0.03);
             border-left: 4px solid #0d9488;
-            border-radius: 0 16px 16px 0;
-            max-width: fit-content;
+            border-radius: 0 24px 24px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
         }
 
         .moderation-badge p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #475569;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .moderation-badge strong {
+            color: #1e293b;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -224,8 +230,9 @@
         </div>
 
         <div class="moderation-badge">
+            <strong>💡 Orientación Docente:</strong>
             <p>
-                <strong>💡 Orientación Docente:</strong> Para realizar consultas es obligatorio citar el <strong>texto y párrafo</strong> de origen. Monitoreamos los hilos para sintetizar los debates y profundizar los conceptos clave.
+                Para realizar consultas es obligatorio citar el <strong>texto y párrafo</strong> de origen. Monitoreamos los hilos para sintetizar los debates y profundizar los conceptos clave.
             </p>
         </div>
     </div>
