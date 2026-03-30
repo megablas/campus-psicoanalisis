@@ -320,46 +320,46 @@
                     position: relative;
                 }
                 #timeline-container {
-                    max-height: 600px;
+                    max-height: 0;
                     overflow: hidden;
                     position: relative;
-                    transition: max-height 0.5s ease-in-out;
+                    opacity: 0;
+                    transform: translateY(-10px);
+                    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
                 }
                 #timeline-container.expanded {
                     max-height: 5000px;
-                }
-                #timeline-fade {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    height: 150px;
-                    background: linear-gradient(to bottom, rgba(250, 250, 250, 0), rgba(250, 250, 250, 1));
-                    pointer-events: none;
-                    z-index: 2;
-                    transition: opacity 0.3s ease;
-                }
-                #timeline-container.expanded + #timeline-fade {
-                    opacity: 0;
+                    opacity: 1;
+                    transform: translateY(0);
+                    margin-bottom: 2rem;
                 }
                 .btn-expand {
-                    display: block;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
                     width: 100%;
-                    text-align: center;
-                    background: white;
-                    border: 2px dashed #cbd5e1;
+                    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+                    border: 2px solid #e2e8f0;
                     color: var(--primary-color);
-                    padding: 1rem;
+                    padding: 1.2rem;
                     border-radius: 16px;
                     margin-top: 1rem;
-                    font-weight: 700;
+                    font-size: 1.05rem;
+                    font-weight: 800;
                     cursor: pointer;
-                    transition: all 0.3s;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
                 }
                 .btn-expand:hover {
                     border-color: var(--accent-color);
                     color: var(--accent-color);
                     background: #f0fdfa;
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 15px rgba(13, 148, 136, 0.1);
+                }
+                .btn-expand.active #timeline-icon {
+                    transform: rotate(180deg);
                 }
 
                 @media (max-width: 768px) {
@@ -662,14 +662,14 @@
                             <div class="tl-date"><div class="day" style="color: #4f46e5;">29</div><div class="month" style="color: #4f46e5;">Jun</div></div>
                             <div class="tl-content">
                                 <div class="tl-header">
-                                    <h3 class="tl-title" style="color: #4338ca;">Clase 16: Recuperatorio y Cierre</h3>
+                                    <h3 class="tl-title" style="color: #4338ca;">Clase 16: Recuperatorios (del primer y segundo parcial)</h3>
                                     <span class="tl-badge normal" style="background: #4f46e5; color: white;">FINAL</span>
                                 </div>
                                 <p class="tl-desc" style="color: #4f46e5;">Recuperación de instancias e integración conceptual general de la materia.</p>
                                 <div class="tl-meta">
                                     <span class="tag" style="background: white; color: #4338ca; border: none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Aula presencial</span>
                                     <div class="tl-biblio">
-                                        Toda la bibliografía de la asignatura.
+                                        Bibliografía acorde a los parciales que se recuperen.
                                     </div>
                                 </div>
                             </div>
@@ -677,25 +677,28 @@
 
                     </div>
                 </div>
-                <div id="timeline-fade"></div>
             </div>
             
             <button id="btn-toggle-timeline" class="btn-expand" onclick="toggleTimeline()">
-                Ver Cronograma Completo 👇
+                <svg id="timeline-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <span id="btn-toggle-text">Ver Cronograma Completo</span>
             </button>
 
             <script>
                 function toggleTimeline() {
                     const container = document.getElementById('timeline-container');
                     const btn = document.getElementById('btn-toggle-timeline');
+                    const textSpan = document.getElementById('btn-toggle-text');
                     
                     if (container.classList.contains('expanded')) {
                         container.classList.remove('expanded');
-                        btn.innerHTML = 'Ver Cronograma Completo 👇';
+                        btn.classList.remove('active');
+                        textSpan.innerText = 'Ver Cronograma Completo';
                         document.getElementById('cronograma').scrollIntoView({ behavior: 'smooth' });
                     } else {
                         container.classList.add('expanded');
-                        btn.innerHTML = 'Cerrar Cronograma ☝️';
+                        btn.classList.add('active');
+                        textSpan.innerText = 'Ocultar Cronograma';
                     }
                     
                     // Altera la altura, avisamos a Moodle:
