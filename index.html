@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aula virtual de Psicoanalisis UFLO con cronograma, unidades, avisos y accesos directos para la cursada.">
     <title>Psicoanálisis | Aula Virtual UFLO</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=14">
+    <link rel="stylesheet" href="style.css?v=15">
     <style>
         /* Card Header Navigation - INTEGRATED */
         .card-nav {
@@ -68,11 +69,11 @@
             <!-- Navegación Integrada -->
             <div class="card-nav-container" id="navContainer">
                 <nav class="card-nav">
-                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link active" onclick="toggleUnits(false)">Inicio</a>
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link" onclick="toggleUnits(false)">Consultas</a>
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link" onclick="toggleUnits(false)">Presentación</a>
-                    <a href="#unidades" class="nav-link" onclick="toggleUnits(true); return false;">Unidades</a>
-                    <a href="#cronograma" class="nav-link" onclick="toggleUnits(false)">Cronograma</a>
+                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link active" data-nav="inicio" onclick="toggleUnits(false)">Inicio</a>
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link" data-nav="consultas" onclick="toggleUnits(false)">Consultas</a>
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link" data-nav="presentacion" onclick="toggleUnits(false)">Presentación</a>
+                    <a href="#unidades" class="nav-link" data-nav="unidades" onclick="toggleUnits(true); return false;">Unidades</a>
+                    <a href="#cronograma" class="nav-link" data-nav="cronograma" onclick="setActiveNav('cronograma'); toggleUnits(false)">Cronograma</a>
                 </nav>
 
                 <!-- Sub Nav for Units -->
@@ -85,23 +86,38 @@
             </div>
 
             <script>
+                function setActiveNav(key) {
+                    const links = document.querySelectorAll('#navContainer .nav-link');
+                    links.forEach(link => {
+                        const isActive = link.dataset.nav === key;
+                        link.classList.toggle('active', isActive);
+
+                        if (isActive) {
+                            link.setAttribute('aria-current', 'page');
+                        } else {
+                            link.removeAttribute('aria-current');
+                        }
+                    });
+                }
+
                 function toggleUnits(show) {
                     const container = document.getElementById('navContainer');
-                    const links = container.querySelectorAll('.nav-link');
                     
                     if (show) {
                         container.classList.add('show-units');
-                        links.forEach(l => l.classList.remove('active'));
-                        container.querySelector('a[href="#unidades"]').classList.add('active');
+                        setActiveNav('unidades');
                         // Scroll to units section
                         document.getElementById('unidades').scrollIntoView({ behavior: 'smooth' });
                     } else {
                         container.classList.remove('show-units');
+                        const currentActive = container.querySelector('.nav-link.active');
+                        if (!currentActive || currentActive.dataset.nav === 'unidades') {
+                            setActiveNav('inicio');
+                        }
                     }
                 }
 
                 function scrollToTop() {
-                    console.log("Scrolling index to top...");
                     // 1. Internal Scroll
                     window.scrollTo(0, 0);
                     
@@ -169,6 +185,7 @@
                 }
 
                 window.addEventListener('load', () => {
+                    setActiveNav('inicio');
                     scrollToTop();
                     checkLiveStatus();
                     setTimeout(scrollToTop, 100);
@@ -179,60 +196,60 @@
                 });
             </script>
 
-            <div style="display: flex; flex-direction: column; gap: 2rem;">
-                <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
-                    <div style="flex: 2; min-width: 300px;">
-                        <h2 style="font-size: 2.2rem; margin-bottom: 0.5rem; letter-spacing: -1px;">Aula Virtual 2.0</h2>
-                        <p style="color: var(--text-secondary); font-size: 1.05rem;">
+            <div class="hero-layout">
+                <div class="hero-summary">
+                    <div class="hero-copy">
+                        <h2>Aula Virtual 2.0</h2>
+                        <p>
                             Bienvenida/o a la cursada 2026. Hemos rediseñado este entorno para que sea tu base de operaciones académica: modular, organizada e inmersiva.
                         </p>
                     </div>
-                    <div style="flex: 1; background: #f8fafc; padding: 1.5rem; border-radius: 24px; border: 1px solid var(--glass-border); text-align: center; min-width: 200px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
-                        <span style="font-size: 0.75rem; color: var(--accent-color); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Comisión</span>
-                        <div style="font-size: 1.3rem; font-weight: 800; color: var(--primary-color); margin-top: 0.3rem;">Turno Noche / 1</div>
+                    <div class="hero-commission">
+                        <span class="hero-commission-label">Comisión</span>
+                        <div class="hero-commission-value">Turno Noche / 1</div>
                     </div>
                 </div>
 
                 <!-- Resources Mini-Grid -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div class="resource-grid">
                     <!-- Meet (Promoted) -->
-                    <a href="https://meet.google.com/ppm-khgg-ohk" target="_blank" class="glass-card" style="padding: 1.2rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; border-color: var(--accent-color); background: #ffffff; border-radius: 24px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-                        <div style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color); width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <a href="https://meet.google.com/ppm-khgg-ohk" target="_blank" rel="noopener noreferrer" class="glass-card resource-card resource-card--primary">
+                        <div class="resource-icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
                         </div>
-                        <div style="flex-grow: 1;">
-                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px;">
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div style="font-weight: 800; color: var(--primary-color); font-size: 1rem; letter-spacing: -0.3px;">Clase en Vivo</div>
+                        <div class="resource-content">
+                            <div class="resource-title-row">
+                                <div class="resource-title-group">
+                                    <div class="resource-title">Clase en Vivo</div>
                                     <span id="today-tag" style="display: none; background: var(--accent-color); color: white; font-size: 0.65rem; padding: 2px 8px; border-radius: 6px; font-weight: 900; box-shadow: 0 4px 10px rgba(13, 148, 136, 0.2);">HOY!</span>
                                 </div>
                                 <div id="live-indicator" style="display: none; align-items: center; color: #ef4444; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">
                                     <span class="live-dot"></span> VIVO
                                 </div>
                             </div>
-                            <div style="font-size: 0.75rem; color: var(--text-secondary); opacity: 0.8;">Lunes 18:30 · Link Directo Meet</div>
+                            <div class="resource-subtitle">Lunes 18:30 · Link Directo Meet</div>
                         </div>
                     </a>
 
                     <!-- Foro de Presentación -->
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="glass-card" style="padding: 1rem; text-decoration: none; display: flex; align-items: center; gap: 0.8rem; border-color: var(--glass-border); background: #ffffff; border-radius: 20px;">
-                        <div style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color); width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="glass-card resource-card">
+                        <div class="resource-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         </div>
-                        <div>
-                            <div style="font-weight: 700; color: var(--primary-color); font-size: 0.9rem;">Foro Presentación</div>
-                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Comunidad virtual</div>
+                        <div class="resource-content">
+                            <div class="resource-title">Foro Presentación</div>
+                            <div class="resource-subtitle">Comunidad virtual</div>
                         </div>
                     </a>
 
                     <!-- Foro de Consultas -->
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="glass-card" style="padding: 1rem; text-decoration: none; display: flex; align-items: center; gap: 0.8rem; border-color: var(--glass-border); background: #ffffff; border-radius: 20px;">
-                        <div style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color); width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="glass-card resource-card">
+                        <div class="resource-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                         </div>
-                        <div style="flex-grow: 1;">
-                            <div style="font-weight: 700; color: var(--primary-color); font-size: 0.9rem;">Foro Consultas</div>
-                            <div style="font-size: 0.7rem; color: var(--text-secondary);">Dudas y ayuda</div>
+                        <div class="resource-content">
+                            <div class="resource-title">Foro Consultas</div>
+                            <div class="resource-subtitle">Dudas y ayuda</div>
                         </div>
                     </a>
                 </div>
@@ -241,12 +258,12 @@
 
         <!-- Units Grid -->
         <section id="unidades" class="fade-in" style="animation-delay: 0.4s;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
+            <div class="section-heading">
                 <div>
-                    <h2 style="font-size: 2.5rem;">Contenidos</h2>
-                    <p style="color: var(--text-secondary);">Explora el programa dividido por unidades temáticas.</p>
+                    <h2>Contenidos</h2>
+                    <p>Explora el programa dividido por unidades temáticas.</p>
                 </div>
-                <div style="font-size: 0.9rem; font-weight: 800; color: var(--accent-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 5px;">
+                <div class="section-heading-meta">
                     4 UNIDADES TOTALES
                 </div>
             </div>
@@ -284,12 +301,12 @@
 
         <!-- Cronograma Section -->
         <section id="cronograma" class="fade-in" style="animation-delay: 0.5s; margin-bottom: 5rem;">
-            <div id="btn-toggle-timeline" onclick="toggleTimeline()" class="glass-card" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding: 1.5rem 2.5rem; border-radius: 20px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: linear-gradient(135deg, white, #f8fafc); border: 1px solid var(--glass-border); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
-                <div>
-                    <h2 id="btn-toggle-title" style="font-size: 2rem; letter-spacing: -1px; margin-bottom: 0.3rem; color: var(--primary-color); transition: color 0.3s;">Cronograma Completo</h2>
-                    <p style="color: var(--text-secondary); margin: 0;">Explora todas las clases y textos del cuatrimestre.</p>
+            <div id="btn-toggle-timeline" onclick="toggleTimeline()" class="glass-card timeline-toggle" role="button" tabindex="0" aria-controls="timeline-container" aria-expanded="false">
+                <div class="timeline-toggle-copy">
+                    <h2 id="btn-toggle-title">Cronograma Completo</h2>
+                    <p>Explora todas las clases y textos del cuatrimestre.</p>
                 </div>
-                <div style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; flex-shrink: 0;">
+                <div class="timeline-toggle-icon">
                     <svg id="timeline-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
             </div>
@@ -675,11 +692,13 @@
                     if (container.classList.contains('expanded')) {
                         container.classList.remove('expanded');
                         btn.classList.remove('active');
+                        btn.setAttribute('aria-expanded', 'false');
                         titleEl.innerText = 'Cronograma Completo';
                         document.getElementById('cronograma').scrollIntoView({ behavior: 'smooth' });
                     } else {
                         container.classList.add('expanded');
                         btn.classList.add('active');
+                        btn.setAttribute('aria-expanded', 'true');
                         titleEl.innerText = 'Ocultar Cronograma';
                     }
                     
@@ -695,13 +714,13 @@
         <!-- New: Notice Board Section -->
         <section id="avisos" class="notice-board fade-in" style="animation-delay: 0.6s;">
             <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Tablero de Avisos</h2>
-            <div class="notice-item" style="border-left: 5px solid var(--accent-color); background: #ffffff; padding: 2rem; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-bottom: 2rem;">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+            <div class="notice-item featured-notice">
+                <div class="featured-notice-header">
                     <span class="notice-date">Lunes 30 Marzo, 2026</span>
-                    <span style="background: #ef4444; color: white; font-size: 0.65rem; padding: 4px 12px; border-radius: 100px; font-weight: 800; text-transform: uppercase; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3); letter-spacing: 1px;">🚨 IMPORTANTE</span>
+                    <span class="notice-badge">IMPORTANTE</span>
                 </div>
-                <div class="notice-title" style="font-size: 1.4rem; color: var(--primary-color); margin-bottom: 0.8rem; letter-spacing: -0.5px;">¡Hoy tenemos nuestra segunda clase sincrónica!</div>
-                <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6;">Avanzaremos sobre la temática de <strong>Defensa y conflicto psíquico</strong>. Recuerden que el acceso a la videollamada de Google Meet se habilitará a las 18:30 desde el botón superior de <strong>Clase en Vivo</strong>. Pueden descargar el Programa Completo más arriba en el Cronograma.</p>
+                <div class="notice-title featured-notice-title">¡Hoy tenemos nuestra segunda clase sincrónica!</div>
+                <p class="featured-notice-copy">Avanzaremos sobre la temática de <strong>Defensa y conflicto psíquico</strong>. Recuerden que el acceso a la videollamada de Google Meet se habilitará a las 18:30 desde el botón superior de <strong>Clase en Vivo</strong>. Pueden descargar el Programa Completo más arriba en el Cronograma.</p>
             </div>
             <div class="notice-item">
                 <span class="notice-date">12 Marzo, 2026</span>
@@ -711,22 +730,92 @@
         </section>
 
         
-        <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
+        <footer class="site-footer">
             <p>© 2026 Psicoanálisis | UFLO Universidad</p>
         </footer>
     </main>
 
     <script>
-        // Send height to parent for dynamic resizing
-        function sendHeight() {
-            const height = document.body.scrollHeight;
-            window.parent.postMessage({ height: height }, '*');
+        const EMBED_SOURCE = 'campus-psicoanalisis';
+        let lastSentHeight = 0;
+        let pendingHeightFrame = null;
+
+        function getDocumentHeight() {
+            const body = document.body;
+            const html = document.documentElement;
+
+            return Math.max(
+                body ? body.scrollHeight : 0,
+                body ? body.offsetHeight : 0,
+                html ? html.clientHeight : 0,
+                html ? html.scrollHeight : 0,
+                html ? html.offsetHeight : 0
+            );
         }
-        window.addEventListener('load', sendHeight);
-        window.addEventListener('resize', sendHeight);
-        
-        // Periodic check for dynamic content
-        setInterval(sendHeight, 1000);
+
+        function postEmbedMessage(payload) {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage(payload, '*');
+            }
+        }
+
+        function sendHeight(reason = 'update', force = false) {
+            if (pendingHeightFrame) {
+                cancelAnimationFrame(pendingHeightFrame);
+            }
+
+            pendingHeightFrame = requestAnimationFrame(() => {
+                const height = getDocumentHeight();
+                const changedEnough = Math.abs(height - lastSentHeight) > 4;
+
+                if (!force && !changedEnough) {
+                    return;
+                }
+
+                lastSentHeight = height;
+
+                postEmbedMessage({
+                    type: 'campusHeight',
+                    source: EMBED_SOURCE,
+                    height,
+                    reason,
+                    path: window.location.pathname
+                });
+
+                postEmbedMessage({ height: height });
+            });
+        }
+
+        function setupEmbedSync() {
+            sendHeight('init', true);
+
+            if ('ResizeObserver' in window) {
+                const resizeObserver = new ResizeObserver(() => sendHeight('resize-observer'));
+                resizeObserver.observe(document.body);
+            }
+
+            if ('MutationObserver' in window) {
+                const mutationObserver = new MutationObserver(() => sendHeight('mutation'));
+                mutationObserver.observe(document.body, {
+                    childList: true,
+                    subtree: true,
+                    attributes: true,
+                    characterData: true
+                });
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', setupEmbedSync);
+        window.addEventListener('load', () => sendHeight('load', true));
+        window.addEventListener('resize', () => sendHeight('window-resize', true));
+        window.addEventListener('pageshow', () => sendHeight('pageshow', true));
+
+        document.getElementById('btn-toggle-timeline').addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleTimeline();
+            }
+        });
     </script>
 </body>
 </html>
