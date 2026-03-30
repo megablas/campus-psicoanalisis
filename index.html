@@ -72,6 +72,7 @@
                     <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link" onclick="toggleUnits(false)">Consultas</a>
                     <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link" onclick="toggleUnits(false)">Presentación</a>
                     <a href="#unidades" class="nav-link" onclick="toggleUnits(true); return false;">Unidades</a>
+                    <a href="#cronograma" class="nav-link" onclick="toggleUnits(false)">Cronograma</a>
                 </nav>
 
                 <!-- Sub Nav for Units -->
@@ -281,16 +282,278 @@
             </div>
         </section>
 
+        <!-- Cronograma Section -->
+        <section id="cronograma" class="fade-in" style="animation-delay: 0.5s; margin-bottom: 5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem;">
+                <div>
+                    <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 0.5rem; color: var(--primary-color);">Cronograma y Programa</h2>
+                    <p style="color: var(--text-secondary);">Planificación completa del cuatrimestre y descarga del programa.</p>
+                </div>
+                <a href="Textos/Programa de Psicoanalisis 2026.docx" download class="btn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-color); color: white; padding: 0.8rem 1.5rem; border-radius: 100px; font-weight: 700; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(13, 148, 136, 0.25);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Descargar Programa
+                </a>
+            </div>
+
+            <style>
+                .timeline { position: relative; padding-left: 2.5rem; margin-top: 2rem; }
+                .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: rgba(0,0,0,0.05); border-radius: 4px; }
+                .tl-item { position: relative; margin-bottom: 1.5rem; background: white; border: 1px solid var(--glass-border); border-radius: 20px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; gap: 1.5rem; transition: transform 0.2s; }
+                .tl-item:hover { transform: translateX(5px); }
+                .tl-dot { position: absolute; left: -3.2rem; top: 2.2rem; width: 20px; height: 20px; border-radius: 50%; background: white; border: 4px solid var(--accent-color); box-shadow: 0 0 0 4px white; z-index: 1; }
+                .tl-date { min-width: 60px; text-align: center; }
+                .tl-date .day { font-size: 1.8rem; font-weight: 800; color: var(--primary-color); line-height: 1; }
+                .tl-date .month { font-size: 0.8rem; text-transform: uppercase; font-weight: 800; color: var(--accent-color); margin-top: 5px; }
+                .tl-content { flex-grow: 1; }
+                .tl-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+                .tl-badge { font-size: 0.7rem; padding: 4px 12px; border-radius: 100px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+                .tl-badge.normal { background: rgba(13, 148, 136, 0.1); color: var(--accent-color); }
+                .tl-badge.holiday { background: #f1f5f9; color: #64748b; }
+                .tl-badge.exam { background: #fee2e2; color: #ef4444; }
+                .tl-title { font-size: 1.25rem; font-weight: 800; color: var(--primary-color); margin: 0; letter-spacing: -0.5px; }
+                .tl-desc { color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.3rem; line-height: 1.5; font-weight: 500;}
+                .tl-meta { margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.8rem; color: #64748b; font-weight: 600; }
+                .tl-meta span { display: inline-flex; align-items: center; gap: 6px; background: #f8fafc; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.03); }
+                
+                @media (max-width: 768px) {
+                    .timeline { padding-left: 1.5rem; }
+                    .tl-dot { left: -2rem; width: 14px; height: 14px; top: 1.8rem; }
+                    .tl-item { flex-direction: column; gap: 1rem; padding: 1.2rem; }
+                    .tl-date { text-align: left; display: flex; gap: 10px; align-items: baseline; }
+                    .tl-date .month { margin-top: 0; }
+                }
+            </style>
+
+            <div class="timeline">
+                <!-- Clase 1 -->
+                <div class="tl-item">
+                    <div class="tl-dot" style="border-color: #94a3b8; background: #94a3b8;"></div>
+                    <div class="tl-date"><div class="day" style="color:#94a3b8;">16</div><div class="month" style="color:#94a3b8;">Mar</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title" style="color: #64748b;">Clase 1: Surgimiento del inconsciente</h3>
+                            <span class="tl-badge normal" style="background: #f1f5f9; color: #94a3b8;">Unidad 1</span>
+                        </div>
+                        <p class="tl-desc" style="color: #94a3b8;">Presentación de la materia. Contexto histórico. La histeria. El descubrimiento del inconsciente.</p>
+                        <div class="tl-meta"><span style="color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span> <span style="color:#94a3b8;">📚 Freud (1910), Tallaferro</span></div>
+                    </div>
+                </div>
+
+                <!-- Feriado -->
+                <div class="tl-item" style="background: #f8fafc;">
+                    <div class="tl-dot" style="border-color: #cbd5e1; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day" style="color: #94a3b8;">23</div><div class="month" style="color: #94a3b8;">Mar</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title" style="color: #64748b;">Feriado: Día no laborable</h3>
+                            <span class="tl-badge holiday">Puente 24 Mar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clase 2 (AHORA) -->
+                <div class="tl-item" style="border-color: var(--accent-color); box-shadow: 0 10px 40px rgba(13,148,136,0.15);">
+                    <div class="tl-dot" style="background: var(--accent-color);"></div>
+                    <div class="tl-date"><div class="day">30</div><div class="month">Mar</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Clase 2: Defensa y conflicto psíquico</h3>
+                            <span class="tl-badge normal" style="background: var(--accent-color); color: white; box-shadow: 0 4px 10px rgba(13,148,136,0.3);">ESTA SEMANA</span>
+                        </div>
+                        <p class="tl-desc">La defensa como operación fundante. Síntoma como formación de compromiso.</p>
+                        <div class="tl-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span> <span>📚 Freud (1894, 1895), Tallaferro</span></div>
+                    </div>
+                </div>
+
+                <!-- Clase 3 -->
+                <div class="tl-item">
+                    <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day">06</div><div class="month">Abr</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Clase 3: Interpretación de los sueños</h3>
+                            <span class="tl-badge normal">Unidad 2</span>
+                        </div>
+                        <p class="tl-desc">El sueño como vía regia al inconsciente. Deseo inconsciente. Interpretación.</p>
+                        <div class="tl-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Clase Presencial</span> <span>📚 Freud (1900, 1901)</span></div>
+                    </div>
+                </div>
+
+                <!-- Clase 4 -->
+                <div class="tl-item">
+                    <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day">13</div><div class="month">Abr</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Clase 4: La primera tópica</h3>
+                            <span class="tl-badge normal">Unidad 2</span>
+                        </div>
+                        <p class="tl-desc">Actos fallidos. La represión como mecanismo de defensa. Primera tópica.</p>
+                        <div class="tl-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span> <span>📚 Freud (1901, 1915, 1916-17)</span></div>
+                    </div>
+                </div>
+
+                <!-- Parcial 1 -->
+                <div class="tl-item" style="border: 2px solid #fecaca; background: #fffbfa;">
+                    <div class="tl-dot" style="border-color: #ef4444; background: #fee2e2;"></div>
+                    <div class="tl-date"><div class="day" style="color: #ef4444;">20</div><div class="month" style="color: #ef4444;">Abr</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title" style="color: #b91c1c;">Primer Parcial Evaluador</h3>
+                            <span class="tl-badge exam">📝 Examen Presencial</span>
+                        </div>
+                        <p class="tl-desc">Evaluación de integración de contenidos correspondientes a las Unidades 1 y 2 de la materia.</p>
+                    </div>
+                </div>
+
+                <!-- Clase 6 -->
+                <div class="tl-item">
+                    <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day">27</div><div class="month">Abr</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Clase 6: Sexualidad infantil</h3>
+                            <span class="tl-badge normal">Unidad 3</span>
+                        </div>
+                        <p class="tl-desc">La sexualidad en psicoanálisis. Libido. Diferencia entre instinto y pulsión.</p>
+                        <div class="tl-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span> <span>📚 Freud (1905, 1916-17)</span></div>
+                    </div>
+                </div>
+
+                <!-- Clase 7 -->
+                <div class="tl-item">
+                    <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day">04</div><div class="month">May</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Clase 7: La pulsión</h3>
+                            <span class="tl-badge normal">Unidad 3</span>
+                        </div>
+                        <p class="tl-desc">Concepto de pulsión. Destinos de pulsión. Fijación y regresión.</p>
+                        <div class="tl-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Clase Presencial</span> <span>📚 Freud (1905, 1915)</span></div>
+                    </div>
+                </div>
+
+                <!-- Clase 8 -->
+                <div class="tl-item">
+                    <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day">11</div><div class="month">May</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Clase 8: Edipo y Castración</h3>
+                            <span class="tl-badge normal">Unidad 3</span>
+                        </div>
+                        <p class="tl-desc">Organización genital infantil. Complejo de Edipo. Angustia de castración.</p>
+                        <div class="tl-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span> <span>📚 Freud (1909, 1923, 1924)</span></div>
+                    </div>
+                </div>
+
+                <!-- Clase 9 -->
+                <div class="tl-item">
+                    <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day">18</div><div class="month">May</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Clase 9: La clínica analítica</h3>
+                            <span class="tl-badge normal">Unidad 4</span>
+                        </div>
+                        <p class="tl-desc">La transferencia. La repetición en análisis. Resistencia.</p>
+                        <div class="tl-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Clase Presencial</span> <span>📚 Freud (1905, 1912, 1914)</span></div>
+                    </div>
+                </div>
+
+                <!-- Feriado -->
+                <div class="tl-item" style="background: #f8fafc;">
+                    <div class="tl-dot" style="border-color: #cbd5e1; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day" style="color: #94a3b8;">25</div><div class="month" style="color: #94a3b8;">May</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title" style="color: #64748b;">Feriado: Revolución de Mayo</h3>
+                            <span class="tl-badge holiday">Sin clase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parcial 2 -->
+                <div class="tl-item" style="border: 2px solid #fecaca; background: #fffbfa;">
+                    <div class="tl-dot" style="border-color: #ef4444; background: #fee2e2;"></div>
+                    <div class="tl-date"><div class="day" style="color: #ef4444;">01</div><div class="month" style="color: #ef4444;">Jun</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title" style="color: #b91c1c;">Segundo Parcial Evaluador</h3>
+                            <span class="tl-badge exam">📝 Examen Presencial</span>
+                        </div>
+                        <p class="tl-desc">Evaluación de integración de contenidos correspondientes a las Unidades 3 y 4 de la materia.</p>
+                    </div>
+                </div>
+
+                <!-- Clase 11 -->
+                <div class="tl-item">
+                    <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day">08</div><div class="month">Jun</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Clase 11: La segunda tópica</h3>
+                            <span class="tl-badge normal">Unidad 4</span>
+                        </div>
+                        <p class="tl-desc">Problema de la repetición. Límites del principio de placer. Pulsión de muerte. Segunda tópica.</p>
+                        <div class="tl-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span> <span>📚 Freud (1920, 1923)</span></div>
+                    </div>
+                </div>
+
+                <!-- Feriado -->
+                <div class="tl-item" style="background: #f8fafc;">
+                    <div class="tl-dot" style="border-color: #cbd5e1; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day" style="color: #94a3b8;">15</div><div class="month" style="color: #94a3b8;">Jun</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title" style="color: #64748b;">Feriado: Paso a la Inmortalidad</h3>
+                            <span class="tl-badge holiday">Sin clase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clase 12 -->
+                <div class="tl-item">
+                    <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
+                    <div class="tl-date"><div class="day">22</div><div class="month">Jun</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title">Clase 12: Psicoanálisis y cultura</h3>
+                            <span class="tl-badge normal">Unidad 4</span>
+                        </div>
+                        <p class="tl-desc">Relación entre sujeto y cultura. El malestar como estructural. Escuela inglesa y francesa.</p>
+                        <div class="tl-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span> <span>📚 Freud (1930), Lacan, Segal</span></div>
+                    </div>
+                </div>
+
+                <!-- Clase 13 -->
+                <div class="tl-item" style="border-color: #6366f1; background: #eef2ff;">
+                    <div class="tl-dot" style="border-color: #6366f1; background: #c7d2fe;"></div>
+                    <div class="tl-date"><div class="day" style="color: #4f46e5;">29</div><div class="month" style="color: #4f46e5;">Jun</div></div>
+                    <div class="tl-content">
+                        <div class="tl-header">
+                            <h3 class="tl-title" style="color: #4338ca;">Clase 13: Recuperatorio y Cierre</h3>
+                            <span class="tl-badge normal" style="background: #4f46e5; color: white;">FINAL</span>
+                        </div>
+                        <p class="tl-desc" style="color: #4f46e5;">Recuperación de instancias e integración conceptual general de la materia.</p>
+                        <div class="tl-meta"><span style="background: white; color: #4338ca;">✨ Cierre de cursada</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <!-- New: Notice Board Section -->
         <section id="avisos" class="notice-board fade-in" style="animation-delay: 0.6s;">
             <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Tablero de Avisos</h2>
             <div class="notice-item" style="border-left: 5px solid var(--accent-color); background: #ffffff; padding: 2rem; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-bottom: 2rem;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                    <span class="notice-date">Lunes 16 Marzo, 2026</span>
-                    <span style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color); font-size: 0.65rem; padding: 3px 10px; border-radius: 100px; font-weight: 800; text-transform: uppercase;">Prioritario</span>
+                    <span class="notice-date">Lunes 30 Marzo, 2026</span>
+                    <span style="background: #ef4444; color: white; font-size: 0.65rem; padding: 4px 12px; border-radius: 100px; font-weight: 800; text-transform: uppercase; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3); letter-spacing: 1px;">🚨 IMPORTANTE</span>
                 </div>
-                <div class="notice-title" style="font-size: 1.4rem; color: var(--primary-color); margin-bottom: 0.8rem; letter-spacing: -0.5px;">¡Comienza el cuatrimestre! Hoy nos vemos en vivo</div>
-                <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6;">Hoy damos inicio formal a la cursada. El acceso a la videollamada de Google Meet se habilitará a las 18:30 desde el botón superior de <strong>Clase en Vivo</strong>. ¡Los esperamos para esta primera gran clase!</p>
+                <div class="notice-title" style="font-size: 1.4rem; color: var(--primary-color); margin-bottom: 0.8rem; letter-spacing: -0.5px;">¡Hoy tenemos nuestra segunda clase sincrónica!</div>
+                <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6;">Avanzaremos sobre la temática de <strong>Defensa y conflicto psíquico</strong>. Recuerden que el acceso a la videollamada de Google Meet se habilitará a las 18:30 desde el botón superior de <strong>Clase en Vivo</strong>. Pueden descargar el Programa Completo más arriba en el Cronograma.</p>
             </div>
             <div class="notice-item">
                 <span class="notice-date">12 Marzo, 2026</span>
