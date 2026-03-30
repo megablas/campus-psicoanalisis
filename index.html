@@ -284,15 +284,14 @@
 
         <!-- Cronograma Section -->
         <section id="cronograma" class="fade-in" style="animation-delay: 0.5s; margin-bottom: 5rem;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem;">
+            <div id="btn-toggle-timeline" onclick="toggleTimeline()" class="glass-card" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding: 1.5rem 2.5rem; border-radius: 20px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: linear-gradient(135deg, white, #f8fafc); border: 1px solid var(--glass-border); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
                 <div>
-                    <h2 style="font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 0.5rem; color: var(--primary-color);">Cronograma y Programa</h2>
-                    <p style="color: var(--text-secondary);">Planificación completa del cuatrimestre y textos bibliográficos.</p>
+                    <h2 id="btn-toggle-title" style="font-size: 2rem; letter-spacing: -1px; margin-bottom: 0.3rem; color: var(--primary-color); transition: color 0.3s;">Cronograma Completo</h2>
+                    <p style="color: var(--text-secondary); margin: 0;">Explora todas las clases y textos del cuatrimestre.</p>
                 </div>
-                <a href="javascript:void(0);" onclick="alert('El programa definitivo estará disponible para su descarga en breve.')" class="btn" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-color); opacity: 0.8; color: white; padding: 0.8rem 1.5rem; border-radius: 100px; font-weight: 700; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(13, 148, 136, 0.25);">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    Programa (Pronto)
-                </a>
+                <div style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; flex-shrink: 0;">
+                    <svg id="timeline-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
             </div>
 
             <style>
@@ -331,34 +330,20 @@
                     max-height: 5000px;
                     opacity: 1;
                     transform: translateY(0);
-                    margin-bottom: 2rem;
                 }
-                .btn-expand {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    width: 100%;
-                    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-                    border: 2px solid #e2e8f0;
-                    color: var(--primary-color);
-                    padding: 1.2rem;
-                    border-radius: 16px;
-                    margin-top: 1rem;
-                    font-size: 1.05rem;
-                    font-weight: 800;
-                    cursor: pointer;
+                #btn-toggle-timeline {
                     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
                 }
-                .btn-expand:hover {
-                    border-color: var(--accent-color);
-                    color: var(--accent-color);
-                    background: #f0fdfa;
+                #btn-toggle-timeline:hover {
                     transform: translateY(-2px);
-                    box-shadow: 0 8px 15px rgba(13, 148, 136, 0.1);
+                    box-shadow: 0 8px 25px rgba(13, 148, 136, 0.15) !important;
+                    border-color: var(--accent-color) !important;
                 }
-                .btn-expand.active #timeline-icon {
+                #btn-toggle-timeline.active {
+                    background: #f0fdfa !important;
+                    border-color: var(--accent-color) !important;
+                }
+                #btn-toggle-timeline.active #timeline-icon {
                     transform: rotate(180deg);
                 }
 
@@ -679,26 +664,23 @@
                 </div>
             </div>
             
-            <button id="btn-toggle-timeline" class="btn-expand" onclick="toggleTimeline()">
-                <svg id="timeline-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                <span id="btn-toggle-text">Ver Cronograma Completo</span>
-            </button>
-
+            </div>
+            
             <script>
                 function toggleTimeline() {
                     const container = document.getElementById('timeline-container');
                     const btn = document.getElementById('btn-toggle-timeline');
-                    const textSpan = document.getElementById('btn-toggle-text');
+                    const titleEl = document.getElementById('btn-toggle-title');
                     
                     if (container.classList.contains('expanded')) {
                         container.classList.remove('expanded');
                         btn.classList.remove('active');
-                        textSpan.innerText = 'Ver Cronograma Completo';
+                        titleEl.innerText = 'Cronograma Completo';
                         document.getElementById('cronograma').scrollIntoView({ behavior: 'smooth' });
                     } else {
                         container.classList.add('expanded');
                         btn.classList.add('active');
-                        textSpan.innerText = 'Ocultar Cronograma';
+                        titleEl.innerText = 'Ocultar Cronograma';
                     }
                     
                     // Altera la altura, avisamos a Moodle:
