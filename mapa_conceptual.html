@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual Vivo | Psicoanálisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=16">
+    <style>
+        .map-page { --map-rose: #fdf2f8; --map-amber: #fffbeb; --map-sky: #eff6ff; --map-stone: #f8fafc; }
+        .map-hero { margin-top: 1rem; padding: 4rem 2rem 3rem; background: radial-gradient(circle at top left, rgba(13, 148, 136, 0.12), transparent 28%), radial-gradient(circle at bottom right, rgba(30, 41, 59, 0.08), transparent 34%), white; border-radius: 42px; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); text-align: center; }
+        .map-hero p { max-width: 760px; margin: 1rem auto 0; color: var(--text-secondary); line-height: 1.8; }
+        .map-hero-actions { display: flex; justify-content: center; gap: 0.9rem; flex-wrap: wrap; margin-top: 2rem; }
+        .map-summary { margin-top: 2.2rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .map-summary-card { background: rgba(248, 250, 252, 0.9); border: 1px solid rgba(15, 23, 42, 0.06); border-radius: 24px; padding: 1.2rem 1.3rem; text-align: left; }
+        .map-summary-card h3 { font-size: 1rem; margin-bottom: 0.45rem; }
+        .map-summary-card p { margin: 0; font-size: 0.92rem; line-height: 1.65; }
+        .map-board { margin-top: 4rem; background: white; border-radius: 36px; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); padding: 2.25rem; }
+        .map-board-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 2rem; }
+        .map-board-header p { color: var(--text-secondary); max-width: 680px; line-height: 1.75; }
+        .map-board-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr) minmax(0, 1fr); gap: 1.2rem; align-items: stretch; }
+        .map-column { display: grid; gap: 1rem; }
+        .map-cluster { border-radius: 28px; padding: 1.5rem 1.4rem; border: 1px solid rgba(15, 23, 42, 0.05); box-shadow: 0 12px 26px rgba(15, 23, 42, 0.04); }
+        .map-cluster h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
+        .map-cluster p { color: var(--text-secondary); font-size: 0.94rem; line-height: 1.68; }
+        .map-cluster.origin { background: linear-gradient(180deg, #fffdf8, var(--map-amber)); }
+        .map-cluster.conflict { background: linear-gradient(180deg, #fff8fb, var(--map-rose)); }
+        .map-cluster.normal { background: linear-gradient(180deg, #f9fcff, var(--map-sky)); }
+        .map-cluster.model { background: linear-gradient(180deg, #fbfcfd, var(--map-stone)); }
+        .map-rail { position: relative; display: grid; gap: 0.9rem; align-content: start; padding: 1rem 0.5rem; }
+        .map-rail::before { content: ""; position: absolute; top: 0.8rem; bottom: 0.8rem; left: 50%; width: 2px; transform: translateX(-50%); background: linear-gradient(180deg, rgba(13, 148, 136, 0.15), rgba(13, 148, 136, 0.45), rgba(30, 41, 59, 0.2)); }
+        .map-node { position: relative; z-index: 1; display: block; text-decoration: none; color: inherit; background: white; border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 999px; padding: 0.95rem 1.2rem; text-align: center; font-weight: 800; letter-spacing: -0.02em; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06); transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+        .map-node:hover { transform: translateY(-2px) scale(1.01); border-color: rgba(13, 148, 136, 0.45); box-shadow: 0 16px 30px rgba(13, 148, 136, 0.12); }
+        .map-node small { display: block; margin-top: 0.28rem; font-size: 0.72rem; color: var(--text-secondary); font-weight: 700; letter-spacing: 0.04rem; text-transform: uppercase; }
+        .map-details { margin-top: 4rem; display: grid; gap: 1.3rem; }
+        .map-detail { background: white; border-radius: 30px; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); padding: 1.8rem 1.9rem; scroll-margin-top: 1.5rem; }
+        .map-detail-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+        .map-detail h2 { font-size: 1.7rem; letter-spacing: -0.04em; }
+        .map-tag { display: inline-flex; align-items: center; padding: 0.45rem 0.8rem; border-radius: 999px; background: rgba(13, 148, 136, 0.08); color: var(--accent-color); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08rem; white-space: nowrap; }
+        .map-detail-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr); gap: 1.1rem; }
+        .map-detail p { color: var(--text-secondary); line-height: 1.78; }
+        .map-side { background: #f8fafc; border-radius: 24px; border: 1px solid #e2e8f0; padding: 1.2rem 1.3rem; }
+        .map-side h3 { font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.08rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+        .map-side ul { margin: 0; padding-left: 1.1rem; color: var(--secondary-color); }
+        .map-side li + li { margin-top: 0.55rem; }
+        .map-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+        @media (max-width: 900px) {
+            .map-summary, .map-board-grid, .map-detail-grid { grid-template-columns: 1fr; }
+            .map-board-header, .map-detail-header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body class="map-page">
+    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+
+    <main class="container">
+        <section class="map-hero fade-in">
+            <a href="index.html" class="back-link" style="justify-content: center; margin-bottom: 2rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Volver al inicio del campus
+            </a>
+            <span class="class-badge">Herramienta de estudio</span>
+            <h1 style="font-size: 3.4rem; margin-top: 1rem; line-height: 1; letter-spacing: -0.06em;">Mapa Conceptual Vivo</h1>
+            <p>Una lectura transversal del curso para seguir cómo un problema empuja al siguiente. No reemplaza las clases: te ayuda a ver la arquitectura general del recorrido.</p>
+            <div class="map-hero-actions">
+                <a href="#red-conceptual" class="class-nav-button primary">Ver red conceptual</a>
+                <a href="#detalle-conceptos" class="class-nav-button secondary">Ir a definiciones</a>
+            </div>
+            <div class="map-summary">
+                <article class="map-summary-card"><h3>Cómo usarlo</h3><p>Entrá por la red si querés una visión global, o bajá al detalle para estudiar cada concepto con sus vínculos y clases asociadas.</p></article>
+                <article class="map-summary-card"><h3>Qué organiza</h3><p>Desde la histeria y el trauma hasta el sueño, la represión y la Primera Tópica, siguiendo el pasaje de la clínica a la metapsicología.</p></article>
+                <article class="map-summary-card"><h3>Para qué sirve</h3><p>Ayuda a preparar clases, repasar para parciales y no perder de vista la continuidad conceptual del curso.</p></article>
+            </div>
+        </section>
+
+        <section id="red-conceptual" class="map-board fade-in" style="animation-delay: 0.15s;">
+            <header class="map-board-header">
+                <div>
+                    <h2 style="font-size: 2.35rem; letter-spacing: -0.05em;">Red Conceptual</h2>
+                    <p>La materia puede leerse como una cadena de problemas: la histeria abre una crisis, el trauma y la defensa formalizan un conflicto, y el sueño obliga a pensar una teoría del aparato psíquico.</p>
+                </div>
+                <span class="section-heading-meta">Lectura transversal</span>
+            </header>
+            <div class="map-board-grid">
+                <div class="map-column">
+                    <article class="map-cluster origin"><h3>Origen clínico</h3><p>La histeria obliga a admitir un sufrimiento sin lesión orgánica visible. Ahí empieza la fisura del modelo médico clásico.</p></article>
+                    <article class="map-cluster conflict"><h3>Conflicto y síntoma</h3><p>Trauma, abreacción y defensa permiten explicar por qué una representación inconciliable retorna como síntoma sustitutivo.</p></article>
+                </div>
+                <div class="map-rail">
+                    <a href="#concepto-histeria" class="map-node">Histeria<small>Unidad 1</small></a>
+                    <a href="#concepto-trauma" class="map-node">Trauma psíquico<small>Clase 3</small></a>
+                    <a href="#concepto-abreaccion" class="map-node">Abreacción<small>Clase 3</small></a>
+                    <a href="#concepto-defensa" class="map-node">Defensa<small>Clase 3</small></a>
+                    <a href="#concepto-represion" class="map-node">Represión<small>Unidad 2</small></a>
+                    <a href="#concepto-sueno" class="map-node">Sueño<small>Clase 4</small></a>
+                    <a href="#concepto-formaciones" class="map-node">Formaciones del inconsciente<small>Unidad 2</small></a>
+                    <a href="#concepto-topica" class="map-node">Primera Tópica<small>Unidad 2</small></a>
+                </div>
+                <div class="map-column">
+                    <article class="map-cluster normal"><h3>Vida psíquica normal</h3><p>El sueño y los actos fallidos muestran que el inconsciente no se limita a la patología: insiste también en la vida psíquica ordinaria.</p></article>
+                    <article class="map-cluster model"><h3>Modelo del aparato psíquico</h3><p>La cadena culmina en la necesidad de formalizar sistemas, censura, proceso primario y retorno de lo reprimido.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section id="detalle-conceptos" class="map-details fade-in" style="animation-delay: 0.25s;">
+            <article id="concepto-histeria" class="map-detail">
+                <div class="map-detail-header"><div><h2>Histeria</h2><p>El problema inaugural del curso: un sufrimiento real que el modelo anatomoclínico no consigue explicar porque no encuentra lesión visible.</p></div><span class="map-tag">Entrada clínica</span></div>
+                <div class="map-detail-grid"><div><p>La histeria es el punto donde la medicina del siglo XIX tropieza con un límite decisivo. La ausencia de lesión orgánica visible lleva primero a la sospecha de simulación y, luego, a la necesidad de escuchar de otra manera el síntoma. En el recorrido del campus, la histeria no aparece como curiosidad histórica, sino como la puerta por la que Freud deberá desplazarse de una medicina de órganos hacia una clínica del sentido.</p><div class="map-links"><a href="units/unit1.html" class="btn">Ver Unidad 1</a><a href="units/unit1_clase1.html" class="btn" style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color);">Ir a Clase 1</a></div></div><aside class="map-side"><h3>Se articula con</h3><ul><li>Charcot, que le devuelve dignidad científica.</li><li>Trauma psíquico, porque el síntoma ya no se lee como lesión sino como efecto.</li><li>Defensa, cuando Freud formaliza la lógica del conflicto.</li></ul></aside></div>
+            </article>
+
+            <article id="concepto-trauma" class="map-detail">
+                <div class="map-detail-header"><div><h2>Trauma psíquico</h2><p>No es sólo un hecho impactante, sino una vivencia que suscita afectos penosos y no logra ser tramitada por el aparato psíquico.</p></div><span class="map-tag">Clase 3</span></div>
+                <div class="map-detail-grid"><div><p>En la clase 3, el trauma psíquico permite pasar del enigma clínico a una lógica económica y dinámica del síntoma. Lo traumático no depende únicamente de la magnitud objetiva del acontecimiento, sino del modo en que la excitación queda fijada sin una vía adecuada de elaboración. A partir de ahí, el síntoma puede leerse como resto de una escena no tramitada.</p><div class="map-links"><a href="units/unit1_clase3.html" class="btn">Ir a Clase 3</a></div></div><aside class="map-side"><h3>Se articula con</h3><ul><li>Abreacción, porque el trauma se vuelve patógeno cuando no puede descargarse.</li><li>Defensa, porque Freud luego interroga por qué ese recuerdo queda bloqueado.</li></ul></aside></div>
+            </article>
+
+            <article id="concepto-abreaccion" class="map-detail">
+                <div class="map-detail-header"><div><h2>Abreacción</h2><p>La posibilidad de tramitar afectivamente una excitación para que el recuerdo pierda su intensidad patógena.</p></div><span class="map-tag">Método catártico</span></div>
+                <div class="map-detail-grid"><div><p>La abreacción ocupa un lugar bisagra en el campus: aparece ya insinuada en el caso Anna O. y se formaliza con más fuerza en la clase 3. Permite entender por qué la palabra, bajo ciertas condiciones clínicas, puede operar sobre el síntoma. Pero también marca un límite: cuando la técnica catártica se vuelve insuficiente, Freud tiene que dar un paso más y pensar la defensa.</p><div class="map-links"><a href="units/unit1_clase1.html" class="btn">Clase 1</a><a href="units/unit1_clase3.html" class="btn" style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color);">Clase 3</a></div></div><aside class="map-side"><h3>Se articula con</h3><ul><li>Trauma psíquico y afecto estrangulado.</li><li>Breuer y el método catártico.</li><li>El pasaje hacia la teoría de la defensa.</li></ul></aside></div>
+            </article>
+
+            <article id="concepto-defensa" class="map-detail">
+                <div class="map-detail-header"><div><h2>Defensa</h2><p>El primer gran salto de Freud: la escisión de la conciencia ya no se explica por déficit, sino por una operación del Yo frente a una representación inconciliable.</p></div><span class="map-tag">Núcleo freudiano</span></div>
+                <div class="map-detail-grid"><div><p>La defensa organiza el verdadero umbral entre la prehistoria del psicoanálisis y la originalidad freudiana. En el campus, este concepto es central porque permite releer el síntoma como formación de compromiso y entender por qué una representación se divorcia de su afecto. Además, prepara la entrada a Unidad 2: la lógica de la defensa no desaparece al estudiar el sueño, sino que continúa allí bajo otra forma.</p><div class="map-links"><a href="units/unit1_clase3.html" class="btn">Ir a Clase 3</a><a href="units/unit2_clase4.html" class="btn" style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color);">Ver continuidad en Clase 4</a></div></div><aside class="map-side"><h3>Se articula con</h3><ul><li>Represión, como destino más formalizado del conflicto.</li><li>Sueño, porque el trabajo onírico desfigura lo displacentero.</li><li>Retorno de lo reprimido, que aparecerá con más fuerza en Unidad 2.</li></ul></aside></div>
+            </article>
+
+            <article id="concepto-represion" class="map-detail">
+                <div class="map-detail-header"><div><h2>Represión</h2><p>La operación que aparta ciertas representaciones de la conciencia, sin anular su eficacia dentro del aparato psíquico.</p></div><span class="map-tag">Puente entre unidades</span></div>
+                <div class="map-detail-grid"><div><p>En la arquitectura del curso, la represión toma el lugar de bisagra entre la clínica de la neurosis y la expansión del psicoanálisis hacia la vida psíquica normal. La energía de lo reprimido no desaparece: exige tramitación y retorna bajo otras formas. Por eso la Unidad 2 puede pensarse como una ampliación del problema abierto en la Unidad 1.</p><div class="map-links"><a href="units/unit1_clase3.html" class="btn">Clase 3</a><a href="units/unit2.html" class="btn" style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color);">Ver Unidad 2</a></div></div><aside class="map-side"><h3>Se articula con</h3><ul><li>Defensa y conflicto psíquico.</li><li>Sueño y actos fallidos como vías de retorno.</li><li>Primera Tópica como modelo para pensar sus efectos.</li></ul></aside></div>
+            </article>
+
+            <article id="concepto-sueno" class="map-detail">
+                <div class="map-detail-header"><div><h2>Sueño</h2><p>La vía regia hacia el inconsciente y el momento en que el psicoanálisis deja de limitarse a la patología.</p></div><span class="map-tag">Clase 4</span></div>
+                <div class="map-detail-grid"><div><p>El sueño es el gran viraje de la Unidad 2. Deja de ser resto biológico o ruido nocturno para adquirir estatuto de formación interpretable. En el campus, el sueño condensa dos problemas: por un lado, el deseo inconsciente encuentra allí una realización deformada; por otro, el trabajo del sueño continúa la lógica de la defensa, transformando aquello que resultaría displacentero para permitir su expresión desfigurada.</p><div class="map-links"><a href="units/unit2_clase4.html" class="btn">Ir a Clase 4</a></div></div><aside class="map-side"><h3>Se articula con</h3><ul><li>Formaciones del inconsciente.</li><li>Represión y retorno de lo reprimido.</li><li>Primera Tópica, que se vuelve necesaria para explicarlo.</li></ul></aside></div>
+            </article>
+
+            <article id="concepto-formaciones" class="map-detail">
+                <div class="map-detail-header"><div><h2>Formaciones del inconsciente</h2><p>Nombre transversal para fenómenos como el sueño y, más adelante, los actos fallidos: irrupciones con sentido que desbordan el control del yo.</p></div><span class="map-tag">Unidad 2</span></div>
+                <div class="map-detail-grid"><div><p>Este concepto organiza una lectura moderna del campus porque permite salir de la lógica de tema por tema y empezar a ver series. El sueño, los olvidos y los tropiezos del lenguaje no aparecen como hechos dispersos, sino como diferentes modos de retorno de aquello que el aparato psíquico no logra cancelar. Así, la materia empieza a adquirir una verdadera arquitectura.</p><div class="map-links"><a href="units/unit2.html" class="btn">Ver Unidad 2</a></div></div><aside class="map-side"><h3>Se articula con</h3><ul><li>Sueño como primera gran formación trabajada en detalle.</li><li>Actos fallidos y vida psíquica de vigilia.</li><li>Retorno de lo reprimido como lógica común.</li></ul></aside></div>
+            </article>
+
+            <article id="concepto-topica" class="map-detail">
+                <div class="map-detail-header"><div><h2>Primera Tópica</h2><p>El modelo del aparato psíquico que Freud necesita construir cuando la clínica ya no alcanza para explicar por sí sola el trabajo del inconsciente.</p></div><span class="map-tag">Horizonte teórico</span></div>
+                <div class="map-detail-grid"><div><p>La Primera Tópica aparece en el mapa como punto de llegada de esta etapa del curso. Cuando Freud comprueba que el sueño, la censura, la regresión y el deseo no pueden explicarse con categorías médicas tradicionales, necesita un modelo nuevo: inconsciente, preconsciente y conciencia como sistemas virtuales. En ese sentido, la tópica no nace de una teoría abstracta previa, sino del trabajo clínico e interpretativo acumulado.</p><div class="map-links"><a href="units/unit2.html" class="btn">Unidad 2</a><a href="units/unit2_clase4.html" class="btn" style="background: rgba(13, 148, 136, 0.1); color: var(--accent-color);">Clase 4</a></div></div><aside class="map-side"><h3>Se articula con</h3><ul><li>Regresión y trabajo del sueño.</li><li>Proceso primario y proceso secundario.</li><li>La futura entrada a actos fallidos y vida de vigilia.</li></ul></aside></div>
+            </article>
+        </section>
+
+        <footer class="site-footer"><p>© 2026 Psicoanálisis | UFLO Universidad</p></footer>
+    </main>
+
+    <script>
+        const EMBED_SOURCE = 'campus-psicoanalisis';
+        let lastSentHeight = 0;
+        let pendingHeightFrame = null;
+        function getDocumentHeight() { const body = document.body; const html = document.documentElement; return Math.max(body ? body.scrollHeight : 0, body ? body.offsetHeight : 0, html ? html.clientHeight : 0, html ? html.scrollHeight : 0, html ? html.offsetHeight : 0); }
+        function postEmbedMessage(payload) { if (window.parent && window.parent !== window) { window.parent.postMessage(payload, '*'); } }
+        function sendHeight(reason = 'update', force = false) { if (pendingHeightFrame) cancelAnimationFrame(pendingHeightFrame); pendingHeightFrame = requestAnimationFrame(() => { const height = getDocumentHeight(); const changedEnough = Math.abs(height - lastSentHeight) > 4; if (!force && !changedEnough) return; lastSentHeight = height; postEmbedMessage({ type: 'campusHeight', source: EMBED_SOURCE, height, reason, path: window.location.pathname }); postEmbedMessage({ height: height }); }); }
+        function scrollToTop() { window.scrollTo(0, 0); const helper = document.getElementById('top-focus'); if (helper) helper.focus({ preventScroll: false }); if (window.parent) { ['scrollToTop', 'forceScrollTop', { type: 'scrollToTop' }].forEach(msg => { try { window.parent.postMessage(msg, '*'); } catch (e) {} }); } }
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        function setupEmbedSync() { sendHeight('init', true); if ('ResizeObserver' in window) { const resizeObserver = new ResizeObserver(() => sendHeight('resize-observer')); resizeObserver.observe(document.body); } if ('MutationObserver' in window) { const mutationObserver = new MutationObserver(() => sendHeight('mutation')); mutationObserver.observe(document.body, { childList: true, subtree: true, attributes: true, characterData: true }); } }
+        window.addEventListener('DOMContentLoaded', setupEmbedSync);
+        window.addEventListener('load', () => { scrollToTop(); setTimeout(() => { scrollToTop(); sendHeight('load', true); }, 100); });
+        window.addEventListener('resize', () => sendHeight('window-resize', true));
+        window.addEventListener('pageshow', () => sendHeight('pageshow', true));
+    </script>
+</body>
+</html>
