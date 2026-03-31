@@ -276,6 +276,61 @@ h1, h2, h3 {
     margin-bottom: 4rem;
 }
 
+.notice-board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.notice-board-copy {
+    max-width: 640px;
+}
+
+.notice-board-copy h2 {
+    font-size: 2.35rem;
+    margin-bottom: 0.45rem;
+    letter-spacing: -0.04em;
+}
+
+.notice-board-copy p {
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+.notice-board-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    background: #f8fbfb;
+    border: 1px solid rgba(13, 148, 136, 0.12);
+    color: var(--accent-color);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12rem;
+    white-space: nowrap;
+}
+
+.notice-board-status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    box-shadow: 0 0 0 6px rgba(13, 148, 136, 0.12);
+}
+
+.notice-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+    gap: 1.25rem;
+    align-items: start;
+}
+
 .notice-item {
     background: #ffffff;
     border: 1px solid var(--glass-border);
@@ -307,6 +362,11 @@ h1, h2, h3 {
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
+}
+
+.notice-copy {
+    color: var(--text-secondary);
+    line-height: 1.65;
 }
 
 .hero-layout {
@@ -515,12 +575,12 @@ h1, h2, h3 {
 }
 
 .featured-notice {
-    border-left: 5px solid var(--accent-color);
-    background: #ffffff;
+    margin-bottom: 0;
+    border: 1px solid rgba(13, 148, 136, 0.14);
+    background: linear-gradient(180deg, #ffffff, #fbfefe);
     padding: 2rem;
-    border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-    margin-bottom: 2rem;
+    border-radius: 28px;
+    box-shadow: 0 18px 38px rgba(15, 23, 42, 0.05);
 }
 
 .featured-notice-header {
@@ -532,16 +592,17 @@ h1, h2, h3 {
 }
 
 .featured-notice-title {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--primary-color);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.9rem;
     letter-spacing: -0.5px;
+    line-height: 1.15;
 }
 
 .featured-notice-copy {
     color: var(--text-secondary);
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.75;
 }
 
 .notice-badge {
@@ -555,6 +616,76 @@ h1, h2, h3 {
     box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
     letter-spacing: 1px;
     white-space: nowrap;
+}
+
+.notice-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 1.2rem;
+}
+
+.notice-meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    color: var(--secondary-color);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.notice-sidebar {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.notice-sidebar-card {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 22px;
+    padding: 1.3rem 1.35rem;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.notice-sidebar-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(13, 148, 136, 0.14);
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.06);
+}
+
+.notice-sidebar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.55rem;
+}
+
+.notice-sidebar-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1.35;
+}
+
+.notice-sidebar-date {
+    color: var(--accent-color);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    white-space: nowrap;
+}
+
+.notice-sidebar-copy {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
 }
 
 .site-footer {
@@ -837,6 +968,13 @@ h1, h2, h3 {
     }
 
     .featured-notice-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notice-board-header,
+    .notice-layout {
+        grid-template-columns: 1fr;
         flex-direction: column;
         align-items: flex-start;
     }
