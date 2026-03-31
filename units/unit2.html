@@ -21,6 +21,20 @@
         .unit-opening-note { max-width: 920px; margin: 2.5rem auto 0; background: linear-gradient(180deg, #f8fbfc, #f2f7f9); border: 1px solid #dbe8ec; border-radius: 28px; padding: 1.5rem 1.75rem; text-align: left; box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04); }
         .unit-opening-note strong { color: var(--primary-color); }
         .unit-opening-note p { color: var(--text-secondary); line-height: 1.8; }
+        .unit-scan-grid { max-width: 980px; margin: 1.5rem auto 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .unit-scan-card { background: linear-gradient(180deg, #ffffff, #f8fbfc); border: 1px solid rgba(13, 148, 136, 0.1); border-radius: 24px; padding: 1.2rem 1.25rem; text-align: left; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04); }
+        .unit-scan-label { display: inline-flex; align-items: center; padding: 0.35rem 0.7rem; border-radius: 999px; background: rgba(13, 148, 136, 0.08); color: var(--accent-color); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08rem; margin-bottom: 0.8rem; }
+        .unit-scan-card h3 { font-size: 1rem; line-height: 1.2; margin-bottom: 0.45rem; }
+        .unit-scan-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; }
+        .unit-passage-band { margin: 2rem auto 0; max-width: 960px; display: grid; grid-template-columns: auto 1fr auto 1fr auto; align-items: center; gap: 0.9rem; }
+        .unit-passage-node { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: white; border: 1px solid rgba(13, 148, 136, 0.14); box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05); color: var(--accent-color); font-weight: 800; font-size: 0.86rem; }
+        .unit-passage-line { height: 2px; background: linear-gradient(90deg, rgba(13, 148, 136, 0.18), rgba(13, 148, 136, 0.55)); border-radius: 999px; }
+        .module-kicker { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.55rem 0.9rem; border-radius: 999px; background: rgba(15, 23, 42, 0.04); color: var(--secondary-color); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02rem; margin-top: 1rem; }
+        .module-kicker-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-color); box-shadow: 0 0 0 6px rgba(13, 148, 136, 0.1); }
+        .module-emphasis-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0 auto 2rem; max-width: 980px; }
+        .module-emphasis { background: #ffffff; border: 1px solid rgba(15, 23, 42, 0.06); border-radius: 22px; padding: 1.15rem 1.25rem; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04); text-align: left; }
+        .module-emphasis h4 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08rem; color: var(--accent-color); margin-bottom: 0.55rem; }
+        .module-emphasis p { color: var(--secondary-color); font-size: 0.95rem; line-height: 1.7; }
 
         .module-section { padding: 5rem 0; border-bottom: 1px dashed #e2e8f0; }
         .module-header { text-align: center; margin-bottom: 3rem; }
@@ -36,6 +50,11 @@
 
         @media (max-width: 768px) {
             .unit-hero h1 { font-size: 2.2rem; }
+            .unit-scan-grid, .module-emphasis-grid { grid-template-columns: 1fr; }
+            .unit-passage-band { grid-template-columns: auto 1fr; }
+            .unit-passage-band .unit-passage-node:nth-child(3),
+            .unit-passage-band .unit-passage-node:nth-child(5),
+            .unit-passage-band .unit-passage-line:nth-child(4) { display: none; }
         }
     </style>
 </head>
@@ -73,15 +92,53 @@
             <div class="unit-opening-note">
                 <p><strong>En esta unidad cambia la escala del problema.</strong> Ya no se trata solamente de explicar cómo se forma un síntoma neurótico, sino de advertir que los mismos mecanismos que allí se vuelven visibles siguen operando en la vida psíquica de cualquier sujeto. Sueños, olvidos, tropiezos del lenguaje y pequeños desvíos de la vida cotidiana pasan a leerse como escenas donde el inconsciente trabaja, insiste y deja sus huellas.</p>
             </div>
+
+            <div class="unit-scan-grid">
+                <article class="unit-scan-card">
+                    <span class="unit-scan-label">Cambio de escala</span>
+                    <h3>De la neurosis a la vida psíquica normal</h3>
+                    <p>El inconsciente ya no aparece solo en el síntoma: empieza a leerse también en sueños, olvidos y desvíos cotidianos.</p>
+                </article>
+                <article class="unit-scan-card">
+                    <span class="unit-scan-label">Problema central</span>
+                    <h3>Cómo retorna lo reprimido</h3>
+                    <p>La unidad sigue una misma pregunta: de qué modo el aparato psíquico deja pasar, deforma o desplaza aquello que no logra cancelar.</p>
+                </article>
+                <article class="unit-scan-card">
+                    <span class="unit-scan-label">Horizonte teórico</span>
+                    <h3>Por qué Freud necesita un mapa</h3>
+                    <p>El estudio del sueño y de las formaciones del inconsciente obliga a formalizar sistemas, censura, regresión y tópica.</p>
+                </article>
+            </div>
+
+            <div class="unit-passage-band" aria-hidden="true">
+                <span class="unit-passage-node">1</span>
+                <span class="unit-passage-line"></span>
+                <span class="unit-passage-node">2</span>
+                <span class="unit-passage-line"></span>
+                <span class="unit-passage-node">3</span>
+            </div>
         </section>
 
         <section class="module-section fade-in" style="animation-delay: 0.2s;">
             <div class="module-header">
                 <span class="module-tag">Módulo 1</span>
                 <h2 style="font-size: 2.5rem; margin-top: 1rem;">La frontera difusa: de la patología a la normalidad</h2>
+                <div class="module-kicker"><span class="module-kicker-dot"></span> El sueño deja de ser ruido y empieza a funcionar como problema científico</div>
                 <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
                     En la Unidad 1 vimos cómo Freud descubrió que los síntomas neuróticos eran sustitutos de representaciones reprimidas. El problema clínico que se le presentó luego fue decisivo: al escuchar a sus pacientes, advirtió que no sólo traían sus padecimientos, sino también sus sueños nocturnos y sus pequeños equívocos cotidianos.
                 </p>
+            </div>
+
+            <div class="module-emphasis-grid">
+                <article class="module-emphasis">
+                    <h4>Lo que cae</h4>
+                    <p>La idea de una vida psíquica enteramente consciente, transparente y dueña de sí.</p>
+                </article>
+                <article class="module-emphasis">
+                    <h4>Lo que aparece</h4>
+                    <p>Una continuidad entre patología y normalidad, donde el inconsciente sigue produciendo efectos con sentido.</p>
+                </article>
             </div>
 
             <div class="module-grid">
@@ -107,9 +164,21 @@
             <div class="module-header">
                 <span class="module-tag">Módulo 2</span>
                 <h2 style="font-size: 2.5rem; margin-top: 1rem;">El retorno constante: las formaciones del inconsciente</h2>
+                <div class="module-kicker"><span class="module-kicker-dot"></span> Lo reprimido no desaparece: cambia de forma y vuelve a irrumpir</div>
                 <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
                     Si el síntoma es la vía de escape del inconsciente en la neurosis, ¿qué vías utiliza en las personas sanas? En este módulo comprenderemos que el aparato psíquico humano está sometido a una exigencia de trabajo constante.
                 </p>
+            </div>
+
+            <div class="module-emphasis-grid">
+                <article class="module-emphasis">
+                    <h4>Escena privilegiada</h4>
+                    <p>El sueño como situación donde la censura se afloja y el deseo puede expresarse bajo una forma deformada.</p>
+                </article>
+                <article class="module-emphasis">
+                    <h4>Serie clínica</h4>
+                    <p>Sueños, actos fallidos y olvidos dejan de ser hechos aislados y pasan a leerse como formaciones del inconsciente.</p>
+                </article>
             </div>
 
             <div class="module-grid">
@@ -135,6 +204,7 @@
             <div class="module-header">
                 <span class="module-tag">Módulo 3</span>
                 <h2 style="font-size: 2.5rem; margin-top: 1rem;">La necesidad de un mapa: hacia la Primera Metapsicología</h2>
+                <div class="module-kicker"><span class="module-kicker-dot"></span> El sueño obliga a pasar de la interpretación a la arquitectura del aparato psíquico</div>
                 <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
                     Al comprobar que el aparato psíquico humano está atravesado por un conflicto de fuerzas permanente, una fuerza que intenta expresar un deseo y otra que ejerce una censura, las viejas explicaciones neurológicas dejan de alcanzarle a Freud.
                 </p>
