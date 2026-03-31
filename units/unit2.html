@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad 2: El Inconsciente | Psicoanálisis</title>
+    <title>Unidad 2: El Inconsciente y la Interpretación de los Sueños | Psicoanálisis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css?v=16">
     <style>
@@ -13,23 +13,36 @@
         .nav-link.active { background: var(--accent-color); color: white; box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3); }
 
         .unit-hero { padding: 4rem 2rem; text-align: center; background: white; border-radius: 40px; box-shadow: var(--shadow-premium); margin-top: 1rem; border: 1px solid var(--glass-border); }
-        .landing-quote { max-width: 800px; margin: 2rem auto; position: relative; padding: 0 2rem; font-style: italic; }
+        .landing-quote { max-width: 840px; margin: 2rem auto; position: relative; padding: 0 2rem; font-style: italic; line-height: 1.75; }
         .landing-quote::after, .landing-quote::before { content: '"'; font-size: 4rem; color: var(--accent-color); opacity: 0.2; position: absolute; font-family: serif; }
         .landing-quote::before { left: -10px; top: -20px; }
         .landing-quote::after { right: -10px; bottom: -40px; }
 
-        .module-section { padding: 5rem 0; border-bottom: 1px dashed #e2e8f0; }
-        .module-header { text-align: center; margin-bottom: 4rem; }
-        .route-number { font-weight: 800; color: var(--accent-color); font-size: 0.75rem; text-transform: uppercase; }
+        .unit-opening-note { max-width: 920px; margin: 2.5rem auto 0; background: linear-gradient(180deg, #f8fbfc, #f2f7f9); border: 1px solid #dbe8ec; border-radius: 28px; padding: 1.5rem 1.75rem; text-align: left; box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04); }
+        .unit-opening-note strong { color: var(--primary-color); }
+        .unit-opening-note p { color: var(--text-secondary); line-height: 1.8; }
 
-        @media (max-width: 768px) { .unit-hero h1 { font-size: 2.2rem; } }
+        .module-section { padding: 5rem 0; border-bottom: 1px dashed #e2e8f0; }
+        .module-header { text-align: center; margin-bottom: 3rem; }
+        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+        .module-card { background: white; border-radius: 26px; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); padding: 2rem; min-height: 100%; }
+        .module-card h4 { font-size: 1.25rem; line-height: 1.25; margin-bottom: 0.9rem; color: var(--primary-color); }
+        .module-card p { color: var(--text-secondary); line-height: 1.75; font-size: 0.98rem; }
+        .module-index { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 999px; background: rgba(13, 148, 136, 0.1); color: var(--accent-color); font-size: 0.82rem; font-weight: 800; margin-bottom: 1rem; }
+        .module-bridge { margin-top: 2rem; background: linear-gradient(180deg, #f8fafc, #f2f7f9); border: 1px solid #e2e8f0; border-radius: 28px; padding: 2rem 2.2rem; }
+        .module-bridge p { color: var(--text-secondary); line-height: 1.8; }
+        .module-bridge strong { color: var(--primary-color); }
+        .roadmap-intro { max-width: 740px; margin: 0 auto 2.5rem; color: var(--text-secondary); line-height: 1.7; }
+
+        @media (max-width: 768px) {
+            .unit-hero h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
     <div id="top-focus" class="focus-helper" tabindex="-1"></div>
 
     <main class="container">
-        <!-- Integrated Navigation Dashboard -->
         <section class="unit-hero fade-in">
             <div class="card-nav-container show-units">
                 <nav class="card-nav">
@@ -39,7 +52,6 @@
                     <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link active">Unidades</a>
                 </nav>
 
-                <!-- Sub Nav for Units -->
                 <div class="sub-nav">
                     <a href="unit1.html" class="sub-link">1</a>
                     <a href="unit2.html" class="sub-link active">2</a>
@@ -50,138 +62,203 @@
 
             <span class="unit-number" style="font-size: 1rem; color: var(--accent-color); font-weight: 800; letter-spacing: 5px; margin-top: 2rem; display: block;">UNIDAD 2</span>
 
-            <h1 style="font-size: 3.5rem; margin: 1.5rem 0; line-height: 1; letter-spacing: -2px;">El Inconsciente: Las leyes de lo desconocido</h1>
-            
-            <p style="font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-top: 1rem;">🔍 Explorando la estructura de lo reprimido</p>
-            
-            <blockquote class="landing-quote intro-quote" style="border: none; padding: 0 2rem;">
-                "Si la primera unidad nos mostró cómo Freud descubrió el inconsciente, esta segunda unidad nos invita a habitarlo. No se trata ya de probar su existencia, sino de entender cómo opera: sus leyes, sus trampas y el modo en que se burla de nuestra lógica consciente para decir su verdad a través de los sueños, los lapsus y los síntomas."
+            <h1 style="font-size: 3.5rem; margin: 1.5rem 0; line-height: 1; letter-spacing: -2px;">El Inconsciente y la Interpretación de los Sueños</h1>
+
+            <p style="font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-top: 1rem;">Una nueva psicología para pensar la vida anímica universal</p>
+
+            <blockquote class="landing-quote" style="border: none;">
+                "Hasta aquí, el psicoanálisis parecía ser únicamente un método para tratar a personas enfermas. En esta unidad acompañaremos a Freud en el momento histórico en que descubre que la frontera entre salud y enfermedad es mucho menos firme de lo que la ciencia suponía. El psicoanálisis deja de ser sólo una terapia médica para convertirse en una psicología capaz de explicar la vida anímica universal."
             </blockquote>
+
+            <div class="unit-opening-note">
+                <p><strong>En esta unidad cambia la escala del problema.</strong> Ya no se trata solamente de explicar cómo se forma un síntoma neurótico, sino de advertir que los mismos mecanismos que allí se vuelven visibles siguen operando en la vida psíquica de cualquier sujeto. Sueños, olvidos, tropiezos del lenguaje y pequeños desvíos de la vida cotidiana pasan a leerse como escenas donde el inconsciente trabaja, insiste y deja sus huellas.</p>
+            </div>
         </section>
 
-        <!-- Módulo 1: La Vía Regia -->
         <section class="module-section fade-in" style="animation-delay: 0.2s;">
             <div class="module-header">
                 <span class="module-tag">Módulo 1</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">El Arte de Interpretar los Sueños</h2>
-                <p style="max-width: 800px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.7;">
-                    ¿Por qué soñamos cosas absurdas? Aprenderemos que el sueño no es un caos, sino un mensaje cifrado. Analizaremos cómo el <strong>Trabajo del Sueño</strong> desfigura el deseo inconsciente para que podamos seguir durmiendo.
+                <h2 style="font-size: 2.5rem; margin-top: 1rem;">La frontera difusa: de la patología a la normalidad</h2>
+                <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
+                    En la Unidad 1 vimos cómo Freud descubrió que los síntomas neuróticos eran sustitutos de representaciones reprimidas. El problema clínico que se le presentó luego fue decisivo: al escuchar a sus pacientes, advirtió que no sólo traían sus padecimientos, sino también sus sueños nocturnos y sus pequeños equívocos cotidianos.
                 </p>
             </div>
 
-            <div class="history-grid">
-                <div class="history-card">
-                    <span class="history-icon">📦</span>
-                    <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Condensación</h4>
-                    <p style="font-size: 1rem; color: var(--text-secondary);">Varias ideas o personas se funden en una sola imagen onírica. Lo mucho se vuelve poco.</p>
-                </div>
-                <div class="history-card">
-                    <span class="history-icon">➡️</span>
-                    <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Desplazamiento</h4>
-                    <p style="font-size: 1rem; color: var(--text-secondary);">El acento psíquico se traslada: lo importante parece trivial, y lo trivial es el centro del sueño.</p>
-                </div>
-                <div class="history-card">
-                    <span class="history-icon">🎭</span>
-                    <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Figurabilidad</h4>
-                    <p style="font-size: 1rem; color: var(--text-secondary);">Las ideas abstractas se transforman en imágenes visuales plásticas, como escenas de una película.</p>
-                </div>
+            <div class="module-grid">
+                <article class="module-card">
+                    <span class="module-index">01</span>
+                    <h4>El contexto del gran salto freudiano</h4>
+                    <p>Para la ciencia oficial de principios del siglo XX, la mente sana era sinónimo de conciencia y control absoluto. Los sueños se descartaban como basura biológica, y los olvidos o tropiezos al hablar se reducían a fatiga o distracción.</p>
+                </article>
+                <article class="module-card">
+                    <span class="module-index">02</span>
+                    <h4>La sospecha freudiana</h4>
+                    <p>Freud sospechó algo muy distinto: el inconsciente no descansa, y no necesita que estemos enfermos para hacerse escuchar. Lo reprimido sigue actuando también en la vida psíquica ordinaria.</p>
+                </article>
+                <article class="module-card">
+                    <span class="module-index">03</span>
+                    <h4>La consecuencia teórica</h4>
+                    <p>El psicoanálisis deja de limitarse al consultorio médico y se abre como una herramienta para explicar fenómenos universales de la vida anímica. La patología deja de ser una excepción radical y se vuelve una vía de acceso a lo humano.</p>
+                </article>
             </div>
         </section>
 
-        <!-- Módulo 2: La Metapsicología -->
-        <section class="module-section fade-in" style="animation-delay: 0.3s; padding-bottom: 0;">
+        <section class="module-section fade-in" style="animation-delay: 0.3s;">
             <div class="module-header">
                 <span class="module-tag">Módulo 2</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">Sistemas y Tópicas: El Mapa Freudiano</h2>
-                <p style="color: var(--text-secondary);">La primera gran organización teórica del aparato psíquico.</p>
+                <h2 style="font-size: 2.5rem; margin-top: 1rem;">El retorno constante: las formaciones del inconsciente</h2>
+                <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
+                    Si el síntoma es la vía de escape del inconsciente en la neurosis, ¿qué vías utiliza en las personas sanas? En este módulo comprenderemos que el aparato psíquico humano está sometido a una exigencia de trabajo constante.
+                </p>
             </div>
 
-            <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem;">
-                <div style="flex: 1; min-width: 280px; padding: 2rem; background: #ffffff; border-radius: 25px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
-                    <h4 style="color: var(--accent-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;">Consciente - Preconsciente</h4>
-                    <p style="font-size: 0.95rem;">Rige el <strong>proceso secundario</strong>: lógica, tiempo, lenguaje y principio de realidad. Lo que podemos recordar a voluntad.</p>
-                </div>
-                <div style="flex: 1; min-width: 280px; padding: 2rem; background: var(--primary-color); border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25); border: 1px solid var(--accent-color); color: white;">
-                    <h4 style="color: var(--accent-color); font-size: 1.3rem; margin-bottom: 1rem;">El Inconsciente</h4>
-                    <p style="font-size: 1rem; line-height: 1.7; opacity: 0.9;">Rige el <strong>proceso primario</strong>. Atemporal, no conoce la contradicción y solo busca el cumplimiento de deseo.</p>
-                </div>
-                <div style="flex: 1; min-width: 280px; padding: 2rem; background: #ffffff; border-radius: 25px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
-                    <h4 style="color: var(--accent-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;">La Censura</h4>
-                    <p style="font-size: 0.95rem;">La frontera móvil. Actúa como un guardián que obliga a los contenidos inconscientes a disfrazarse para pasar al sistema preconsciente.</p>
-                </div>
+            <div class="module-grid">
+                <article class="module-card">
+                    <span class="module-index">01</span>
+                    <h4>Una energía que no desaparece</h4>
+                    <p>La energía de aquellas representaciones que el Yo decidió reprimir no se extingue mágicamente. Sigue pujando por encontrar una salida y obliga al aparato psíquico a realizar transacciones permanentes.</p>
+                </article>
+                <article class="module-card">
+                    <span class="module-index">02</span>
+                    <h4>Cuando la censura se relaja</h4>
+                    <p>Ya sea durante el sueño, cuando la vigilancia consciente se atenúa, o en medio de la vigilia, cuando la atención tropieza, el inconsciente encuentra modos de filtrarse.</p>
+                </article>
+                <article class="module-card">
+                    <span class="module-index">03</span>
+                    <h4>Fenómenos con sentido</h4>
+                    <p>Aprenderemos a ver sueños, actos fallidos y otras formaciones no como errores casuales, sino como actos psíquicos plenos de sentido que revelan verdades que el sujeto desconoce de sí mismo.</p>
+                </article>
             </div>
         </section>
 
-        <!-- Hoja de Ruta Unidad 2 -->
+        <section class="module-section fade-in" style="animation-delay: 0.4s; border-bottom: none;">
+            <div class="module-header">
+                <span class="module-tag">Módulo 3</span>
+                <h2 style="font-size: 2.5rem; margin-top: 1rem;">La necesidad de un mapa: hacia la Primera Metapsicología</h2>
+                <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
+                    Al comprobar que la mente humana está en un conflicto de fuerzas permanente, una fuerza que intenta expresar un deseo y otra que ejerce una censura, las viejas explicaciones neurológicas dejan de alcanzarle a Freud.
+                </p>
+            </div>
+
+            <div class="module-bridge">
+                <p>Para explicar cómo viajan las representaciones, dónde se alojan las huellas del pasado y cómo se instauran las barreras que dividen nuestro saber, el psicoanálisis se verá obligado a formalizar su propia arquitectura.</p>
+                <p>A este esfuerzo de construir un modelo teórico, espacial y dinámico de la mente para explicar estos fenómenos lo conoceremos como la construcción de la <strong>Primera Tópica</strong>.</p>
+            </div>
+        </section>
+
         <section id="roadmap" class="fade-in" style="margin-top: 5rem; padding: 4rem; background: #fff; border-radius: 40px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
             <header style="text-align: center; margin-bottom: 3rem;">
                 <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">📍 Hoja de Ruta de la Unidad 2</h2>
-                <p style="color: var(--text-secondary);">Clases fundamentales para entender el proceso inconsciente.</p>
+                <p class="roadmap-intro">Haz clic en cada clase para sumergirte en la bibliografía y descubrir los mecanismos específicos con los que el inconsciente se hace presente en la vida anímica.</p>
             </header>
 
             <div class="route-grid">
                 <a href="unit2_clase4.html" class="route-card">
-                    <span class="route-number">Clase 4</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">El sueño y el deseo inconsciente</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Contenido manifiesto, pensamientos latentes y trabajo del sueño.</p>
+                    <span class="route-number">Clase 4 · 06/04</span>
+                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">La vía regia: el sueño y su interpretación</h4>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Ingresaremos al momento en que Freud le reconoce estatuto científico al sueño y convierte la experiencia onírica en una vía privilegiada para interrogar el deseo inconsciente.</p>
                 </a>
                 <a href="unit2_clase5.html" class="route-card">
-                    <span class="route-number">Clase 5</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">Primera Tópica y actos fallidos</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">El mapa del aparato psíquico y el retorno de lo reprimido en la vigilia.</p>
+                    <span class="route-number">Clase 5 · 13/04</span>
+                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">El mapa de la mente: actos fallidos y Primera Tópica</h4>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Pasaremos de las irrupciones del inconsciente en la vigilia a la necesidad de construir un modelo del aparato psíquico capaz de explicar censura, represión y retorno.</p>
                 </a>
                 <a href="parcial1.html" class="route-card" style="border-color: #fecaca; background: #fffbfa;">
-                    <span class="route-number" style="color: #ef4444;">Examen</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0; color: #b91c1c;">Primer Parcial</h4>
-                    <p style="font-size: 0.85rem; color: #ef4444;">Integración de Unidades 1 y 2.</p>
+                    <span class="route-number" style="color: #ef4444;">20/04 · Parcial</span>
+                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0; color: #b91c1c;">Primer Parcial Evaluador</h4>
+                    <p style="font-size: 0.88rem; color: #ef4444;">Instancia de integración de las Unidades 1 y 2, pensada para articular clínica, teoría del conflicto y primeras formulaciones sobre el inconsciente.</p>
                 </a>
             </div>
         </section>
 
-        <!-- Download CTA -->
         <section class="download-cta fade-in">
             <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary-color);">Biblioteca de la Unidad 2</h2>
-            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 2rem;">Textos obligatorios sobre Sueños, Metapsicología y Actos Fallidos.</p>
-            
+            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 2rem;">Textos obligatorios sobre sueños, vida cotidiana, represión y primera metapsicología.</p>
+
             <a href="#" target="_blank" class="pulse-button" style="background: var(--accent-color); color: white; border: none; padding: 1rem 2.5rem; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                Descargar Corpus Unidad 2
+                Descargar corpus de la Unidad 2
             </a>
             <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-secondary); font-style: italic; opacity: 0.8;">
-                Incluye: Interpretación de los Sueños (Caps. 2 y 7), Lo Inconsciente, Represión y Psicopatología Vida Cotidiana.
+                Incluye: La interpretación de los sueños, Sobre el sueño, Psicopatología de la vida cotidiana, La represión y Lo inconsciente.
             </p>
         </section>
 
-        <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
+        <footer class="site-footer">
             <p>© 2026 Psicoanálisis | UFLO Universidad</p>
         </footer>
     </main>
 
     <script>
-        function sendHeight() {
-            const height = document.body.scrollHeight;
-            window.parent.postMessage({ height: height }, '*');
+        const EMBED_SOURCE = 'campus-psicoanalisis';
+        let lastSentHeight = 0;
+        let pendingHeightFrame = null;
+
+        function getDocumentHeight() {
+            const body = document.body;
+            const html = document.documentElement;
+            return Math.max(
+                body ? body.scrollHeight : 0,
+                body ? body.offsetHeight : 0,
+                html ? html.clientHeight : 0,
+                html ? html.scrollHeight : 0,
+                html ? html.offsetHeight : 0
+            );
         }
-        
-        function scrollToTop() {
-            window.scrollTo(0, 0);
-            const helper = document.getElementById('top-focus');
-            if (helper) helper.focus({preventScroll:false});
-            if (window.parent) {
-                const messages = ['scrollToTop', 'forceScrollTop', { type: 'scrollToTop' }];
-                messages.forEach(msg => { try { window.parent.postMessage(msg, '*'); } catch(e) {} });
+
+        function postEmbedMessage(payload) {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage(payload, '*');
             }
         }
 
-        if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+        function sendHeight(reason = 'update', force = false) {
+            if (pendingHeightFrame) cancelAnimationFrame(pendingHeightFrame);
+            pendingHeightFrame = requestAnimationFrame(() => {
+                const height = getDocumentHeight();
+                const changedEnough = Math.abs(height - lastSentHeight) > 4;
+                if (!force && !changedEnough) return;
+                lastSentHeight = height;
+                postEmbedMessage({ type: 'campusHeight', source: EMBED_SOURCE, height, reason, path: window.location.pathname });
+                postEmbedMessage({ height: height });
+            });
+        }
 
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+            const helper = document.getElementById('top-focus');
+            if (helper) helper.focus({ preventScroll: false });
+            if (window.parent) {
+                ['scrollToTop', 'forceScrollTop', { type: 'scrollToTop' }].forEach(msg => {
+                    try { window.parent.postMessage(msg, '*'); } catch (e) {}
+                });
+            }
+        }
+
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+        function setupEmbedSync() {
+            sendHeight('init', true);
+            if ('ResizeObserver' in window) {
+                const resizeObserver = new ResizeObserver(() => sendHeight('resize-observer'));
+                resizeObserver.observe(document.body);
+            }
+            if ('MutationObserver' in window) {
+                const mutationObserver = new MutationObserver(() => sendHeight('mutation'));
+                mutationObserver.observe(document.body, { childList: true, subtree: true, attributes: true, characterData: true });
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', setupEmbedSync);
         window.addEventListener('load', () => {
             scrollToTop();
-            setTimeout(() => { scrollToTop(); sendHeight(); }, 100);
+            setTimeout(() => {
+                scrollToTop();
+                sendHeight('load', true);
+            }, 100);
         });
-
-        window.addEventListener('resize', sendHeight);
-        setInterval(sendHeight, 1000);
+        window.addEventListener('resize', () => sendHeight('window-resize', true));
+        window.addEventListener('pageshow', () => sendHeight('pageshow', true));
     </script>
 </body>
 </html>
