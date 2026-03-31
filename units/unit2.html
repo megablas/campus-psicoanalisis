@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 2: El Inconsciente | Psicoanálisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=16">
+    <style>
+        .card-nav { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); flex-wrap: wrap; }
+        .nav-link { padding: 0.6rem 1.4rem; border-radius: 100px; text-decoration: none; color: var(--secondary-color); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; background: rgba(0,0,0,0.02); border: 1px solid transparent; }
+        .nav-link:hover { color: var(--accent-color); background: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.2); }
+        .nav-link.active { background: var(--accent-color); color: white; box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3); }
+
+        .unit-hero { padding: 4rem 2rem; text-align: center; background: white; border-radius: 40px; box-shadow: var(--shadow-premium); margin-top: 1rem; border: 1px solid var(--glass-border); }
+        .landing-quote { max-width: 800px; margin: 2rem auto; position: relative; padding: 0 2rem; font-style: italic; }
+        .landing-quote::after, .landing-quote::before { content: '"'; font-size: 4rem; color: var(--accent-color); opacity: 0.2; position: absolute; font-family: serif; }
+        .landing-quote::before { left: -10px; top: -20px; }
+        .landing-quote::after { right: -10px; bottom: -40px; }
+
+        .module-section { padding: 5rem 0; border-bottom: 1px dashed #e2e8f0; }
+        .module-header { text-align: center; margin-bottom: 4rem; }
+        .route-number { font-weight: 800; color: var(--accent-color); font-size: 0.75rem; text-transform: uppercase; }
+
+        @media (max-width: 768px) { .unit-hero h1 { font-size: 2.2rem; } }
+    </style>
+</head>
+<body>
+    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+
+    <main class="container">
+        <!-- Integrated Navigation Dashboard -->
+        <section class="unit-hero fade-in">
+            <div class="card-nav-container show-units">
+                <nav class="card-nav">
+                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link">Inicio</a>
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
+                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
+                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link active">Unidades</a>
+                </nav>
+
+                <!-- Sub Nav for Units -->
+                <div class="sub-nav">
+                    <a href="unit1.html" class="sub-link">1</a>
+                    <a href="unit2.html" class="sub-link active">2</a>
+                    <span class="sub-link" style="opacity: 0.4; cursor: default; background: rgba(0,0,0,0.05); color: var(--text-secondary);">3</span>
+                    <span class="sub-link" style="opacity: 0.4; cursor: default; background: rgba(0,0,0,0.05); color: var(--text-secondary);">4</span>
+                </div>
+            </div>
+
+            <span class="unit-number" style="font-size: 1rem; color: var(--accent-color); font-weight: 800; letter-spacing: 5px; margin-top: 2rem; display: block;">UNIDAD 2</span>
+
+            <h1 style="font-size: 3.5rem; margin: 1.5rem 0; line-height: 1; letter-spacing: -2px;">El Inconsciente: Las leyes de lo desconocido</h1>
+            
+            <p style="font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-top: 1rem;">🔍 Explorando la estructura de lo reprimido</p>
+            
+            <blockquote class="landing-quote intro-quote" style="border: none; padding: 0 2rem;">
+                "Si la primera unidad nos mostró cómo Freud descubrió el inconsciente, esta segunda unidad nos invita a habitarlo. No se trata ya de probar su existencia, sino de entender cómo opera: sus leyes, sus trampas y el modo en que se burla de nuestra lógica consciente para decir su verdad a través de los sueños, los lapsus y los síntomas."
+            </blockquote>
+        </section>
+
+        <!-- Módulo 1: La Vía Regia -->
+        <section class="module-section fade-in" style="animation-delay: 0.2s;">
+            <div class="module-header">
+                <span class="module-tag">Módulo 1</span>
+                <h2 style="font-size: 2.5rem; margin-top: 1rem;">El Arte de Interpretar los Sueños</h2>
+                <p style="max-width: 800px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.7;">
+                    ¿Por qué soñamos cosas absurdas? Aprenderemos que el sueño no es un caos, sino un mensaje cifrado. Analizaremos cómo el <strong>Trabajo del Sueño</strong> desfigura el deseo inconsciente para que podamos seguir durmiendo.
+                </p>
+            </div>
+
+            <div class="history-grid">
+                <div class="history-card">
+                    <span class="history-icon">📦</span>
+                    <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Condensación</h4>
+                    <p style="font-size: 1rem; color: var(--text-secondary);">Varias ideas o personas se funden en una sola imagen onírica. Lo mucho se vuelve poco.</p>
+                </div>
+                <div class="history-card">
+                    <span class="history-icon">➡️</span>
+                    <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Desplazamiento</h4>
+                    <p style="font-size: 1rem; color: var(--text-secondary);">El acento psíquico se traslada: lo importante parece trivial, y lo trivial es el centro del sueño.</p>
+                </div>
+                <div class="history-card">
+                    <span class="history-icon">🎭</span>
+                    <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Figurabilidad</h4>
+                    <p style="font-size: 1rem; color: var(--text-secondary);">Las ideas abstractas se transforman en imágenes visuales plásticas, como escenas de una película.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulo 2: La Metapsicología -->
+        <section class="module-section fade-in" style="animation-delay: 0.3s; padding-bottom: 0;">
+            <div class="module-header">
+                <span class="module-tag">Módulo 2</span>
+                <h2 style="font-size: 2.5rem; margin-top: 1rem;">Sistemas y Tópicas: El Mapa Freudiano</h2>
+                <p style="color: var(--text-secondary);">La primera gran organización teórica del aparato psíquico.</p>
+            </div>
+
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem;">
+                <div style="flex: 1; min-width: 280px; padding: 2rem; background: #ffffff; border-radius: 25px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
+                    <h4 style="color: var(--accent-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;">Consciente - Preconsciente</h4>
+                    <p style="font-size: 0.95rem;">Rige el <strong>proceso secundario</strong>: lógica, tiempo, lenguaje y principio de realidad. Lo que podemos recordar a voluntad.</p>
+                </div>
+                <div style="flex: 1; min-width: 280px; padding: 2rem; background: var(--primary-color); border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25); border: 1px solid var(--accent-color); color: white;">
+                    <h4 style="color: var(--accent-color); font-size: 1.3rem; margin-bottom: 1rem;">El Inconsciente</h4>
+                    <p style="font-size: 1rem; line-height: 1.7; opacity: 0.9;">Rige el <strong>proceso primario</strong>. Atemporal, no conoce la contradicción y solo busca el cumplimiento de deseo.</p>
+                </div>
+                <div style="flex: 1; min-width: 280px; padding: 2rem; background: #ffffff; border-radius: 25px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
+                    <h4 style="color: var(--accent-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;">La Censura</h4>
+                    <p style="font-size: 0.95rem;">La frontera móvil. Actúa como un guardián que obliga a los contenidos inconscientes a disfrazarse para pasar al sistema preconsciente.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hoja de Ruta Unidad 2 -->
+        <section id="roadmap" class="fade-in" style="margin-top: 5rem; padding: 4rem; background: #fff; border-radius: 40px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
+            <header style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">📍 Hoja de Ruta de la Unidad 2</h2>
+                <p style="color: var(--text-secondary);">Clases fundamentales para entender el proceso inconsciente.</p>
+            </header>
+
+            <div class="route-grid">
+                <a href="unit2_clase4.html" class="route-card">
+                    <span class="route-number">Clase 4</span>
+                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">El sueño y el deseo inconsciente</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Contenido manifiesto, pensamientos latentes y trabajo del sueño.</p>
+                </a>
+                <a href="unit2_clase5.html" class="route-card">
+                    <span class="route-number">Clase 5</span>
+                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">Primera Tópica y actos fallidos</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">El mapa del aparato psíquico y el retorno de lo reprimido en la vigilia.</p>
+                </a>
+                <a href="parcial1.html" class="route-card" style="border-color: #fecaca; background: #fffbfa;">
+                    <span class="route-number" style="color: #ef4444;">Examen</span>
+                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0; color: #b91c1c;">Primer Parcial</h4>
+                    <p style="font-size: 0.85rem; color: #ef4444;">Integración de Unidades 1 y 2.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Download CTA -->
+        <section class="download-cta fade-in">
+            <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary-color);">Biblioteca de la Unidad 2</h2>
+            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 2rem;">Textos obligatorios sobre Sueños, Metapsicología y Actos Fallidos.</p>
+            
+            <a href="#" target="_blank" class="pulse-button" style="background: var(--accent-color); color: white; border: none; padding: 1rem 2.5rem; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Descargar Corpus Unidad 2
+            </a>
+            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-secondary); font-style: italic; opacity: 0.8;">
+                Incluye: Interpretación de los Sueños (Caps. 2 y 7), Lo Inconsciente, Represión y Psicopatología Vida Cotidiana.
+            </p>
+        </section>
+
+        <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
+            <p>© 2026 Psicoanálisis | UFLO Universidad</p>
+        </footer>
+    </main>
+
+    <script>
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
+        
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+            const helper = document.getElementById('top-focus');
+            if (helper) helper.focus({preventScroll:false});
+            if (window.parent) {
+                const messages = ['scrollToTop', 'forceScrollTop', { type: 'scrollToTop' }];
+                messages.forEach(msg => { try { window.parent.postMessage(msg, '*'); } catch(e) {} });
+            }
+        }
+
+        if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+
+        window.addEventListener('load', () => {
+            scrollToTop();
+            setTimeout(() => { scrollToTop(); sendHeight(); }, 100);
+        });
+
+        window.addEventListener('resize', sendHeight);
+        setInterval(sendHeight, 1000);
+    </script>
+</body>
+</html>

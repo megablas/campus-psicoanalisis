@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer Parcial: Unidades 1 y 2 | Psicoanálisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=16">
+    <style>
+        .class-header { background: white; border-radius: 30px; padding: 4rem 3rem; margin-top: 1rem; border: 1px solid #fecaca; box-shadow: 0 20px 50px rgba(239, 68, 68, 0.05); text-align: center;}
+        .back-link { text-decoration: none; color: var(--accent-color); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; transition: 0.3s; }
+        .back-link:hover { transform: translateX(-5px); }
+        
+        .exam-alert { background: #fff1f2; border: 2px solid #fecaca; border-radius: 20px; padding: 1.5rem; color: #b91c1c; font-weight: 700; display: inline-flex; align-items: center; gap: 15px; margin-bottom: 2rem; }
+        .exam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; text-align: left;}
+        
+        .exam-card { background: white; border-radius: 24px; padding: 2.5rem; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); }
+        .topic-list { list-style: none; padding: 0; margin-top: 1.5rem; }
+        .topic-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; color: var(--text-secondary); }
+        .topic-list li::before { content: '•'; color: var(--accent-color); font-weight: 900; position: absolute; left: 0; }
+
+        .date-badge { background: #ef4444; color: white; padding: 0.5rem 1.5rem; border-radius: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+
+    <main class="container">
+        <section class="class-header fade-in">
+            <a href="../index.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Volver al Inicio
+            </a>
+
+            <div class="date-badge">Lunes 20 de Abril</div>
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem; line-height: 1; letter-spacing: -2px;">Primer Parcial Evaluador</h1>
+            
+            <div class="exam-alert">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                Modalidad: Presencial en el Aula 102
+            </div>
+
+            <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
+                Esta instancia evaluadora busca integrar los conceptos fundamentales recorridos durante la primera mitad del cuatrimestre. El examen consistirá en preguntas de desarrollo teórico-clínico basadas en la bibliografía obligatoria.
+            </p>
+
+            <div class="exam-grid">
+                <div class="exam-card">
+                    <h3 style="color: var(--primary-color); border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem;">Eje Unidad 1</h3>
+                    <ul class="topic-list">
+                        <li>De la parálisis traumática de Charcot al Método Catártico.</li>
+                        <li>Anna O. y el descubrimiento del sentido de los síntomas.</li>
+                        <li>La defensa como acto voluntario y motor de la escisión consciente.</li>
+                        <li>Abandono de la hipnosis: La regla fundamental de la Asociación Libre.</li>
+                    </ul>
+                </div>
+                <div class="exam-card">
+                    <h3 style="color: var(--primary-color); border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem;">Eje Unidad 2</h3>
+                    <ul class="topic-list">
+                        <li>Leyes del Inconsciente: Proceso Primario vs. Proceso Secundario.</li>
+                        <li>El Sueño como cumplimiento de deseo y formación de compromiso.</li>
+                        <li>Mecanismos del Trabajo del Sueño: Condensación y Desplazamiento.</li>
+                        <li>Olvidos, Lapsus y la Psicopatología de la Vida Cotidiana.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card" style="margin-top: 3rem; background: #fffcf0; border-color: #fde68a; padding: 2rem; text-align: left;">
+                <h4 style="color: #92400e; margin-bottom: 1rem;">📢 Recomendaciones para el estudiante</h4>
+                <p style="color: #b45309; font-size: 0.95rem; line-height: 1.6;">
+                    - Re-leer la 1° Conferencia de Freud para tener el marco histórico general. <br>
+                    - Asegurarse de comprender la diferencia técnica entre catarsis y análisis. <br>
+                    - Practicar la distinción entre Contenido Manifiesto y Pensamientos Latentes con ejemplos propios.
+                </p>
+            </div>
+        </section>
+
+        <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
+            <p>© 2026 Psicoanálisis | UFLO Universidad</p>
+        </footer>
+    </main>
+
+    <script>
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ height: height }, '*');
+        }
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+            const helper = document.getElementById('top-focus');
+            if (helper) helper.focus({preventScroll:false});
+        }
+        window.addEventListener('load', () => {
+            scrollToTop();
+            setTimeout(() => { scrollToTop(); sendHeight(); }, 100);
+        });
+        window.addEventListener('resize', sendHeight);
+        setInterval(sendHeight, 1000);
+    </script>
+</body>
+</html>
