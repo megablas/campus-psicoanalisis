@@ -3,99 +3,665 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primer Parcial: Unidades 1 y 2 | Psicoanálisis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css?v=16">
+    <title>Ruta al Primer Parcial | Psicoanálisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=17">
     <style>
-        .class-header { background: white; border-radius: 30px; padding: 4rem 3rem; margin-top: 1rem; border: 1px solid #fecaca; box-shadow: 0 20px 50px rgba(239, 68, 68, 0.05); text-align: center;}
-        .back-link { text-decoration: none; color: var(--accent-color); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; transition: 0.3s; }
-        .back-link:hover { transform: translateX(-5px); }
-        
-        .exam-alert { background: #fff1f2; border: 2px solid #fecaca; border-radius: 20px; padding: 1.5rem; color: #b91c1c; font-weight: 700; display: inline-flex; align-items: center; gap: 15px; margin-bottom: 2rem; }
-        .exam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; text-align: left;}
-        
-        .exam-card { background: white; border-radius: 24px; padding: 2.5rem; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); }
-        .topic-list { list-style: none; padding: 0; margin-top: 1.5rem; }
-        .topic-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; color: var(--text-secondary); }
-        .topic-list li::before { content: '•'; color: var(--accent-color); font-weight: 900; position: absolute; left: 0; }
+        .exam-page {
+            --exam-accent-soft: rgba(239, 68, 68, 0.08);
+            --exam-border: rgba(239, 68, 68, 0.14);
+        }
 
-        .date-badge { background: #ef4444; color: white; padding: 0.5rem 1.5rem; border-radius: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 1rem; }
+        .exam-header {
+            background:
+                radial-gradient(circle at top left, rgba(239, 68, 68, 0.08), transparent 34%),
+                radial-gradient(circle at top right, rgba(13, 148, 136, 0.08), transparent 36%),
+                #ffffff;
+            border: 1px solid var(--exam-border);
+        }
+
+        .exam-badge {
+            background: var(--exam-accent-soft);
+            color: #dc2626;
+        }
+
+        .exam-meta-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .exam-meta-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.7rem 0.95rem;
+            border-radius: 999px;
+            background: #fff8f8;
+            border: 1px solid rgba(239, 68, 68, 0.14);
+            color: #991b1b;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06rem;
+        }
+
+        .exam-notice {
+            margin-top: 1.7rem;
+            background: linear-gradient(180deg, #fffaf7, #fffefb);
+            border: 1px solid #f8d7c7;
+            border-radius: 24px;
+            padding: 1.35rem 1.45rem;
+        }
+
+        .exam-notice p {
+            color: #7c2d12;
+            line-height: 1.72;
+        }
+
+        .exam-notice strong {
+            color: #9a3412;
+        }
+
+        .partial-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+            gap: 1.2rem;
+        }
+
+        .partial-card {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 1.7rem;
+            box-shadow: var(--shadow-premium);
+        }
+
+        .partial-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.7rem;
+            color: var(--primary-color);
+        }
+
+        .partial-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .partial-card p + p {
+            margin-top: 0.75rem;
+        }
+
+        .partial-card ul,
+        .partial-card ol {
+            margin: 0;
+            padding-left: 1.15rem;
+            color: var(--secondary-color);
+        }
+
+        .partial-card li {
+            line-height: 1.7;
+        }
+
+        .partial-card li + li {
+            margin-top: 0.65rem;
+        }
+
+        .partial-card-label {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.42rem 0.82rem;
+            border-radius: 999px;
+            background: rgba(13, 148, 136, 0.08);
+            color: var(--accent-color);
+            font-size: 0.74rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .partial-card-label.is-alert {
+            background: var(--exam-accent-soft);
+            color: #dc2626;
+        }
+
+        .partial-axis-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .partial-axis {
+            background: linear-gradient(180deg, #ffffff, #fbfcfd);
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            border-radius: 24px;
+            padding: 1.55rem;
+            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.04);
+        }
+
+        .partial-axis h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .partial-axis p {
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .partial-axis p + p {
+            margin-top: 0.75rem;
+        }
+
+        .partial-axis-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.15rem;
+        }
+
+        .partial-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.8rem 1rem;
+            border-radius: 999px;
+            text-decoration: none;
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--accent-color);
+            font-size: 0.82rem;
+            font-weight: 800;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .partial-link:hover {
+            transform: translateY(-2px);
+            background: rgba(13, 148, 136, 0.16);
+        }
+
+        .partial-flow {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .partial-flow-step {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            gap: 1rem;
+            align-items: start;
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 1.45rem 1.55rem;
+            box-shadow: var(--shadow-premium);
+        }
+
+        .partial-flow-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 999px;
+            background: rgba(239, 68, 68, 0.1);
+            color: #dc2626;
+            font-size: 0.86rem;
+            font-weight: 800;
+        }
+
+        .partial-flow-step h3 {
+            font-size: 1.08rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .partial-flow-step p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .partial-question-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .partial-question-card {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 1.5rem 1.6rem;
+            box-shadow: var(--shadow-premium);
+        }
+
+        .partial-question-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .partial-checklist {
+            background: linear-gradient(180deg, #fbfefe, #f5f9fb);
+            border: 1px solid rgba(13, 148, 136, 0.12);
+            border-radius: 28px;
+            padding: 1.9rem 2rem;
+            box-shadow: 0 18px 34px rgba(15, 23, 42, 0.04);
+        }
+
+        .partial-checklist ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 0.9rem;
+            margin-top: 1.2rem;
+        }
+
+        .partial-checklist li {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+            color: var(--secondary-color);
+            line-height: 1.68;
+        }
+
+        .partial-checklist li::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            margin-top: 0.45rem;
+            border-radius: 50%;
+            background: var(--accent-color);
+            box-shadow: 0 0 0 6px rgba(13, 148, 136, 0.12);
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .partial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partial-flow-step {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
-<body>
+<body class="class-page exam-page">
     <div id="top-focus" class="focus-helper" tabindex="-1"></div>
 
     <main class="container">
-        <section class="class-header fade-in">
+        <section class="class-header exam-header fade-in">
             <a href="../index.html" class="back-link">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                 Volver al Inicio
             </a>
 
-            <div class="date-badge">Lunes 20 de Abril</div>
-            <h1 style="font-size: 3.5rem; margin-bottom: 1rem; line-height: 1; letter-spacing: -2px;">Primer Parcial Evaluador</h1>
-            
-            <div class="exam-alert">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                Modalidad: Presencial en el Aula 102
+            <span class="class-badge exam-badge">Ruta al Primer Parcial</span>
+            <span class="class-date">Lunes 20 de abril</span>
+            <h1 class="class-title">Cómo preparar el primer parcial sin estudiar en bloques sueltos</h1>
+
+            <div class="class-intro">
+                <div class="class-lead">
+                    <p>Esta página no reemplaza las clases ni resume completamente la bibliografía. Su función es ayudarte a <strong>organizar el repaso</strong>, ubicar las articulaciones más importantes entre las Unidades 1 y 2 y transformar una lista de temas en un recorrido de preparación más claro.</p>
+                    <p>Lo central del parcial no será repetir conceptos de memoria, sino poder mostrar cómo Freud pasa del problema clínico de la histeria a una teoría cada vez más rigurosa del conflicto, la represión y el funcionamiento del aparato psíquico.</p>
+                    <p>Por eso conviene estudiar esta evaluación como una <strong>secuencia</strong>: primero el descubrimiento del síntoma histérico, luego el trauma y la defensa, y finalmente el pasaje a las formaciones del inconsciente y a la Primera Tópica.</p>
+                </div>
+
+                <aside class="class-side-card">
+                    <div class="class-side-card-title">Qué conviene poder hacer</div>
+                    <ul class="class-side-list">
+                        <li><strong>Articular:</strong> no sólo definir conceptos, sino enlazarlos entre sí.</li>
+                        <li><strong>Diferenciar:</strong> trauma, defensa, represión, sueño y acto fallido.</li>
+                        <li><strong>Explicar:</strong> cómo cada noción responde a un problema clínico y teórico.</li>
+                    </ul>
+                </aside>
             </div>
 
-            <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
-                Esta instancia evaluadora busca integrar los conceptos fundamentales recorridos durante la primera mitad del cuatrimestre. El examen consistirá en preguntas de desarrollo teórico-clínico basadas en la bibliografía obligatoria.
-            </p>
-
-            <div class="exam-grid">
-                <div class="exam-card">
-                    <h3 style="color: var(--primary-color); border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem;">Eje Unidad 1</h3>
-                    <ul class="topic-list">
-                        <li>De la parálisis traumática de Charcot al Método Catártico.</li>
-                        <li>Anna O. y el descubrimiento del sentido de los síntomas.</li>
-                        <li>La defensa como acto voluntario y motor de la escisión consciente.</li>
-                        <li>Abandono de la hipnosis: La regla fundamental de la Asociación Libre.</li>
-                    </ul>
-                </div>
-                <div class="exam-card">
-                    <h3 style="color: var(--primary-color); border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem;">Eje Unidad 2</h3>
-                    <ul class="topic-list">
-                        <li>Leyes del Inconsciente: Proceso Primario vs. Proceso Secundario.</li>
-                        <li>El Sueño como cumplimiento de deseo y formación de compromiso.</li>
-                        <li>Mecanismos del Trabajo del Sueño: Condensación y Desplazamiento.</li>
-                        <li>Olvidos, Lapsus y la Psicopatología de la Vida Cotidiana.</li>
-                    </ul>
-                </div>
+            <div class="exam-meta-bar">
+                <span class="exam-meta-chip">Presencial · Aula 102</span>
+                <span class="exam-meta-chip">Unidades 1 y 2</span>
+                <span class="exam-meta-chip">Preguntas de desarrollo</span>
             </div>
 
-            <div class="glass-card" style="margin-top: 3rem; background: #fffcf0; border-color: #fde68a; padding: 2rem; text-align: left;">
-                <h4 style="color: #92400e; margin-bottom: 1rem;">📢 Recomendaciones para el estudiante</h4>
-                <p style="color: #b45309; font-size: 0.95rem; line-height: 1.6;">
-                    - Re-leer la 1° Conferencia de Freud para tener el marco histórico general. <br>
-                    - Asegurarse de comprender la diferencia técnica entre catarsis y análisis. <br>
-                    - Practicar la distinción entre Contenido Manifiesto y Pensamientos Latentes con ejemplos propios.
-                </p>
+            <div class="exam-notice">
+                <p><strong>Importante:</strong> esta ruta está pensada como herramienta de estudio transversal. No alcanza con leer solo esta página: usala para ordenar el repaso, volver a las clases, reabrir los textos y entrenar respuestas integradoras antes de la evaluación.</p>
             </div>
         </section>
 
-        <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
+        <section class="class-section fade-in" style="animation-delay: 0.15s;">
+            <div class="class-section-heading">
+                <h2>Cómo usar esta ruta</h2>
+                <p>Una secuencia breve para estudiar con criterio y no acumular apuntes sin articulación.</p>
+            </div>
+
+            <div class="partial-grid">
+                <article class="partial-card">
+                    <span class="partial-card-label">Paso 1</span>
+                    <h3>Repasá por problemas, no por autores sueltos</h3>
+                    <p>El parcial gana claridad cuando estudiás cada texto como respuesta a un problema: el enigma de la histeria, el trauma, la defensa, el sueño, la represión y la Primera Tópica. Si repasás solo por nombres o títulos, el recorrido conceptual se fragmenta.</p>
+                </article>
+
+                <article class="partial-card">
+                    <span class="partial-card-label">Paso 2</span>
+                    <h3>Volvé a las clases como guías de lectura</h3>
+                    <p>Las páginas de clase ya ordenan los focos centrales, las preguntas de autoevaluación y los errores frecuentes. Usá esta ruta para ver la imagen general, pero apoyate en cada clase para afinar el detalle.</p>
+                </article>
+
+                <article class="partial-card">
+                    <span class="partial-card-label">Paso 3</span>
+                    <h3>Practicá respuestas integradoras</h3>
+                    <p>Antes del parcial, intentá explicar en voz alta o por escrito cómo un concepto lleva al siguiente. Si podés pasar de la histeria al sueño sin perder la lógica del conflicto psíquico, el repaso va bien encaminado.</p>
+                </article>
+
+                <article class="partial-card">
+                    <span class="partial-card-label is-alert">Criterio clave</span>
+                    <h3>Lo evaluable no es solo la definición</h3>
+                    <p>Además de manejar términos con precisión, necesitás mostrar su función teórica: por qué Freud abandona una hipótesis, qué nueva dificultad aparece, y cómo esa dificultad empuja una nueva formulación del aparato psíquico.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="class-section fade-in" style="animation-delay: 0.25s;">
+            <div class="class-section-heading">
+                <h2>Qué entra en el parcial</h2>
+                <p>Dos unidades, un mismo problema: cómo se construye el inconsciente freudiano a partir de la clínica.</p>
+            </div>
+
+            <div class="partial-axis-grid">
+                <article class="partial-axis">
+                    <span class="partial-card-label">Unidad 1</span>
+                    <h3>De la histeria al conflicto psíquico</h3>
+                    <p>El punto de partida es la crisis del modelo anatomoclínico frente a la histeria. Charcot restituye legitimidad clínica al fenómeno; Breuer muestra con Anna O. que el síntoma puede disolverse al recuperar el recuerdo y el afecto correspondiente; y Freud, finalmente, redefine la escisión de la conciencia como resultado de una defensa.</p>
+                    <p>Acá importa ubicar con claridad: histeria, trauma psíquico, abreacción, afecto estrangulado, método catártico, escisión de la conciencia, defensa, conversión y enlace falso.</p>
+                    <div class="partial-axis-links">
+                        <a href="unit1_clase1.html" class="partial-link">Revisar Clase 1</a>
+                        <a href="unit1_clase3.html" class="partial-link">Revisar Clase 3</a>
+                    </div>
+                </article>
+
+                <article class="partial-axis">
+                    <span class="partial-card-label">Unidad 2</span>
+                    <h3>De la patología a las formaciones del inconsciente</h3>
+                    <p>La segunda parte del parcial introduce el giro decisivo por el cual Freud deja de pensar el inconsciente solo en términos patológicos. El sueño y, luego, los actos fallidos muestran que las mismas fuerzas que producen síntomas neuróticos operan también en la vida psíquica normal.</p>
+                    <p>Acá importa poder trabajar: contenido manifiesto y latente, trabajo del sueño, cumplimiento de deseo, defensa y desfiguración, proceso primario y secundario, retorno de lo reprimido y Primera Tópica.</p>
+                    <div class="partial-axis-links">
+                        <a href="unit2.html" class="partial-link">Revisar Unidad 2</a>
+                        <a href="unit2_clase4.html" class="partial-link">Revisar Clase 4</a>
+                        <a href="../mapa_conceptual.html" class="partial-link">Abrir mapa conceptual</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="class-section fade-in" style="animation-delay: 0.35s;">
+            <div class="class-section-heading">
+                <h2>Núcleos de articulación</h2>
+                <p>Estas son las conexiones que más conviene poder sostener con claridad en una respuesta de examen.</p>
+            </div>
+
+            <div class="question-grid">
+                <article class="question-card">
+                    <div class="question-card-title">Núcleo 1</div>
+                    <ol class="question-list">
+                        <li><strong>Histeria → trauma psíquico → abreacción.</strong> La histeria deja de leerse como simulación o lesión orgánica y pasa a entenderse como efecto de una vivencia cargada de afecto que no pudo tramitarse adecuadamente.</li>
+                    </ol>
+                </article>
+
+                <article class="question-card">
+                    <div class="question-card-title">Núcleo 2</div>
+                    <ol class="question-list">
+                        <li><strong>Trauma → defensa → síntoma.</strong> Freud da el salto original cuando explica que la escisión de la conciencia no es un accidente, sino una operación defensiva del Yo frente a una representación inconciliable.</li>
+                    </ol>
+                </article>
+
+                <article class="question-card">
+                    <div class="question-card-title">Núcleo 3</div>
+                    <ol class="question-list">
+                        <li><strong>Defensa → represión → retorno de lo reprimido.</strong> Lo reprimido no desaparece: sigue exigiendo tramitación y retorna bajo formas desfiguradas, ya sea como síntoma, sueño o acto fallido.</li>
+                    </ol>
+                </article>
+
+                <article class="question-card">
+                    <div class="question-card-title">Núcleo 4</div>
+                    <ol class="question-list">
+                        <li><strong>Sueño → trabajo del sueño → defensa.</strong> El sueño no muestra el deseo de manera transparente: lo transforma, lo desplaza y lo vuelve figurado para proteger el dormir y hacer tolerable su expresión.</li>
+                    </ol>
+                </article>
+
+                <article class="question-card">
+                    <div class="question-card-title">Núcleo 5</div>
+                    <ol class="question-list">
+                        <li><strong>Sueño → proceso primario / secundario → Primera Tópica.</strong> El análisis del sueño obliga a Freud a formalizar una arquitectura del aparato psíquico y a diferenciar sistemas regidos por leyes distintas.</li>
+                    </ol>
+                </article>
+            </div>
+        </section>
+
+        <section class="class-section fade-in" style="animation-delay: 0.45s;">
+            <div class="class-section-heading">
+                <h2>Recorrido sugerido de repaso</h2>
+                <p>Un modo de volver sobre la materia sin dispersarte entre textos y conceptos.</p>
+            </div>
+
+            <div class="partial-flow">
+                <article class="partial-flow-step">
+                    <span class="partial-flow-number">1</span>
+                    <div>
+                        <h3>Volvé a la pregunta de origen: ¿qué vuelve problemática a la histeria?</h3>
+                        <p>Repasá Charcot, la crisis del modelo médico y el caso Anna O. El objetivo es reconstruir por qué el síntoma histérico obligó a la clínica a abandonar el criterio exclusivo de la lesión orgánica observable.</p>
+                    </div>
+                </article>
+
+                <article class="partial-flow-step">
+                    <span class="partial-flow-number">2</span>
+                    <div>
+                        <h3>Reconstruí la lógica del trauma y de la abreacción</h3>
+                        <p>Tenés que poder explicar qué es un trauma psíquico, por qué el afecto queda estrangulado y cómo el método catártico intenta intervenir sobre esa fijación del recuerdo patógeno.</p>
+                    </div>
+                </article>
+
+                <article class="partial-flow-step">
+                    <span class="partial-flow-number">3</span>
+                    <div>
+                        <h3>Hacé el salto a la defensa</h3>
+                        <p>Este es uno de los núcleos más importantes del parcial. Asegurate de diferenciar claramente a Janet, Breuer y Freud, y de poder desarrollar el divorcio entre representación y afecto como operación del Yo.</p>
+                    </div>
+                </article>
+
+                <article class="partial-flow-step">
+                    <span class="partial-flow-number">4</span>
+                    <div>
+                        <h3>Pasá del síntoma al sueño</h3>
+                        <p>Repasá cómo Freud extiende el problema de la defensa a la vida psíquica normal. Lo reprimido no desaparece: retorna también en el sueño, donde el deseo encuentra una realización desfigurada.</p>
+                    </div>
+                </article>
+
+                <article class="partial-flow-step">
+                    <span class="partial-flow-number">5</span>
+                    <div>
+                        <h3>Cerrá con la formalización del aparato psíquico</h3>
+                        <p>El repaso debería terminar en proceso primario, proceso secundario y Primera Tópica. No como lista de definiciones, sino como respuesta teórica a los problemas que el sueño obligó a pensar.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="class-section fade-in" style="animation-delay: 0.55s;">
+            <div class="class-section-heading">
+                <h2>Preguntas integradoras para practicar</h2>
+                <p>Si podés responder estas preguntas con tus propias palabras, el repaso ya tiene estructura.</p>
+            </div>
+
+            <div class="partial-question-grid">
+                <article class="partial-question-card">
+                    <h3>1. ¿Por qué la histeria obligó a Freud a alejarse del modelo médico tradicional y cómo se enlaza este problema con el descubrimiento del trauma psíquico?</h3>
+                </article>
+
+                <article class="partial-question-card">
+                    <h3>2. ¿Qué conserva Freud del método catártico y qué transforma cuando introduce la defensa como explicación de la escisión de la conciencia?</h3>
+                </article>
+
+                <article class="partial-question-card">
+                    <h3>3. ¿Cómo se articula el problema del afecto estrangulado con la noción freudiana de síntoma como sustituto desfigurado?</h3>
+                </article>
+
+                <article class="partial-question-card">
+                    <h3>4. ¿En qué sentido el sueño prolonga la lógica de la defensa y por qué puede pensarse como una formación del inconsciente?</h3>
+                </article>
+
+                <article class="partial-question-card">
+                    <h3>5. ¿Qué relación existe entre trabajo del sueño, proceso primario y formulación de la Primera Tópica?</h3>
+                </article>
+
+                <article class="partial-question-card">
+                    <h3>6. ¿Por qué Freud puede pasar, entre la Unidad 1 y la Unidad 2, de una teoría de la neurosis a una teoría general de la vida psíquica?</h3>
+                </article>
+            </div>
+        </section>
+
+        <section class="class-section fade-in" style="animation-delay: 0.65s;">
+            <div class="class-section-heading">
+                <h2>Errores típicos del parcial</h2>
+                <p>Desajustes frecuentes que conviene corregir antes de escribir una respuesta evaluativa.</p>
+            </div>
+
+            <div class="mistake-grid">
+                <article class="mistake-card">
+                    <h3>Responder por textos aislados y no por problemas</h3>
+                    <p>Si una respuesta enumera autores y conceptos sin explicar qué dificultad clínica o teórica intenta resolver cada uno, pierde coherencia. El parcial suele valorar más la articulación que la acumulación.</p>
+                </article>
+
+                <article class="mistake-card">
+                    <h3>Usar “represión” y “defensa” como sinónimos absolutos</h3>
+                    <p>Están muy ligadas, pero conviene mostrar el movimiento conceptual. En la Unidad 1 se enfatiza la defensa como operación del Yo; en la Unidad 2 se complejiza la lógica del retorno de lo reprimido y de las formaciones del inconsciente.</p>
+                </article>
+
+                <article class="mistake-card">
+                    <h3>Separar demasiado la clínica de la metapsicología</h3>
+                    <p>La Primera Tópica no aparece de la nada. Surge porque la clínica del sueño obliga a Freud a modelizar cómo circulan las representaciones, cómo opera la censura y cómo retorna lo reprimido.</p>
+                </article>
+
+                <article class="mistake-card">
+                    <h3>Pensar el sueño como un tema distinto del síntoma</h3>
+                    <p>El sueño no reemplaza el problema del síntoma: lo desplaza y lo amplía. Muestra que las mismas fuerzas del conflicto psíquico también trabajan en la vida psíquica normal.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="class-section fade-in" style="animation-delay: 0.75s;">
+            <div class="class-section-heading">
+                <h2>Checklist final</h2>
+                <p>Una última verificación antes del parcial.</p>
+            </div>
+
+            <div class="partial-checklist">
+                <p>Antes de dar por cerrado el repaso, fijate si realmente podés hacer estas operaciones con autonomía:</p>
+                <ul>
+                    <li>Explicar por qué la histeria fue el punto de partida ineludible del psicoanálisis.</li>
+                    <li>Diferenciar trauma psíquico, abreacción y afecto estrangulado sin reducirlos a fórmulas memorizadas.</li>
+                    <li>Desarrollar con precisión la teoría freudiana de la defensa y sus diferencias con Janet y Breuer.</li>
+                    <li>Mostrar cómo el sueño continúa, en otro nivel, la lógica de la defensa y de la represión.</li>
+                    <li>Relacionar proceso primario, proceso secundario y Primera Tópica como momentos de formalización del aparato psíquico.</li>
+                    <li>Construir al menos una respuesta donde las Unidades 1 y 2 aparezcan integradas y no como bloques separados.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="bridge-section fade-in" style="animation-delay: 0.85s;">
+            <span class="bridge-label">Cierre del recorrido</span>
+            <h2 class="bridge-title">Estudiar para integrar, no para repetir</h2>
+            <div class="bridge-copy">
+                <p>El primer parcial no debería prepararse como una suma de textos desconectados. Su lógica está en el pasaje que va desde la histeria y el trauma hasta el sueño y la formalización del aparato psíquico.</p>
+                <p>Si en el repaso lográs mostrar cómo cada concepto responde a un problema anterior y abre un problema nuevo, ya no estarás estudiando solo para “llegar” al examen, sino para entender el movimiento interno con el que Freud construye su teoría.</p>
+            </div>
+
+            <div class="class-nav-actions">
+                <a href="../mapa_conceptual.html" class="class-nav-button secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="12" cy="18" r="3"></circle><line x1="8.7" y1="7.5" x2="15.3" y2="7.5"></line><line x1="7.9" y1="8.5" x2="10.4" y2="15.2"></line><line x1="16.1" y1="8.5" x2="13.6" y2="15.2"></line></svg>
+                    Abrir mapa conceptual
+                </a>
+                <a href="unit2_clase4.html" class="class-nav-button primary">
+                    Volver a Clase 4
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </section>
+
+        <footer class="site-footer">
             <p>© 2026 Psicoanálisis | UFLO Universidad</p>
         </footer>
     </main>
 
     <script>
-        function sendHeight() {
-            const height = document.body.scrollHeight;
-            window.parent.postMessage({ height: height }, '*');
+        const EMBED_SOURCE = 'campus-psicoanalisis';
+        let lastSentHeight = 0;
+        let pendingHeightFrame = null;
+
+        function getDocumentHeight() {
+            const body = document.body;
+            const html = document.documentElement;
+            return Math.max(
+                body ? body.scrollHeight : 0,
+                body ? body.offsetHeight : 0,
+                html ? html.clientHeight : 0,
+                html ? html.scrollHeight : 0,
+                html ? html.offsetHeight : 0
+            );
         }
+
+        function postEmbedMessage(payload) {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage(payload, '*');
+            }
+        }
+
+        function sendHeight(reason = 'update', force = false) {
+            if (pendingHeightFrame) cancelAnimationFrame(pendingHeightFrame);
+            pendingHeightFrame = requestAnimationFrame(() => {
+                const height = getDocumentHeight();
+                const changedEnough = Math.abs(height - lastSentHeight) > 4;
+                if (!force && !changedEnough) return;
+                lastSentHeight = height;
+                postEmbedMessage({ type: 'campusHeight', source: EMBED_SOURCE, height, reason, path: window.location.pathname });
+                postEmbedMessage({ height: height });
+            });
+        }
+
         function scrollToTop() {
             window.scrollTo(0, 0);
             const helper = document.getElementById('top-focus');
-            if (helper) helper.focus({preventScroll:false});
+            if (helper) helper.focus({ preventScroll: false });
+            if (window.parent) {
+                ['scrollToTop', 'forceScrollTop', { type: 'scrollToTop' }].forEach(msg => {
+                    try { window.parent.postMessage(msg, '*'); } catch (e) {}
+                });
+            }
         }
+
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+        function setupEmbedSync() {
+            sendHeight('init', true);
+            if ('ResizeObserver' in window) {
+                const resizeObserver = new ResizeObserver(() => sendHeight('resize-observer'));
+                resizeObserver.observe(document.body);
+            }
+            if ('MutationObserver' in window) {
+                const mutationObserver = new MutationObserver(() => sendHeight('mutation'));
+                mutationObserver.observe(document.body, { childList: true, subtree: true, attributes: true, characterData: true });
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', setupEmbedSync);
         window.addEventListener('load', () => {
             scrollToTop();
-            setTimeout(() => { scrollToTop(); sendHeight(); }, 100);
+            setTimeout(() => {
+                scrollToTop();
+                sendHeight('load', true);
+            }, 100);
+            setTimeout(scrollToTop, 500);
+            setTimeout(scrollToTop, 1000);
         });
-        window.addEventListener('resize', sendHeight);
-        setInterval(sendHeight, 1000);
+        window.addEventListener('resize', () => sendHeight('window-resize', true));
+        window.addEventListener('pageshow', () => sendHeight('pageshow', true));
     </script>
 </body>
 </html>
