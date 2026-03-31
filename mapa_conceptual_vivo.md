@@ -14,6 +14,10 @@ Este documento reúne el contenido textual del mapa conceptual del campus para r
 
 Una lectura transversal del curso para seguir cómo un problema empuja al siguiente. No reemplaza las clases: ayuda a ver la arquitectura general del recorrido.
 
+## Advertencia de uso
+
+El mapa no reemplaza las clases ni resume completamente los textos. Su función es mostrar cómo cada concepto responde a un problema que surge en el recorrido del curso.
+
 ## Cómo usarlo
 
 - Entrar por la red si se busca una visión global.
@@ -202,12 +206,12 @@ Nombre transversal para fenómenos como el sueño y, más adelante, los actos fa
 
 ### Desarrollo
 
-Este concepto organiza una lectura moderna del campus porque permite salir de la lógica de tema por tema y empezar a ver series. El sueño, los olvidos y los tropiezos del lenguaje no aparecen como hechos dispersos, sino como diferentes modos de retorno de aquello que el aparato psíquico no logra cancelar. Así, la materia empieza a adquirir una verdadera arquitectura.
+Este concepto organiza una lectura moderna del campus porque permite salir de la lógica de tema por tema y empezar a ver series. El sueño, los actos fallidos, los olvidos y los tropiezos del lenguaje no aparecen como hechos dispersos, sino como diferentes modos de retorno de aquello que el aparato psíquico no logra cancelar. Así, la materia empieza a adquirir una verdadera arquitectura.
 
 ### Se articula con
 
 - Sueño como primera gran formación trabajada en detalle
-- Actos fallidos y vida psíquica de vigilia
+- Actos fallidos como irrupciones de la vida psíquica de vigilia
 - Retorno de lo reprimido como lógica común
 
 ### Ubicación en el campus
