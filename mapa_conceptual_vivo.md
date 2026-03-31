@@ -140,6 +140,10 @@ El primer gran salto de Freud: la escisión de la conciencia ya no se explica po
 
 La defensa organiza el verdadero umbral entre la prehistoria del psicoanálisis y la originalidad freudiana. En el campus, este concepto es central porque permite releer el síntoma como formación de compromiso y entender por qué una representación se divorcia de su afecto. Además, prepara la entrada a Unidad 2: la lógica de la defensa no desaparece al estudiar el sueño, sino que continúa allí bajo otra forma.
 
+### Movimiento conceptual
+
+La defensa no sólo explica la escisión de la conciencia; también plantea el problema del destino del afecto una vez divorciado de la representación. Ese problema abre la pregunta por la conversión, el enlace falso y, más adelante, por las distintas vías del retorno de lo reprimido.
+
 ### Se articula con
 
 - Represión, como destino más formalizado del conflicto
@@ -186,6 +190,10 @@ La vía regia hacia el inconsciente y el momento en que el psicoanálisis deja d
 
 El sueño es el gran viraje de la Unidad 2. Deja de ser resto biológico o ruido nocturno para adquirir estatuto de formación interpretable. En el campus, el sueño condensa dos problemas: por un lado, el deseo inconsciente encuentra allí una realización deformada; por otro, el trabajo del sueño continúa la lógica de la defensa, transformando aquello que resultaría displacentero para permitir su expresión desfigurada.
 
+### Movimiento conceptual
+
+El sueño muestra que los mecanismos de sustitución y desfiguración no son exclusivamente patológicos. Ese desplazamiento obliga a Freud a pensar sistemas psíquicos, censura, regresión y una teoría más general de la vida psíquica.
+
 ### Se articula con
 
 - Formaciones del inconsciente
@@ -229,6 +237,10 @@ El modelo del aparato psíquico que Freud necesita construir cuando la clínica 
 ### Desarrollo
 
 La Primera Tópica aparece en el mapa como punto de llegada de esta etapa del curso. Cuando Freud comprueba que el sueño, la censura, la regresión y el deseo no pueden explicarse con categorías médicas tradicionales, necesita un modelo nuevo: inconsciente, preconsciente y conciencia como sistemas virtuales. En ese sentido, la tópica no nace de una teoría abstracta previa, sino del trabajo clínico e interpretativo acumulado.
+
+### Movimiento conceptual
+
+La Primera Tópica responde a problemas muy concretos abiertos por el estudio del sueño: cómo pensar la censura, por qué la regresión produce el carácter alucinatorio de la vida onírica y de qué modo se articulan distintos sistemas del aparato psíquico.
 
 ### Se articula con
 
