@@ -1103,6 +1103,89 @@ h1, h2, h3 {
     margin-top: 0.75rem;
 }
 
+.study-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.study-plan-card {
+    background: white;
+    border: 1px solid var(--glass-border);
+    border-radius: 22px;
+    padding: 1.35rem 1.4rem;
+    box-shadow: var(--shadow-premium);
+}
+
+.study-plan-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: rgba(13, 148, 136, 0.1);
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin-bottom: 0.9rem;
+}
+
+.study-plan-card h3 {
+    font-size: 1.08rem;
+    margin-bottom: 0.55rem;
+    color: var(--primary-color);
+}
+
+.study-plan-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.mistake-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.mistake-card {
+    background: linear-gradient(180deg, #fffdf8, #fffaf0);
+    border: 1px solid #f5e7bf;
+    border-radius: 22px;
+    padding: 1.35rem 1.45rem;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+}
+
+.mistake-card h3 {
+    font-size: 1.02rem;
+    margin-bottom: 0.55rem;
+    color: var(--primary-color);
+}
+
+.mistake-card p {
+    color: var(--secondary-color);
+    line-height: 1.68;
+    font-size: 0.95rem;
+}
+
+.class-summary-box {
+    background: linear-gradient(180deg, #fbfefe, #f3f8fa);
+    border: 1px solid rgba(13, 148, 136, 0.12);
+    border-radius: 28px;
+    padding: 2rem 2.1rem;
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.04);
+}
+
+.class-summary-box p {
+    color: var(--text-secondary);
+    line-height: 1.82;
+    font-size: 1rem;
+}
+
+.class-summary-box p + p {
+    margin-top: 0.95rem;
+}
+
 .route-card.is-muted {
     opacity: 1;
     background: #f8fafc;
