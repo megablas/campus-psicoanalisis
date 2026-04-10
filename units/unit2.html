@@ -47,10 +47,18 @@
         .module-bridge p { color: var(--text-secondary); line-height: 1.8; }
         .module-bridge strong { color: var(--primary-color); }
         .roadmap-intro { max-width: 740px; margin: 0 auto 2.5rem; color: var(--text-secondary); line-height: 1.7; }
+        .unit-reading-strip { margin-top: 4rem; padding: 2.2rem; background: linear-gradient(180deg, #fff, #f8fbfc); border-radius: 32px; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); }
+        .unit-reading-strip-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .unit-reading-strip-header p { max-width: 560px; color: var(--text-secondary); line-height: 1.7; }
+        .unit-reading-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .unit-reading-card { background: linear-gradient(180deg, #ffffff, #fbfcfd); border: 1px solid rgba(15, 23, 42, 0.06); border-radius: 24px; padding: 1.3rem; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04); }
+        .unit-reading-card h3 { font-size: 1rem; line-height: 1.3; margin: 0.7rem 0 0.5rem; }
+        .unit-reading-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; }
+        .unit-reading-chip { display: inline-flex; align-items: center; padding: 0.35rem 0.7rem; border-radius: 999px; background: rgba(13, 148, 136, 0.08); color: var(--accent-color); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08rem; }
 
         @media (max-width: 768px) {
             .unit-hero h1 { font-size: 2.2rem; }
-            .unit-scan-grid, .module-emphasis-grid { grid-template-columns: 1fr; }
+            .unit-scan-grid, .module-emphasis-grid, .unit-reading-grid { grid-template-columns: 1fr; }
             .unit-passage-band { grid-template-columns: auto 1fr; }
             .unit-passage-band .unit-passage-node:nth-child(3),
             .unit-passage-band .unit-passage-node:nth-child(5),
@@ -232,11 +240,44 @@
                     <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">La vía regia: el sueño y su interpretación</h4>
                     <p style="font-size: 0.88rem; color: var(--text-secondary);">Ingresaremos al momento en que Freud le reconoce estatuto científico al sueño y convierte la experiencia onírica en una vía privilegiada para interrogar el deseo inconsciente.</p>
                 </a>
-                <a href="unit2_clase5.html" class="route-card">
+                <a href="unit2_clase5.html?v=20260410" class="route-card">
                     <span class="route-number">Clase 5 · 13/04</span>
                     <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">El mapa de la mente: actos fallidos y Primera Tópica</h4>
                     <p style="font-size: 0.88rem; color: var(--text-secondary);">Pasaremos de las irrupciones del inconsciente en la vigilia a la necesidad de construir un modelo del aparato psíquico capaz de explicar censura, represión y retorno.</p>
                 </a>
+            </div>
+        </section>
+
+        <section class="unit-reading-strip fade-in" style="animation-delay: 0.45s;">
+            <div class="unit-reading-strip-header">
+                <div>
+                    <h2 style="font-size: 2rem; letter-spacing: -1px;">Textos ya disponibles de la Clase 5</h2>
+                    <p>Ya quedaron cargados los materiales sobre actos fallidos, represiÃ³n y sistema inconsciente para que puedan empezar la lectura desde la propia Unidad 2.</p>
+                </div>
+                <a href="unit2_clase5.html?v=20260410" class="btn" style="background: var(--accent-color); color: white; font-size: 0.85rem;">Ir a Clase 5</a>
+            </div>
+
+            <div class="unit-reading-grid">
+                <article class="unit-reading-card">
+                    <span class="unit-reading-chip">Clase 5</span>
+                    <h3>PsicopatologÃ­a de la vida cotidiana (Cap. I)</h3>
+                    <p>Entrada al estudio de los actos fallidos y del olvido de nombres propios como formaciones del inconsciente.</p>
+                    <a href="../Textos/Unidad%202/PSICOPATOLOGIA%20DE%20LA%20VIDA%20COTIDIANA.%20CAP.%201.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
+                </article>
+
+                <article class="unit-reading-card">
+                    <span class="unit-reading-chip">Clase 5</span>
+                    <h3>Conferencias de introducciÃ³n al psicoanÃ¡lisis (5 y 6)</h3>
+                    <p>Freud ordena de forma didÃ¡ctica la lÃ³gica de los actos fallidos y su sentido en la vida cotidiana.</p>
+                    <a href="../Textos/Unidad%202/Freud%20Conferencias%205%20y%206.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
+                </article>
+
+                <article class="unit-reading-card">
+                    <span class="unit-reading-chip">Clase 5</span>
+                    <h3>La represiÃ³n y Lo inconsciente (caps. II y IV)</h3>
+                    <p>Texto metapsicolÃ³gico central para pensar censura, retorno de lo reprimido y leyes del sistema inconsciente.</p>
+                    <a href="../Textos/Unidad%202/Freud%20La_represion_y_lo_inconciente_cap_2_y_4.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
+                </article>
             </div>
         </section>
 
