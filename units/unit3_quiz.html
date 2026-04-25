@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interactivo: El Mapa de la Pulsión | Unidad 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=16">
+    <style>
+        :root {
+            --quiz-accent: #0d9488;
+            --quiz-wrong: #ef4444;
+            --quiz-correct: #10b981;
+        }
+
+        body.quiz-page {
+            background: radial-gradient(circle at top right, #f0f9ff 0%, #ffffff 40%, #f8fafc 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+        }
+
+        .quiz-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 32px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(0,0,0,0.05);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--quiz-accent);
+            width: 0%;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .quiz-header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .question-number {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--quiz-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .options-grid {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-button {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--secondary-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .option-button:hover:not(.disabled) {
+            border-color: var(--quiz-accent);
+            background: rgba(13, 148, 136, 0.02);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        }
+
+        .option-button.correct {
+            background: #ecfdf5;
+            border-color: var(--quiz-correct);
+            color: #065f46;
+        }
+
+        .option-button.wrong {
+            background: #fef2f2;
+            border-color: var(--quiz-wrong);
+            color: #991b1b;
+        }
+
+        .option-button.disabled {
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        .option-marker {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .correct .option-marker {
+            background: var(--quiz-correct);
+            border-color: var(--quiz-correct);
+            color: white;
+        }
+
+        .wrong .option-marker {
+            background: var(--quiz-wrong);
+            border-color: var(--quiz-wrong);
+            color: white;
+        }
+
+        .feedback-container {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 20px;
+            display: none;
+            animation: slideUp 0.4s ease;
+        }
+
+        .feedback-container.show {
+            display: block;
+        }
+
+        .feedback-container.is-correct {
+            background: #f0fdf4;
+            border: 1px solid #dcfce7;
+            color: #166534;
+        }
+
+        .feedback-container.is-wrong {
+            background: #fff7ed;
+            border: 1px solid #ffedd5;
+            color: #9a3412;
+        }
+
+        .feedback-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .next-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 100px;
+            padding: 1rem 2.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: none;
+            margin: 2rem auto 0;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+        }
+
+        .next-btn.show {
+            display: block;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.3);
+            background: #1e293b;
+        }
+
+        /* Results Screen */
+        .results-container {
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .results-container.show {
+            display: block;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            border: 8px solid var(--quiz-accent);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .score-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .score-total {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .result-title {
+            font-size: 2.5rem;
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .result-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @media (max-width: 640px) {
+            .quiz-card { padding: 2rem 1.5rem; }
+            .question-text { font-size: 1.4rem; }
+            .option-button { padding: 1rem; }
+            body.quiz-page { padding: 1rem; }
+        }
+    </style>
+</head>
+<body class="quiz-page">
+    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+
+    <div class="quiz-container">
+        <!-- Back Link -->
+        <a href="unit3.html" class="back-link" style="position: absolute; top: -3rem; left: 0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Volver a la Unidad 3
+        </a>
+
+        <div class="quiz-card" id="quiz-card">
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progress-bar"></div>
+            </div>
+
+            <!-- Question Screen -->
+            <div id="question-screen">
+                <div class="quiz-header">
+                    <span class="question-number" id="question-number">Pregunta 1 de 8</span>
+                    <h2 class="question-text" id="question-text">Cargando pregunta...</h2>
+                </div>
+
+                <div class="options-grid" id="options-grid">
+                    <!-- Options injected here -->
+                </div>
+
+                <div class="feedback-container" id="feedback-container">
+                    <div class="feedback-title" id="feedback-title"></div>
+                    <p id="feedback-text"></p>
+                </div>
+
+                <button class="next-btn" id="next-btn">Continuar</button>
+            </div>
+
+            <!-- Results Screen -->
+            <div class="results-container" id="results-screen">
+                <div class="score-circle">
+                    <span class="score-value" id="final-score">0</span>
+                    <span class="score-total">de 8</span>
+                </div>
+                <h2 class="result-title" id="result-title">¡Buen trabajo!</h2>
+                <p class="result-text" id="result-text"></p>
+                
+                <div class="btn-group">
+                    <button class="btn primary" onclick="location.reload()">Reintentar</button>
+                    <a href="unit3.html" class="btn secondary">Volver a la Unidad</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "¿Cuál es la diferencia fundamental entre el estímulo externo y la pulsión?",
+                options: [
+                    "El estímulo externo es constante, la pulsión es momentánea.",
+                    "La pulsión es una fuerza constante del interior de la que no se puede huir.",
+                    "El estímulo externo requiere un trabajo del alma, la pulsión no.",
+                    "No hay diferencia, ambos son términos biológicos."
+                ],
+                correct: 1,
+                feedback: "Exacto. Mientras que de un ruido o una luz podemos huir, de la pulsión no, porque proviene de nuestro interior y exige un trabajo psíquico constante."
+            },
+            {
+                question: "Freud afirma que el vínculo entre la pulsión y su objeto es...",
+                options: [
+                    "Natural y predeterminado biológicamente.",
+                    "Una soldadura contingente, no fija de antemano.",
+                    "Inexistente hasta la llegada de la pubertad.",
+                    "Universal para todos los seres humanos por igual."
+                ],
+                correct: 1,
+                feedback: "¡Correcto! El objeto es lo más variable de la pulsión. No nacemos con un objeto 'natural' predeterminado; la conexión se construye (se suelda) en la historia de cada sujeto."
+            },
+            {
+                question: "¿A qué llama Freud el 'periodo de latencia'?",
+                options: [
+                    "Al tiempo en que la pulsión sexual está en su máximo esplendor.",
+                    "Al olvido de los primeros años por inmadurez cerebral.",
+                    "Al tiempo de calma sexual donde se construyen el asco, la vergüenza y la moral.",
+                    "A la fase en la que el niño elige a su objeto definitivo."
+                ],
+                correct: 2,
+                feedback: "Muy bien. En la latencia se construyen los diques anímicos que permiten la socialización y el aprendizaje, calmando la anarquía pulsional temprana."
+            },
+            {
+                question: "En el concepto de 'Apuntalamiento', la pulsión sexual nace apoyada en...",
+                options: [
+                    "La voluntad de los padres.",
+                    "Las funciones de conservación (como el hambre).",
+                    "El desarrollo anatómico de los genitales.",
+                    "La imitación de los adultos."
+                ],
+                correct: 1,
+                feedback: "Correcto. El placer sexual nace 'apoyado' en funciones vitales (como succionar el pecho para comer) y luego se independiza como búsqueda de placer puro."
+            },
+            {
+                question: "¿Qué es el Primado del Falo en la sexualidad infantil?",
+                options: [
+                    "La creencia de que el padre es la figura más importante.",
+                    "La distinción entre hombres y mujeres tal como la entiende el adulto.",
+                    "La oposición fálico/castrado: para el niño solo existe un genital para todos.",
+                    "El momento en que el niño descubre la reproducción biológica."
+                ],
+                correct: 2,
+                feedback: "¡Exacto! Para el niño no existe la diferencia hombre/mujer, sino la premisa de que todos tienen (o deberían tener) el mismo órgano."
+            },
+            {
+                question: "¿Por qué el varón abandona el Complejo de Edipo?",
+                options: [
+                    "Porque se aburre de su madre.",
+                    "Por la angustia de castración ante la amenaza percibida.",
+                    "Porque el padre se lo explica razonadamente.",
+                    "Por el inicio de la pubertad biológica."
+                ],
+                correct: 1,
+                feedback: "Correcto. El interés narcisista por su propio órgano es más fuerte que el amor hacia la madre, lo que lo lleva a renunciar al Edipo para salvarse."
+            },
+            {
+                question: "¿Cómo entra la niña en el Complejo de Edipo?",
+                options: [
+                    "Exactamente igual que el varón.",
+                    "A través del descubrimiento de la castración y la envidia del pene.",
+                    "Buscando proteger a su madre de la castración.",
+                    "No entra nunca, es una estructura solo masculina."
+                ],
+                correct: 1,
+                feedback: "Bien. A diferencia del varón, la niña entra al Edipo 'decepcionada' por la falta y buscando en el padre el objeto que repare esa herida."
+            },
+            {
+                question: "Según Freud, ¿qué es el Superyó?",
+                options: [
+                    "La parte más libre y creativa del psiquismo.",
+                    "El heredero del Complejo de Edipo.",
+                    "Un órgano que se desarrolla en la pubertad.",
+                    "La suma de todas las pulsiones parciales."
+                ],
+                correct: 1,
+                feedback: "¡Perfecto! El Superyó internaliza la ley y la prohibición que antes venía de los padres, marcando el fin del drama edípico."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        const questionText = document.getElementById('question-text');
+        const optionsGrid = document.getElementById('options-grid');
+        const questionNumberText = document.getElementById('question-number');
+        const progressBar = document.getElementById('progress-bar');
+        const feedbackContainer = document.getElementById('feedback-container');
+        const feedbackTitle = document.getElementById('feedback-title');
+        const feedbackText = document.getElementById('feedback-text');
+        const nextBtn = document.getElementById('next-btn');
+        const questionScreen = document.getElementById('question-screen');
+        const resultsScreen = document.getElementById('results-screen');
+        const quizCard = document.getElementById('quiz-card');
+
+        function loadQuestion() {
+            const data = quizData[currentQuestion];
+            questionNumberText.innerText = `Pregunta ${currentQuestion + 1} de ${quizData.length}`;
+            questionText.innerText = data.question;
+            
+            progressBar.style.width = `${(currentQuestion / quizData.length) * 100}%`;
+            
+            optionsGrid.innerHTML = '';
+            data.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-button';
+                button.innerHTML = `
+                    <span class="option-marker">${String.fromCharCode(65 + index)}</span>
+                    <span>${option}</span>
+                `;
+                button.onclick = () => selectOption(index);
+                optionsGrid.appendChild(button);
+            });
+
+            feedbackContainer.className = 'feedback-container';
+            nextBtn.className = 'next-btn';
+            answered = false;
+        }
+
+        function selectOption(index) {
+            if (answered) return;
+            answered = true;
+            
+            const data = quizData[currentQuestion];
+            const buttons = optionsGrid.querySelectorAll('.option-button');
+            
+            buttons.forEach(btn => btn.classList.add('disabled'));
+
+            if (index === data.correct) {
+                buttons[index].classList.add('correct');
+                score++;
+                showFeedback(true, data.feedback);
+            } else {
+                buttons[index].classList.add('wrong');
+                buttons[data.correct].classList.add('correct');
+                quizCard.classList.add('shake');
+                setTimeout(() => quizCard.classList.remove('shake'), 400);
+                showFeedback(false, data.feedback);
+            }
+
+            nextBtn.classList.add('show');
+            progressBar.style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+        }
+
+        function showFeedback(isCorrect, text) {
+            feedbackContainer.className = `feedback-container show ${isCorrect ? 'is-correct' : 'is-wrong'}`;
+            feedbackTitle.innerHTML = isCorrect ? '<span>✅</span> ¡Excelente!' : '<span>🧐</span> Para reflexionar...';
+            feedbackText.innerText = text;
+        }
+
+        nextBtn.onclick = () => {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        };
+
+        function showResults() {
+            questionScreen.style.display = 'none';
+            resultsScreen.classList.add('show');
+            document.getElementById('final-score').innerText = score;
+            
+            const title = document.getElementById('result-title');
+            const text = document.getElementById('result-text');
+            
+            if (score === quizData.length) {
+                title.innerText = "¡Maestría Metapsicológica!";
+                text.innerText = "Has dominado los conceptos de la Unidad 3 con precisión freudiana. Estás listo para el Malestar en la Cultura.";
+            } else if (score >= 6) {
+                title.innerText = "¡Muy buen nivel!";
+                text.innerText = "Tenés una base sólida sobre la pulsión y el Edipo. Solo faltan algunos ajustes técnicos para alcanzar la excelencia.";
+            } else if (score >= 4) {
+                title.innerText = "Camino al Inconsciente";
+                text.innerText = "Vas por buen camino, pero te sugiero repasar los Tres Ensayos y la diferencia entre pulsión e instinto.";
+            } else {
+                title.innerText = "A desmitificar la opinión popular";
+                text.innerText = "La sexualidad es compleja. Te recomiendo releer la Conferencia 20 para asentar bien los pilares antes de seguir.";
+            }
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
