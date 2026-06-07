@@ -11,26 +11,26 @@ Para que los alumnos comprendan el terremoto teórico de 1920, es fundamental re
 
 ```mermaid
 graph TD
-    A["1900: Primera Tópica (Icc/Prc/Cc) <br> Imperio del Deseo Asintótico"] --> B["1905: Tres Ensayos <br> Dispersión de las Pulsiones Parciales"]
-    B --> C["1914: Introducción al Narcisismo <br> Unificación Imaginaria del Yo"]
-    C --> D["1912-1914: Clínica de la Transferencia <br> La Repetición de 'Lo Peor'"]
-    D --> E["1920: Más Allá del Principio del Placer <br> El Trauma y la Pulsión de Muerte"]
-    E --> F["1923: Segunda Tópica (Yo/Ello/Superyó) <br> El Yo Inconsciente"]
+    A["Clase 5: Primera Tópica <br> Imperio del Deseo Asintótico"] --> B["Clase 7 y 8: Tres Ensayos <br> Dispersión de las Pulsiones Parciales"]
+    B --> C["Clase 9: Complejo de Edipo <br> Ordenamiento bajo la Lógica Fálica"]
+    C --> D["Clase 10: Técnica y Clínica <br> La Repetición de 'Lo Peor' en acto"]
+    D --> E["Clase 13: Más Allá del Placer <br> El Trauma y la Pulsión de Muerte"]
+    E --> F["Clase 13: El Yo y el Ello <br> La Segunda Tópica"]
 ```
 
 ### 1. El Imperio del Deseo Asintótico (1900)
-*   **La Primera Tópica:** Nacida del Capítulo VII de *La interpretación de los sueños*, organiza el aparato en un mapa espacial virtual (*topos*): **Inconsciente (Icc), Preconsciente (Prc) y Conciencia (Cc)**.
+*   **La Primera Tópica (Clase 5):** Nacida del Capítulo VII de *La interpretación de los sueños*, organiza el aparato en un mapa espacial virtual (*topos*): **Inconsciente (Icc), Preconsciente (Prc) y Conciencia (Cc)**.
 *   **El motor es el Deseo:** El aparato no es reactivo a los estímulos del exterior; su fuerza motriz es el deseo.
 *   **Deseo Asintótico:** El deseo humano no busca calmar una necesidad biológica, sino reencontrar las huellas mnémicas de la mítica primera vivencia de satisfacción. Como una curva asintótica, el deseo se acerca infinitamente al punto cero de descarga absoluta, pero por estructura, **nunca llega a tocarlo**. Hay un malentendido de origen; el deseo queda siempre insatisfecho y motoriza el aparato.
 *   **El Principio del Placer:** En esta época, el aparato se rige por la tendencia a evitar el displacer (aumento de tensión) y buscar el placer (descarga/atenuación).
 
-### 2. La Anarquía de las Pulsiones Parciales (1905)
+### 2. La Anarquía de las Pulsiones Parciales (Clase 7 y 8)
 *   **Desarticulación del sentido común:** En *Tres ensayos de teoría sexual*, Freud desmonta la definición popular de la sexualidad (que suponía que nacía en la pubertad, tenía por objeto al otro sexo y por meta el coito reproductivo).
 *   **La sexualidad infantil como Frankenstein:** Freud demuestra que la sexualidad humana es una anarquía de **pulsiones parciales** ligadas a bordes y orificios corporales (zonas erógenas: boca, ano, ojos). Cada pulsión parcial (oral, anal, escópica) busca su satisfacción de manera independiente y ciega, de forma autoerótica. No hay una integración natural.
 
-### 3. La Unificación del Yo por el Narcisismo (1914)
-*   **El Yo no viene dado de entrada:** Al nacer hay puro autoerotismo (pulsiones fragmentadas). Para que se constituya un Yo, hace falta "un nuevo acto psíquico".
-*   **Narcisismo como pegamento:** El niño se ve en el espejo (el mito de Narciso fascinado por su imagen) e intuye esa imagen como una unidad que aglutina sus pedazos. El Yo se ofrece entonces como objeto a ser amado por la libido, subordinando de forma relativa las pulsiones parciales bajo el primado del falo y la dialéctica del tener/no tener.
+### 3. El Ordenamiento por la Lógica Fálica y el Padre (Clase 9)
+*   **De la dispersión al orden:** Al nacer hay puro autoerotismo (pulsiones fragmentadas). Para que esta fragmentación adquiera un ordenamiento y no sea puro caos, interviene el **Complejo de Edipo y la castración**.
+*   **La Lógica Fálica y el Padre:** El Complejo de Edipo organiza la sexualidad a partir de la lógica fálica y la postulación de la ley del padre. El padre funciona aquí como el ordenador primordial que pone límites y articula el deseo. Sin embargo, este ordenamiento no es absoluto: siempre queda un **resto autoerótico** que no se subordina a la lógica fálica y escapa al ordenamiento (el antecedente de lo inasimilable/pulsión de muerte).
 
 ### 4. El Retorno Clínico: La Repetición en la Transferencia (1912-1914)
 *   **Actuar en lugar de recordar:** En el dispositivo clínico, el paciente repite en acto su historia con sus primeros objetos en lugar de ponerla en palabras.
