@@ -12,12 +12,12 @@ def update_titles(html):
         "Clase 7: Sexualidad infantil",
         "Clase 8: Conceptualizar la pulsión",
         "Clase 9: Comprender Edipo y Castración",
-        "Clase 10: Dimensionar la clínica analítica",
+        '<a href="units/unit4_clase10.html" style="color: inherit; text-decoration: none;">Clase 10: Dimensionar la clínica analítica</a>',
         "Clase 11: Feriado - Revolución de Mayo",
         "Clase 12: Segundo Parcial Evaluador",
-        "Clase 13: Analizar la segunda tópica",
+        '<a href="units/unit4_clase13.html" style="color: inherit; text-decoration: none;">Clase 13: Analizar la segunda tópica</a>',
         "Clase 14: Feriado - Paso a la Inmortalidad",
-        "Clase 15: Relacionar psicoanálisis y cultura",
+        '<a href="units/unit4_clase15.html" style="color: inherit; text-decoration: none;">Clase 15: Relacionar psicoanálisis y cultura</a>',
         "Clase 16: Recuperatorio y Cierre"
     ]
     
@@ -31,7 +31,7 @@ def update_titles(html):
             return res
         return match.group(0)
     
-    match_timeline = re.search(r'(<div class="timeline">)(.*?)(</div>\s*</div>\s*<div id="timeline-fade"></div>)', html, re.DOTALL)
+    match_timeline = re.search(r'(<div class="timeline">)(.*?)(</div>\s*</div>\s*</div>\s*</div>\s*</div>\s*<script>\s*function toggleTimeline\(\))', html, re.DOTALL)
     if not match_timeline:
         print("Timeline not found")
         return html

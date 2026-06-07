@@ -308,11 +308,11 @@ def build_timeline():
 with open('c:/Users/Blas_/Documents/Campus Psicoanalisis/index.html', 'r', encoding='utf-8') as f:
     full_html = f.read()
 
-match = re.search(r'(\s*)<div class="timeline">[\s\S]*?</div>\s*</div>\s*<div id="timeline-fade"></div>', full_html)
+match = re.search(r'(\s*)<div class="timeline">[\s\S]*?</div>\s*</div>\s*</div>\s*</div>\s*</div>\s*<script>\s*function toggleTimeline\(\)', full_html)
 if match:
     start = match.start()
     end = match.end()
-    new_html = full_html[:start] + '\n' + build_timeline() + '\n                </div>\n                <div id="timeline-fade"></div>' + full_html[end:]
+    new_html = full_html[:start] + '\n' + build_timeline() + '\n                </div>\n            </div>\n        </div>\n    </div>\n            <script>\n                function toggleTimeline()' + full_html[end:]
     with open('c:/Users/Blas_/Documents/Campus Psicoanalisis/index.html', 'w', encoding='utf-8') as f:
         f.write(new_html)
     print("Replacement successful")
