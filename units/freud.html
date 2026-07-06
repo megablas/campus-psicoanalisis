@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Biografía académica de Sigmund Freud, fundador del psicoanálisis.">
+  <title>Sigmund Freud · Biografía · Psicoanálisis UFLO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/ui.css">
+  <style>
+    .bio-grid { display: grid; grid-template-columns: 320px 1fr; gap: var(--space-10); align-items: start; }
+    @media (max-width: 900px) { .bio-grid { grid-template-columns: 1fr; } }
+    .bio-aside { position: sticky; top: calc(var(--nav-height) + var(--space-6)); }
+    @media (max-width: 900px) { .bio-aside { position: static; } }
+    .bio-portrait {
+      width: 100%;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-lg);
+      border: 6px solid var(--surface);
+    }
+    .bio-meta {
+      margin-top: var(--space-4);
+      padding: var(--space-4);
+      background: var(--surface-sunken);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+    .bio-meta strong { display: block; color: var(--text-strong); font-size: var(--text-lg); margin-bottom: var(--space-1); }
+    .bio-meta span { display: block; color: var(--text-muted); font-size: var(--text-sm); }
+    .bio-prose h2 {
+      font-size: var(--text-xl);
+      margin: var(--space-10) 0 var(--space-3);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .bio-prose h2:first-of-type { margin-top: 0; }
+    .bio-prose p { color: var(--text-muted); line-height: var(--leading-relaxed); margin-bottom: var(--space-4); }
+    .bio-prose strong { color: var(--text-strong); }
+    /* Mini línea de tiempo de obras */
+    .works-timeline { display: grid; gap: var(--space-3); margin-top: var(--space-8); }
+    .work-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+    .work-year {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-lg);
+      color: var(--accent);
+    }
+    .work-item strong { color: var(--text-strong); display: block; margin-bottom: 2px; }
+    .work-item span { color: var(--text-muted); font-size: var(--text-sm); }
+  </style>
+</head>
+<body>
+
+  <div data-ui="nav" data-depth="../"></div>
+
+  <main class="container">
+
+    <section class="hero">
+      <a href="unit1.html" class="back-link"><span id="back-icon"></span> Volver a la Unidad 1</a>
+      <div class="hero__eyebrow">Perfil biográfico académico</div>
+      <h1 class="hero__title">Sigmund Freud</h1>
+    </section>
+
+    <section class="section">
+      <div class="bio-grid">
+
+        <aside class="bio-aside">
+          <img src="../assets/authors/freud_real.png" alt="Retrato de Sigmund Freud" class="bio-portrait">
+          <div class="bio-meta">
+            <strong>Sigmund Freud</strong>
+            <span>1856 · Freiberg, Moravia</span>
+            <span>1939 · Londres, Reino Unido</span>
+          </div>
+        </aside>
+
+        <div class="bio-prose">
+          <p>
+            <strong>Sigmund Freud (1856–1939)</strong> fue un médico neurólogo austríaco y el fundador del psicoanálisis,
+            una de las corrientes más influyentes en la historia de la psicología. Sus desarrollos teóricos introdujeron
+            una nueva forma de comprender la mente humana, el origen de los síntomas psíquicos y el papel de los procesos
+            inconscientes en la vida psíquica.
+          </p>
+          <p>
+            Freud nació el <strong>6 de mayo de 1856 en Freiberg, Moravia</strong> (actual República Checa), en el seno
+            de una familia judía. Cuando tenía cuatro años su familia se trasladó a <strong>Viena</strong>, ciudad donde
+            transcurrió la mayor parte de su vida y donde desarrolló su formación académica y su obra intelectual.
+          </p>
+
+          <h2>Formación y primeros años</h2>
+          <p>
+            Estudió <strong>medicina en la Universidad de Viena</strong>, graduándose en 1881. Durante sus primeros años
+            de formación se dedicó a la investigación en neurología y al estudio del sistema nervioso. Posteriormente
+            trabajó en el <strong>Hospital General de Viena</strong>, donde comenzó a interesarse por los trastornos
+            nerviosos y por las manifestaciones psíquicas de los síntomas físicos.
+          </p>
+
+          <h2>El origen del psicoanálisis</h2>
+          <p>
+            Un momento decisivo en el desarrollo de su pensamiento fue su trabajo con <strong>Joseph Breuer</strong>,
+            especialmente en el tratamiento de pacientes con histeria. A partir de estas experiencias clínicas, Freud
+            comenzó a formular las primeras hipótesis que darían origen al <strong>psicoanálisis</strong>. En este
+            contexto surgieron también los primeros intentos de tratamiento mediante técnicas como la hipnosis y la
+            catarsis, que luego evolucionarían hacia el método propio del psicoanálisis.
+          </p>
+
+          <h2>El descubrimiento del inconsciente</h2>
+          <p>
+            Uno de los aportes centrales de Freud fue la formulación del <strong>concepto de inconsciente</strong>,
+            entendido como un conjunto de procesos psíquicos que influyen en el pensamiento, las emociones y la conducta
+            sin que el sujeto tenga conciencia directa de ellos. Según Freud, muchos síntomas psicológicos pueden
+            comprenderse a partir de conflictos internos, deseos reprimidos o experiencias no elaboradas que permanecen
+            fuera de la conciencia.
+          </p>
+
+          <h2>Modelo estructural de la mente</h2>
+          <p>
+            En el desarrollo de su teoría, Freud propuso un modelo estructural de la mente compuesto por
+            <strong>ello, yo y superyó</strong>. El ello representa las pulsiones y deseos más primitivos que buscan
+            satisfacción inmediata; el yo actúa como mediador entre esas demandas y las exigencias de la realidad; y el
+            superyó representa las normas morales y valores internalizados.
+          </p>
+
+          <h2>Metodología: asociación libre</h2>
+          <p>
+            Entre las técnicas desarrolladas dentro del método psicoanalítico, una de las más importantes es la
+            <strong>asociación libre</strong>. En ella, el paciente es invitado a expresar pensamientos, recuerdos y
+            emociones sin censura ni selección previa. Este procedimiento permite explorar contenidos inconscientes que
+            pueden estar vinculados con el origen de los síntomas.
+          </p>
+
+          <h2>Obras clave</h2>
+          <p>
+            En <strong>1900 Freud publicó <em>La interpretación de los sueños</em></strong>, una de sus obras más
+            influyentes, donde planteó que los sueños constituyen una vía privilegiada para acceder al inconsciente.
+            Esta es solo una de las obras centrales que atraviesan el programa de la cursada:
+          </p>
+
+          <div class="works-timeline">
+            <div class="work-item">
+              <div class="work-year">1895</div>
+              <div><strong>Estudios sobre la histeria</strong><span>Con Breuer. El método catártico. Unidad 1.</span></div>
+            </div>
+            <div class="work-item">
+              <div class="work-year">1900</div>
+              <div><strong>La interpretación de los sueños</strong><span>"Vía regia al inconsciente". Unidad 2.</span></div>
+            </div>
+            <div class="work-item">
+              <div class="work-year">1905</div>
+              <div><strong>Tres ensayos de teoría sexual</strong><span>Sexualidad infantil y pulsión. Unidad 3.</span></div>
+            </div>
+            <div class="work-item">
+              <div class="work-year">1915</div>
+              <div><strong>Pulsiones y destinos de pulsión</strong><span>Metapsicología. Unidad 3.</span></div>
+            </div>
+            <div class="work-item">
+              <div class="work-year">1920</div>
+              <div><strong>Más allá del principio del placer</strong><span>Pulsión de muerte. Unidad 4.</span></div>
+            </div>
+            <div class="work-item">
+              <div class="work-year">1923</div>
+              <div><strong>El yo y el ello</strong><span>Segunda tópica. Unidad 4.</span></div>
+            </div>
+            <div class="work-item">
+              <div class="work-year">1930</div>
+              <div><strong>El malestar en la cultura</strong><span>Cierre del programa. Unidad 4.</span></div>
+            </div>
+          </div>
+
+          <h2>Últimos años y legado</h2>
+          <p>
+            Durante las décadas siguientes, Freud continuó desarrollando su obra y ampliando su teoría. En
+            <strong>1923 fue diagnosticado con cáncer maxilobucal</strong>, enfermedad que requirió numerosas
+            intervenciones quirúrgicas. A pesar de estas dificultades, continuó escribiendo y trabajando durante muchos años.
+          </p>
+          <p>
+            En <strong>1938</strong>, ante el avance del nazismo y la persecución a la población judía, Freud se vio
+            obligado a abandonar Viena y trasladarse a <strong>Londres</strong>, donde falleció el
+            <strong>23 de septiembre de 1939</strong>.
+          </p>
+          <p>
+            La obra de Freud tuvo un profundo impacto en la psicología, la psiquiatría, la cultura y las ciencias humanas
+            en general. Si bien sus teorías han sido objeto de debates, críticas y revisiones, su influencia en la
+            comprensión de la subjetividad, la infancia, la sexualidad y los procesos inconscientes continúa siendo
+            fundamental para el desarrollo del pensamiento psicológico contemporáneo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Psicoanálisis · UFLO · Cátedra Rivera–Homse</p>
+    </footer>
+  </main>
+
+  <script src="../assets/icons.js"></script>
+  <script src="../assets/data.js"></script>
+  <script src="../assets/ui.js?v=2"></script>
+  <script>
+    document.getElementById('back-icon').innerHTML = ICONS.svg('arrowLeft', 18);
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

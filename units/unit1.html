@@ -1,357 +1,218 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad 1: Los Orígenes | Psicoanálisis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css?v=16">
-    <style>
-        /* Card Header Navigation - INTEGRATED */
-        .card-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            flex-wrap: wrap;
-        }
-
-        .nav-link {
-            padding: 0.6rem 1.4rem;
-            border-radius: 100px;
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(0,0,0,0.02);
-            border: 1px solid transparent;
-        }
-
-        .nav-link:hover {
-            color: var(--accent-color);
-            background: rgba(13, 148, 136, 0.08);
-            border-color: rgba(13, 148, 136, 0.2);
-        }
-
-        .nav-link.active {
-            background: var(--accent-color);
-            color: white;
-            box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
-        }
-
-        /* Hero Landing Section */
-        .unit-hero {
-            padding: 4rem 2rem;
-            text-align: center;
-            background: white;
-            border-radius: 40px;
-            box-shadow: var(--shadow-premium);
-            margin-top: 1rem;
-            border: 1px solid var(--glass-border);
-        }
-
-        .landing-quote {
-            max-width: 800px;
-            margin: 2rem auto;
-            position: relative;
-            padding: 0 2rem;
-        }
-
-        .landing-quote::after, .landing-quote::before {
-            content: '"';
-            font-size: 4rem;
-            color: var(--accent-color);
-            opacity: 0.2;
-            position: absolute;
-            font-family: serif;
-        }
-        .landing-quote::before { left: -10px; top: -20px; }
-        .landing-quote::after { right: -10px; bottom: -40px; }
-
-        /* Module Sections */
-        .module-section {
-            padding: 5rem 0;
-            border-bottom: 1px dashed #e2e8f0;
-        }
-
-        .module-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .history-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .metaphor-badge {
-            background: var(--primary-color);
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 10px;
-            font-weight: 800;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }
-
-        .route-number {
-            font-weight: 800;
-            color: var(--accent-color);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-        }
-
-        .download-cta { background: white !important; }
-
-        @media (max-width: 768px) {
-            .unit-hero h1 { font-size: 2.2rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unidad 1: Los orígenes y el salto al psicoanálisis. De Charcot al método catártico de Breuer.">
+  <title>Unidad 1 · Los Orígenes · Psicoanálisis UFLO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/ui.css">
 </head>
-<body>
-    <!-- Helper for scroll -->
-    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+<body data-unit="1">
 
-    <main class="container">
-        <!-- Integrated Navigation Dashboard -->
-        <section class="unit-hero fade-in">
-            <div class="card-nav-container show-units">
-                <nav class="card-nav">
-                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link">Inicio</a>
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
-                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link active">Unidades</a>
-                </nav>
+  <div data-ui="nav" data-active="unidades" data-depth="../"></div>
 
-                <!-- Sub Nav for Units -->
-                <div class="sub-nav">
-                    <a href="unit1.html" class="sub-link active">1</a>
-                    <a href="unit2.html" class="sub-link">2</a>
-                    <a href="unit3.html" class="sub-link">3</a>
-                    <a href="unit4.html" class="sub-link">4</a>
-                </div>
+  <main class="container">
+
+    <!-- HERO ASIMÉTRICO con color de unidad -->
+    <section class="hero" style="display:grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-10); align-items: center; padding-top: var(--space-12);">
+      <div>
+        <a href="../index.html" class="back-link">
+          <span id="back-icon"></span> Volver al inicio
+        </a>
+        <div class="hero__eyebrow">Unidad 1 · Ámbar</div>
+        <h1 class="hero__title" style="font-size: var(--text-4xl);">Los orígenes y el salto al psicoanálisis</h1>
+        <p class="hero__subtitle">
+          No estudiaremos el psicoanálisis como un producto terminado, sino como un descubrimiento inevitable.
+          Cómo la medicina tradicional chocó contra un muro insalvable, y cómo Freud tuvo que abandonar lo aprendido
+          para escuchar, por primera vez, la verdad detrás del sufrimiento humano.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="clase-01.html">Empezar por la Clase 1</a>
+          <a class="btn btn--secondary btn--lg" href="#clases">Ver hoja de ruta</a>
+        </div>
+      </div>
+
+      <!-- Cita editorial a la derecha -->
+      <aside class="card card--lg" style="border-color: var(--accent-soft); background: var(--accent-softer);">
+        <div style="font-family: var(--font-display); font-size: 3rem; line-height: 1; color: var(--accent); margin-bottom: var(--space-3);">"</div>
+        <p style="font-size: var(--text-xl); font-style: italic; color: var(--text-strong); line-height: var(--leading-snug); margin-bottom: var(--space-4);">
+          Los histéricos sufren de reminiscencias.
+        </p>
+        <p style="font-size: var(--text-sm); color: var(--text-muted); font-weight: 600;">
+          Freud y Breuer · Estudios sobre la histeria (1895)
+        </p>
+      </aside>
+    </section>
+
+    <!-- MÓDULO 1: El enigma de la histeria -->
+    <section class="section">
+      <div class="section-head">
+        <div class="badge badge--accent mb-4">Módulo 1</div>
+        <h2 class="section-head__title">El enigma de la histeria y la crisis del modelo médico</h2>
+        <p class="section-head__subtitle">
+          ¿Por qué estudiar historia en una materia de Psicoanálisis? Para entender la magnitud del descubrimiento freudiano,
+          primero hay que comprender contra qué muro chocaba la ciencia de su época.
+        </p>
+      </div>
+
+      <h3 style="text-align:center; margin-bottom: var(--space-8); color: var(--text-strong);">El problema de un síntoma sin lesión</h3>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="tool-card__icon mb-4" id="m1a"></div>
+          <h4 style="color: var(--accent); margin-bottom: var(--space-2);">Antigüedad</h4>
+          <p class="text-muted">Se culpó a la anatomía femenina, imaginando que el útero era un "animal errante" que recorría el cuerpo y ahogaba a la paciente.</p>
+        </div>
+        <div class="card">
+          <div class="tool-card__icon mb-4" id="m1b"></div>
+          <h4 style="color: var(--accent); margin-bottom: var(--space-2);">Edad Media</h4>
+          <p class="text-muted">El síntoma incomprensible fue expulsado de la medicina e interpretado como obra del demonio y la brujería.</p>
+        </div>
+        <div class="card">
+          <div class="tool-card__icon mb-4" id="m1c"></div>
+          <h4 style="color: var(--accent); margin-bottom: var(--space-2);">Era Moderna</h4>
+          <p class="text-muted">Al no encontrar causas físicas, se decidió que era una simulación. Las pacientes eran tratadas con desdén y consideradas mentirosas.</p>
+        </div>
+      </div>
+
+      <div class="card mt-8" style="border-color: var(--accent-soft); background: var(--accent-softer);">
+        <h4 style="color: var(--accent); margin-bottom: var(--space-3);">La pieza faltante: el puente entre el cuerpo y el conflicto psíquico</h4>
+        <p class="text-muted">La lectura de Alberto Tallaferro no busca memorizar fechas, sino comprender una lógica: las intuiciones médicas siempre rondaron la conexión pasional de la histeria, pero los prejuicios morales impidieron la unión de lo fisiológico con lo psicológico.</p>
+      </div>
+    </section>
+
+    <!-- MÓDULO 2: Protagonistas -->
+    <section class="section">
+      <div class="section-head">
+        <div class="badge badge--accent mb-4">Módulo 2</div>
+        <h2 class="section-head__title">El escenario del cambio de paradigma</h2>
+        <p class="section-head__subtitle">Las figuras clave que cambiaron para siempre la concepción de la mente.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h4 style="color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: var(--space-2); margin-bottom: var(--space-3);">Jean-Martin Charcot</h4>
+          <p class="text-muted">Le devolvió la <strong>dignidad</strong> a la histeria. Demostró científicamente que las parálisis son provocadas por representaciones (ideas) instaladas por un trauma.</p>
+        </div>
+        <div class="card">
+          <h4 style="color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: var(--space-2); margin-bottom: var(--space-3);">Josef Breuer</h4>
+          <p class="text-muted">Descubrió el <strong>método catártico</strong>. Al recordar el trauma y liberar el afecto estrangulado (abreacción), el síntoma físico desaparece inexplicablemente.</p>
+        </div>
+        <div class="card" style="border-color: var(--accent); background: var(--accent-softer); transform: scale(1.02);">
+          <div class="flex justify-between items-center mb-4">
+            <h4 style="color: var(--accent);">Sigmund Freud</h4>
+            <span class="badge badge--accent">Principal</span>
+          </div>
+          <p class="text-muted">Rompió con sus maestros: el olvido es un <strong>acto voluntario de defensa (represión)</strong> frente a ideas sexuales inconciliables.</p>
+          <a href="freud.html" class="btn btn--primary mt-6">Ver biografía</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÓDULO 3: La cocina del psicoanálisis -->
+    <section class="section">
+      <div class="section-head">
+        <div class="badge badge--accent mb-4">Módulo 3</div>
+        <h2 class="section-head__title">La "cocina" del psicoanálisis</h2>
+        <p class="section-head__subtitle">La evolución técnica: de la hipnosis a la palabra.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 class="mb-6">La evolución del método</h4>
+          <ol style="list-style: none; padding: 0;">
+            <li class="mb-4" style="display:flex; gap: var(--space-3);">
+              <span style="color: var(--accent); font-weight: 800;">01.</span>
+              <span class="text-muted"><strong>Hipnosis profunda:</strong> heredada de Charcot para suprimir síntomas mediante el sueño.</span>
+            </li>
+            <li class="mb-4" style="display:flex; gap: var(--space-3);">
+              <span style="color: var(--accent); font-weight: 800;">02.</span>
+              <span class="text-muted"><strong>Sugestión:</strong> la presión en la frente para forzar el recuerdo de lo "olvidado" (inspirado en Bernheim).</span>
+            </li>
+            <li style="display:flex; gap: var(--space-3);">
+              <span style="color: var(--accent); font-weight: 800;">03.</span>
+              <span class="text-muted"><strong>Asociación libre:</strong> el pilar definitivo: hablar sin filtros ni juicios morales.</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="card" style="background: var(--accent); color: white; border-color: var(--accent);">
+          <span class="badge mb-4" style="background: rgba(255,255,255,0.2); color: white;">La metáfora de Da Vinci</span>
+          <p style="font-size: var(--text-lg); font-style: italic; line-height: var(--leading-relaxed); opacity: 0.95;">
+            Freud comparó las terapias mediante la analogía de Leonardo. Las técnicas anteriores operaban <strong>per via di porre</strong> (como la pintura, tapando). El psicoanálisis opera <strong>per via di levare</strong> (como la escultura: quitando la piedra para revelar la verdad oculta).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOJA DE RUTA -->
+    <section class="section" id="clases">
+      <div class="section-head">
+        <h2 class="section-head__title">Hoja de ruta de la Unidad 1</h2>
+        <p class="section-head__subtitle">Tocá cada clase para acceder a la bibliografía y los contenidos detallados.</p>
+      </div>
+      <div id="unit1-classes" class="unit-grid" style="grid-template-columns: 1fr;">
+        <!-- JS lo rellena -->
+      </div>
+    </section>
+
+    <!-- BIBLIOTECA -->
+    <section class="section">
+      <div class="card card--lg" style="text-align:center;">
+        <h2 class="mb-4">Biblioteca de la Unidad 1</h2>
+        <p class="text-muted mb-6">Todos los textos obligatorios en un solo archivo comprimido.</p>
+        <a href="https://drive.google.com/file/d/11-lmY0_URLK_fdclpW8AQyGaDDZqwFcl/view?usp=sharing" target="_blank" rel="noopener" class="btn btn--primary btn--lg" id="download-btn"></a>
+        <p class="text-muted mt-6" style="font-size: var(--text-sm); font-style: italic;">
+          Incluye: Charcot, Freud (Neuropsicosis de defensa), Tallaferro Cap. 1 y 2.
+        </p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Psicoanálisis · UFLO · Cátedra Rivera–Homse</p>
+    </footer>
+  </main>
+
+  <script src="../assets/icons.js"></script>
+  <script src="../assets/data.js"></script>
+  <script src="../assets/ui.js?v=2"></script>
+  <script>
+    (function () {
+      const { UNIDADES, PROGRAMA } = CAMPUS_DATA;
+      const D = CampusUI.Dates;
+
+      // Iconos
+      document.getElementById('back-icon').innerHTML = ICONS.svg('arrowLeft', 18);
+      document.getElementById('download-btn').innerHTML = ICONS.svg('download', 18) + ' Descargar bibliografía completa';
+      ['m1a', 'm1b', 'm1c'].forEach((id, i) => {
+        document.getElementById(id).innerHTML = ICONS.svg(['book', 'info', 'microscope'][i], 22);
+      });
+
+      // Hoja de ruta: clases de la unidad 1
+      const clases = PROGRAMA.filter(p => p.tipo === 'clase' && p.unidad === 1);
+      document.getElementById('unit1-classes').innerHTML = clases.map(c => {
+        const dias = D.daysUntil(c.fecha);
+        const isPast = dias < 0;
+        return `
+          <a class="card card--hoverable" href="${CampusUI.path(c.href)}" style="display:grid; grid-template-columns: auto 1fr auto; gap: var(--space-5); align-items: center;">
+            <div class="tl-item__date">
+              <div class="tl-item__day">${c.fecha.dia}</div>
+              <div class="tl-item__month">${D.MONTHS_ES[c.fecha.mes - 1]}</div>
             </div>
-
-            <span class="unit-number" style="font-size: 1rem; color: var(--accent-color); font-weight: 800; letter-spacing: 5px; margin-top: 2rem; display: block;">UNIDAD 1</span>
-
-            <h1 style="font-size: 3.5rem; margin: 1.5rem 0; line-height: 1; letter-spacing: -2px;">Los Orígenes y el Salto al Psicoanálisis</h1>
-            
-            <p style="font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-top: 1rem;">👋 ¡Bienvenidos al inicio de nuestro recorrido!</p>
-            
-            <blockquote class="landing-quote intro-quote" style="border: none; padding: 0 2rem;">
-                "En esta primera unidad no vamos a estudiar el psicoanálisis como un producto terminado o un invento repentino, sino como un descubrimiento inevitable. Viajaremos en el tiempo para entender cómo la medicina tradicional chocó contra un muro insalvable, y cómo Sigmund Freud tuvo que abandonar todo lo que había aprendido para poder escuchar, por primera vez, la verdad detrás del sufrimiento humano."
-            </blockquote>
-        </section>
-
-        <!-- Módulo 1: El Enigma -->
-        <section class="module-section fade-in" style="animation-delay: 0.2s;">
-            <div class="module-header">
-                <span class="module-tag">Módulo 1</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">El Enigma de la Histeria y la Crisis del Modelo Médico</h2>
-                <p style="max-width: 800px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.7;">
-                    ¿Por qué empezamos estudiando historia en una materia de Psicoanálisis? Para comprender la magnitud del descubrimiento freudiano, primero debemos entender contra qué muro chocaba la ciencia de su época. Analizaremos cómo la medicina tradicional fracasó sistemáticamente al intentar curar un malestar que no encajaba en sus manuales: <strong>la histeria</strong>.
-                </p>
+            <div>
+              <h4 style="margin-bottom: var(--space-1);">${c.titulo}</h4>
+              <p class="text-muted" style="font-size: var(--text-sm);">${c.desc}</p>
             </div>
+            <span style="color: var(--accent);">${ICONS.svg('arrowRight', 20)}</span>
+          </a>`;
+      }).join('');
 
-            <h3 style="text-align: center; margin-bottom: 3rem; font-size: 1.8rem;">El problema de un síntoma sin lesión</h3>
-            <div class="history-grid">
-                <div class="history-card">
-                    <span class="history-icon">📜</span>
-                    <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Antigüedad</h4>
-                    <p style="font-size: 1rem; color: var(--text-secondary);">Se culpó a la anatomía femenina, imaginando que el útero era un <strong>"animal errante"</strong> que ahogaba al paciente al recorrer el cuerpo.</p>
-                </div>
-                <div class="history-card">
-                    <span class="history-icon">🔥</span>
-                    <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Edad Media</h4>
-                    <p style="font-size: 1rem; color: var(--text-secondary);">El síntoma incomprensible fue expulsado de la medicina e interpretado como obra del <strong>demonio y brujería</strong>.</p>
-                </div>
-                <div class="history-card">
-                    <span class="history-icon">🩺</span>
-                    <h4 style="margin-bottom: 1rem; color: var(--primary-color);">Era Moderna</h4>
-                    <p style="font-size: 1rem; color: var(--text-secondary);">Al no encontrar causas físicas, se decidió que era una <strong>simulación</strong>; las pacientes eran tratadas con desdén y consideradas mentirosas.</p>
-                </div>
-            </div>
-
-            <div class="glass-card" style="margin-top: 4rem; border-left: 5px solid var(--accent-color); background: #f0fdfa;">
-                <h4 style="color: var(--accent-color); margin-bottom: 1rem;">La pieza faltante: El puente entre el cuerpo y el conflicto psíquico</h4>
-                <p style="line-height: 1.7;">La lectura de <strong>Alberto Tallaferro</strong> no busca memorizar fechas, sino comprender una lógica: las intuiciones médicas siempre rondaron la conexión pasional de la histeria, pero los <strong>prejuicios morales</strong> impidieron la unión de lo fisiológico con lo psicológico.</p>
-            </div>
-        </section>
-
-        <!-- Módulo 2: Protagonistas -->
-        <section class="module-section fade-in" style="animation-delay: 0.3s; padding-bottom: 0;">
-            <div class="module-header">
-                <span class="module-tag">Módulo 2</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">El Escenario del Cambio de Paradigma</h2>
-                <p style="color: var(--text-secondary);">Las figuras clave que cambiaron para siempre la concepción de la mente.</p>
-            </div>
-
-            <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem;">
-                <div style="flex: 1; min-width: 280px; padding: 2rem; background: #ffffff; border-radius: 25px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
-                    <h4 style="color: var(--accent-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;">Jean-Martin Charcot</h4>
-                    <p style="font-size: 0.95rem;">Le devolvió la <strong>dignidad</strong> a la histeria. Demostró científicamente que las parálisis son provocadas por representaciones (ideas) instaladas por un trauma.</p>
-                </div>
-                <div style="flex: 1; min-width: 280px; padding: 2rem; background: #ffffff; border-radius: 25px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
-                    <h4 style="color: var(--accent-color); border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;">Josef Breuer</h4>
-                    <p style="font-size: 0.95rem;">Descubrió el <strong>Método Catártico</strong>. Al recordar el trauma y liberar el afecto estrangulado (abreacción), el síntoma físico desaparece inexplicablemente.</p>
-                </div>
-                <div style="flex: 1.2; min-width: 300px; padding: 2.5rem; background: var(--primary-color); border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25); border: 1px solid var(--accent-color); color: white; transform: scale(1.02);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                        <h4 style="color: var(--accent-color); font-size: 1.3rem; margin: 0;">Sigmund Freud</h4>
-                        <span style="background: var(--accent-color); color: white; font-size: 0.6rem; padding: 0.3rem 0.8rem; border-radius: 100px; text-transform: uppercase; font-weight: 800;">Principal</span>
-                    </div>
-                    <p style="font-size: 1rem; line-height: 1.7; opacity: 0.9;">Rompió con sus maestros: el olvido es un <strong>acto voluntario de defensa (represión)</strong> frente a ideas sexuales inconciliables.</p>
-                    <a href="sigmund_freud.html" class="btn" style="display: inline-block; margin-top: 1.5rem; background: var(--accent-color); color: white; border: none; font-size: 0.8rem; padding: 0.7rem 1.5rem;">Ver Biografía</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Módulo 3: La Cocina -->
-        <section class="module-section fade-in" style="animation-delay: 0.4s; border: none;">
-            <div class="module-header" style="margin-bottom: 2rem;">
-                <span class="module-tag">Módulo 3</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">🕵️‍♂️ La "Cocina" del Psicoanálisis</h2>
-                <p style="color: var(--text-secondary);">La evolución técnica: de la hipnosis a la palabra.</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
-                <div class="glass-card" style="padding: 2.5rem;">
-                    <h4 style="margin-bottom: 1rem;">La Evolución del Método</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 1rem; display: flex; gap: 1rem;">
-                            <span style="color: var(--accent-color); font-weight: 800;">01.</span>
-                            <span><strong>Hipnosis Profunda:</strong> Heredada de Charcot para suprimir síntomas mediante el sueño.</span>
-                        </li>
-                        <li style="margin-bottom: 1rem; display: flex; gap: 1rem;">
-                            <span style="color: var(--accent-color); font-weight: 800;">02.</span>
-                            <span><strong>Sugestión:</strong> La presión en la frente para forzar el recuerdo de lo "olvidado" (inspirado por Bernheim).</span>
-                        </li>
-                        <li style="display: flex; gap: 1rem;">
-                            <span style="color: var(--accent-color); font-weight: 800;">03.</span>
-                            <span><strong>Asociación Libre:</strong> El pilar definitivo: hablar sin filtros ni juicios morales.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="metaphor-content" style="background: var(--primary-color); color: white; padding: 3rem; border-radius: 30px; box-shadow: var(--shadow-premium);">
-                    <span class="metaphor-badge" style="background: var(--accent-color);">🎨 La Metáfora de Da Vinci</span>
-                    <p style="font-size: 1.1rem; line-height: 1.7; font-style: italic;">
-                        "Freud comparó las terapias mediante la analogía de Leonardo: Las técnicas anteriores operaban <strong>per via di porre</strong> (como la pintura, tapando). El psicoanálisis opera <strong>per via di levare</strong> (como la escultura: quitando la piedra para revelar la verdad oculta)."
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Hoja de Ruta -->
-        <section id="roadmap" class="fade-in" style="margin-top: 5rem; padding: 4rem; background: #fff; border-radius: 40px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
-            <header style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">📍 Hoja de Ruta de la Unidad 1</h2>
-                <p style="color: var(--text-secondary);">Haz clic en cada clase para acceder a la bibliografía y contenidos detallados.</p>
-            </header>
-
-            <div class="route-grid">
-                <a href="unit1_clase1.html" class="route-card">
-                    <span class="route-number">Clase 1</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">La prehistoria del psicoanálisis</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Charcot, Breuer, Anna O. y el enigma de la histeria.</p>
-                </a>
-                <div class="route-card is-muted">
-                    <span class="route-number">23/03</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">Feriado · Sin clase</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">La secuencia retoma directamente en la Clase 3.</p>
-                </div>
-                <a href="unit1_clase3.html" class="route-card">
-                    <span class="route-number">Clase 3</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">El conflicto psíquico y la defensa</h4>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Resistencia, defensa y síntoma como sustituto de lo reprimido.</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- Download CTA -->
-        <section class="download-cta fade-in">
-            <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary-color);">Biblioteca de la Unidad 1</h2>
-            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 2rem;">Accede a todos los textos obligatorios en un solo archivo comprimido.</p>
-            
-            <a href="https://drive.google.com/file/d/11-lmY0_URLK_fdclpW8AQyGaDDZqwFcl/view?usp=sharing" target="_blank" class="pulse-button" style="background: var(--accent-color); color: white; border: none; padding: 1rem 2.5rem; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                Descargar Bibliografía Completa
-            </a>
-            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-secondary); font-style: italic; opacity: 0.8;">
-                Incluye: Charcot, Freud (Neuropsicosis de defensa), Tallaferro Cap. 1 y 2.
-            </p>
-        </section>
-
-        <footer style="margin-top: 5rem; padding-bottom: 5rem; text-align: center; opacity: 0.3; font-size: 0.8rem;">
-            <p>© 2026 Psicoanálisis | UFLO Universidad</p>
-        </footer>
-    </main>
-
-    <script>
-        function sendHeight() {
-            const height = document.body.scrollHeight;
-            window.parent.postMessage({ height: height }, '*');
-        }
-        
-        function scrollToTop() {
-            console.log("Scrolling Unit 1 to top...");
-            // 1. Internal Scroll
-            window.scrollTo(0, 0);
-
-            // 2. Focus Trick (Browser-native scroll to top)
-            const helper = document.getElementById('top-focus');
-            if (helper) helper.focus({preventScroll:false});
-
-            // 3. Multi-Messaging to Parent (Aggressive list for all Moodle flavors)
-            if (window.parent) {
-                const messages = [
-                    { type: 'scrollToTop' },
-                    'scrollToTop',
-                    'scroll_to_top',
-                    'forceScrollTop',
-                    'scrollto:0',
-                    { mceAction: 'customScroll', scroll: 0 },
-                    JSON.stringify({subject: 'lti.scrollToTop'}),
-                    JSON.stringify({subject: 'lti.navigation', location: 'top'})
-                ];
-                
-                messages.forEach(msg => {
-                    try { window.parent.postMessage(msg, '*'); } catch(e) {}
-                });
-            }
-            
-            try {
-                if (window.parent && window.parent.M) {
-                    window.parent.scrollTo(0, 0);
-                }
-            } catch (e) {}
-        }
-
-        // Prevent browser from restoring scroll position
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
-        }
-
-        window.addEventListener('load', () => {
-            // Execute immediately and then with retries
-            scrollToTop();
-            setTimeout(() => {
-                scrollToTop();
-                sendHeight();
-            }, 100);
-            setTimeout(scrollToTop, 500);
-            setTimeout(scrollToTop, 1000);
-        });
-
-        window.addEventListener('resize', sendHeight);
-        setInterval(sendHeight, 1000);
-    </script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>

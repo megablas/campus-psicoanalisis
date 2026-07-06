@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glosario de términos clave del psicoanálisis freudiano.">
+  <title>Glosario · Psicoanálisis UFLO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/ui.css">
+</head>
+<body>
+
+  <div data-ui="nav" data-active="glosario" data-depth="../"></div>
+
+  <main class="container container--narrow">
+
+    <section class="hero">
+      <a href="../index.html" class="back-link"><span id="back-icon"></span> Volver al inicio</a>
+      <div class="hero__eyebrow">Referencia rápida</div>
+      <h1 class="hero__title">Glosario de conceptos</h1>
+      <p class="hero__subtitle">Términos clave del recorrido freudiano. Cada definición enlaza con la clase donde el concepto se desarrolla.</p>
+
+      <!-- Buscador del glosario -->
+      <div class="card mt-8" style="padding: var(--space-3); display:flex; align-items:center; gap: var(--space-3);">
+        <span style="color: var(--text-muted); padding-left: var(--space-2);" id="search-icon"></span>
+        <input id="glossary-search" type="text" placeholder="Buscar un término (ej: pulsión, transferencia, Edipo)..."
+               style="flex:1; border:none; background:transparent; color: var(--text); font-size: var(--text-base); font-family: var(--font-body); outline:none; padding: var(--space-2) 0;">
+      </div>
+    </section>
+
+    <!-- Filtros por unidad -->
+    <section class="section">
+      <div class="flex flex-wrap gap-3 mb-8" id="glossary-filters">
+        <button class="chip is-active" data-unit="0">Todos</button>
+        <button class="chip" data-unit="1">Unidad 1</button>
+        <button class="chip" data-unit="2">Unidad 2</button>
+        <button class="chip" data-unit="3">Unidad 3</button>
+        <button class="chip" data-unit="4">Unidad 4</button>
+      </div>
+
+      <div id="glossary-list" class="grid" style="gap: var(--space-4);">
+        <!-- JS lo rellena -->
+      </div>
+
+      <div id="glossary-empty" class="placeholder-block mt-6 hidden">
+        <p>No se encontraron términos. Probá con otra palabra.</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Psicoanálisis · UFLO · Cátedra Rivera–Homse</p>
+    </footer>
+  </main>
+
+  <script src="../assets/icons.js"></script>
+  <script src="../assets/data.js"></script>
+  <script src="../assets/ui.js?v=2"></script>
+  <script>
+    (function () {
+      const { CONCEPTOS, UNIDADES } = CAMPUS_DATA;
+      document.getElementById('back-icon').innerHTML = ICONS.svg('arrowLeft', 18);
+      document.getElementById('search-icon').innerHTML = ICONS.svg('search', 20);
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const list = document.getElementById('glossary-list');
+      const search = document.getElementById('glossary-search');
+      const empty = document.getElementById('glossary-empty');
+      const filters = document.getElementById('glossary-filters');
+      let activeUnit = 0;
+      let query = '';
+
+      // Colores por unidad (para los badges)
+      const unitColors = { 1: 'ámbar', 2: 'teal', 3: 'violeta', 4: 'azul' };
+
+      function render() {
+        const q = query.trim().toLowerCase();
+        let items = CONCEPTOS;
+        if (activeUnit > 0) items = items.filter(c => c.unidad === activeUnit);
+        if (q) items = items.filter(c => c.termino.toLowerCase().includes(q) || c.def.toLowerCase().includes(q));
+
+        empty.classList.toggle('hidden', items.length > 0);
+
+        list.innerHTML = items.map(c => `
+          <article class="card">
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+              <h2 style="font-size: var(--text-xl); margin:0;">${c.termino}</h2>
+              <span class="badge badge--accent">Unidad ${c.unidad}</span>
+            </div>
+            <p class="text-muted mb-6" style="line-height: var(--leading-relaxed);">${c.def}</p>
+            <a href="${c.href}" class="btn btn--ghost" style="padding: var(--space-2) 0;">
+              Ver en la clase ${ICONS.svg('arrowRight', 16)}
+            </a>
+          </article>`).join('');
+      }
+
+      search.addEventListener('input', () => { query = search.value; render(); });
+
+      filters.addEventListener('click', (e) => {
+        const btn = e.target.closest('.chip');
+        if (!btn) return;
+        filters.querySelectorAll('.chip').forEach(c => c.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        activeUnit = parseInt(btn.dataset.unit, 10);
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -1,888 +1,456 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aula virtual de Psicoanalisis UFLO con cronograma, unidades, avisos y accesos directos para la cursada.">
-    <title>Psicoanálisis | Aula Virtual UFLO</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=16">
-    <style>
-        /* Card Header Navigation - INTEGRATED */
-        .card-nav {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aula virtual de Psicoanálisis UFLO — programa, unidades, herramientas y cronograma.">
+  <title>Psicoanálisis · Aula Virtual UFLO</title>
 
-        .nav-link {
-            padding: 0.5rem 1.2rem;
-            border-radius: 100px;
-            text-decoration: none;
-            color: var(--secondary-color);
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            background: rgba(0,0,0,0.02);
-            border: 1px solid transparent;
-        }
+  <!-- Fuentes (con preconnect para performance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 
-        .nav-link:hover {
-            color: var(--accent-color);
-            background: rgba(13, 148, 136, 0.08);
-            border-color: rgba(13, 148, 136, 0.12);
-        }
-
-        .nav-link.active {
-            background: var(--accent-color);
-            color: white;
-            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
-        }
-    </style>
+  <!-- Sistema de diseño -->
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/ui.css">
 </head>
 <body>
-    <!-- Helper for scroll -->
-    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
 
-    <header class="banner fade-in">
-        <div class="container" style="z-index: 2; padding: 0;">
-            <p style="text-transform: uppercase; letter-spacing: 3px; margin-bottom: 0.2rem; color: var(--accent-color); font-weight: 800; font-size: 0.7rem; opacity: 0.8;">UFLO | Psicología</p>
-            <h1 style="font-size: 3.5rem; margin-bottom: 0.1rem; letter-spacing: -2px;">Psicoanálisis</h1>
-            <p style="font-size: 1rem; font-weight: 700; color: var(--accent-color); margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">
-                Prof. Blas Rivera & Marina Judith Homse
-            </p>
-            <p style="font-size: 0.9rem; max-width: 450px; margin: 0 auto; color: var(--text-secondary); line-height: 1.4; font-style: italic;">
-                "Hitos de la obra freudiana y la práctica clínica."
-            </p>
+  <!-- Nav: la inyecta ui.js -->
+  <div data-ui="nav" data-active="inicio"></div>
+
+  <main class="container">
+
+    <!-- ==================== HERO DINÁMICO ==================== -->
+    <section class="hero" id="inicio">
+      <div class="hero__eyebrow reveal reveal--1">UFLO · Cátedra Rivera–Homse</div>
+      <h1 class="hero__title reveal reveal--1">Psicoanálisis</h1>
+      <p class="hero__subtitle reveal reveal--2">
+        Aula virtual de la cursada. Cronograma, unidades, bibliografía y herramientas
+        para estudiar los hitos de la obra freudiana y la práctica clínica.
+      </p>
+
+      <!-- Panel dinámico: se rellena según la fecha del sistema -->
+      <div id="hero-panel" class="hero-panel reveal reveal--3" style="margin-top: var(--space-10);">
+        <!-- ui.js / script local lo rellena -->
+      </div>
+    </section>
+
+    <!-- ==================== UNIDADES ==================== -->
+    <section class="section" id="unidades">
+      <div class="section-head">
+        <h2 class="section-head__title">Contenidos por unidad</h2>
+        <p class="section-head__subtitle">El programa se organiza en cuatro unidades que recorren la obra freudiana, desde la histeria hasta el malestar en la cultura.</p>
+      </div>
+      <div id="units-grid" class="unit-grid">
+        <!-- JS lo rellena -->
+      </div>
+    </section>
+
+    <!-- ==================== HERRAMIENTAS (Ocultado temporalmente) ==================== -->
+    <!--
+    <section class="section" id="herramientas">
+      <div class="section-head">
+        <h2 class="section-head__title">Herramientas de estudio</h2>
+        <p class="section-head__subtitle">Lector de PDFs con las anotaciones de la cátedra, mapa conceptual y glosario de términos clave.</p>
+      </div>
+      <div class="tool-grid">
+        <a href="units/lector-pdf.html" class="card card--hoverable tool-card">
+          <div class="tool-card__icon" id="icon-pdf"></div>
+          <div>
+            <div class="tool-card__title">Lector de PDFs</div>
+            <div class="tool-card__desc">Textos con anotaciones de la cátedra.</div>
+          </div>
+        </a>
+        <a href="units/mapa.html" class="card card--hoverable tool-card">
+          <div class="tool-card__icon" id="icon-map"></div>
+          <div>
+            <div class="tool-card__title">Mapa conceptual</div>
+            <div class="tool-card__desc">Grafo navegable de la materia.</div>
+          </div>
+        </a>
+        <a href="units/glosario.html" class="card card--hoverable tool-card">
+          <div class="tool-card__icon" id="icon-glo"></div>
+          <div>
+            <div class="tool-card__title">Glosario</div>
+            <div class="tool-card__desc">Términos clave y sus definiciones.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+    -->
+
+    <!-- ==================== CRONOGRAMA ==================== -->
+    <section class="section" id="cronograma">
+      <div class="section-head section-head--row">
+        <div>
+          <h2 class="section-head__title">Cronograma completo</h2>
+          <p class="section-head__subtitle">Las clases pasadas se atenúan, la próxima se destaca automáticamente.</p>
         </div>
-    </header>
-
-    <main class="container">
-        <!-- Dashboard Section -->
-        <!-- Dashboard Section -->
-        <section id="inicio" class="glass-card fade-in" style="margin-bottom: var(--section-gap); border-radius: 30px; padding-top: 2rem;">
-            <!-- Navegación Integrada -->
-            <!-- Navegación Integrada -->
-            <div class="card-nav-container" id="navContainer">
-                <nav class="card-nav">
-                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link active" data-nav="inicio" onclick="toggleUnits(false)">Inicio</a>
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link" data-nav="consultas" onclick="toggleUnits(false)">Consultas</a>
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link" data-nav="presentacion" onclick="toggleUnits(false)">Presentación</a>
-                    <a href="#unidades" class="nav-link" data-nav="unidades" onclick="toggleUnits(true); return false;">Unidades</a>
-                    <a href="#cronograma" class="nav-link" data-nav="cronograma" onclick="setActiveNav('cronograma'); toggleUnits(false)">Cronograma</a>
-                </nav>
-
-                <!-- Sub Nav for Units -->
-                <div class="sub-nav">
-                    <a href="units/unit1.html" class="sub-link">1</a>
-                    <a href="units/unit2.html" class="sub-link">2</a>
-                    <a href="units/unit3.html" class="sub-link">3</a>
-                    <a href="units/unit4.html" class="sub-link">4</a>
-                </div>
-            </div>
-
-            <script>
-                function setActiveNav(key) {
-                    const links = document.querySelectorAll('#navContainer .nav-link');
-                    links.forEach(link => {
-                        const isActive = link.dataset.nav === key;
-                        link.classList.toggle('active', isActive);
-
-                        if (isActive) {
-                            link.setAttribute('aria-current', 'page');
-                        } else {
-                            link.removeAttribute('aria-current');
-                        }
-                    });
-                }
-
-                function toggleUnits(show) {
-                    const container = document.getElementById('navContainer');
-                    
-                    if (show) {
-                        container.classList.add('show-units');
-                        setActiveNav('unidades');
-                        // Scroll to units section
-                        document.getElementById('unidades').scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                        container.classList.remove('show-units');
-                        const currentActive = container.querySelector('.nav-link.active');
-                        if (!currentActive || currentActive.dataset.nav === 'unidades') {
-                            setActiveNav('inicio');
-                        }
-                    }
-                }
-
-                function scrollToTop() {
-                    // 1. Internal Scroll
-                    window.scrollTo(0, 0);
-                    
-                    // 2. Focus Trick (Browser-native scroll to top)
-                    const helper = document.getElementById('top-focus');
-                    if (helper) helper.focus({preventScroll:false});
-
-                    // 3. Multi-Messaging to Parent (Aggressive list for all Moodle flavors)
-                    if (window.parent) {
-                        const messages = [
-                            { type: 'scrollToTop' },
-                            'scrollToTop',
-                            'scroll_to_top',
-                            'forceScrollTop',
-                            'scrollto:0',
-                            { mceAction: 'customScroll', scroll: 0 },
-                            JSON.stringify({subject: 'lti.scrollToTop'}),
-                            JSON.stringify({subject: 'lti.navigation', location: 'top'})
-                        ];
-                        
-                        messages.forEach(msg => {
-                            try { window.parent.postMessage(msg, '*'); } catch(e) {}
-                        });
-                    }
-                    
-                    // 4. Moodle Direct Hack (if same-origin)
-                    try {
-                        if (window.parent && window.parent.M) {
-                            if (window.parent.M.core_scroll_manager) {
-                                window.parent.M.core_scroll_manager.scroll_to_node(window.parent.document.body);
-                            }
-                            window.parent.scrollTo(0, 0);
-                        }
-                    } catch (e) {}
-                }
-
-                // Prevent browser from restoring scroll position
-                if ('scrollRestoration' in history) {
-                    history.scrollRestoration = 'manual';
-                }
-
-                function checkLiveStatus() {
-                    const now = new Date();
-                    // getDay() returns 0 for Sunday, 1 for Monday
-                    const isMonday = now.getDay() === 1;
-                    const hours = now.getHours();
-                    const minutes = now.getMinutes();
-                    const totalMinutes = hours * 60 + minutes;
-
-                    // "HOY!" tag shows all day on Monday
-                    const todayTag = document.getElementById('today-tag');
-                    if (isMonday) {
-                        todayTag.style.display = 'inline-flex';
-                    } else {
-                        todayTag.style.display = 'none';
-                    }
-
-                    // "VIVO" indicator (18:30 to 20:30)
-                    const indicator = document.getElementById('live-indicator');
-                    if (isMonday && totalMinutes >= 1110 && totalMinutes < 1230) {
-                        indicator.style.display = 'flex';
-                    } else {
-                        indicator.style.display = 'none';
-                    }
-                }
-
-                window.addEventListener('load', () => {
-                    setActiveNav('inicio');
-                    scrollToTop();
-                    checkLiveStatus();
-                    setTimeout(scrollToTop, 100);
-                    setTimeout(scrollToTop, 500);
-                    setTimeout(scrollToTop, 1000);
-                    // Check every minute
-                    setInterval(checkLiveStatus, 60000);
-                });
-            </script>
-
-            <div class="hero-layout">
-                <div class="hero-summary">
-                    <div class="hero-copy">
-                        <h2>Aula Virtual 2.0</h2>
-                        <p>
-                            Bienvenida/o a la cursada 2026. Hemos rediseñado este entorno para que sea tu base de operaciones académica: modular, organizada e inmersiva.
-                        </p>
-                    </div>
-                    <div class="hero-commission">
-                        <span class="hero-commission-label">Comisión</span>
-                        <div class="hero-commission-value">Turno Noche / 1</div>
-                    </div>
-                </div>
-
-                <!-- Resources Mini-Grid -->
-                <div class="resource-grid">
-                    <!-- Meet (Promoted) -->
-                    <a href="https://meet.google.com/ppm-khgg-ohk" target="_blank" rel="noopener noreferrer" class="glass-card resource-card resource-card--primary">
-                        <div class="resource-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
-                        </div>
-                        <div class="resource-content">
-                            <div class="resource-title-row">
-                                <div class="resource-title-group">
-                                    <div class="resource-title">Clase en Vivo</div>
-                                    <span id="today-tag" style="display: none; background: var(--accent-color); color: white; font-size: 0.65rem; padding: 2px 8px; border-radius: 6px; font-weight: 900; box-shadow: 0 4px 10px rgba(13, 148, 136, 0.2);">HOY!</span>
-                                </div>
-                                <div id="live-indicator" style="display: none; align-items: center; color: #ef4444; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">
-                                    <span class="live-dot"></span> VIVO
-                                </div>
-                            </div>
-                            <div class="resource-subtitle">Lunes 18:30 · Link Directo Meet</div>
-                        </div>
-                    </a>
-
-                    <!-- Foro de Presentación -->
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="glass-card resource-card">
-                        <div class="resource-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        </div>
-                        <div class="resource-content">
-                            <div class="resource-title">Foro Presentación</div>
-                            <div class="resource-subtitle">Comunidad virtual</div>
-                        </div>
-                    </a>
-
-                    <!-- Foro de Consultas -->
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="glass-card resource-card">
-                        <div class="resource-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                        </div>
-                        <div class="resource-content">
-                            <div class="resource-title">Foro Consultas</div>
-                            <div class="resource-subtitle">Dudas y ayuda</div>
-                        </div>
-                    </a>
-
-                    <a href="mapa_conceptual.html" class="glass-card resource-card">
-                        <div class="resource-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"></circle><circle cx="18" cy="6" r="2"></circle><circle cx="12" cy="18" r="2"></circle><path d="M8 6h8"></path><path d="M7.5 7.5l3.2 7"></path><path d="M16.5 7.5l-3.2 7"></path></svg>
-                        </div>
-                        <div class="resource-content">
-                            <div class="resource-title">Mapa Conceptual</div>
-                            <div class="resource-subtitle">Recorrido transversal</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Units Grid -->
-        <section id="unidades" class="fade-in" style="animation-delay: 0.4s;">
-            <div class="section-heading">
-                <div>
-                    <h2>Contenidos</h2>
-                    <p>Explora el programa dividido por unidades temáticas.</p>
-                </div>
-                <div class="section-heading-meta">
-                    4 UNIDADES TOTALES
-                </div>
-            </div>
-            
-            <div class="unit-grid">
-                <a href="units/unit1.html" class="glass-card unit-card">
-                    <span class="unit-number">Unidad 1</span>
-                    <h3>Inicios y Referentes</h3>
-                    <p>De Charcot al método catártico de Breuer. La histeria como enigma.</p>
-                    <span class="btn">Abrir Módulo</span>
-                </a>
-
-                <a href="units/unit2.html" class="glass-card unit-card">
-                    <span class="unit-number">Unidad 2</span>
-                    <h3>El Inconsciente</h3>
-                    <p>Sueños, actos fallidos y primera tópica: el giro que convierte al psicoanálisis en una psicología de la vida anímica.</p>
-                    <span class="btn">Ver unidad</span>
-                </a>
-
-                <a href="units/unit3.html" class="glass-card unit-card">
-                    <span class="unit-number">Unidad 3</span>
-                    <h3>Pulsión y Sexualidad</h3>
-                    <p>La sexualidad infantil y la construcción del concepto de pulsión.</p>
-                    <span class="btn">Ver unidad</span>
-                </a>
-
-                <a href="units/unit4.html" class="glass-card unit-card">
-                    <span class="unit-number">Unidad 4</span>
-                    <h3>Clínica, Metapsicología y Cultura</h3>
-                    <p>Transferencia, repetición, pulsión de muerte, segunda tópica y malestar en la cultura.</p>
-                    <span class="btn">Ver unidad</span>
-                </a>
-            </div>
-        </section>
-
-        <!-- Cronograma Section -->
-        <section id="cronograma" class="fade-in" style="animation-delay: 0.5s; margin-bottom: 5rem;">
-            <div id="btn-toggle-timeline" onclick="toggleTimeline()" class="glass-card timeline-toggle" role="button" tabindex="0" aria-controls="timeline-container" aria-expanded="false">
-                <div class="timeline-toggle-copy">
-                    <h2 id="btn-toggle-title">Cronograma Completo</h2>
-                    <p>Explora todas las clases y textos del cuatrimestre.</p>
-                </div>
-                <div class="timeline-toggle-icon">
-                    <svg id="timeline-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s;"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </div>
-            </div>
-
-            <style>
-                .timeline { position: relative; padding-left: 2.5rem; margin-top: 2rem; }
-                .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: rgba(0,0,0,0.05); border-radius: 4px; }
-                .tl-item { position: relative; margin-bottom: 1.5rem; background: white; border: 1px solid var(--glass-border); border-radius: 20px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; gap: 1.5rem; transition: transform 0.2s; }
-                .tl-item:hover { transform: translateX(5px); }
-                .tl-dot { position: absolute; left: -3.2rem; top: 2.2rem; width: 20px; height: 20px; border-radius: 50%; background: white; border: 4px solid var(--accent-color); box-shadow: 0 0 0 4px white; z-index: 1; }
-                .tl-date { min-width: 60px; text-align: center; }
-                .tl-date .day { font-size: 1.8rem; font-weight: 800; color: var(--primary-color); line-height: 1; }
-                .tl-date .month { font-size: 0.8rem; text-transform: uppercase; font-weight: 800; color: var(--accent-color); margin-top: 5px; }
-                .tl-content { flex-grow: 1; }
-                .tl-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
-                .tl-badge { font-size: 0.7rem; padding: 4px 12px; border-radius: 100px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-                .tl-badge.normal { background: rgba(13, 148, 136, 0.1); color: var(--accent-color); }
-                .tl-badge.holiday { background: #f1f5f9; color: #64748b; }
-                .tl-badge.exam { background: #fee2e2; color: #ef4444; }
-                .tl-title { font-size: 1.25rem; font-weight: 800; color: var(--primary-color); margin: 0; letter-spacing: -0.5px; }
-                .tl-desc { color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.3rem; line-height: 1.5; font-weight: 500;}
-                .tl-meta { margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.8rem; color: #64748b; font-weight: 600; }
-                .tl-meta span.tag { display: inline-flex; align-items: center; gap: 6px; background: #f8fafc; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.03); white-space: nowrap; height: fit-content; }
-                .tl-biblio { width: 100%; font-size: 0.85rem; color: #475569; background: #f8fafc; padding: 1rem; border-radius: 12px; border: 1px solid rgba(0,0,0,0.03); line-height: 1.6; font-weight: 400;}
-                
-                #timeline-wrapper {
-                    position: relative;
-                }
-                #timeline-container {
-                    max-height: 0;
-                    overflow: hidden;
-                    position: relative;
-                    opacity: 0;
-                    transform: translateY(-10px);
-                    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-                }
-                #timeline-container.expanded {
-                    max-height: 5000px;
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-                #btn-toggle-timeline {
-                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                }
-                #btn-toggle-timeline:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 25px rgba(13, 148, 136, 0.15) !important;
-                    border-color: var(--accent-color) !important;
-                }
-                #btn-toggle-timeline.active {
-                    background: #f0fdfa !important;
-                    border-color: var(--accent-color) !important;
-                }
-                #btn-toggle-timeline.active #timeline-icon {
-                    transform: rotate(180deg);
-                }
-
-                @media (max-width: 768px) {
-                    .timeline { padding-left: 1.5rem; }
-                    .tl-dot { left: -2rem; width: 14px; height: 14px; top: 1.8rem; }
-                    .tl-item { flex-direction: column; gap: 1rem; padding: 1.2rem; }
-                    .tl-date { text-align: left; display: flex; gap: 10px; align-items: baseline; }
-                    .tl-date .month { margin-top: 0; }
-                }
-            </style>
-
-            <div id="timeline-wrapper">
-                <div id="timeline-container">
-                    <div class="timeline">
-                        <!-- Clase 1 -->
-                        <div class="tl-item">
-                            <div class="tl-dot" style="border-color: #94a3b8; background: #94a3b8;"></div>
-                            <div class="tl-date"><div class="day" style="color:#94a3b8;">16</div><div class="month" style="color:#94a3b8;">Mar</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title" style="color: #64748b;">Clase 1: Surgimiento del inconsciente</h3>
-                                    <span class="tl-badge normal" style="background: #f1f5f9; color: #94a3b8;">Unidad 1</span>
-                                </div>
-                                <p class="tl-desc" style="color: #94a3b8;">Presentación de la materia. Contexto histórico. La histeria. El descubrimiento del inconsciente.</p>
-                                <div class="tl-meta">
-                                    <span class="tag" style="color:#94a3b8;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span>
-                                    <div class="tl-biblio" style="opacity: 0.8;">
-                                        • Freud, S. (1910). Cinco conferencias sobre psicoanálisis. Conferencia 1.<br>
-                                        • Freud, S. (1893). "Charcot".<br>
-                                        • Tallaferro, A. (1985). Curso básico de psicoanálisis. Cap. 1.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Feriado -->
-                        <div class="tl-item" style="background: #f8fafc;">
-                            <div class="tl-dot" style="border-color: #cbd5e1; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day" style="color: #94a3b8;">23</div><div class="month" style="color: #94a3b8;">Mar</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title" style="color: #64748b;">Clase 2: Feriado - Día no laborable</h3>
-                                    <span class="tl-badge holiday">Puente 24 Mar</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clase 2 (AHORA) -->
-                        <div class="tl-item" style="border-color: var(--accent-color); box-shadow: 0 10px 40px rgba(13,148,136,0.15);">
-                            <div class="tl-dot" style="background: var(--accent-color);"></div>
-                            <div class="tl-date"><div class="day">30</div><div class="month">Mar</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title">Clase 3: Defensa y conflicto psíquico</h3>
-                                    <span class="tl-badge normal" style="background: var(--accent-color); color: white; box-shadow: 0 4px 10px rgba(13,148,136,0.3);">ESTA SEMANA</span>
-                                </div>
-                                <p class="tl-desc">La defensa como operación fundante. Síntoma como formación de compromiso.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span>
-                                    <div class="tl-biblio">
-                                        • Freud, S. (1895). Estudios sobre la histeria. Cap. I: Comunicación preliminar.<br>
-                                        • Freud, S. (1894). "Las neuropsicosis de defensa".<br>
-                                        • Tallaferro, A. (1985). Curso básico de psicoanálisis. Cap. 2.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clase 3 -->
-                        <div class="tl-item">
-                            <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day">06</div><div class="month">Abr</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title">Clase 4: Interpretación de los sueños</h3>
-                                    <span class="tl-badge normal">Unidad 2</span>
-                                </div>
-                                <p class="tl-desc">El sueño como vía regia al inconsciente. Deseo inconsciente. Interpretación.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Clase Presencial</span>
-                                    <div class="tl-biblio">
-                                        • Freud, S. (1900). La interpretación de los sueños. Caps. II y VII.<br>
-                                        • Freud, S. (1901). "Sobre el sueño".
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clase 4 -->
-                        <div class="tl-item">
-                            <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day">13</div><div class="month">Abr</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title">Clase 5: La primera tópica</h3>
-                                    <span class="tl-badge normal">Unidad 2</span>
-                                </div>
-                                <p class="tl-desc">Actos fallidos. La represión como mecanismo de defensa. Primera tópica.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span>
-                                    <div class="tl-biblio">
-                                        • Freud, S. (1901). Psicopatología de la vida cotidiana. Cap. I.<br>
-                                        • Freud, S. (1915). "La represión".<br>
-                                        • Freud, S. (1915). "Lo inconsciente". Caps. II y IV.<br>
-                                        • Freud, S. (1916-17). Conferencias de introducción al psicoanálisis. Conferencias 5 y 6.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Parcial 1 -->
-                        <div class="tl-item" style="border: 2px solid #fecaca; background: #fffbfa;">
-                            <div class="tl-dot" style="border-color: #ef4444; background: #fee2e2;"></div>
-                            <div class="tl-date"><div class="day" style="color: #ef4444;">20</div><div class="month" style="color: #ef4444;">Abr</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title" style="color: #b91c1c;">Clase 6: Primer Parcial Evaluador</h3>
-                                    <span class="tl-badge exam">📝 Examen Presencial</span>
-                                </div>
-                                <p class="tl-desc">Evaluación de integración de contenidos correspondientes a las Unidades 1 y 2 de la materia.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Aula presencial</span>
-                                    <div class="tl-biblio">
-                                        Toda la bibliografía obligatoria de las Unidades 1 y 2.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clase 6 -->
-                        <div class="tl-item">
-                            <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day">27</div><div class="month">Abr</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title">Clase 7: Sexualidad infantil</h3>
-                                    <span class="tl-badge normal">Unidad 3</span>
-                                </div>
-                                <p class="tl-desc">La sexualidad en psicoanálisis. Libido. Autoerotismo. Diferencia entre instinto y pulsión.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span>
-                                    <div class="tl-biblio">
-                                        • Freud, S. (1905). Tres ensayos de teoría sexual. Ensayo I.<br>
-                                        • Freud, S. (1916-17). Conferencias de introducción al psicoanálisis. Conferencia 7.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clase 7 -->
-                        <div class="tl-item">
-                            <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day">04</div><div class="month">May</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title">Clase 8: Conceptualizar la pulsión</h3>
-                                    <span class="tl-badge normal">Unidad 3</span>
-                                </div>
-                                <p class="tl-desc">Concepto de pulsión. Destinos de pulsión. Fijación y regresión.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Clase Presencial</span>
-                                    <div class="tl-biblio">
-                                        • Freud, S. (1915). "Pulsiones y destinos de pulsión".<br>
-                                        • Freud, S. (1905). Tres ensayos de teoría sexual. Ensayo II.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clase 8 -->
-                        <div class="tl-item">
-                            <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day">11</div><div class="month">May</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title">Clase 9: Comprender Edipo y Castración</h3>
-                                    <span class="tl-badge normal">Unidad 3</span>
-                                </div>
-                                <p class="tl-desc">Organización genital infantil. Complejo de Edipo. Angustia de castración.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span>
-                                    <div class="tl-biblio">
-                                        • Freud, S. (1923). "Organización genital infantil".<br>
-                                        • Freud, S. (1924). "El sepultamiento del complejo de Edipo".<br>
-                                        • Freud, S. (1909). "Análisis de la fobia de un niño de cinco años [Caso Hans]". Introducción.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clase 9 -->
-                        <div class="tl-item">
-                            <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day">18</div><div class="month">May</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title"><a href="units/unit4_clase10.html" style="color: inherit; text-decoration: none;">Clase 10: Dimensionar la clínica analítica</a></h3>
-                                    <span class="tl-badge normal">Unidad 4</span>
-                                </div>
-                                <p class="tl-desc">La transferencia. La repetición en análisis. Resistencia.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Clase Presencial</span>
-                                    <div class="tl-biblio">
-                                        • Freud, S. (1905). "Fragmento de análisis de un caso de histeria [Dora]". Introducción.<br>
-                                        • Freud, S. (1912). "Sobre la dinámica de la transferencia".<br>
-                                        • Freud, S. (1914). "Recordar, repetir y reelaborar".
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Feriado -->
-                        <div class="tl-item" style="background: #f8fafc;">
-                            <div class="tl-dot" style="border-color: #cbd5e1; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day" style="color: #94a3b8;">25</div><div class="month" style="color: #94a3b8;">May</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title" style="color: #64748b;">Clase 11: Feriado - Revolución de Mayo</h3>
-                                    <span class="tl-badge holiday">Sin clase</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Parcial 2 -->
-                        <div class="tl-item" style="border: 2px solid #fecaca; background: #fffbfa;">
-                            <div class="tl-dot" style="border-color: #ef4444; background: #fee2e2;"></div>
-                            <div class="tl-date"><div class="day" style="color: #ef4444;">01</div><div class="month" style="color: #ef4444;">Jun</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title" style="color: #b91c1c;">Clase 12: Segundo Parcial Evaluador</h3>
-                                    <span class="tl-badge exam">📝 Examen Presencial</span>
-                                </div>
-                                <p class="tl-desc">Evaluación de integración de contenidos correspondientes a las Unidades 3 y 4 de la materia.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Aula presencial</span>
-                                    <div class="tl-biblio">
-                                        Toda la bibliografía obligatoria de las Unidades 3 y 4.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clase 11 -->
-                        <div class="tl-item">
-                            <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day">08</div><div class="month">Jun</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title"><a href="units/unit4_clase13.html" style="color: inherit; text-decoration: none;">Clase 13: Analizar la segunda tópica</a></h3>
-                                    <span class="tl-badge normal">Unidad 4</span>
-                                </div>
-                                <p class="tl-desc">Problema de la repetición. Límites del principio de placer. Pulsión de muerte. Segunda tópica.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span>
-                                    <div class="tl-biblio">
-                                        • Freud, S. (1920). Más allá del principio del placer. Caps. IV y V.<br>
-                                        • Freud, S. (1923). El yo y el ello. Caps. I y II.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Feriado -->
-                        <div class="tl-item" style="background: #f8fafc;">
-                            <div class="tl-dot" style="border-color: #cbd5e1; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day" style="color: #94a3b8;">15</div><div class="month" style="color: #94a3b8;">Jun</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title" style="color: #64748b;">Clase 14: Feriado - Paso a la Inmortalidad</h3>
-                                    <span class="tl-badge holiday">Sin clase</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clase 12 -->
-                        <div class="tl-item">
-                            <div class="tl-dot" style="border-color: #e2e8f0; border-width: 3px;"></div>
-                            <div class="tl-date"><div class="day">22</div><div class="month">Jun</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title"><a href="units/unit4_clase15.html" style="color: inherit; text-decoration: none;">Clase 15: Relacionar psicoanálisis y cultura</a></h3>
-                                    <span class="tl-badge normal">Unidad 4</span>
-                                </div>
-                                <p class="tl-desc">Relación entre sujeto y cultura. El malestar como estructural. Escuela inglesa y francesa.</p>
-                                <div class="tl-meta">
-                                    <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg> Clase sincrónica</span>
-                                    <div class="tl-biblio">
-                                        • Freud, S. (1930). El malestar en la cultura. Caps. II y III.<br>
-                                        • Freud, S. (1907). "Acciones obsesivas y prácticas religiosas".<br>
-                                        • Lacan, J. (1949). "El estadio del espejo...".<br>
-                                        • Segal, H. (1965). Introducción a la obra de Melanie Klein. Cap. 1.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clase 13 -->
-                        <div class="tl-item" style="border-color: #6366f1; background: #eef2ff;">
-                            <div class="tl-dot" style="border-color: #6366f1; background: #c7d2fe;"></div>
-                            <div class="tl-date"><div class="day" style="color: #4f46e5;">29</div><div class="month" style="color: #4f46e5;">Jun</div></div>
-                            <div class="tl-content">
-                                <div class="tl-header">
-                                    <h3 class="tl-title" style="color: #4338ca;">Clase 16: Recuperatorio y Cierre</h3>
-                                    <span class="tl-badge normal" style="background: #4f46e5; color: white;">FINAL</span>
-                                </div>
-                                <p class="tl-desc" style="color: #4f46e5;">Recuperación de instancias e integración conceptual general de la materia.</p>
-                                <div class="tl-meta">
-                                    <span class="tag" style="background: white; color: #4338ca; border: none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Aula presencial</span>
-                                    <div class="tl-biblio">
-                                        Toda la bibliografía de la asignatura.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+        <span class="section-head__meta" id="crono-progress"></span>
+      </div>
+      <!-- Tarjeta resumen / botón de expansión -->
+      <div class="card card--hoverable mb-4" id="timeline-toggle" onclick="toggleTimeline()" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-5); transition: all var(--dur-fast) var(--ease-out);">
+        <div style="display: flex; align-items: center; gap: var(--space-4);">
+          <span class="tool-card__icon" style="background: var(--accent-soft); color: var(--accent); width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-md);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/><path d="M16 3l0 4"/><path d="M8 3l0 4"/><path d="M4 11l16 0"/></svg>
+          </span>
+          <div>
+            <div style="font-weight: 700; color: var(--text-strong); font-size: var(--text-base);">Ver Clases y Cronograma</div>
+            <div style="font-size: var(--text-xs); color: var(--text-muted);" id="timeline-toggle-subtitle">10 / 10 clases dictadas (Cursada concluida) · Clic para expandir</div>
+          </div>
         </div>
-    </div>
-            <script>
-                function toggleTimeline() {
-                    const container = document.getElementById('timeline-container');
-                    const btn = document.getElementById('btn-toggle-timeline');
-                    const titleEl = document.getElementById('btn-toggle-title');
-                    
-                    if (container.classList.contains('expanded')) {
-                        container.classList.remove('expanded');
-                        btn.classList.remove('active');
-                        btn.setAttribute('aria-expanded', 'false');
-                        titleEl.innerText = 'Cronograma Completo';
-                        document.getElementById('cronograma').scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                        container.classList.add('expanded');
-                        btn.classList.add('active');
-                        btn.setAttribute('aria-expanded', 'true');
-                        titleEl.innerText = 'Ocultar Cronograma';
-                    }
-                    
-                    // Altera la altura, avisamos a Moodle:
-                    if(typeof sendHeight === 'function') {
-                        setTimeout(sendHeight, 100);
-                        setTimeout(sendHeight, 600);
-                    }
-                }
-            </script>
-        </section>
+        <span class="tl-item__chevron" id="timeline-toggle-chevron">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+      </div>
 
-        <!-- New: Notice Board Section -->
-        <section id="avisos" class="notice-board fade-in" style="animation-delay: 0.6s;">
-            <div class="notice-board-header">
-                <div class="notice-board-copy">
-                    <h2>Tablero de Avisos</h2>
-                    <p>Un espacio para concentrar la información activa de la cursada, con prioridad para lo urgente y registro claro de las novedades recientes.</p>
-                </div>
-                <div class="notice-board-status">Actualizado</div>
+      <!-- Contenedor del timeline colapsado por defecto -->
+      <div id="timeline-container" style="display: none; margin-top: var(--space-4);">
+        <div id="timeline" class="timeline">
+          <!-- JS lo rellena -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MESA DE FINAL ==================== -->
+    <section class="section" id="final">
+      <div class="section-head">
+        <h2 class="section-head__title">Examen Final</h2>
+        <p class="section-head__subtitle">Información clave sobre las fechas, condiciones de aprobación y la bibliografía requerida para la acreditación final de la materia.</p>
+      </div>
+
+      <!-- Grid de 2 columnas para Llamados y Condición Pendientes -->
+      <div class="grid grid-2 mb-8">
+        <!-- Tarjeta de Llamados -->
+        <div class="card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="tool-card__icon" style="background: var(--accent-soft); color: var(--accent);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/><path d="M16 3l0 4"/><path d="M8 3l0 4"/><path d="M4 11l16 0"/></svg>
+            </span>
+            <h3 class="card__title" style="font-size: var(--text-xl); font-weight: 700; margin: 0;">Llamados de Examen</h3>
+          </div>
+          
+          <div class="grid gap-4">
+            <!-- 1° Llamado -->
+            <div style="padding: var(--space-4); background: var(--surface-hover); border-radius: var(--radius-lg); border-left: 4px solid var(--accent);">
+              <div class="flex justify-between items-center mb-2">
+                <span class="badge badge--accent" style="font-weight: 800;">1° Llamado</span>
+                <span class="badge badge--neutral" style="text-transform: none;">Presencial (Neuquén)</span>
+              </div>
+              <div style="font-size: var(--text-lg); font-weight: 700; color: var(--text-strong);">20/07/2026 — 18:30 hs.</div>
+              <div style="font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-1);" class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M6 21v-1a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v1"/></svg> Modalidad Oral
+              </div>
             </div>
 
-            <div class="notice-layout">
-                <article class="notice-item featured-notice">
-                    <div class="featured-notice-header">
-                        <span class="notice-date">Martes 16 Junio, 2026</span>
-                        <span class="notice-badge" style="background: var(--accent-color); color: white;">Notas</span>
-                        <span class="notice-badge" style="background: #eab308; color: white;">Actualizadas</span>
-                    </div>
-                    <div class="notice-title featured-notice-title">Notas del Segundo Parcial Evaluador</div>
-                    <p class="featured-notice-copy">Ya está publicado el listado definitivo y corregido del segundo parcial. Podés consultar las notas actualizadas abriendo el enlace a continuación: 
-                        <br><br>
-                        <a href="notas_parcial2.html" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: var(--accent-color); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-family: 'Inter', sans-serif;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                            Ver Notas del Segundo Parcial
-                        </a>
-                    </p>
-                    <div class="notice-meta" style="margin-top: 1.5rem;">
-                        <span class="notice-meta-chip">Segundo Parcial</span>
-                        <span class="notice-meta-chip">Evaluación</span>
-                    </div>
-                </article>
-
-                <article class="notice-item featured-notice">
-                    <div class="featured-notice-header">
-                        <span class="notice-date">Lunes 30 Marzo, 2026</span>
-                        <span class="notice-badge">Importante</span>
-                    </div>
-                    <div class="notice-title featured-notice-title">Ya está disponible el Programa de Psicoanálisis 2026</div>
-                    <p class="featured-notice-copy">Ya podés consultar el programa actualizado de la materia desde el campus. El documento reúne el recorrido general de la cursada, la organización por unidades y el marco de trabajo del cuatrimestre. Para abrirlo, hacé clic en el acceso directo del aviso: <a href="Textos/Programa%20Psicoanalisis%202026.docx" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-weight: 800; text-decoration: none;">Programa Psicoanálisis 2026</a>.</p>
-                    <div class="notice-meta">
-                        <span class="notice-meta-chip">Documento oficial</span>
-                        <span class="notice-meta-chip">Disponible en Textos</span>
-                        <span class="notice-meta-chip">Acceso directo desde el aviso</span>
-                    </div>
-                </article>
-
-                <div class="notice-sidebar">
-                    <article class="notice-sidebar-card" style="border-left: 4px solid var(--accent-color); background: #f0fdfa;">
-                        <div class="notice-sidebar-head">
-                            <div class="notice-sidebar-title" style="color: var(--accent-color);">Próxima Clase: ONLINE</div>
-                            <span class="notice-sidebar-date">27 Abr</span>
-                        </div>
-                        <p class="notice-sidebar-copy"><strong>Importante:</strong> El encuentro de este lunes será bajo modalidad virtual a través de Google Meet en el horario habitual (18:30 hs).</p>
-                    </article>
-
-                    <article class="notice-sidebar-card">
-                        <div class="notice-sidebar-head">
-                            <div class="notice-sidebar-title">Clases actualizadas</div>
-                            <span class="notice-sidebar-date">31 Mar</span>
-                        </div>
-                        <p class="notice-sidebar-copy">Las clases ya incorporan guía de lectura, preguntas de autoevaluación, errores frecuentes y un recorrido de estudio más claro para acompañar el trabajo con la bibliografía.</p>
-                    </article>
-
-                    <article class="notice-sidebar-card">
-                        <div class="notice-sidebar-head">
-                            <div class="notice-sidebar-title">Cómo usar este espacio</div>
-                            <span class="notice-sidebar-date">Inicio</span>
-                        </div>
-                        <p class="notice-sidebar-copy">Usá los accesos rápidos para el encuentro semanal, las unidades para recorrer contenidos y el cronograma para seguir el ritmo del cuatrimestre.</p>
-                    </article>
-                </div>
+            <!-- 2° Llamado -->
+            <div style="padding: var(--space-4); background: var(--surface-hover); border-radius: var(--radius-lg); border-left: 4px solid var(--accent);">
+              <div class="flex justify-between items-center mb-2">
+                <span class="badge badge--accent" style="font-weight: 800;">2° Llamado</span>
+                <span class="badge badge--neutral" style="text-transform: none;">Presencial (Neuquén)</span>
+              </div>
+              <div style="font-size: var(--text-lg); font-weight: 700; color: var(--text-strong);">27/07/2026 — 18:30 hs.</div>
+              <div style="font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-1);" class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M6 21v-1a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v1"/></svg> Modalidad Oral (Estudiantes Regulares)
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
 
+        <!-- Tarjeta de Condición Pendientes -->
+        <div class="card study-note is-warning" style="display: flex; flex-direction: column; justify-content: space-between; border-radius: var(--radius-2xl);">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="tool-card__icon" style="background: rgba(245, 158, 11, 0.15); color: var(--raw-amber-600);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86l-8.18 14.18a2 2 0 0 0 1.71 3h16.36a2 2 0 0 0 1.71 -3l-8.18 -14.18a2 2 0 0 0 -3.42 0z"/></svg>
+              </span>
+              <h3 class="study-note__title" style="font-size: var(--text-base); font-weight: 800; margin: 0; color: var(--raw-amber-600); letter-spacing: var(--tracking-normal);">Estudiantes Pendientes</h3>
+            </div>
+            <p style="font-size: var(--text-base); color: var(--text); line-height: var(--leading-normal); margin-bottom: var(--space-4);">
+              Aquellos estudiantes en estado <strong>pendiente</strong> (que aprobaron <strong>únicamente un parcial</strong> de la cursada) deben cumplir con un requisito eliminatorio previo para acceder al examen oral:
+            </p>
+            <ul style="padding-left: var(--space-5); color: var(--text-muted); font-size: var(--text-sm); line-height: var(--leading-normal);" class="grid gap-2">
+              <li>Rendir una primera instancia <strong>escrita</strong> de <strong>3 preguntas integradoras</strong> que abarcan la totalidad del programa de la materia.</li>
+              <li>Es requisito excluyente responder de forma correcta las <strong>3 preguntas bien contestadas</strong> (100% de efectividad) para tener derecho a pasar al examen oral.</li>
+            </ul>
+          </div>
+          <div style="margin-top: var(--space-4); font-size: var(--text-xs); color: var(--text-muted); font-style: italic;" class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 17v-4"/><path d="M12 9h.01"/></svg> Nota: Si no se aprueba el escrito con 3/3 correctas, la instancia queda desaprobada.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta de Contenidos y Textos Excluidos -->
+      <div class="card">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="tool-card__icon" style="background: var(--accent-soft); color: var(--accent);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6l0 13"/><path d="M12 6l0 13"/><path d="M21 6l0 13"/></svg>
+          </span>
+          <h3 class="card__title" style="font-size: var(--text-xl); font-weight: 700; margin: 0;">Programa de Lectura e Inclusiones</h3>
+        </div>
+
+        <p style="font-size: var(--text-base); color: var(--text); line-height: var(--leading-relaxed); margin-bottom: var(--space-6);">
+          Para rendir la mesa se incluye <strong>toda la bibliografía obligatoria</strong> desarrollada en las clases del campus, a excepción de los siguientes <strong>5 textos excluidos</strong>:
+        </p>
+
+        <!-- Lista de Textos Excluidos -->
+        <div class="grid gap-4">
+          <!-- Texto 1: La represión -->
+          <div style="padding: var(--space-4); border: 1px solid var(--border-subtle); background: var(--surface-sunken); border-radius: var(--radius-xl); display: flex; align-items: flex-start; gap: var(--space-4);">
+            <span class="badge badge--neutral" style="color: var(--raw-red-600); background: rgba(239, 68, 68, 0.08); flex-shrink: 0; text-transform: none;">Clase 5 · Excluido</span>
+            <div style="flex-grow: 1;">
+              <h4 style="font-size: var(--text-base); font-weight: 700; text-decoration: line-through; color: var(--text-muted); margin: 0 0 var(--space-1) 0;">
+                S. Freud: "La represión" (1915)
+              </h4>
+              <p style="font-size: var(--text-sm); color: var(--text-subtle); margin: 0;">Texto metapsicológico fundacional sobre el mecanismo de la represión.</p>
+            </div>
+          </div>
+
+          <!-- Texto 2: Lo inconsciente -->
+          <div style="padding: var(--space-4); border: 1px solid var(--border-subtle); background: var(--surface-sunken); border-radius: var(--radius-xl); display: flex; align-items: flex-start; gap: var(--space-4);">
+            <span class="badge badge--neutral" style="color: var(--raw-red-600); background: rgba(239, 68, 68, 0.08); flex-shrink: 0; text-transform: none;">Clase 5 · Excluido</span>
+            <div style="flex-grow: 1;">
+              <h4 style="font-size: var(--text-base); font-weight: 700; text-decoration: line-through; color: var(--text-muted); margin: 0 0 var(--space-1) 0;">
+                S. Freud: "Lo inconsciente" (Caps. II y IV)
+              </h4>
+              <p style="font-size: var(--text-sm); color: var(--text-subtle); margin: 0;">Capítulos específicos sobre la justificación del concepto de lo inconsciente y la represión.</p>
+            </div>
+          </div>
+
+          <!-- Texto 3: Acciones obsesivas y prácticas religiosas -->
+          <div style="padding: var(--space-4); border: 1px solid var(--border-subtle); background: var(--surface-sunken); border-radius: var(--radius-xl); display: flex; align-items: flex-start; gap: var(--space-4);">
+            <span class="badge badge--neutral" style="color: var(--raw-red-600); background: rgba(239, 68, 68, 0.08); flex-shrink: 0; text-transform: none;">Clase 15 · Excluido</span>
+            <div style="flex-grow: 1;">
+              <h4 style="font-size: var(--text-base); font-weight: 700; text-decoration: line-through; color: var(--text-muted); margin: 0 0 var(--space-1) 0;">
+                S. Freud: "Acciones obsesivas y prácticas religiosas"
+              </h4>
+              <p style="font-size: var(--text-sm); color: var(--text-muted); margin: 0; line-height: var(--leading-normal);">
+                Estudio comparativo donde Freud traza un paralelo estructural entre el ceremonial neurótico individual y los ritos sagrados de la religión colectiva.
+              </p>
+            </div>
+          </div>
+
+          <!-- Texto 4: El estadio del espejo -->
+          <div style="padding: var(--space-4); border: 1px solid var(--border-subtle); background: var(--surface-sunken); border-radius: var(--radius-xl); display: flex; align-items: flex-start; gap: var(--space-4);">
+            <span class="badge badge--neutral" style="color: var(--raw-red-600); background: rgba(239, 68, 68, 0.08); flex-shrink: 0; text-transform: none;">Clase 15 · Excluido</span>
+            <div style="flex-grow: 1;">
+              <h4 style="font-size: var(--text-base); font-weight: 700; text-decoration: line-through; color: var(--text-muted); margin: 0 0 var(--space-1) 0;">
+                J. Lacan: "El estadio del espejo..."
+              </h4>
+              <p style="font-size: var(--text-sm); color: var(--text-muted); margin: 0; line-height: var(--leading-normal);">
+                Lacan postula que el Yo no es un centro autónomo, sino una identificación imaginaria y alienante nacida al asumir la imagen unificada en el espejo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Texto 5: Introducción a la obra de Melanie Klein -->
+          <div style="padding: var(--space-4); border: 1px solid var(--border-subtle); background: var(--surface-sunken); border-radius: var(--radius-xl); display: flex; align-items: flex-start; gap: var(--space-4);">
+            <span class="badge badge--neutral" style="color: var(--raw-red-600); background: rgba(239, 68, 68, 0.08); flex-shrink: 0; text-transform: none;">Clase 15 · Excluido</span>
+            <div style="flex-grow: 1;">
+              <h4 style="font-size: var(--text-base); font-weight: 700; text-decoration: line-through; color: var(--text-muted); margin: 0 0 var(--space-1) 0;">
+                H. Segal: "Introducción a la obra de Melanie Klein"
+              </h4>
+              <p style="font-size: var(--text-sm); color: var(--text-muted); margin: 0; line-height: var(--leading-normal);">
+                Segal sintetiza las bases de la escuela inglesa: relaciones de objeto tempranas, ansiedades arcaicas y el papel de la fantasía inconsciente desde el nacimiento.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-6); padding: var(--space-4); background: var(--accent-softer); border: 1px dashed var(--accent-soft); border-radius: var(--radius-lg); text-align: center; color: var(--accent); font-weight: 600; font-size: var(--text-sm);">
+          ✓ Todo el resto del material bibliográfico y guías del campus entran de forma obligatoria.
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Psicoanálisis · UFLO · Cátedra Rivera–Homse</p>
+    </footer>
+  </main>
+
+  <!-- Scripts: orden importa (icons → data → ui) -->
+  <script src="assets/icons.js"></script>
+  <script src="assets/data.js"></script>
+  <script src="assets/ui.js?v=2"></script>
+  <script>
+    /* =====================================================================
+       Render del index: lee CAMPUS_DATA y rellena el DOM
+       ===================================================================== */
+    (function () {
+      const { CONFIG, UNIDADES, PROGRAMA } = CAMPUS_DATA;
+      const D = CampusUI.Dates;
+      const fmtMonth = m => D.MONTHS_ES[m - 1];
+
+      /* ---- Iconos de las tarjetas de herramientas ---- */
+      const iconMap = {
+        'icon-tutor': 'sparkles', 'icon-sim': 'microscope', 'icon-pdf': 'pdf',
+        'icon-map': 'map', 'icon-quiz': 'quiz', 'icon-glo': 'book',
+      };
+      Object.entries(iconMap).forEach(([id, name]) => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = ICONS.svg(name, 22);
+      });
+
+      /* ---- HERO PANEL DINÁMICO ----
+         Calcula la próxima clase según la fecha del sistema.
+         Nunca más un badge hardcoded obsoleto. */
+      const estado = D.statusOf(PROGRAMA);
+      const hoy = D.formatLong(new Date());
+      let panelHTML = '';
+
+      panelHTML += `<div class="hero-panel__label">Hoy · ${hoy.charAt(0).toUpperCase() + hoy.slice(1)}</div>`;
+
+      if (estado.actual) {
+        // Hay clase hoy
+        const c = estado.actual;
+        panelHTML += `
+          <div class="hero-panel__headline">Hoy es la <strong>${c.titulo}</strong>${c.unidad ? ` <span class="badge badge--accent">Unidad ${c.unidad}</span>` : ''}</div>
+          <div class="hero-panel__detail">${c.desc || ''}</div>
+          <div class="hero-panel__actions">
+            <a class="btn btn--primary btn--lg" href="${CONFIG.meetUrl}" target="_blank" rel="noopener">${ICONS.svg('video', 18)} Entrar a la clase en vivo</a>
+            ${c.href ? `<a class="btn btn--secondary btn--lg" href="${c.href}">${ICONS.svg('book', 18)} Ver guía de lectura</a>` : ''}
+          </div>`;
+      } else if (estado.proxima) {
+        const c = estado.proxima;
+        const dias = c._days;
+        const cuando = dias === 1 ? 'mañana' : `en ${dias} días`;
+        panelHTML += `
+          <div class="hero-panel__headline">Próxima: <strong>${c.titulo}</strong></div>
+          <div class="hero-panel__detail">
+            <span class="hero-panel__countdown">
+              <span class="hero-panel__countdown-num">${dias}</span>
+              <span>${dias === 1 ? 'día' : 'días'} · ${c.fecha.dia} ${fmtMonth(c.fecha.mes)}${c.unidad ? ' · Unidad ' + c.unidad : ''}</span>
+            </span>
+            <div style="margin-top: var(--space-3);">${c.desc || ''}</div>
+          </div>
+          <div class="hero-panel__actions">
+            ${c.href ? `<a class="btn btn--primary btn--lg" href="${c.href}">${ICONS.svg('book', 18)} Preparar la clase</a>` : ''}
+            <a class="btn btn--secondary btn--lg" href="#cronograma">${ICONS.svg('calendar', 18)} Ver cronograma</a>
+          </div>`;
+      } else {
+        // Cursada finalizada
+        panelHTML += `
+          <div class="hero-panel__headline">La cursada ha finalizado</div>
+          <div class="hero-panel__detail">
+            <p style="margin-bottom: var(--space-3); color: var(--text-strong); font-weight: 700;">
+              📢 Las notas del recuperatorio ya fueron subidas al portal de la universidad.
+            </p>
+            <p>El material queda disponible para repaso. Podés recorrer las unidades y herramientas cuando quieras.</p>
+          </div>
+          <div class="hero-panel__actions">
+            <a class="btn btn--primary btn--lg" href="#unidades">${ICONS.svg('stack', 18)} Repasar unidades</a>
+          </div>`;
+      }
+      document.getElementById('hero-panel').innerHTML = panelHTML;
+
+      /* ---- GRID DE UNIDADES ---- */
+      const unitsGrid = document.getElementById('units-grid');
+      unitsGrid.innerHTML = UNIDADES.map(u => {
+        const claseIds = u.clases || [];
+        const pct = CampusUI.Progress.percent(claseIds);
+        return `
+          <a class="card card--hoverable unit-card" href="${u.href}" data-unit-link="${u.numero}" onmouseover="document.body.setAttribute('data-unit-preview','${u.numero}')" onmouseout="document.body.removeAttribute('data-unit-preview')">
+            <span class="unit-card__num">Unidad ${u.numero}</span>
+            <h3 class="unit-card__title">${u.titulo}</h3>
+            <p class="unit-card__desc">${u.desc}</p>
+            <div class="unit-card__footer">
+              <span class="unit-card__progress">${pct}% leído</span>
+              <span class="unit-card__arrow">${ICONS.svg('arrowRight', 18)}</span>
+            </div>
+          </a>`;
+      }).join('');
+
+      /* ---- CRONOGRAMA ---- */
+      const timeline = document.getElementById('timeline');
+      timeline.innerHTML = PROGRAMA.map(p => {
+        const dias = p._days;
+        let extraClass = '';
+        let badge = '';
+
+        if (p.tipo === 'feriado') {
+          extraClass = 'is-holiday';
+          badge = `<span class="badge badge--neutral">${p.etiqueta || 'Feriado'}</span>`;
+        } else if (p.tipo === 'examen' || p.tipo === 'cierre') {
+          extraClass = 'is-exam';
+          badge = `<span class="badge badge--exam">${p.tipo === 'cierre' ? 'Cierre' : 'Examen'}</span>`;
+        } else {
+          badge = p.unidad ? `<span class="badge badge--accent">Unidad ${p.unidad}</span>` : '';
+        }
+
+        if (dias < 0 && p.tipo !== 'examen' && p.tipo !== 'cierre') extraClass += ' is-past';
+        if (estado.actual && p.id === estado.actual.id) extraClass += ' is-current';
+
+        const tituloHTML = p.href
+          ? `<a href="${p.href}">${p.orden}. ${p.titulo}</a>`
+          : `${p.orden}. ${p.titulo}`;
+
+        let body = `
+          <div class="tl-item__body">
+            <div class="tl-item__header">
+              <h3 class="tl-item__title">${tituloHTML}</h3>
+              <div style="display: flex; align-items: center; gap: var(--space-2);">
+                ${badge}
+                <span class="tl-item__chevron">
+                  ${ICONS.svg('chevronDown', 16)}
+                </span>
+              </div>
+            </div>
+            ${p.desc ? `<p class="tl-item__desc">${p.desc}</p>` : ''}
+            <div class="tl-item__meta">
+              ${p.modalidad ? `<span class="tl-item__tag">${ICONS.svg(p.modalidad.includes('sincr') ? 'video' : 'users', 14)} ${p.modalidad}</span>` : ''}
+              ${dias === 0 ? `<span class="tl-item__tag" style="color: var(--accent);">${ICONS.svg('star', 14)} Hoy</span>` : ''}
+            </div>
+            ${p.biblio && p.biblio.length ? `
+              <div class="tl-item__biblio">
+                ${p.biblio.map(b => `• ${b}`).join('<br>')}
+              </div>` : ''}
+          </div>`;
+
+        return `
+          <div class="tl-item ${extraClass}" onclick="if (!event.target.closest('a')) this.classList.toggle('is-expanded')">
+            <div class="tl-item__date">
+              <div class="tl-item__day">${p.fecha.dia}</div>
+              <div class="tl-item__month">${fmtMonth(p.fecha.mes)}</div>
+            </div>
+            ${body}
+          </div>`;
+      }).join('');
+
+      /* ---- Progreso del cronograma ---- */
+      const clasesTotal = PROGRAMA.filter(p => p.tipo === 'clase').length;
+      const clasesPasadas = clasesTotal; // Dimos todo ya: 10/10
+      document.getElementById('crono-progress').textContent = `${clasesPasadas} / ${clasesTotal} clases dictadas`;
+
+      /* ---- Año del footer ---- */
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      /* ---- Toggle del cronograma completo (Acordeón general) ---- */
+      window.toggleTimeline = function() {
+        const container = document.getElementById('timeline-container');
+        const chevron = document.getElementById('timeline-toggle-chevron');
+        const subtitle = document.getElementById('timeline-toggle-subtitle');
+        const title = document.querySelector('#timeline-toggle div div');
         
-        <footer class="site-footer">
-            <p>© 2026 Psicoanálisis | UFLO Universidad</p>
-        </footer>
-    </main>
-
-    <script>
-        const EMBED_SOURCE = 'campus-psicoanalisis';
-        let lastSentHeight = 0;
-        let pendingHeightFrame = null;
-
-        function getDocumentHeight() {
-            const body = document.body;
-            const html = document.documentElement;
-
-            return Math.max(
-                body ? body.scrollHeight : 0,
-                body ? body.offsetHeight : 0,
-                html ? html.clientHeight : 0,
-                html ? html.scrollHeight : 0,
-                html ? html.offsetHeight : 0
-            );
+        const isCollapsed = container.style.display === 'none';
+        if (isCollapsed) {
+          container.style.display = 'block';
+          chevron.style.transform = 'rotate(180deg)';
+          chevron.style.background = 'var(--accent)';
+          chevron.style.color = 'var(--accent-contrast)';
+          title.textContent = 'Ocultar Clases y Cronograma';
+          subtitle.textContent = '10 / 10 clases dictadas (Cursada concluida) · Clic para contraer';
+        } else {
+          container.style.display = 'none';
+          chevron.style.transform = 'rotate(0deg)';
+          chevron.style.background = 'var(--surface-sunken)';
+          chevron.style.color = 'var(--text-muted)';
+          title.textContent = 'Ver Clases y Cronograma';
+          subtitle.textContent = '10 / 10 clases dictadas (Cursada concluida) · Clic para expandir';
         }
-
-        function postEmbedMessage(payload) {
-            if (window.parent && window.parent !== window) {
-                window.parent.postMessage(payload, '*');
-            }
-        }
-
-        function sendHeight(reason = 'update', force = false) {
-            if (pendingHeightFrame) {
-                cancelAnimationFrame(pendingHeightFrame);
-            }
-
-            pendingHeightFrame = requestAnimationFrame(() => {
-                const height = getDocumentHeight();
-                const changedEnough = Math.abs(height - lastSentHeight) > 4;
-
-                if (!force && !changedEnough) {
-                    return;
-                }
-
-                lastSentHeight = height;
-
-                postEmbedMessage({
-                    type: 'campusHeight',
-                    source: EMBED_SOURCE,
-                    height,
-                    reason,
-                    path: window.location.pathname
-                });
-
-                postEmbedMessage({ height: height });
-            });
-        }
-
-        function setupEmbedSync() {
-            sendHeight('init', true);
-
-            if ('ResizeObserver' in window) {
-                const resizeObserver = new ResizeObserver(() => sendHeight('resize-observer'));
-                resizeObserver.observe(document.body);
-            }
-
-            if ('MutationObserver' in window) {
-                const mutationObserver = new MutationObserver(() => sendHeight('mutation'));
-                mutationObserver.observe(document.body, {
-                    childList: true,
-                    subtree: true,
-                    attributes: true,
-                    characterData: true
-                });
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', setupEmbedSync);
-        window.addEventListener('load', () => sendHeight('load', true));
-        window.addEventListener('resize', () => sendHeight('window-resize', true));
-        window.addEventListener('pageshow', () => sendHeight('pageshow', true));
-
-        document.getElementById('btn-toggle-timeline').addEventListener('keydown', event => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                toggleTimeline();
-            }
-        });
-    </script>
+      };
+    })();
+  </script>
 </body>
 </html>

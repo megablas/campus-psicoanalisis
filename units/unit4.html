@@ -1,430 +1,265 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad 4: La Clínica, la Metapsicología y el Malestar en la Cultura | Psicoanálisis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css?v=16">
-    <style>
-        .card-nav { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); flex-wrap: wrap; }
-        .nav-link { padding: 0.6rem 1.4rem; border-radius: 100px; text-decoration: none; color: var(--secondary-color); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; background: rgba(0,0,0,0.02); border: 1px solid transparent; }
-        .nav-link:hover { color: var(--accent-color); background: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.2); }
-        .nav-link.active { background: var(--accent-color); color: white; box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3); }
-
-        .unit-hero { padding: 4rem 2rem; text-align: center; background: white; border-radius: 40px; box-shadow: var(--shadow-premium); margin-top: 1rem; border: 1px solid var(--glass-border); }
-        .landing-quote { max-width: 840px; margin: 2rem auto; position: relative; padding: 0 2rem; font-style: italic; line-height: 1.75; }
-        .landing-quote::after, .landing-quote::before { content: '"'; font-size: 4rem; color: var(--accent-color); opacity: 0.2; position: absolute; font-family: serif; }
-        .landing-quote::before { left: -10px; top: -20px; }
-        .landing-quote::after { right: -10px; bottom: -40px; }
-
-        .unit-opening-note { max-width: 920px; margin: 2.5rem auto 0; background: linear-gradient(180deg, #f8fbfc, #f2f7f9); border: 1px solid #dbe8ec; border-radius: 28px; padding: 1.5rem 1.75rem; text-align: left; box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04); }
-        .unit-opening-note strong { color: var(--primary-color); }
-        .unit-opening-note p { color: var(--text-secondary); line-height: 1.8; }
-        .unit-scan-grid { max-width: 980px; margin: 1.5rem auto 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-        .unit-scan-card { background: linear-gradient(180deg, #ffffff, #f8fbfc); border: 1px solid rgba(13, 148, 136, 0.1); border-radius: 24px; padding: 1.2rem 1.25rem; text-align: left; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04); }
-        .unit-scan-label { display: inline-flex; align-items: center; padding: 0.35rem 0.7rem; border-radius: 999px; background: rgba(13, 148, 136, 0.08); color: var(--accent-color); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08rem; margin-bottom: 0.8rem; }
-        .unit-scan-card h3 { font-size: 1rem; line-height: 1.2; margin-bottom: 0.45rem; }
-        .unit-scan-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; }
-        .unit-passage-band { margin: 2rem auto 0; max-width: 960px; display: grid; grid-template-columns: auto 1fr auto 1fr auto; align-items: center; gap: 0.9rem; }
-        .unit-passage-node { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: white; border: 1px solid rgba(13, 148, 136, 0.14); box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05); color: var(--accent-color); font-weight: 800; font-size: 0.86rem; }
-        .unit-passage-line { height: 2px; background: linear-gradient(90deg, rgba(13, 148, 136, 0.18), rgba(13, 148, 136, 0.55)); border-radius: 999px; }
-        .module-kicker { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.55rem 0.9rem; border-radius: 999px; background: rgba(15, 23, 42, 0.04); color: var(--secondary-color); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02rem; margin-top: 1rem; }
-        .module-kicker-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-color); box-shadow: 0 0 0 6px rgba(13, 148, 136, 0.1); }
-        .module-emphasis-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0 auto 2rem; max-width: 980px; }
-        .module-emphasis { background: #ffffff; border: 1px solid rgba(15, 23, 42, 0.06); border-radius: 22px; padding: 1.15rem 1.25rem; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04); text-align: left; }
-        .module-emphasis h4 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08rem; color: var(--accent-color); margin-bottom: 0.55rem; }
-        .module-emphasis p { color: var(--secondary-color); font-size: 0.95rem; line-height: 1.7; }
-
-        .module-section { padding: 5rem 0; border-bottom: 1px dashed #e2e8f0; }
-        .module-header { text-align: center; margin-bottom: 3rem; }
-        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-        .module-card { background: white; border-radius: 26px; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); padding: 2rem; min-height: 100%; }
-        .module-card h4 { font-size: 1.25rem; line-height: 1.25; margin-bottom: 0.9rem; color: var(--primary-color); }
-        .module-card p { color: var(--text-secondary); line-height: 1.75; font-size: 0.98rem; }
-        .module-index { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 999px; background: rgba(13, 148, 136, 0.1); color: var(--accent-color); font-size: 0.82rem; font-weight: 800; margin-bottom: 1rem; }
-        .module-bridge { margin-top: 2rem; background: linear-gradient(180deg, #f8fafc, #f2f7f9); border: 1px solid #e2e8f0; border-radius: 28px; padding: 2rem 2.2rem; }
-        .module-bridge p { color: var(--text-secondary); line-height: 1.8; }
-        .module-bridge strong { color: var(--primary-color); }
-        .roadmap-intro { max-width: 740px; margin: 0 auto 2.5rem; color: var(--text-secondary); line-height: 1.7; }
-        .unit-reading-strip { margin-top: 4rem; padding: 2.2rem; background: linear-gradient(180deg, #fff, #f8fbfc); border-radius: 32px; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); }
-        .unit-reading-strip-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-        .unit-reading-strip-header p { max-width: 600px; color: var(--text-secondary); line-height: 1.7; }
-        .unit-reading-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-        .unit-reading-card { background: linear-gradient(180deg, #ffffff, #fbfcfd); border: 1px solid rgba(15, 23, 42, 0.06); border-radius: 24px; padding: 1.3rem; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04); }
-        .unit-reading-card h3 { font-size: 1rem; line-height: 1.3; margin: 0.7rem 0 0.5rem; }
-        .unit-reading-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; }
-        .unit-reading-chip { display: inline-flex; align-items: center; padding: 0.35rem 0.7rem; border-radius: 999px; background: rgba(13, 148, 136, 0.08); color: var(--accent-color); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08rem; }
-
-        @media (max-width: 768px) {
-            .unit-hero h1 { font-size: 2.2rem; }
-            .unit-scan-grid, .module-emphasis-grid, .unit-reading-grid { grid-template-columns: 1fr; }
-            .unit-passage-band { grid-template-columns: auto 1fr; }
-            .unit-passage-band .unit-passage-node:nth-child(3),
-            .unit-passage-band .unit-passage-node:nth-child(5),
-            .unit-passage-band .unit-passage-line:nth-child(4) { display: none; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unidad 4: Clínica, metapsicología y cultura. Transferencia, segunda tópica y malestar.">
+  <title>Unidad 4 · Clínica, Metapsicología y Cultura · Psicoanálisis UFLO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/ui.css">
 </head>
-<body>
-    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+<body data-unit="4">
 
-    <main class="container">
-        <section class="unit-hero fade-in">
-            <div class="card-nav-container show-units">
-                <nav class="card-nav">
-                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link">Inicio</a>
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
-                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link active">Unidades</a>
-                </nav>
+  <div data-ui="nav" data-active="unidades" data-depth="../"></div>
 
-                <div class="sub-nav">
-                    <a href="unit1.html" class="sub-link">1</a>
-                    <a href="unit2.html" class="sub-link">2</a>
-                    <a href="unit3.html" class="sub-link">3</a>
-                    <a href="unit4.html" class="sub-link active">4</a>
-                </div>
-            </div>
+  <main class="container">
 
-            <span class="unit-number" style="font-size: 1rem; color: var(--accent-color); font-weight: 800; letter-spacing: 5px; margin-top: 2rem; display: block;">UNIDAD 4</span>
+    <section class="hero" style="display:grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-10); align-items: center; padding-top: var(--space-12);">
+      <div>
+        <a href="../index.html" class="back-link"><span id="back-icon"></span> Volver al inicio</a>
+        <div class="hero__eyebrow">Unidad 4 · Azul</div>
+        <h1 class="hero__title" style="font-size: var(--text-4xl);">La clínica, la metapsicología y el malestar en la cultura</h1>
+        <p class="hero__subtitle">
+          El tramo final del recorrido. Pasaremos de estudiar el aparato psíquico a estudiar el vínculo analítico
+          y los obstáculos que allí surgen. Luego veremos cómo Freud debe modificar su mapa teórico ante fenómenos
+          que ya no pueden explicarse por la búsqueda de placer.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="clase-10.html">Empezar por la Clase 10</a>
+          <a class="btn btn--secondary btn--lg" href="#clases">Ver hoja de ruta</a>
+        </div>
+      </div>
 
-            <h1 style="font-size: 3.5rem; margin: 1.5rem 0; line-height: 1; letter-spacing: -2px;">La Clínica, la Metapsicología y el Malestar en la Cultura</h1>
+      <aside class="card card--lg" style="border-color: var(--accent-soft); background: var(--accent-softer);">
+        <div style="font-family: var(--font-display); font-size: 3rem; line-height: 1; color: var(--accent); margin-bottom: var(--space-3);">"</div>
+        <p style="font-size: var(--text-lg); font-style: italic; color: var(--text-strong); line-height: var(--leading-snug); margin-bottom: var(--space-4);">
+          El analizado no siempre recuerda lo reprimido: lo actúa, sin saber que lo hace.
+        </p>
+        <p style="font-size: var(--text-sm); color: var(--text-muted); font-weight: 600;">
+          Freud · Recordar, repetir y reelaborar (1914)
+        </p>
+      </aside>
+    </section>
 
-            <p style="font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-top: 1rem;">El tramo final: del vínculo analítico a los límites del placer</p>
+    <!-- SCAN CARDS -->
+    <section class="section">
+      <div class="grid grid-3">
+        <div class="card">
+          <span class="badge badge--accent mb-4">Clínica</span>
+          <h3 style="margin-bottom: var(--space-2);">Transferencia y resistencia</h3>
+          <p class="text-muted">El análisis no trabaja solo con recuerdos: trabaja con aquello que se reedita en acto dentro del propio tratamiento.</p>
+        </div>
+        <div class="card">
+          <span class="badge badge--accent mb-4">Crisis teórica</span>
+          <h3 style="margin-bottom: var(--space-2);">Más allá del principio del placer</h3>
+          <p class="text-muted">La repetición de lo doloroso obliga a revisar la economía psíquica y a pensar una fuerza que no busca simplemente placer.</p>
+        </div>
+        <div class="card">
+          <span class="badge badge--accent mb-4">Cultura</span>
+          <h3 style="margin-bottom: var(--space-2);">Culpa, renuncia y malestar</h3>
+          <p class="text-muted">El cierre del programa abre la pregunta por el sujeto en la cultura y por las herencias posfreudianas.</p>
+        </div>
+      </div>
+    </section>
 
-            <blockquote class="landing-quote" style="border: none;">
-                "Tras haber explorado el motor pulsional y el drama de la sexualidad infantil, en esta Unidad 4 nos sumergimos en el terreno donde todo ese saber cobra vida: la clínica psicoanalítica. El recorrido propone un giro fundamental: pasaremos de estudiar el aparato psíquico a estudiar el vínculo analítico y los obstáculos que allí surgen."
-            </blockquote>
+    <!-- MÓDULO 1 -->
+    <section class="section">
+      <div class="section-head">
+        <div class="badge badge--accent mb-4">Módulo 1</div>
+        <h2 class="section-head__title">El dispositivo analítico: transferencia y repetición</h2>
+        <p class="section-head__subtitle">
+          La entrada a la Unidad 4 comienza por la técnica. El análisis no consiste en extraer un dato escondido del pasado,
+          sino en producir las condiciones para que aquello reprimido pueda leerse en la escena actual del tratamiento.
+        </p>
+      </div>
 
-            <div class="unit-opening-note">
-                <p><strong>Esta unidad funciona como cierre y como reformulación.</strong> Primero ingresaremos en la escena clínica, donde la transferencia, la resistencia y la repetición muestran que el pasado no aparece simplemente como recuerdo: se actualiza en el vínculo con el analista. Luego veremos cómo Freud debe modificar su mapa teórico ante fenómenos que ya no pueden explicarse por la búsqueda de placer, hasta formular la <strong>pulsión de muerte</strong> y la <strong>Segunda Tópica</strong>.</p>
-            </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">01.</span>
+          <h4 class="mt-4 mb-4">Dora y el análisis de los sueños</h4>
+          <p class="text-muted">A través del primer gran historial clínico freudiano, el sueño deja de ser un material aislado y pasa a integrarse en el tratamiento de la histeria, allí donde la sexualidad insiste en cada síntoma.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">02.</span>
+          <h4 class="mt-4 mb-4">La transferencia como motor y obstáculo</h4>
+          <p class="text-muted">El paciente no solo habla de su pasado: lo reedita en la figura del analista. La transferencia puede funcionar como resistencia, pero también como el terreno donde se decide la eficacia terapéutica.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">03.</span>
+          <h4 class="mt-4 mb-4">Actuar en lugar de recordar</h4>
+          <p class="text-muted">La compulsión de repetición muestra un punto decisivo: el analizado no siempre recuerda lo reprimido, sino que lo actúa sin saber que lo hace. La cura deberá transformar repetición en elaboración.</p>
+        </div>
+      </div>
+    </section>
 
-            <div class="unit-scan-grid">
-                <article class="unit-scan-card">
-                    <span class="unit-scan-label">Clínica</span>
-                    <h3>Transferencia y resistencia</h3>
-                    <p>El analisis no trabaja solo con recuerdos: trabaja con aquello que se reedita en acto dentro del propio tratamiento.</p>
-                </article>
-                <article class="unit-scan-card">
-                    <span class="unit-scan-label">Crisis teorica</span>
-                    <h3>Más allá del principio del placer</h3>
-                    <p>La repetición de lo doloroso obliga a revisar la economía psíquica y a pensar una fuerza que no busca simplemente placer.</p>
-                </article>
-                <article class="unit-scan-card">
-                    <span class="unit-scan-label">Cultura</span>
-                    <h3>Culpa, renuncia y malestar</h3>
-                    <p>El cierre del programa abre la pregunta por el sujeto en la cultura y por las herencias posfreudianas.</p>
-                </article>
-            </div>
+    <!-- MÓDULO 2 -->
+    <section class="section">
+      <div class="section-head">
+        <div class="badge badge--accent mb-4">Módulo 2</div>
+        <h2 class="section-head__title">Los límites del placer: hacia la Segunda Tópica</h2>
+        <p class="section-head__subtitle">
+          La repetición abre una pregunta incómoda: si el aparato psíquico tiende a evitar displacer,
+          ¿por qué vuelve una y otra vez sobre escenas traumáticas o dolorosas?
+        </p>
+      </div>
 
-            <div class="unit-passage-band" aria-hidden="true">
-                <span class="unit-passage-node">1</span>
-                <span class="unit-passage-line"></span>
-                <span class="unit-passage-node">2</span>
-                <span class="unit-passage-line"></span>
-                <span class="unit-passage-node">3</span>
-            </div>
-        </section>
+      <div class="grid grid-2 mb-8">
+        <div class="card">
+          <h4 style="color: var(--accent); margin-bottom: var(--space-2);">Lo que entra en crisis</h4>
+          <p class="text-muted">La idea de que toda la vida psíquica pueda ordenarse bajo la búsqueda de placer y la reducción de tensión.</p>
+        </div>
+        <div class="card">
+          <h4 style="color: var(--accent); margin-bottom: var(--space-2);">Lo que se formaliza</h4>
+          <p class="text-muted">Una nueva arquitectura: Yo, Ello y Superyó, con el Superyó como heredero del Complejo de Edipo y juez de la vida anímica.</p>
+        </div>
+      </div>
 
-        <section class="module-section fade-in" style="animation-delay: 0.2s;">
-            <div class="module-header">
-                <span class="module-tag">Módulo 1</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">El dispositivo analítico: transferencia y repetición</h2>
-                <div class="module-kicker"><span class="module-kicker-dot"></span> El tratamiento se vuelve el lugar donde el conflicto se actualiza</div>
-                <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
-                    La entrada a la Unidad 4 comienza por la técnica. En los textos sobre Dora, transferencia y repetición veremos que el análisis no consiste en extraer un dato escondido del pasado, sino en producir las condiciones para que aquello reprimido pueda leerse en la escena actual del tratamiento.
-                </p>
-            </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">01.</span>
+          <h4 class="mt-4 mb-4">Más allá del Principio del Placer</h4>
+          <p class="text-muted">Los sueños traumáticos, las neurosis de guerra y ciertas repeticiones clínicas obligan a Freud a pensar que no todo retorno psíquico busca una satisfacción placentera.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">02.</span>
+          <h4 class="mt-4 mb-4">La pulsión de muerte</h4>
+          <p class="text-muted">Freud introduce una fuerza especulativa que apunta al retorno a lo inanimado y tensiona la teoría pulsional previa. La clínica exige ampliar la metapsicología.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">03.</span>
+          <h4 class="mt-4 mb-4">El Yo y el Ello</h4>
+          <p class="text-muted">La Segunda Tópica permite pensar una vida psíquica dividida entre exigencias pulsionales, defensas del Yo y mandatos superyoicos que cargan la culpa y la prohibición.</p>
+        </div>
+      </div>
+    </section>
 
-            <div class="module-grid">
-                <article class="module-card">
-                    <span class="module-index">01</span>
-                    <h4>Dora y el análisis de los sueños</h4>
-                    <p>A través del primer gran historial clínico freudiano, el sueño deja de ser un material aislado y pasa a integrarse en el tratamiento de la histeria, allí donde la sexualidad insiste en cada síntoma.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">02</span>
-                    <h4>La transferencia como motor y obstáculo</h4>
-                    <p>El paciente no solo habla de su pasado: lo reedita en la figura del analista. La transferencia puede funcionar como resistencia, pero también como el terreno donde se decide la eficacia terapéutica.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">03</span>
-                    <h4>Actuar en lugar de recordar</h4>
-                    <p>La compulsión de repetición muestra un punto decisivo: el analizado no siempre recuerda lo reprimido, sino que lo actúa sin saber que lo hace. La cura deberá transformar repetición en elaboración.</p>
-                </article>
-            </div>
-        </section>
+    <!-- MÓDULO 3 -->
+    <section class="section">
+      <div class="section-head">
+        <div class="badge badge--accent mb-4">Módulo 3</div>
+        <h2 class="section-head__title">El sujeto en la cultura y los post-freudianos</h2>
+        <p class="section-head__subtitle">
+          El cierre del programa desplaza el problema hacia la cultura. La civilización protege al sujeto,
+          pero también le exige renuncias pulsionales que dejan como saldo culpa, agresividad y malestar.
+        </p>
+      </div>
 
-        <section class="module-section fade-in" style="animation-delay: 0.3s;">
-            <div class="module-header">
-                <span class="module-tag">Módulo 2</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">Los límites del placer: hacia la Segunda Tópica</h2>
-                <div class="module-kicker"><span class="module-kicker-dot"></span> Freud se encuentra con fenómenos que desordenan su propio sistema</div>
-                <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
-                    La repetición abre una pregunta incómoda: si el aparato psíquico tiende a evitar displacer, ¿por qué vuelve una y otra vez sobre escenas traumáticas o dolorosas? Esta dificultad conduce a la gran especulación freudiana de 1920 y al nuevo mapa del psiquismo de 1923.
-                </p>
-            </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">01.</span>
+          <h4 class="mt-4 mb-4">El malestar en la cultura</h4>
+          <p class="text-muted">Freud piensa la civilización como una solución costosa: ordena la convivencia, pero produce una renuncia pulsional cuyo resto se manifiesta como culpa estructural.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">02.</span>
+          <h4 class="mt-4 mb-4">Ética y lugar del analista</h4>
+          <p class="text-muted">El problema técnico vuelve bajo otra forma: cuál es la posición del analista frente al deseo, la demanda, el Yo y las defensas del sujeto.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">03.</span>
+          <h4 class="mt-4 mb-4">Klein y Lacan</h4>
+          <p class="text-muted">Una aproximación inicial a la escuela inglesa y francesa permite ver cómo el legado freudiano se reordena alrededor del objeto, el Yo, el lenguaje y la función simbólica.</p>
+        </div>
+      </div>
+    </section>
 
-            <div class="module-emphasis-grid">
-                <article class="module-emphasis">
-                    <h4>Lo que entra en crisis</h4>
-                    <p>La idea de que toda la vida psíquica pueda ordenarse bajo la búsqueda de placer y la reducción de tensión.</p>
-                </article>
-                <article class="module-emphasis">
-                    <h4>Lo que se formaliza</h4>
-                    <p>Una nueva arquitectura: Yo, Ello y Superyó, con el Superyó como heredero del Complejo de Edipo y juez de la vida anímica.</p>
-                </article>
-            </div>
+    <!-- HOJA DE RUTA -->
+    <section class="section" id="clases">
+      <div class="section-head">
+        <h2 class="section-head__title">Hoja de ruta de la Unidad 4</h2>
+        <p class="section-head__subtitle">El tramo final articula técnica, metapsicología y cultura.</p>
+      </div>
+      <div id="unit4-classes" class="unit-grid" style="grid-template-columns: 1fr;"></div>
+    </section>
 
-            <div class="module-grid">
-                <article class="module-card">
-                    <span class="module-index">01</span>
-                    <h4>Más allá del Principio del Placer</h4>
-                    <p>Los sueños traumáticos, las neurosis de guerra y ciertas repeticiones clínicas obligan a Freud a pensar que no todo retorno psíquico busca una satisfacción placentera.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">02</span>
-                    <h4>La pulsión de muerte</h4>
-                    <p>Freud introduce una fuerza especulativa que apunta al retorno a lo inanimado y tensiona la teoría pulsional previa. La clínica exige ampliar la metapsicología.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">03</span>
-                    <h4>El Yo y el Ello</h4>
-                    <p>La Segunda Tópica permite pensar una vida psíquica dividida entre exigencias pulsionales, defensas del Yo y mandatos superyoicos que cargan la culpa y la prohibición.</p>
-                </article>
-            </div>
-        </section>
+    <!-- LECTURAS por clase -->
+    <section class="section" id="lecturas">
+      <div class="section-head">
+        <h2 class="section-head__title">Textos disponibles</h2>
+        <p class="section-head__subtitle">Todos los textos de la Unidad 4, agrupados por clase.</p>
+      </div>
+      <div id="unit4-readings"></div>
+    </section>
 
-        <section class="module-section fade-in" style="animation-delay: 0.4s; border-bottom: none;">
-            <div class="module-header">
-                <span class="module-tag">Módulo 3</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">El sujeto en la cultura y los post-freudianos</h2>
-                <div class="module-kicker"><span class="module-kicker-dot"></span> La vida colectiva como fuente inevitable de renuncia y conflicto</div>
-                <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
-                    El cierre del programa desplaza el problema hacia la cultura. La civilización protege al sujeto, pero también le exige renuncias pulsionales que dejan como saldo culpa, agresividad y malestar. Desde allí abriremos una breve entrada a las escuelas posfreudianas.
-                </p>
-            </div>
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Psicoanálisis · UFLO · Cátedra Rivera–Homse</p>
+    </footer>
+  </main>
 
-            <div class="module-grid">
-                <article class="module-card">
-                    <span class="module-index">01</span>
-                    <h4>El malestar en la cultura</h4>
-                    <p>Freud piensa la civilización como una solución costosa: ordena la convivencia, pero produce una renuncia pulsional cuyo resto se manifiesta como culpa estructural.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">02</span>
-                    <h4>Etica y lugar del analista</h4>
-                    <p>El problema técnico vuelve bajo otra forma: cuál es la posición del analista frente al deseo, la demanda, el Yo y las defensas del sujeto.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">03</span>
-                    <h4>Klein y Lacan</h4>
-                    <p>Una aproximación inicial a la escuela inglesa y francesa permite ver cómo el legado freudiano se reordena alrededor del objeto, el Yo, el lenguaje y la función simbólica.</p>
-                </article>
-            </div>
-        </section>
+  <script src="../assets/icons.js"></script>
+  <script src="../assets/data.js"></script>
+  <script src="../assets/ui.js?v=2"></script>
+  <script>
+    (function () {
+      const { PROGRAMA } = CAMPUS_DATA;
+      const D = CampusUI.Dates;
+      document.getElementById('back-icon').innerHTML = ICONS.svg('arrowLeft', 18);
 
-        <section id="roadmap" class="fade-in" style="margin-top: 5rem; padding: 4rem; background: #fff; border-radius: 40px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
-            <header style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Hoja de Ruta de la Unidad 4</h2>
-                <p class="roadmap-intro">El tramo final articula técnica, metapsicología y cultura: primero la escena clínica, luego la crisis del principio del placer y finalmente el malestar como problema estructural.</p>
-            </header>
+      // Hoja de ruta
+      const clases = PROGRAMA.filter(p => p.tipo === 'clase' && p.unidad === 4);
+      document.getElementById('unit4-classes').innerHTML = clases.map(c => `
+        <a class="card card--hoverable" href="${CampusUI.path(c.href)}" style="display:grid; grid-template-columns: auto 1fr auto; gap: var(--space-5); align-items: center;">
+          <div class="tl-item__date">
+            <div class="tl-item__day">${c.fecha.dia}</div>
+            <div class="tl-item__month">${D.MONTHS_ES[c.fecha.mes - 1]}</div>
+          </div>
+          <div>
+            <h4 style="margin-bottom: var(--space-1);">${c.titulo}</h4>
+            <p class="text-muted" style="font-size: var(--text-sm);">${c.desc}</p>
+          </div>
+          <span style="color: var(--accent);">${ICONS.svg('arrowRight', 20)}</span>
+        </a>`).join('');
 
-            <div class="route-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-                <a href="unit4_clase10.html" class="route-card">
-                    <span class="route-number">Clase 10</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">La clínica analítica: transferencia y repetición</h4>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Dora, dinámica de la transferencia y recordar, repetir y reelaborar como pilares de la técnica analítica.</p>
-                </a>
-                <a href="unit4_clase13.html" class="route-card">
-                    <span class="route-number">Clase 13</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">La gran especulación freudiana</h4>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Más allá del principio del placer, pulsión de muerte y Segunda Tópica.</p>
-                </a>
-                <a href="unit4_clase15.html" class="route-card">
-                    <span class="route-number">Clase 15</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">Psicoanálisis y cultura</h4>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">El malestar estructural y una primera entrada a las escuelas post-freudianas.</p>
-                </a>
-            </div>
-        </section>
+      // Lecturas por clase (mapeo directo de los PDFs existentes)
+      const lecturas = {
+        'Clase 10': {
+          href: 'clase-10.html',
+          textos: [
+            { t: 'Dora: fragmento de análisis de un caso de histeria', d: 'Entrada al historial clínico y al lugar del sueño dentro del tratamiento de la histeria.', f: '../Textos/Unidad%204/Freud,%20S.%20(1905).%20Fragmento%20de%20an%C3%A1lisis%20de%20un%20caso%20de%20histeria%20%5BDora%5D.%20Introducci%C3%B3n.pdf' },
+            { t: 'Sobre la dinámica de la transferencia', d: 'Texto clave para pensar por qué la transferencia es a la vez motor del tratamiento y forma privilegiada de resistencia.', f: '../Textos/Unidad%204/Freud,%20S.%20(1912).%20Sobre%20la%20din%C3%A1mica%20de%20la%20transferencia.pdf' },
+            { t: 'Recordar, repetir y reelaborar', d: 'Freud ubica la repetición en acto y la elaboración como problemas decisivos de la cura.', f: '../Textos/Unidad%204/Freud,%20S.%20(1914).%20Recordar,%20repetir%20y%20reelaborar.pdf' },
+          ]
+        },
+        'Clase 13': {
+          href: 'clase-13.html',
+          textos: [
+            { t: 'Más allá del principio del placer', d: 'Freud descubre una fuerza más originaria que el principio del placer, la pulsión de muerte, a partir de traumas de guerra y el juego infantil.', f: '../Textos/Unidad%204/Freud,%20S.%20(1920).%20M%C3%A1s%20all%C3%A1%20del%20principio%20del%20placer.%20Caps.%20IV%20y%20V..pdf' },
+            { t: 'El yo y el ello', d: 'Consecuencia directa de 1920: la reformulación definitiva del aparato psíquico en la Segunda Tópica (Yo, Ello, Superyó).', f: '../Textos/Unidad%204/Freud,%20S.%20(1923).%20El%20yo%20y%20el%20ello.%20Caps.%20I%20y%20II..pdf' },
+          ]
+        },
+        'Clase 15': {
+          href: 'clase-15.html',
+          textos: [
+            { t: 'El malestar en la cultura', d: 'Freud analiza cómo la civilización nos protege del sufrimiento, pero nos impone una renuncia pulsional que causa infelicidad estructural.', f: '../Textos/Unidad%204/Freud,%20S.%20(1930).%20El%20malestar%20en%20la%20cultura.%20Caps.%20II%20y%20III..pdf' },
+            { t: 'Acciones obsesivas y prácticas religiosas', d: 'Estudio comparativo entre el ceremonial neurótico individual y los ritos sagrados de la religión colectiva.', f: '../Textos/Unidad%204/Freud,%20S.%20(1907).%20Acciones%20obsesivas%20y%20pr%C3%A1cticas%20religiosas..pdf' },
+            { t: 'El estadio del espejo', d: 'Lacan postula que el Yo no es un centro autónomo, sino una identificación imaginaria y alienante nacida al asumir la imagen unificada en el espejo.', f: '../Textos/Unidad%204/Lacan,%20J.%20(1949).%20El%20estadio%20del%20espejo....pdf' },
+            { t: 'Introducción a la obra de Melanie Klein', d: 'Segal sintetiza las bases de la escuela inglesa: relaciones de objeto tempranas, ansiedades arcaicas y el papel de la fantasía inconsciente desde el nacimiento.', f: '../Textos/Unidad%204/Segal,%20H.%20(1965).%20Introducci%C3%B3n%20a%20la%20obra%20de%20Melanie%20Klein.%20Cap.%201..pdf' },
+          ]
+        },
+      };
 
-        <section id="lecturas-clase-10" class="unit-reading-strip fade-in" style="animation-delay: 0.45s;">
-            <div class="unit-reading-strip-header">
-                <div>
-                    <h2 style="font-size: 2rem; letter-spacing: -1px;">Textos disponibles de la Clase 10</h2>
-                    <p>Estos tres textos inauguran la Unidad 4 desde la técnica: el historial de Dora, la transferencia y la repetición como problema clínico central.</p>
-                </div>
-                <a href="unit4_clase10.html" class="btn" style="background: var(--accent-color); color: white; font-size: 0.85rem;">Ir a Clase 10</a>
-            </div>
+      document.getElementById('unit4-readings').innerHTML = Object.entries(lecturas).map(([clase, data]) => `
+        <div class="mb-8">
+          <div class="flex justify-between items-center mb-6 flex-wrap gap-3">
+            <h3 style="font-size: var(--text-xl);">Textos de la ${clase}</h3>
+            <a href="${CampusUI.path(data.href)}" class="btn btn--secondary">Ir a la ${clase}</a>
+          </div>
+          <div class="grid grid-3">
+            ${data.textos.map(t => `
+              <div class="card card--hoverable">
+                <span class="badge badge--accent mb-4">${clase}</span>
+                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-2); line-height: var(--leading-snug);">${t.t}</h4>
+                <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-4);">${t.d}</p>
+                <a href="lector-pdf.html?file=${encodeURIComponent(t.f).replace(/%2520/g, '%20')}" class="btn btn--secondary" style="width:100%;">Leer texto</a>
+              </div>`).join('')}
+          </div>
+        </div>`).join('');
 
-            <div class="unit-reading-grid">
-                <article class="unit-reading-card">
-                    <span class="unit-reading-chip">Clase 10</span>
-                    <h3>Dora: fragmento de analisis de un caso de histeria</h3>
-                    <p>Entrada al historial clínico y al lugar del sueño dentro del tratamiento de la histeria.</p>
-                    <a href="../Textos/Unidad%204/Freud,%20S.%20(1905).%20Fragmento%20de%20an%C3%A1lisis%20de%20un%20caso%20de%20histeria%20%5BDora%5D.%20Introducci%C3%B3n.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
-                </article>
-
-                <article class="unit-reading-card">
-                    <span class="unit-reading-chip">Clase 10</span>
-                    <h3>Sobre la dinámica de la transferencia</h3>
-                    <p>Texto clave para pensar por qué la transferencia es a la vez motor del tratamiento y forma privilegiada de resistencia.</p>
-                    <a href="../Textos/Unidad%204/Freud,%20S.%20(1912).%20Sobre%20la%20din%C3%A1mica%20de%20la%20transferencia.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
-                </article>
-
-                <article class="unit-reading-card">
-                    <span class="unit-reading-chip">Clase 10</span>
-                    <h3>Recordar, repetir y reelaborar</h3>
-                    <p>Freud ubica la repetición en acto y la elaboración como problemas decisivos de la cura.</p>
-                    <a href="../Textos/Unidad%204/Freud,%20S.%20(1914).%20Recordar,%20repetir%20y%20reelaborar.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
-                </article>
-            </div>
-        </section>
-
-        <section id="lecturas-clase-13" class="unit-reading-strip fade-in" style="animation-delay: 0.5s; margin-top: 2rem;">
-            <div class="unit-reading-strip-header">
-                <div>
-                    <h2 style="font-size: 2rem; letter-spacing: -1px;">Textos disponibles de la Clase 13</h2>
-                    <p>Estos textos marcan la gran reformulación de la metapsicología freudiana: el destronamiento del principio del placer y el nuevo mapa de la mente.</p>
-                </div>
-                <a href="unit4_clase13.html" class="btn" style="background: var(--accent-color); color: white; font-size: 0.85rem;">Ir a Clase 13</a>
-            </div>
-
-            <div class="unit-reading-grid">
-                <article class="unit-reading-card">
-                    <span class="unit-reading-chip">Clase 13</span>
-                    <h3>Más allá del principio del placer</h3>
-                    <p>Freud descubre una fuerza más originaria que el principio del placer, la pulsión de muerte, a partir de traumas de guerra y el juego infantil.</p>
-                    <a href="../Textos/Unidad%204/Freud,%20S.%20(1920).%20M%C3%A1s%20all%C3%A1%20del%20principio%20del%20placer.%20Caps.%20IV%20y%20V..pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
-                </article>
-
-                <article class="unit-reading-card">
-                    <span class="unit-reading-chip">Clase 13</span>
-                    <h3>El yo y el ello</h3>
-                    <p>Consecuencia directa de 1920: la reformulación definitiva del aparato psíquico en la Segunda Tópica (Yo, Ello, Superyó).</p>
-                    <a href="../Textos/Unidad%204/Freud,%20S.%20(1923).%20El%20yo%20y%20el%20ello.%20Caps.%20I%20y%20II..pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
-                </article>
-            </div>
-        </section>
-
-        <section id="lecturas-clase-15" class="unit-reading-strip fade-in" style="animation-delay: 0.55s; margin-top: 2rem;">
-            <div class="unit-reading-strip-header">
-                <div>
-                    <h2 style="font-size: 2rem; letter-spacing: -1px;">Textos disponibles de la Clase 15</h2>
-                    <p>Estos textos abordan el malestar en la cultura, la religión como fenómeno colectivo, y la reformulación posfreudiana del Yo y las fantasías tempranas por Lacan y Klein.</p>
-                </div>
-                <a href="unit4_clase15.html" class="btn" style="background: var(--accent-color); color: white; font-size: 0.85rem;">Ir a Clase 15</a>
-            </div>
-
-            <div class="unit-reading-grid">
-                <article class="unit-reading-card">
-                    <span class="unit-reading-chip">Clase 15</span>
-                    <h3>El malestar en la cultura</h3>
-                    <p>Freud analiza cómo la civilización nos protege del sufrimiento de la naturaleza y del cuerpo, pero nos impone una renuncia pulsional que causa infelicidad estructural.</p>
-                    <a href="../Textos/Unidad%204/Freud,%20S.%20(1930).%20El%20malestar%20en%20la%20cultura.%20Caps.%20II%20y%20III..pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
-                </article>
-
-                <article class="unit-reading-card">
-                    <span class="unit-reading-chip">Clase 15</span>
-                    <h3>Acciones obsesivas y prácticas religiosas</h3>
-                    <p>Estudio comparativo donde Freud traza un paralelo estructural entre el ceremonial neurótico individual y los ritos sagrados de la religión colectiva.</p>
-                    <a href="../Textos/Unidad%204/Freud,%20S.%20(1907).%20Acciones%20obsesivas%20y%20pr%C3%A1cticas%20religiosas..pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
-                </article>
-
-                <article class="unit-reading-card">
-                    <span class="unit-reading-chip">Clase 15</span>
-                    <h3>El estadio del espejo</h3>
-                    <p>Lacan postula que el Yo no es un centro autónomo, sino una identificación imaginaria y alienante nacida al asumir la imagen unificada en el espejo.</p>
-                    <a href="../Textos/Unidad%204/Lacan,%20J.%20(1949).%20El%20estadio%20del%20espejo....pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
-                </article>
-
-                <article class="unit-reading-card">
-                    <span class="unit-reading-chip">Clase 15</span>
-                    <h3>Introducción a la obra de Melanie Klein</h3>
-                    <p>Segal sintetiza las bases de la escuela inglesa: relaciones de objeto tempranas, ansiedades arcaicas y el papel de la fantasía inconsciente desde el nacimiento.</p>
-                    <a href="../Textos/Unidad%204/Segal,%20H.%20(1965).%20Introducci%C3%B3n%20a%20la%20obra%20de%20Melanie%20Klein.%20Cap.%201..pdf" target="_blank" rel="noopener noreferrer" class="btn" style="margin-top: 1rem; background: var(--accent-color); color: white; font-size: 0.8rem; width: 100%; text-align: center;">Leer texto</a>
-                </article>
-            </div>
-        </section>
-
-        <footer class="site-footer" style="padding-top: 4rem;">
-            <p>© 2026 Psicoanálisis | UFLO Universidad</p>
-        </footer>
-    </main>
-
-    <script>
-        const EMBED_SOURCE = 'campus-psicoanalisis';
-        let lastSentHeight = 0;
-        let pendingHeightFrame = null;
-
-        function getDocumentHeight() {
-            const body = document.body;
-            const html = document.documentElement;
-            return Math.max(
-                body ? body.scrollHeight : 0,
-                body ? body.offsetHeight : 0,
-                html ? html.clientHeight : 0,
-                html ? html.scrollHeight : 0,
-                html ? html.offsetHeight : 0
-            );
-        }
-
-        function postEmbedMessage(payload) {
-            if (window.parent && window.parent !== window) {
-                window.parent.postMessage(payload, '*');
-            }
-        }
-
-        function sendHeight(reason = 'update', force = false) {
-            if (pendingHeightFrame) cancelAnimationFrame(pendingHeightFrame);
-            pendingHeightFrame = requestAnimationFrame(() => {
-                const height = getDocumentHeight();
-                const changedEnough = Math.abs(height - lastSentHeight) > 4;
-                if (!force && !changedEnough) return;
-                lastSentHeight = height;
-                postEmbedMessage({ type: 'campusHeight', source: EMBED_SOURCE, height, reason, path: window.location.pathname });
-                postEmbedMessage({ height: height });
-            });
-        }
-
-        function scrollToTop() {
-            window.scrollTo(0, 0);
-            const helper = document.getElementById('top-focus');
-            if (helper) helper.focus({ preventScroll: false });
-            if (window.parent) {
-                ['scrollToTop', 'forceScrollTop', { type: 'scrollToTop' }].forEach(msg => {
-                    try { window.parent.postMessage(msg, '*'); } catch (e) {}
-                });
-            }
-        }
-
-        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
-        function setupEmbedSync() {
-            sendHeight('init', true);
-            if ('ResizeObserver' in window) {
-                const resizeObserver = new ResizeObserver(() => sendHeight('resize-observer'));
-                resizeObserver.observe(document.body);
-            }
-            if ('MutationObserver' in window) {
-                const mutationObserver = new MutationObserver(() => sendHeight('mutation'));
-                mutationObserver.observe(document.body, { childList: true, subtree: true, attributes: true, characterData: true });
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', setupEmbedSync);
-        window.addEventListener('load', () => {
-            scrollToTop();
-            setTimeout(() => {
-                scrollToTop();
-                sendHeight('load', true);
-            }, 100);
-        });
-        window.addEventListener('resize', () => sendHeight('window-resize', true));
-        window.addEventListener('pageshow', () => sendHeight('pageshow', true));
-    </script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Casos Clínicos | Psicoanálisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=16">
+    <style>
+        body.sim-page {
+            background: radial-gradient(circle at top right, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sim-container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 2rem auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 0 1.5rem;
+        }
+
+        /* Patient Selector Card Grid */
+        .selector-screen {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .selector-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .selector-header h1 {
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .selector-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .patient-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .patient-card {
+            background: white;
+            border-radius: 28px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-premium);
+            padding: 2.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+        }
+
+        .patient-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(13, 148, 136, 0.08);
+        }
+
+        .patient-avatar {
+            font-size: 3rem;
+            background: rgba(13, 148, 136, 0.08);
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .patient-card:hover .patient-avatar {
+            transform: scale(1.08);
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .patient-name {
+            font-size: 1.4rem;
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .patient-case {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--accent-color);
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+            background: rgba(13, 148, 136, 0.05);
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        .patient-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Simulation Layout */
+        .session-screen {
+            display: none;
+            grid-template-columns: 280px minmax(0, 1fr);
+            gap: 1.5rem;
+            flex-grow: 1;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Left Side Card (Patient Info) */
+        .sidebar-patient-info {
+            background: white;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            align-self: start;
+            box-shadow: var(--shadow-premium);
+        }
+
+        .sidebar-avatar {
+            font-size: 2.5rem;
+            background: #f1f5f9;
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .sidebar-meta {
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1rem;
+        }
+
+        .sidebar-meta h3 {
+            font-size: 1.15rem;
+            margin: 0;
+        }
+
+        .sidebar-meta p {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 3px;
+        }
+
+        .info-pill-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            font-size: 0.82rem;
+        }
+
+        .info-pill {
+            background: #f8fafc;
+            border: 1px solid rgba(0,0,0,0.02);
+            padding: 0.8rem;
+            border-radius: 12px;
+        }
+
+        .info-pill strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .info-pill span {
+            color: var(--text-secondary);
+            line-height: 1.4;
+            display: block;
+        }
+
+        .btn-end-session {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+            transition: all 0.2s;
+            margin-top: auto;
+        }
+
+        .btn-end-session:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+        }
+
+        /* Right Side Chat Window */
+        .sim-chat-card {
+            background: white;
+            border-radius: 32px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-premium);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 600px;
+        }
+
+        .sim-chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            scroll-behavior: smooth;
+        }
+
+        .sim-bubble {
+            max-width: 80%;
+            padding: 1.1rem 1.4rem;
+            border-radius: 24px;
+            font-size: 0.96rem;
+            line-height: 1.6;
+            animation: bubbleReveal 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .sim-bubble.patient {
+            align-self: flex-start;
+            background: #f8fafc;
+            color: var(--text-color);
+            border-bottom-left-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.02);
+            font-style: italic;
+        }
+
+        .sim-bubble.therapist {
+            align-self: flex-end;
+            background: var(--accent-color);
+            color: white;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15);
+        }
+
+        /* Input Form */
+        .sim-input-container {
+            padding: 1.25rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            background: white;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .sim-input {
+            flex-grow: 1;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            outline: none;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .sim-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+
+        .sim-send-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .sim-send-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-1px);
+        }
+
+        /* Supervisor Evaluation Screen */
+        .evaluation-screen {
+            display: none;
+            background: white;
+            border-radius: 32px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-premium);
+            padding: 3rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .evaluation-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1.5rem;
+        }
+
+        .evaluation-header h2 {
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+            color: var(--primary-color);
+        }
+
+        .evaluation-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .evaluation-content {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--text-color);
+        }
+
+        .evaluation-content h3 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 4px;
+        }
+
+        .evaluation-content p {
+            margin-bottom: 1rem;
+        }
+
+        .evaluation-content ul, .evaluation-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.25rem;
+        }
+
+        .evaluation-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .evaluation-footer {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        /* Typing indicator */
+        .sim-typing-indicator {
+            align-self: flex-start;
+            background: #f1f5f9;
+            padding: 1rem 1.4rem;
+            border-radius: 24px;
+            border-bottom-left-radius: 4px;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .session-screen {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-patient-info {
+                align-self: stretch;
+            }
+            .evaluation-screen {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="sim-page">
+    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+
+    <div class="sim-container">
+        <!-- Back Link -->
+        <a href="../index.html" class="back-link" style="align-self: flex-start; margin-bottom: 0.5rem;" id="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Volver al inicio del campus
+        </a>
+
+        <!-- SCREEN 1: Patient Selector -->
+        <section class="selector-screen" id="selector-screen">
+            <div class="selector-header">
+                <h1>Simulador de Casos Clínicos</h1>
+                <p>Elige uno de los pacientes emblemáticos de la historia de la histeria y el psicoanálisis para comenzar tu práctica de entrevista clínica.</p>
+            </div>
+
+            <div class="patient-grid">
+                <!-- Case Anna O. -->
+                <div class="patient-card" onclick="startSession('anna_o')">
+                    <div class="patient-avatar">👩‍⚕️</div>
+                    <span class="patient-case">Breuer / 1880</span>
+                    <h2 class="patient-name">Anna O.</h2>
+                    <p class="patient-desc">La paciente fundadora. Presenta síntomas conversivos severos (parálisis rígida del brazo, afonía, asco selectivo) desencadenados tras cuidar a su padre gravemente enfermo.</p>
+                    <span class="btn">Entrevistar Paciente</span>
+                </div>
+
+                <!-- Case Dora -->
+                <div class="patient-card" onclick="startSession('dora')">
+                    <div class="patient-avatar">👩</div>
+                    <span class="patient-case">Freud / 1900</span>
+                    <h2 class="patient-name">Dora</h2>
+                    <p class="patient-desc">Joven de 18 años enviada a terapia a la fuerza por su padre. Presenta afonía periódica y disnea. Denuncia un arreglo transaccional entre su padre y la Sra. K.</p>
+                    <span class="btn">Entrevistar Paciente</span>
+                </div>
+
+                <!-- Case Little Hans -->
+                <div class="patient-card" onclick="startSession('hans')">
+                    <div class="patient-avatar">👦</div>
+                    <span class="patient-case">Freud / 1909</span>
+                    <h2 class="patient-name">El Pequeño Hans</h2>
+                    <p class="patient-desc">Niño de 5 años con fobia a salir a la calle por temor a que un caballo lo muerda. Se explora la sexualidad infantil, el Edipo y la angustia de castración.</p>
+                    <span class="btn">Entrevistar Paciente</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN 2: Active Session -->
+        <section class="session-screen" id="session-screen">
+            <!-- Left Info Panel -->
+            <aside class="sidebar-patient-info">
+                <div class="sidebar-avatar" id="active-avatar">👤</div>
+                <div class="sidebar-meta">
+                    <h3 id="active-name">Paciente</h3>
+                    <p id="active-era">Época</p>
+                </div>
+                <div class="info-pill-container">
+                    <div class="info-pill">
+                        <strong>Motivo de Consulta</strong>
+                        <span id="active-reason">Detalle...</span>
+                    </div>
+                    <div class="info-pill">
+                        <strong>Síntomas Físicos</strong>
+                        <span id="active-symptoms">Detalle...</span>
+                    </div>
+                </div>
+                <button class="btn-end-session" onclick="endSession()">Finalizar e Interrogar Supervisor</button>
+            </aside>
+
+            <!-- Chat Container -->
+            <main class="sim-chat-card">
+                <div class="sim-chat-messages" id="sim-chat-messages">
+                    <!-- Messages will be injected here -->
+                </div>
+
+                <!-- Typing indicator -->
+                <div class="sim-typing-indicator" id="sim-typing-indicator">
+                    <div class="typing-dots">
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                    </div>
+                    <span class="typing-text" id="typing-text-name">El paciente está buscando palabras...</span>
+                </div>
+
+                <!-- Input form -->
+                <form class="sim-input-container" id="sim-form" onsubmit="handleSend(event)">
+                    <input type="text" id="sim-input" class="sim-input" placeholder="Realiza una pregunta clínica al paciente..." autocomplete="off">
+                    <button type="submit" class="sim-send-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </form>
+            </main>
+        </section>
+
+        <!-- SCREEN 3: Supervisor Evaluation -->
+        <section class="evaluation-screen" id="evaluation-screen">
+            <header class="evaluation-header">
+                <h2>Devolución de la Supervisión Clínica</h2>
+                <p>Análisis pedagógico de tu intervención por parte de la cátedra de UFLO.</p>
+            </header>
+            <div class="evaluation-content" id="evaluation-content">
+                <!-- Content injected here -->
+            </div>
+            <footer class="evaluation-footer">
+                <button class="btn primary" onclick="resetSimulator()">Volver al Inicio</button>
+            </footer>
+        </section>
+    </div>
+
+    <!-- API integration script -->
+    <script src="../js/ai-helper.js?v=1"></script>
+    <script>
+        // Configuración de los perfiles de los casos
+        const caseProfiles = {
+            anna_o: {
+                name: "Anna O. (Bertha)",
+                era: "Breuer / 1880",
+                avatar: "👩‍⚕️",
+                reason: "Trastornos conversivos severos tras cuidar a su padre moribundo.",
+                symptoms: "Parálisis del brazo derecho, afonía, ausencias diurnas, asco por beber líquidos.",
+                greeting: "(Con mirada perdida y voz apagada en un inglés mezclado con alemán) ... ¿Qué es lo que busca de mí? A veces las palabras se me escurren de la garganta... siento un peso terrible en el brazo...",
+                systemPrompt: `
+                    Actúas como la paciente histórica Anna O. (Bertha Pappenheim) en 1880, siendo entrevistada por el Dr. Josef Breuer o su asistente de clínica.
+                    Tus respuestas deben reflejar fielmente tu cuadro clínico:
+                    - Sufres de tos nerviosa severa, parálisis y anestesia del brazo derecho y cuello.
+                    - Tienes trastornos visuales severos (estrabismo convergente, visión doble).
+                    - Padeces de estados hipnoides ("ausencias" o "nubes" durante el día en que pareces ida).
+                    - Hablas a veces intercalando alemán y palabras en inglés.
+                    - Estás sumamente dolida por la reciente enfermedad y muerte de tu amado padre.
+                    - Si te preguntan por tomar agua o líquidos, debes manifestar un asco profundo y recordar la escena de la dama de compañía inglesa dejando que su perrito bebiera de un vaso.
+                    - Si te preguntan por tu padre o la noche en vela junto a su cama, describe la alucinación de la serpiente negra que salía de la pared para morder a tu padre, y cómo tu brazo derecho quedó paralizado al intentar defenderlo.
+                    Tus respuestas deben ser evocadoras, breves, con un tono melancólico, confuso pero poético. Responde siempre en primera persona.
+                `
+            },
+            dora: {
+                name: "Dora (Ida Bauer)",
+                era: "Freud / 1900",
+                avatar: "👩",
+                reason: "Obligada a consultar por su padre debido a su enojo constante con la familia.",
+                symptoms: "Afonía periódica, disnea, tos nerviosa, desgana extrema.",
+                greeting: "(Con los brazos cruzados y expresión desafiante) No sé por qué mi padre me obliga a venir aquí. Él es el que debería tratarse con usted... ¿Qué quiere saber sobre mí?",
+                systemPrompt: `
+                    Actúas como la paciente histórica Dora (Ida Bauer) en 1900, siendo entrevistada por Sigmund Freud.
+                    Eres una joven de 18 años, muy inteligente, perspicaz, pero sumamente enojada y resentida.
+                    Tus rasgos clínicos:
+                    - Presentas afonía periódica (pierdes la voz por días) y disnea (dificultad para respirar).
+                    - Sientes rabia hacia tu padre porque lo ves como un hipócrita por su amorío con la Sra. K.
+                    - Sientes que tu padre te está "entregando" al Sr. K a cambio de que la Sra. K permanezca con él.
+                    - Sientes asco y rabia hacia el Sr. K por el abrazo forzado que te dio a los 14 años frente al lago y por sus insinuaciones románticas constantes.
+                    Tus respuestas deben ser cortas, directas, a veces defensivas y sospechosas de las intenciones del médico. Muestra hostilidad pero deja ver tu sufrimiento y tus contradicciones. Responde siempre en primera persona.
+                `
+            },
+            hans: {
+                name: "El Pequeño Hans",
+                era: "Freud / 1909",
+                avatar: "👦",
+                reason: "Fobia intensa a salir a la calle tras presenciar la caída de un caballo.",
+                symptoms: "Temor a que un caballo lo muerda o se caiga en el pavimento.",
+                greeting: "Hola. Mi papá dice que usted puede entender por qué tengo tanto miedo de salir a la calle... ¿Usted sabe por qué los caballos grandes se caen?",
+                systemPrompt: `
+                    Actúas como el Pequeño Hans (Herbert Graf) en 1909, un niño de 5 años con fobia severa a salir a la calle.
+                    Tu personalidad y mitología infantil:
+                    - Hablas como un niño de 5 años: con inocencia, espontaneidad y términos sencillos.
+                    - Le tienes mucho miedo a los caballos, especialmente a los que llevan algo negro alrededor de los ojos (viseras) y en la boca (bozales).
+                    - Te interesa muchísimo el "hacedor de pis" (falo), y crees que tu mamá, tu papá y todos los animales tienen uno del mismo tipo.
+                    - Deseas pasar todo el tiempo acurrucado con tu mamá en la cama y a veces deseas de forma inconsciente que tu papá no estuviera, aunque en la realidad lo quieres mucho y tienes miedo de que se enoje contigo.
+                    Tus respuestas deben ser breves, infantiles, tiernas y sinceras. Responde siempre en primera persona.
+                `
+            }
+        };
+
+        let activeCaseKey = null;
+        let sessionHistory = [];
+        let isSessionEnded = false;
+
+        const selectorScreen = document.getElementById('selector-screen');
+        const sessionScreen = document.getElementById('session-screen');
+        const evaluationScreen = document.getElementById('evaluation-screen');
+        
+        const activeAvatar = document.getElementById('active-avatar');
+        const activeName = document.getElementById('active-name');
+        const activeEra = document.getElementById('active-era');
+        const activeReason = document.getElementById('active-reason');
+        const activeSymptoms = document.getElementById('active-symptoms');
+        
+        const simChatMessages = document.getElementById('sim-chat-messages');
+        const simInput = document.getElementById('sim-input');
+        const typingIndicator = document.getElementById('sim-typing-indicator');
+        const typingTextName = document.getElementById('typing-text-name');
+        const backLink = document.getElementById('back-link');
+
+        function startSession(caseKey) {
+            activeCaseKey = caseKey;
+            const profile = caseProfiles[caseKey];
+            
+            // Configurar sidebar
+            activeAvatar.innerText = profile.avatar;
+            activeName.innerText = profile.name;
+            activeEra.innerText = profile.era;
+            activeReason.innerText = profile.reason;
+            activeSymptoms.innerText = profile.symptoms;
+            
+            typingTextName.innerText = `${profile.name} está buscando palabras...`;
+            
+            // Cambiar pantallas
+            selectorScreen.style.display = 'none';
+            sessionScreen.style.display = 'grid';
+            backLink.style.display = 'none'; // Desactivar volver atrás libre
+            
+            // Limpiar historial
+            simChatMessages.innerHTML = '';
+            sessionHistory = [];
+            isSessionEnded = false;
+            
+            // Inyectar saludo inicial
+            appendMessage('patient', profile.greeting);
+            
+            sendHeight();
+        }
+
+        function appendMessage(role, text) {
+            const bubble = document.createElement('div');
+            bubble.className = `sim-bubble ${role}`;
+            bubble.innerHTML = formatText(text);
+            
+            simChatMessages.appendChild(bubble);
+            simChatMessages.scrollTop = simChatMessages.scrollHeight;
+            
+            sessionHistory.push({ role, content: text });
+            sendHeight();
+        }
+
+        function formatText(text) {
+            // Reemplazo simple para simular formato de chat
+            let html = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+            
+            // Negrita: **texto**
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // Cursiva/Italics
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            
+            // Salto de línea
+            html = html.replace(/\n/g, '<br>');
+            
+            return html;
+        }
+
+        function handleSend(event) {
+            if (event) event.preventDefault();
+            if (isSessionEnded) return;
+
+            const text = simInput.value.trim();
+            if (!text) return;
+
+            simInput.value = '';
+            appendMessage('therapist', text);
+
+            // Mostrar cargando
+            typingIndicator.style.display = 'flex';
+            simChatMessages.scrollTop = simChatMessages.scrollHeight;
+            sendHeight();
+
+            // Llamar al perfil
+            const profile = caseProfiles[activeCaseKey];
+            
+            PsicoAI.callGemini(profile.systemPrompt, text, sessionHistory.slice(0, -1))
+                .then(response => {
+                    typingIndicator.style.display = 'none';
+                    appendMessage('patient', response);
+                })
+                .catch(err => {
+                    typingIndicator.style.display = 'none';
+                    appendMessage('patient', `*(Muestra confusión)* Doctor, no puedo escuchar bien lo que dice... es como si algo interrumpiera nuestro canal... (Error: ${err.message})`);
+                });
+        }
+
+        function endSession() {
+            if (sessionHistory.length < 3) {
+                alert("Debes realizar al menos 2 preguntas al paciente antes de concluir la sesión clínica.");
+                return;
+            }
+
+            if (!confirm("¿Deseas finalizar el diálogo y llamar a tu supervisor clínico?")) {
+                return;
+            }
+
+            isSessionEnded = true;
+            
+            // Mostrar pantalla de carga del supervisor
+            sessionScreen.style.display = 'none';
+            evaluationScreen.style.display = 'block';
+            document.getElementById('evaluation-content').innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="
+                        width: 40px;
+                        height: 40px;
+                        border: 4px solid #f3f3f3;
+                        border-top: 4px solid var(--accent-color);
+                        border-radius: 50%;
+                        animation: spin 1s linear infinite;
+                        margin: 0 auto 1.5rem;
+                    "></div>
+                    <p style="font-weight: 700; color: var(--primary-color);">El Supervisor Clínico está revisando la transcripción de tu entrevista...</p>
+                </div>
+                <style>
+                    @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                </style>
+            `;
+            sendHeight();
+
+            // Formatear diálogo para el supervisor
+            const transcript = sessionHistory.map(m => {
+                const label = m.role === 'therapist' ? 'Estudiante (Terapeuta)' : 'Paciente';
+                return `${label}: ${m.content}`;
+            }).join('\n');
+
+            const supervisorPrompt = `
+                Actúas como un Supervisor Clínico y Catedrático del programa de Psicoanálisis de la UFLO.
+                El estudiante de psicología acaba de entrevistar al paciente histórico: ${caseProfiles[activeCaseKey].name}.
+                Debes analizar la transcripción de la sesión y proporcionarle una evaluación pedagógica detallada y constructiva.
+                
+                Organiza tu respuesta estructuradamente usando las siguientes etiquetas HTML de encabezado (<h3>) y negritas:
+                <h3>1. Escucha Analítica</h3>
+                Evalúa si el estudiante indagó en el sentido del síntoma, si fue empático y respetuoso o si juzgó o impuso teorías orgánicas.
+                
+                <h3>2. Diagnóstico y Conflicto Dinámico</h3>
+                Analiza qué aspectos del conflicto reprimido o de la defensa del paciente logró rozar o descubrir el estudiante en sus preguntas.
+                
+                <h3>3. Recomendación Bibliográfica de la Cátedra</h3>
+                Recomienda textos obligatorios específicos de la cursada (como Tallaferro Cap. 1 o 2, Estudios sobre la histeria, Conferencia 1, Tres Ensayos de Teoría Sexual, etc.) explicando por qué le ayudarán a entender el caso.
+                
+                <h3>4. Calificación Cualitativa</h3>
+                Asigna una nota cualitativa constructiva (Aprobado, Destacado o En Proceso de Ajustes) con un comentario alentador.
+                
+                Evita marcas de markdown de encabezado como ### en tu respuesta, usa solo <h3> para que se visualice correctamente en la interfaz.
+            `;
+
+            // Llamada al supervisor
+            PsicoAI.callGemini(supervisorPrompt, `Aquí tienes la transcripción del encuentro:\n\n${transcript}`)
+                .then(response => {
+                    document.getElementById('evaluation-content').innerHTML = response;
+                    sendHeight();
+                })
+                .catch(err => {
+                    document.getElementById('evaluation-content').innerHTML = `
+                        <div style="color: #991b1b; background: #fef2f2; border: 1px solid #fee2e2; padding: 1.5rem; border-radius: 16px;">
+                            <p><strong>⚠️ Error de la Supervisión:</strong> No pudimos contactar al Supervisor.</p>
+                            <p>Detalle: ${err.message}</p>
+                            <p>Asegúrate de tener configurada tu Gemini API Key en el inicio o en la sección correspondiente.</p>
+                        </div>
+                    `;
+                    sendHeight();
+                });
+        }
+
+        function resetSimulator() {
+            evaluationScreen.style.display = 'none';
+            selectorScreen.style.display = 'flex';
+            backLink.style.display = 'inline-flex';
+            sendHeight();
+        }
+
+        // Iframe height Sync
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            if (window.parent) {
+                window.parent.postMessage({ height: height }, '*');
+            }
+        }
+
+        window.addEventListener('load', () => {
+            sendHeight();
+            setInterval(sendHeight, 1000);
+        });
+        window.addEventListener('resize', sendHeight);
+    </script>
+</body>
+</html>

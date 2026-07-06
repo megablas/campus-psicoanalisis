@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Diván de Freud: Asistente IA | Psicoanálisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=16">
+    <style>
+        body.tutor-page {
+            background: radial-gradient(circle at top left, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tutor-container {
+            max-width: 900px;
+            width: 100%;
+            margin: 2rem auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 0 1.5rem;
+        }
+
+        /* Top Header Area */
+        .tutor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 1.25rem 2rem;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .tutor-title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tutor-icon {
+            font-size: 1.8rem;
+            background: rgba(13, 148, 136, 0.1);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+        }
+
+        .tutor-meta h1 {
+            font-size: 1.25rem;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .tutor-meta p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .tutor-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Status Badge */
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .status-badge.sandbox {
+            background: #fff7ed;
+            color: #c2410c;
+            border-color: #ffedd5;
+        }
+
+        .status-badge.active {
+            background: #ecfdf5;
+            color: #047857;
+            border-color: #d1fae5;
+        }
+
+        .status-badge:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-badge.sandbox .status-dot { background: #ea580c; }
+        .status-badge.active .status-dot { background: #10b981; }
+
+        /* Configuration Gear Button */
+        .config-btn {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--secondary-color);
+        }
+
+        .config-btn:hover {
+            background: #e2e8f0;
+            color: var(--primary-color);
+        }
+
+        /* Chat window */
+        .chat-card {
+            background: white;
+            border-radius: 32px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-premium);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-height: 480px;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            scroll-behavior: smooth;
+        }
+
+        /* Bubbles */
+        .chat-bubble {
+            max-width: 80%;
+            padding: 1.1rem 1.4rem;
+            border-radius: 24px;
+            font-size: 0.96rem;
+            line-height: 1.6;
+            animation: bubbleReveal 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        @keyframes bubbleReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-bubble.assistant {
+            align-self: flex-start;
+            background: #f8fafc;
+            color: var(--text-color);
+            border-bottom-left-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .chat-bubble.user {
+            align-self: flex-end;
+            background: var(--primary-color);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-bubble ul, .chat-bubble ol {
+            margin: 0.75rem 0 0.75rem 1.25rem;
+        }
+
+        .chat-bubble li {
+            margin-bottom: 0.35rem;
+        }
+
+        .chat-bubble p {
+            margin-bottom: 0.75rem;
+        }
+        .chat-bubble p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Sugerencias Chips */
+        .suggestion-wrapper {
+            padding: 0.75rem 1.5rem;
+            background: #f8fafc;
+            border-top: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none; /* Firefox */
+        }
+        .suggestion-wrapper::-webkit-scrollbar {
+            display: none; /* Safari/Chrome */
+        }
+
+        .suggestion-chip {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.06);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.01);
+            user-select: none;
+        }
+
+        .suggestion-chip:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(13, 148, 136, 0.08);
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            align-self: flex-start;
+            background: #f1f5f9;
+            padding: 1rem 1.4rem;
+            border-radius: 24px;
+            border-bottom-left-radius: 4px;
+            display: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            animation: dotPulse 1.4s infinite ease-in-out both;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes dotPulse {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        .typing-text {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+
+        /* Input Form */
+        .chat-input-container {
+            padding: 1.25rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            background: white;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex-grow: 1;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            outline: none;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .chat-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+
+        .chat-send-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+        }
+
+        .chat-send-btn:hover {
+            background: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .chat-send-btn svg {
+            transform: translateX(2px);
+        }
+    </style>
+</head>
+<body class="tutor-page">
+    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+
+    <div class="tutor-container">
+        <!-- Back Link -->
+        <a href="../index.html" class="back-link" style="align-self: flex-start; margin-bottom: 0.5rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Volver al inicio del campus
+        </a>
+
+        <!-- Header Dashboard -->
+        <header class="tutor-header">
+            <div class="tutor-title-group">
+                <div class="tutor-icon">🛋️</div>
+                <div class="tutor-meta">
+                    <h1>El Diván de Freud</h1>
+                    <p>Tutor Didáctico de Psicoanálisis</p>
+                </div>
+            </div>
+            <div class="tutor-actions">
+                <div id="connection-badge" class="status-badge sandbox" onclick="openConfig()">
+                    <span class="status-dot"></span>
+                    <span id="connection-text">Modo Simulación</span>
+                </div>
+                <button class="config-btn" onclick="openConfig()" title="Configurar Clave API">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Chat Main Area -->
+        <main class="chat-card">
+            <div class="chat-messages" id="chat-messages">
+                <!-- Welcome message -->
+                <div class="chat-bubble assistant">
+                    <p>👋 ¡Hola! Soy tu <strong>tutor didáctico de Psicoanálisis (UFLO)</strong>.</p>
+                    <p>Estoy aquí para guiarte en el estudio de la bibliografía teórica. Podemos conversar sobre:</p>
+                    <ul>
+                        <li>El pasaje de la histeria al trauma y la defensa (Unidad 1).</li>
+                        <li>Las leyes del sueño y el aparato psíquico de la Primera Tópica (Unidad 2).</li>
+                        <li>El concepto de pulsión, sexualidad infantil y Complejo de Edipo (Unidad 3).</li>
+                        <li>El malestar en la cultura, repetición y Segunda Tópica (Unidad 4).</li>
+                    </ul>
+                    <p>¿Qué duda o texto te gustaría revisar hoy?</p>
+                </div>
+            </div>
+
+            <!-- Suggestion Chips -->
+            <div class="suggestion-wrapper">
+                <div class="suggestion-chip" onclick="sendPrompt('¿Por qué Freud abandonó el método catártico?')">Abandono de la hipnosis</div>
+                <div class="suggestion-chip" onclick="sendPrompt('Diferencia entre defensa y represión en la metapsicología')">Defensa vs. Represión</div>
+                <div class="suggestion-chip" onclick="sendPrompt('¿Qué es el trauma psíquico y por qué se vincula al afecto estrangulado?')">El trauma freudiano</div>
+                <div class="suggestion-chip" onclick="sendPrompt('Explica las cuatro operaciones del trabajo del sueño con ejemplos')">Trabajo del Sueño</div>
+                <div class="suggestion-chip" onclick="sendPrompt('¿Cómo se diferencia el instinto de la pulsión en la Unidad 3?')">Pulsión vs. Instinto</div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typing-indicator">
+                <div class="typing-dots">
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                </div>
+                <span class="typing-text">Freud está asociando libremente...</span>
+            </div>
+
+            <!-- Input Bar -->
+            <form class="chat-input-container" id="chat-form" onsubmit="handleSend(event)">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Pregunta sobre la cursada o escribe tu consulta..." autocomplete="off">
+                <button type="submit" class="chat-send-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </form>
+        </main>
+    </div>
+
+    <!-- Integración con scripts -->
+    <script src="../js/ai-helper.js?v=1"></script>
+    <script>
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const typingIndicator = document.getElementById('typing-indicator');
+        
+        // Historial de la sesión en memoria
+        const chatHistory = [];
+
+        // Prompt de sistema riguroso para la cursada
+        const systemPrompt = `
+            Actúas como un Tutor Didáctico de Psicoanálisis universitario, especializado en la cátedra de Psicoanálisis de la UFLO (Universidad de Flores).
+            Tu tono debe ser profesional, empático, riguroso y pedagógico, emulando la excelencia docente de tus titulares (Blas Rivera y Marina Judith Homse).
+            Ayudas al estudiante a desarmar errores comunes en la interpretación clínica y teórica (por ejemplo, reducir el trauma a un simple suceso externo físico, creer que interpretar es usar un diccionario de símbolos cerrados, o confundir el método catártico con el psicoanálisis formal estructurado).
+            Explica con claridad los contrastes conceptuales entre autores (Janet, Breuer, Freud, Lacan, Melanie Klein).
+            Cuando te pregunten conceptos complejos como la pulsión, el apuntalamiento o la regresión tópica, responde estructuradamente en viñetas o listas y usa ejemplos prácticos o analogías cotidianas que faciliten la comprensión, sin perder el rigor conceptual metapsicológico.
+            Recuerda responder siempre en español y mantén tus respuestas concisas y bien organizadas.
+        `;
+
+        function updateConnectionBadge() {
+            const badge = document.getElementById('connection-badge');
+            const text = document.getElementById('connection-text');
+            
+            if (PsicoAI.hasKey()) {
+                badge.className = 'status-badge active';
+                text.innerText = 'IA Conectada';
+            } else {
+                badge.className = 'status-badge sandbox';
+                text.innerText = 'Modo Simulación';
+            }
+            sendHeight();
+        }
+
+        function openConfig() {
+            PsicoAI.showConfigModal(() => {
+                updateConnectionBadge();
+            });
+        }
+
+        // Formatear markdown básico en HTML
+        function formatMessageContent(text) {
+            let html = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+            
+            // Negrita: **texto**
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // Cursiva: *texto*
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+            
+            // Código/Monoespacio: `código`
+            html = html.replace(/`(.*?)`/g, '<code style="background: rgba(0,0,0,0.05); padding: 2px 5px; border-radius: 4px; font-family: monospace;">$1</code>');
+            
+            // Viñetas: líneas que inician con * o -
+            html = html.split('\n').map(line => {
+                const trimmed = line.trim();
+                if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+                    return `<li style="margin-left: 1rem; list-style-type: disc;">${trimmed.substring(2)}</li>`;
+                }
+                return line;
+            }).join('\n');
+            
+            // Reemplazar saltos de línea por <br>
+            html = html.replace(/\n/g, '<br>');
+            
+            return html;
+        }
+
+        function appendMessage(role, text) {
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble ${role}`;
+            bubble.innerHTML = formatMessageContent(text);
+            
+            chatMessages.appendChild(bubble);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Guardar en historial local
+            chatHistory.push({ role, content: text });
+            
+            // Ajustar iframe height si es necesario
+            sendHeight();
+        }
+
+        function handleSend(event) {
+            if (event) event.preventDefault();
+            
+            const text = chatInput.value.trim();
+            if (!text) return;
+            
+            chatInput.value = '';
+            appendMessage('user', text);
+            
+            // Mostrar typing indicator
+            typingIndicator.style.display = 'flex';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            sendHeight();
+
+            // Llamar a Gemini API
+            PsicoAI.callGemini(systemPrompt, text, chatHistory.slice(0, -1))
+                .then(response => {
+                    typingIndicator.style.display = 'none';
+                    appendMessage('assistant', response);
+                })
+                .catch(err => {
+                    typingIndicator.style.display = 'none';
+                    appendMessage('assistant', `⚠️ **Error de Conexión:** No he podido conectar con el inconsciente de la red. Detalle: *${err.message}*. Por favor, verifica tu API Key haciendo clic en el engranaje superior.`);
+                });
+        }
+
+        function sendPrompt(promptText) {
+            chatInput.value = promptText;
+            handleSend();
+        }
+
+        // Iframe height resize helper
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            if (window.parent) {
+                window.parent.postMessage({ height: height }, '*');
+            }
+        }
+
+        window.addEventListener('load', () => {
+            updateConnectionBadge();
+            // Notificar API key si no está configurada al inicio
+            setTimeout(() => {
+                if (!PsicoAI.hasKey()) {
+                    // Mensaje suave sugiriendo API key
+                    appendMessage('assistant', `ℹ️ **Nota del Campus:** Actualmente estás operando en el **Modo de Simulación (Offline)**. Puedes probar mis respuestas precargadas. Si deseas hacerme cualquier pregunta libre sobre la cursada, haz clic en el engranaje arriba para ingresar tu clave Gemini.`);
+                }
+            }, 600);
+            sendHeight();
+            setInterval(sendHeight, 1000);
+        });
+
+        window.addEventListener('resize', sendHeight);
+    </script>
+</body>
+</html>

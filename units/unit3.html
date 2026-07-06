@@ -1,329 +1,199 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unidad 3: La Sexualidad en el Psicoanálisis y la Invención de la Pulsión | Psicoanálisis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css?v=16">
-    <style>
-        .card-nav { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); flex-wrap: wrap; }
-        .nav-link { padding: 0.6rem 1.4rem; border-radius: 100px; text-decoration: none; color: var(--secondary-color); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; background: rgba(0,0,0,0.02); border: 1px solid transparent; }
-        .nav-link:hover { color: var(--accent-color); background: rgba(13, 148, 136, 0.08); border-color: rgba(13, 148, 136, 0.2); }
-        .nav-link.active { background: var(--accent-color); color: white; box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3); }
-
-        .unit-hero { padding: 4rem 2rem; text-align: center; background: white; border-radius: 40px; box-shadow: var(--shadow-premium); margin-top: 1rem; border: 1px solid var(--glass-border); }
-        .landing-quote { max-width: 840px; margin: 2rem auto; position: relative; padding: 0 2rem; font-style: italic; line-height: 1.75; }
-        .landing-quote::after, .landing-quote::before { content: '"'; font-size: 4rem; color: var(--accent-color); opacity: 0.2; position: absolute; font-family: serif; }
-        .landing-quote::before { left: -10px; top: -20px; }
-        .landing-quote::after { right: -10px; bottom: -40px; }
-
-        .unit-opening-note { max-width: 920px; margin: 2.5rem auto 0; background: linear-gradient(180deg, #f8fbfc, #f2f7f9); border: 1px solid #dbe8ec; border-radius: 28px; padding: 1.5rem 1.75rem; text-align: left; box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04); }
-        .unit-opening-note strong { color: var(--primary-color); }
-        .unit-opening-note p { color: var(--text-secondary); line-height: 1.8; }
-        .unit-scan-grid { max-width: 980px; margin: 1.5rem auto 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-        .unit-scan-card { background: linear-gradient(180deg, #ffffff, #f8fbfc); border: 1px solid rgba(13, 148, 136, 0.1); border-radius: 24px; padding: 1.2rem 1.25rem; text-align: left; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04); }
-        .unit-scan-label { display: inline-flex; align-items: center; padding: 0.35rem 0.7rem; border-radius: 999px; background: rgba(13, 148, 136, 0.08); color: var(--accent-color); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08rem; margin-bottom: 0.8rem; }
-        .unit-scan-card h3 { font-size: 1rem; line-height: 1.2; margin-bottom: 0.45rem; }
-        .unit-scan-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; }
-        .unit-passage-band { margin: 2rem auto 0; max-width: 960px; display: grid; grid-template-columns: auto 1fr auto 1fr auto; align-items: center; gap: 0.9rem; }
-        .unit-passage-node { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 999px; background: white; border: 1px solid rgba(13, 148, 136, 0.14); box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05); color: var(--accent-color); font-weight: 800; font-size: 0.86rem; }
-        .unit-passage-line { height: 2px; background: linear-gradient(90deg, rgba(13, 148, 136, 0.18), rgba(13, 148, 136, 0.55)); border-radius: 999px; }
-        .module-kicker { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.55rem 0.9rem; border-radius: 999px; background: rgba(15, 23, 42, 0.04); color: var(--secondary-color); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02rem; margin-top: 1rem; }
-        .module-kicker-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-color); box-shadow: 0 0 0 6px rgba(13, 148, 136, 0.1); }
-        .module-emphasis-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0 auto 2rem; max-width: 980px; }
-        .module-emphasis { background: #ffffff; border: 1px solid rgba(15, 23, 42, 0.06); border-radius: 22px; padding: 1.15rem 1.25rem; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04); text-align: left; }
-        .module-emphasis h4 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08rem; color: var(--accent-color); margin-bottom: 0.55rem; }
-        .module-emphasis p { color: var(--secondary-color); font-size: 0.95rem; line-height: 1.7; }
-
-        .module-section { padding: 5rem 0; border-bottom: 1px dashed #e2e8f0; }
-        .module-header { text-align: center; margin-bottom: 3rem; }
-        .module-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-        .module-card { background: white; border-radius: 26px; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); padding: 2rem; min-height: 100%; }
-        .module-card h4 { font-size: 1.25rem; line-height: 1.25; margin-bottom: 0.9rem; color: var(--primary-color); }
-        .module-card p { color: var(--text-secondary); line-height: 1.75; font-size: 0.98rem; }
-        .module-index { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 999px; background: rgba(13, 148, 136, 0.1); color: var(--accent-color); font-size: 0.82rem; font-weight: 800; margin-bottom: 1rem; }
-        .module-bridge { margin-top: 2rem; background: linear-gradient(180deg, #f8fafc, #f2f7f9); border: 1px solid #e2e8f0; border-radius: 28px; padding: 2rem 2.2rem; }
-        .module-bridge p { color: var(--text-secondary); line-height: 1.8; }
-        .module-bridge strong { color: var(--primary-color); }
-        .roadmap-intro { max-width: 740px; margin: 0 auto 2.5rem; color: var(--text-secondary); line-height: 1.7; }
-        .unit-reading-strip { margin-top: 4rem; padding: 2.2rem; background: linear-gradient(180deg, #fff, #f8fbfc); border-radius: 32px; border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); }
-        .unit-reading-strip-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-        .unit-reading-strip-header p { max-width: 560px; color: var(--text-secondary); line-height: 1.7; }
-        .unit-reading-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-        .unit-reading-card { background: linear-gradient(180deg, #ffffff, #fbfcfd); border: 1px solid rgba(15, 23, 42, 0.06); border-radius: 24px; padding: 1.3rem; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04); }
-        .unit-reading-card h3 { font-size: 1rem; line-height: 1.3; margin: 0.7rem 0 0.5rem; }
-        .unit-reading-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65; }
-        .unit-reading-chip { display: inline-flex; align-items: center; padding: 0.35rem 0.7rem; border-radius: 999px; background: rgba(13, 148, 136, 0.08); color: var(--accent-color); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08rem; }
-
-        @media (max-width: 768px) {
-            .unit-hero h1 { font-size: 2.2rem; }
-            .unit-scan-grid, .module-emphasis-grid, .unit-reading-grid { grid-template-columns: 1fr; }
-            .unit-passage-band { grid-template-columns: auto 1fr; }
-            .unit-passage-band .unit-passage-node:nth-child(3),
-            .unit-passage-band .unit-passage-node:nth-child(5),
-            .unit-passage-band .unit-passage-line:nth-child(4) { display: none; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Unidad 3: Pulsión y sexualidad. Sexualidad infantil, Edipo y pulsión.">
+  <title>Unidad 3 · Pulsión y Sexualidad · Psicoanálisis UFLO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/ui.css">
 </head>
-<body>
-    <div id="top-focus" class="focus-helper" tabindex="-1"></div>
+<body data-unit="3">
 
-    <main class="container">
-        <section class="unit-hero fade-in">
-            <div class="card-nav-container show-units">
-                <nav class="card-nav">
-                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142" target="_top" class="nav-link">Inicio</a>
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074864" target="_top" class="nav-link">Consultas</a>
-                    <a href="https://campus.uflo.edu.ar/mod/forum/view.php?id=1074511" target="_top" class="nav-link">Presentación</a>
-                    <a href="https://campus.uflo.edu.ar/course/view.php?id=11142#unidades" target="_top" class="nav-link active">Unidades</a>
-                </nav>
+  <div data-ui="nav" data-active="unidades" data-depth="../"></div>
 
-                <div class="sub-nav">
-                    <a href="unit1.html" class="sub-link">1</a>
-                    <a href="unit2.html" class="sub-link">2</a>
-                    <a href="unit3.html" class="sub-link active">3</a>
-                    <a href="unit4.html" class="sub-link">4</a>
-                </div>
-            </div>
+  <main class="container">
 
-            <span class="unit-number" style="font-size: 1rem; color: var(--accent-color); font-weight: 800; letter-spacing: 5px; margin-top: 2rem; display: block;">UNIDAD 3</span>
+    <section class="hero" style="display:grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-10); align-items: center; padding-top: var(--space-12);">
+      <div>
+        <a href="../index.html" class="back-link"><span id="back-icon"></span> Volver al inicio</a>
+        <div class="hero__eyebrow">Unidad 3 · Violeta</div>
+        <h1 class="hero__title" style="font-size: var(--text-4xl);">La sexualidad en el psicoanálisis y la invención de la pulsión</h1>
+        <p class="hero__subtitle">
+          El recorrido propone un cambio radical. Pasaremos de la "opinión popular" sobre el sexo a la formalización
+          metapsicológica de la Pulsión, el Complejo de Edipo y la Castración. Lo sexual es una construcción psíquica
+          compleja que se remonta y enraíza en la más tierna infancia.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="clase-07.html">Empezar por la Clase 7</a>
+          <a class="btn btn--secondary btn--lg" href="#clases">Ver hoja de ruta</a>
+        </div>
+      </div>
 
-            <h1 style="font-size: 3.5rem; margin: 1.5rem 0; line-height: 1; letter-spacing: -2px;">La Sexualidad en el Psicoanálisis y la Invención de la Pulsión</h1>
+      <aside class="card card--lg" style="border-color: var(--accent-soft); background: var(--accent-softer);">
+        <div style="font-family: var(--font-display); font-size: 3rem; line-height: 1; color: var(--accent); margin-bottom: var(--space-3);">"</div>
+        <p style="font-size: var(--text-xl); font-style: italic; color: var(--text-strong); line-height: var(--leading-snug); margin-bottom: var(--space-4);">
+          El niño pequeño es perverso polimorfo.
+        </p>
+        <p style="font-size: var(--text-sm); color: var(--text-muted); font-weight: 600;">
+          A partir de Freud · Tres ensayos (1905)
+        </p>
+      </aside>
+    </section>
 
-            <p style="font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-top: 1rem;">Ruptura definitiva con el sentido común sobre lo sexual</p>
+    <!-- SCAN CARDS -->
+    <section class="section">
+      <div class="grid grid-3">
+        <div class="card">
+          <span class="badge badge--accent mb-4">Desajuste</span>
+          <h3 style="margin-bottom: var(--space-2);">Más allá del instinto</h3>
+          <p class="text-muted">La pulsión rompe con el esquema biológico. No hay un objeto predeterminado ni una satisfacción automática; hay una exigencia constante.</p>
+        </div>
+        <div class="card">
+          <span class="badge badge--accent mb-4">Revolución</span>
+          <h3 style="margin-bottom: var(--space-2);">La sexualidad infantil</h3>
+          <p class="text-muted">El niño no es un ángel asexuado. Explora el placer de forma perversa y polimorfa, apoyándose primero en funciones vitales.</p>
+        </div>
+        <div class="card">
+          <span class="badge badge--accent mb-4">Ordenamiento</span>
+          <h3 style="margin-bottom: var(--space-2);">Edipo y Castración</h3>
+          <p class="text-muted">La anarquía infantil no se sostiene. El Complejo Nuclear organiza la sexualidad marcando posiciones, prohibiciones y renuncias.</p>
+        </div>
+      </div>
+    </section>
 
-            <blockquote class="landing-quote" style="border: none;">
-                "Si en las unidades anteriores descubrimos cómo funciona el Inconsciente y de qué manera se defiende el aparato psíquico, en esta Unidad 3 nos preguntaremos por el motor de ese conflicto. Descubriremos que para el psicoanálisis, lo sexual no es un dato biológico ni un instinto que despierta en la pubertad."
-            </blockquote>
+    <!-- MÓDULO 1 -->
+    <section class="section">
+      <div class="section-head">
+        <div class="badge badge--accent mb-4">Módulo 1</div>
+        <h2 class="section-head__title">Más allá del instinto: el concepto de pulsión</h2>
+        <p class="section-head__subtitle">
+          Freud interviene sobre la concepción dominante de la época. Cuestiona la idea de que la sexualidad solo comienza en la pubertad
+          y de que su único propósito es la unión genital para la reproducción.
+        </p>
+      </div>
 
-            <div class="unit-opening-note">
-                <p><strong>El recorrido de esta unidad propone un cambio radical.</strong> Pasaremos de la "opinión popular" sobre el sexo a la formalización metapsicológica de la <strong>Pulsión, el Complejo de Edipo y la Castración</strong>. Veremos cómo lo sexual es una construcción psíquica compleja que, muy lejos del orden natural y la reproducción, se remonta y enraíza en la más tierna infancia.</p>
-            </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">01.</span>
+          <h4 class="mt-4 mb-4">El choque con la opinión popular</h4>
+          <p class="text-muted">La psiquiatría clásica creía en un instinto sexual ordenado hacia la genitalidad. Freud muestra que, en el inicio, nada nos orienta "naturalmente" hacia el campo del otro ni hacia la procreación. Hay extravíos y caminos muy diversos.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">02.</span>
+          <h4 class="mt-4 mb-4">La invención de la pulsión</h4>
+          <p class="text-muted">Se diferencia radicalmente del instinto (fijo, pautado, biológico). <strong>La pulsión es un estímulo continuo</strong>, intramisible, una "exigencia de trabajo" impuesta al aparato psíquico por su conexión corporal, de la que no se puede huir.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">03.</span>
+          <h4 class="mt-4 mb-4">Los cuatro elementos</h4>
+          <p class="text-muted">Para analizar y capturar teóricamente este empuje constante, Freud desglosa la pulsión en cuatro componentes fundamentales: <strong>Esfuerzo</strong> (empuje, motor), <strong>Meta</strong> (satisfacción, que siempre es cancelatoria), <strong>Objeto</strong> (el más libre y variable) y <strong>Fuente</strong> (zona erógena del cuerpo).</p>
+        </div>
+      </div>
+    </section>
 
-            <div class="unit-scan-grid">
-                <article class="unit-scan-card">
-                    <span class="unit-scan-label">Desajuste</span>
-                    <h3>Más allá del instinto</h3>
-                    <p>La pulsión rompe con el esquema biológico. No hay un objeto predeterminado ni una satisfacción automática; hay una exigencia constante.</p>
-                </article>
-                <article class="unit-scan-card">
-                    <span class="unit-scan-label">Revolución</span>
-                    <h3>La sexualidad infantil</h3>
-                    <p>El niño no es un ángel asexuado. Explora el placer de forma perversa y polimorfa, apoyándose primero en funciones vitales.</p>
-                </article>
-                <article class="unit-scan-card">
-                    <span class="unit-scan-label">Ordenamiento</span>
-                    <h3>Edipo y Castración</h3>
-                    <p>La anarquía infantil no se sostiene. El Complejo Nuclear organiza la sexualidad marcando posiciones, prohibiciones y renuncias.</p>
-                </article>
-            </div>
+    <!-- MÓDULO 2 -->
+    <section class="section">
+      <div class="section-head">
+        <div class="badge badge--accent mb-4">Módulo 2</div>
+        <h2 class="section-head__title">La revolución de la sexualidad infantil</h2>
+        <p class="section-head__subtitle">
+          Si la sexualidad no despierta de la nada en la pubertad, es porque hundía sus raíces, activas y operantes,
+          en los primeros años de vida. Este descubrimiento reconfigura no sólo la infancia, sino la estructura psíquica adulta.
+        </p>
+      </div>
 
-            <div class="unit-passage-band" aria-hidden="true">
-                <span class="unit-passage-node">1</span>
-                <span class="unit-passage-line"></span>
-                <span class="unit-passage-node">2</span>
-                <span class="unit-passage-line"></span>
-                <span class="unit-passage-node">3</span>
-            </div>
-        </section>
+      <div class="grid grid-3">
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">01.</span>
+          <h4 class="mt-4 mb-4">Amnesia infantil</h4>
+          <p class="text-muted">¿Por qué no recordamos nuestros primeros años? Salvo por algunos recuerdos encubridores sueltos, la historia temprana cae bajo represión masiva no por insuficiencia mental, sino por su íntima y explícita conexión con los deseos sexuales primordiales.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">02.</span>
+          <h4 class="mt-4 mb-4">El niño "perverso polimorfo"</h4>
+          <p class="text-muted">Nuestra concepción de la sexualidad se desplaza. Se amplía a toda actividad que devuelva placer a través de una zona erógena del cuerpo (ej. el chupeteo rítmico del pulgar), sin ninguna subordinación a funciones reproductivas adultas.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">03.</span>
+          <h4 class="mt-4 mb-4">El apuntalamiento</h4>
+          <p class="text-muted">Ningún placer sexual es puro al inicio. Surge siempre "apoyado" en las grandes funciones vitales y biológicas (como tragar el alimento caliente). Al separarse y buscar repetirse ya por el placer mismo, nace propiamente el orden sexual pulsional.</p>
+        </div>
+      </div>
+    </section>
 
-        <section class="module-section fade-in" style="animation-delay: 0.2s;">
-            <div class="module-header">
-                <span class="module-tag">Módulo 1</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">Más allá del Instinto: El concepto de Pulsión</h2>
-                <div class="module-kicker"><span class="module-kicker-dot"></span> Choque estructural con la opinión popular y biomédica</div>
-                <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
-                    Freud interviene sobre la concepción dominante de la época. Cuestiona la idea instalada de que la sexualidad solo comienza en la pubertad y de que su único propósito, sano y natural, es la unión genital para la reproducción.
-                </p>
-            </div>
+    <!-- MÓDULO 3 -->
+    <section class="section">
+      <div class="section-head">
+        <div class="badge badge--accent mb-4">Módulo 3</div>
+        <h2 class="section-head__title">El ordenamiento de la sexualidad: Edipo y Castración</h2>
+        <p class="section-head__subtitle">
+          La sexualidad infantil no permanece en un estado disperso donde cada pulsión busca placer por su cuenta.
+          Atravesará un recorrido de confluencia y ordenamientos traumáticos estructurales.
+        </p>
+      </div>
 
-            <div class="module-grid">
-                <article class="module-card">
-                    <span class="module-index">01</span>
-                    <h4>El choque con la opinión popular</h4>
-                    <p>La psiquiatría clásica creía en un instinto sexual ordenado hacia la genitalidad. Freud muestra que, en el inicio, nada nos orienta "naturalmente" hacia el campo del otro ni hacia la procreación. Hay extravíos y caminos muy diversos.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">02</span>
-                    <h4>La invención de la Pulsión</h4>
-                    <p>Se diferencia radicalmente del instinto (fijo, pautado, biológico). <strong>La pulsión es un estímulo continuo</strong>, intramisil, una "exigencia de trabajo" impuesta al aparato psíquico por su conexión corporal, de la que no se puede huir.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">03</span>
-                    <h4>Los cuatro elementos</h4>
-                    <p>Para analizar y capturar teóricamente este empuje constante, Freud desglosa la pulsión en cuatro componentes fundamentales: <strong>Esfuerzo</strong> (empuje, motor), <strong>Meta</strong> (satisfacción, que siempre es cancelatoria), <strong>Objeto</strong> (el más libre y variable) y <strong>Fuente</strong> (zona erógena del cuerpo).</p>
-                </article>
-            </div>
-        </section>
+      <div class="grid grid-3">
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">01.</span>
+          <h4 class="mt-4 mb-4">Organizaciones pregenitales</h4>
+          <p class="text-muted">El desarrollo pulsional tiene etapas. Organiza su anarquía unificándose bajo una zona erógena principal (fase oral, luego etapa sádico-anal) que comandan intermitentemente la economía de placer del sujeto infantil.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">02.</span>
+          <h4 class="mt-4 mb-4">El primado del falo</h4>
+          <p class="text-muted">Una ruptura enorme del texto de 1923: para los sexos no rige la oposición biológica masculino/femenino, sino la premisa universal del falo. Todo se agrupa en una única dicotomía posible: <strong>"tenerlo" o "estar castrado"</strong>.</p>
+        </div>
+        <div class="card">
+          <span style="color: var(--accent); font-weight: 800;">03.</span>
+          <h4 class="mt-4 mb-4">Complejo Nuclear</h4>
+          <p class="text-muted">El Complejo de Edipo y su ocaso por amenaza de Castración no son meras leyendas. Son los grandes organizadores estructurales e insalvables que someten la vida pulsional del niño, dándole a cambio su posición sexuada en la cultura.</p>
+        </div>
+      </div>
+    </section>
 
-        <section class="module-section fade-in" style="animation-delay: 0.3s;">
-            <div class="module-header">
-                <span class="module-tag">Módulo 2</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">La Revolución de la Sexualidad Infantil</h2>
-                <div class="module-kicker"><span class="module-kicker-dot"></span> "El niño, como un perverso polimorfo"</div>
-                <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
-                    Si la sexualidad no despierta de la nada en la pubertad, es porque hundía sus raíces, activas y operantes, en los primeros años de vida. Este descubrimiento reconfigura no sólo a la infancia, sino la estructura psíquica adulta.
-                </p>
-            </div>
+    <!-- HOJA DE RUTA -->
+    <section class="section" id="clases">
+      <div class="section-head">
+        <h2 class="section-head__title">Hoja de ruta de la Unidad 3</h2>
+        <p class="section-head__subtitle">Acceder a las clases teóricas para profundizar en los textos metapsicológicos correspondientes y las propuestas freudianas centrales.</p>
+      </div>
+      <div id="unit3-classes" class="unit-grid" style="grid-template-columns: 1fr;"></div>
+    </section>
 
-            <div class="module-grid">
-                <article class="module-card">
-                    <span class="module-index">01</span>
-                    <h4>Amnesia Infantil</h4>
-                    <p>¿Por qué no recordamos nuestros primeros años? Salvo por algunos recuerdos encubridores sueltos, la historia temprana cae bajo represión masiva no por insuficiencia mental, sino por su íntima y explícita conexión con los deseos sexuales primordiales.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">02</span>
-                    <h4>El niño "Perverso Polimorfo"</h4>
-                    <p>Nuestra concepción de la sexualidad se desplaza. Se amplía a toda actividad que devuelva placer a través de una zona erógena del cuerpo (ej. el chupeteo rítmico del pulgar), sin ninguna subordinación a funciones reproductivas adultas.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">03</span>
-                    <h4>El Apuntalamiento</h4>
-                    <p>Ningún placer sexual es puro al inicio. Surge siempre "apoyado" en las grandes funciones vitales y biológicas (como tragar el alimento caliente). Al separarse y buscar repetirse ya por el placer mismo, nace propiamente el orden sexual pulsional.</p>
-                </article>
-            </div>
-        </section>
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Psicoanálisis · UFLO · Cátedra Rivera–Homse</p>
+    </footer>
+  </main>
 
-        <section class="module-section fade-in" style="animation-delay: 0.4s; border-bottom: none;">
-            <div class="module-header">
-                <span class="module-tag">Módulo 3</span>
-                <h2 style="font-size: 2.5rem; margin-top: 1rem;">El Ordenamiento de la Sexualidad: Edipo y Castración</h2>
-                <div class="module-kicker"><span class="module-kicker-dot"></span> Abandonando la anarquía infantil pulsional</div>
-                <p style="max-width: 840px; margin: 1.5rem auto; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.8;">
-                    La sexualidad infantil no permanece en un estado disperso donde cada pulsión busca placer por su cuenta. Atravesará un recorrido de confluencia y ordenamientos traumáticos estructurales.
-                </p>
-            </div>
+  <script src="../assets/icons.js"></script>
+  <script src="../assets/data.js"></script>
+  <script src="../assets/ui.js?v=2"></script>
+  <script>
+    (function () {
+      const { PROGRAMA } = CAMPUS_DATA;
+      const D = CampusUI.Dates;
+      document.getElementById('back-icon').innerHTML = ICONS.svg('arrowLeft', 18);
 
-            <div class="module-grid">
-                <article class="module-card">
-                    <span class="module-index">01</span>
-                    <h4>Organizaciones pregenitales</h4>
-                    <p>El desarrollo pulsional tiene etapas. Organiza su anarquía unificándose bajo una zona erógena principal (fase oral, luego etapa sádico-anal) que comandan intermitentemente la economía de placer del sujeto infantil.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">02</span>
-                    <h4>El Primado del Falo</h4>
-                    <p>Una ruptura enorme del texto de 1923: para los sexos no rige la oposición biológica masculino/femenino, sino la premisa universal del falo. Todo se agrupa en una única dicotomía posible: <strong>"tenerlo" o "estar castrado"</strong>.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">03</span>
-                    <h4>Complejo Nuclear</h4>
-                    <p>El Complejo de Edipo y su ocaso por amenaza de Castración no son meras leyendas. Son los grandes organizadores estructurales e insalvables que someten la vida pulsional del niño, dándole a cambio su posición sexuada en la cultura.</p>
-                </article>
-            </div>
-        </section>
+      const clases = PROGRAMA.filter(p => p.tipo === 'clase' && p.unidad === 3);
+      document.getElementById('unit3-classes').innerHTML = clases.map(c => `
+        <a class="card card--hoverable" href="${CampusUI.path(c.href)}" style="display:grid; grid-template-columns: auto 1fr auto; gap: var(--space-5); align-items: center;">
+          <div class="tl-item__date">
+            <div class="tl-item__day">${c.fecha.dia}</div>
+            <div class="tl-item__month">${D.MONTHS_ES[c.fecha.mes - 1]}</div>
+          </div>
+          <div>
+            <h4 style="margin-bottom: var(--space-1);">${c.titulo}</h4>
+            <p class="text-muted" style="font-size: var(--text-sm);">${c.desc}</p>
+          </div>
+          <span style="color: var(--accent);">${ICONS.svg('arrowRight', 20)}</span>
+        </a>`).join('');
 
-        <section id="roadmap" class="fade-in" style="margin-top: 5rem; padding: 4rem; background: #fff; border-radius: 40px; box-shadow: var(--shadow-premium); border: 1px solid var(--glass-border);">
-            <header style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">📍 Hoja de Ruta de la Unidad 3</h2>
-                <p class="roadmap-intro">Acceder a las clases teóricas para profundizar en los textos metapsicológicos correspondientes y las propuestas freudianas centrales.</p>
-            </header>
-
-            <div class="route-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-                <a href="unit3_clase7.html" class="route-card">
-                    <span class="route-number">Clase 7</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">La sexualidad en psicoanálisis</h4>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Diferencia crítica y estructural entre el instinto animal y la pulsión humana irreductible.</p>
-                </a>
-                <a href="unit3_clase8.html" class="route-card">
-                    <span class="route-number">Clase 8</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">Metapsicología y Ensayo II</h4>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">El concepto de pulsión desglosado y el nacimiento de la sexualidad infantil en sus Tres Ensayos.</p>
-                </a>
-                <a href="unit3_clase9.html" class="route-card">
-                    <span class="route-number">Clase 9</span>
-                    <h4 style="font-size: 1.1rem; margin: 0.5rem 0;">Edipo, Castración y Genitalidad</h4>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">La caída del Complejo de Edipo y la Organización Genital Infantil bajo el primado del falo.</p>
-                </a>
-            </div>
-        </section>
-
-        <section class="fade-in" style="margin-top: 3rem; animation-delay: 0.5s;">
-            <div class="glass-card" style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(13, 148, 136, 0.1) 100%); border: 1px solid rgba(13, 148, 136, 0.2); padding: 3rem; text-align: center; border-radius: 40px;">
-                <span style="font-size: 2.5rem; display: block; margin-bottom: 1rem;">🧠</span>
-                <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Poné a prueba tu conocimiento</h2>
-                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 2rem; line-height: 1.6;">Completá el test interactivo de la Unidad 3 para verificar si dominás los conceptos de Pulsión, Edipo y Castración.</p>
-                <a href="unit3_quiz.html" class="btn primary" style="padding: 1rem 2.5rem; font-size: 1rem;">Comenzar Autoevaluación</a>
-            </div>
-        </section>
-
-        <footer class="site-footer" style="padding-top: 4rem;">
-            <p>© 2026 Psicoanálisis | UFLO Universidad</p>
-        </footer>
-    </main>
-
-    <script>
-        const EMBED_SOURCE = 'campus-psicoanalisis';
-        let lastSentHeight = 0;
-        let pendingHeightFrame = null;
-
-        function getDocumentHeight() {
-            const body = document.body;
-            const html = document.documentElement;
-            return Math.max(
-                body ? body.scrollHeight : 0,
-                body ? body.offsetHeight : 0,
-                html ? html.clientHeight : 0,
-                html ? html.scrollHeight : 0,
-                html ? html.offsetHeight : 0
-            );
-        }
-
-        function postEmbedMessage(payload) {
-            if (window.parent && window.parent !== window) {
-                window.parent.postMessage(payload, '*');
-            }
-        }
-
-        function sendHeight(reason = 'update', force = false) {
-            if (pendingHeightFrame) cancelAnimationFrame(pendingHeightFrame);
-            pendingHeightFrame = requestAnimationFrame(() => {
-                const height = getDocumentHeight();
-                const changedEnough = Math.abs(height - lastSentHeight) > 4;
-                if (!force && !changedEnough) return;
-                lastSentHeight = height;
-                postEmbedMessage({ type: 'campusHeight', source: EMBED_SOURCE, height, reason, path: window.location.pathname });
-                postEmbedMessage({ height: height });
-            });
-        }
-
-        function scrollToTop() {
-            window.scrollTo(0, 0);
-            const helper = document.getElementById('top-focus');
-            if (helper) helper.focus({ preventScroll: false });
-            if (window.parent) {
-                ['scrollToTop', 'forceScrollTop', { type: 'scrollToTop' }].forEach(msg => {
-                    try { window.parent.postMessage(msg, '*'); } catch (e) {}
-                });
-            }
-        }
-
-        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
-        function setupEmbedSync() {
-            sendHeight('init', true);
-            if ('ResizeObserver' in window) {
-                const resizeObserver = new ResizeObserver(() => sendHeight('resize-observer'));
-                resizeObserver.observe(document.body);
-            }
-            if ('MutationObserver' in window) {
-                const mutationObserver = new MutationObserver(() => sendHeight('mutation'));
-                mutationObserver.observe(document.body, { childList: true, subtree: true, attributes: true, characterData: true });
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', setupEmbedSync);
-        window.addEventListener('load', () => {
-            scrollToTop();
-            setTimeout(() => {
-                scrollToTop();
-                sendHeight('load', true);
-            }, 100);
-        });
-        window.addEventListener('resize', () => sendHeight('window-resize', true));
-        window.addEventListener('pageshow', () => sendHeight('pageshow', true));
-    </script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
