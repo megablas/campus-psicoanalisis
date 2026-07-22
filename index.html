@@ -139,7 +139,7 @@
                 <span class="badge badge--accent" style="font-weight: 800;">1° Llamado</span>
                 <span class="badge badge--neutral" style="text-transform: none;">Presencial (Neuquén)</span>
               </div>
-              <div style="font-size: var(--text-lg); font-weight: 700; color: var(--text-strong);">20/07/2026 — 18:30 hs.</div>
+              <div style="font-size: var(--text-lg); font-weight: 700; color: var(--text-strong);">27/07/2026 — 18:30 hs.</div>
               <div style="font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-1);" class="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M6 21v-1a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v1"/></svg> Modalidad Oral
               </div>
@@ -151,7 +151,7 @@
                 <span class="badge badge--accent" style="font-weight: 800;">2° Llamado</span>
                 <span class="badge badge--neutral" style="text-transform: none;">Presencial (Neuquén)</span>
               </div>
-              <div style="font-size: var(--text-lg); font-weight: 700; color: var(--text-strong);">27/07/2026 — 18:30 hs.</div>
+              <div style="font-size: var(--text-lg); font-weight: 700; color: var(--text-strong);">03/08/2026 — 12:30 hs.</div>
               <div style="font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-1);" class="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M6 21v-1a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v1"/></svg> Modalidad Oral (Estudiantes Regulares)
               </div>
@@ -172,7 +172,7 @@
               Aquellos estudiantes en estado <strong>pendiente</strong> (que aprobaron <strong>únicamente un parcial</strong> de la cursada) deben cumplir con un requisito eliminatorio previo para acceder al examen oral:
             </p>
             <ul style="padding-left: var(--space-5); color: var(--text-muted); font-size: var(--text-sm); line-height: var(--leading-normal);" class="grid gap-2">
-              <li><strong>Convocatoria obligatoria</strong>: Según la normativa vigente, los estudiantes pendientes deben presentarse obligatoriamente en el <strong>1° llamado (20/07/2026 — 18:30 hs.)</strong>.</li>
+              <li><strong>Convocatoria obligatoria</strong>: Según la normativa vigente, los estudiantes pendientes deben presentarse obligatoriamente en el <strong>1° llamado (27/07/2026 — 18:30 hs.)</strong>.</li>
               <li>Rendir una primera instancia <strong>escrita</strong> de <strong>3 preguntas integradoras</strong> que abarcan la totalidad del programa de la materia.</li>
               <li>Es requisito excluyente responder de forma correcta las <strong>3 preguntas bien contestadas</strong> (100% de efectividad) para tener derecho a pasar al examen oral.</li>
             </ul>
@@ -331,17 +331,28 @@
             <a class="btn btn--secondary btn--lg" href="#cronograma">${ICONS.svg('calendar', 18)} Ver cronograma</a>
           </div>`;
       } else {
-        // Cursada finalizada
+        // Cursada finalizada / Período de finales
         panelHTML += `
-          <div class="hero-panel__headline">La cursada ha finalizado</div>
+          <div class="hero-panel__headline">📢 Reprogramación de Fechas de Mesas de Final</div>
           <div class="hero-panel__detail">
             <p style="margin-bottom: var(--space-3); color: var(--text-strong); font-weight: 700;">
-              📢 Las notas del recuperatorio ya fueron subidas al portal de la universidad.
+              Se informan los nuevos días y horarios para los llamados de Examen Final:
             </p>
-            <p>El material queda disponible para repaso. Podés recorrer las unidades y herramientas cuando quieras.</p>
+            <div style="display: grid; gap: var(--space-2); margin-top: var(--space-3); margin-bottom: var(--space-4);">
+              <div style="padding: var(--space-3) var(--space-4); background: var(--surface-hover); border-left: 4px solid var(--accent); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2);">
+                <span><strong>1° Llamado:</strong> Próximo lunes <strong>27/07/2026</strong></span>
+                <span class="badge badge--accent">18:30 hs (Mismo horario)</span>
+              </div>
+              <div style="padding: var(--space-3) var(--space-4); background: var(--surface-hover); border-left: 4px solid var(--accent); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2);">
+                <span><strong>2° Llamado:</strong> Lunes <strong>03/08/2026</strong></span>
+                <span class="badge badge--accent">12:30 hs (Nuevo horario)</span>
+              </div>
+            </div>
+            <p style="font-size: var(--text-sm);">Las notas del recuperatorio ya se encuentran subidas al portal institucional.</p>
           </div>
           <div class="hero-panel__actions">
-            <a class="btn btn--primary btn--lg" href="#unidades">${ICONS.svg('stack', 18)} Repasar unidades</a>
+            <a class="btn btn--primary btn--lg" href="#final">${ICONS.svg('calendar', 18)} Ver detalles de mesas de final</a>
+            <a class="btn btn--secondary btn--lg" href="#unidades">${ICONS.svg('stack', 18)} Repasar unidades</a>
           </div>`;
       }
       document.getElementById('hero-panel').innerHTML = panelHTML;
